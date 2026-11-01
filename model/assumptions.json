@@ -1,0 +1,116 @@
+{
+  "_note": "Base rates are Westchester (rent_index 1.00). Each market scales rents by rent_index and hard costs by cost_index. Every value carries a basis in model/ASSUMPTIONS.md.",
+  "hurdle_yoc": 0.065,
+  "exit_cap": 0.0625,
+  "pursue_score": 60,
+  "default_tax_per_unit": 9000,
+  "default_land_per_unit": 60000,
+  "care_levels": {
+    "IL": {
+      "base_monthly_rate": 6800,
+      "stabilized_occupancy": 0.93,
+      "ancillary_pct": 0.03,
+      "noi_margin_pre_tax": 0.46,
+      "gsf_per_unit": 1350
+    },
+    "AL": {
+      "base_monthly_rate": 11000,
+      "stabilized_occupancy": 0.91,
+      "ancillary_pct": 0.1,
+      "noi_margin_pre_tax": 0.37,
+      "gsf_per_unit": 875
+    },
+    "MC": {
+      "base_monthly_rate": 15000,
+      "stabilized_occupancy": 0.9,
+      "ancillary_pct": 0.03,
+      "noi_margin_pre_tax": 0.35,
+      "gsf_per_unit": 725
+    },
+    "SNF": {
+      "base_monthly_rate": 14500,
+      "stabilized_occupancy": 0.92,
+      "ancillary_pct": 0.0,
+      "noi_margin_pre_tax": 0.1,
+      "gsf_per_unit": 600
+    }
+  },
+  "prototypes": {
+    "A": {
+      "name": "Continuum campus (RiverSpring-style)",
+      "site_acres_min": 20,
+      "site_acres_typ": 28,
+      "mix": {
+        "IL": 150,
+        "AL": 90,
+        "MC": 40,
+        "SNF": 0
+      }
+    },
+    "B": {
+      "name": "Rental IL/AL/MC community",
+      "site_acres_min": 7,
+      "site_acres_typ": 10,
+      "mix": {
+        "IL": 56,
+        "AL": 84,
+        "MC": 36,
+        "SNF": 0
+      }
+    },
+    "C": {
+      "name": "AL/MC infill",
+      "site_acres_min": 2.5,
+      "site_acres_typ": 3.5,
+      "mix": {
+        "IL": 0,
+        "AL": 78,
+        "MC": 36,
+        "SNF": 0
+      }
+    }
+  },
+  "hard_cost_psf": 360,
+  "site_work_per_acre": 325000,
+  "ffe_per_unit": 22000,
+  "soft_cost_pct": 0.2,
+  "construction_interest_pct_of_cost": 0.065,
+  "leaseup_deficit_months_of_noi": 9,
+  "contingency_pct": 0.05,
+  "replacement_reserve_per_unit": 500,
+  "debt": {
+    "ltc": 0.6,
+    "rate": 0.0675,
+    "amort_years": 30
+  },
+  "score_weights": {
+    "approval": 0.3,
+    "rent_support": 0.25,
+    "need": 0.2,
+    "yield": 0.25
+  },
+  "gates": {
+    "max_drive_min": {
+      "NY": 120,
+      "CT": 150,
+      "NJ": 120
+    },
+    "min_acres": 2.5,
+    "min_approval_score": 35,
+    "max_overpay_ratio": 1.0
+  },
+  "tax_structures": {
+    "full_tax": 1.0,
+    "pilot": 0.5,
+    "nonprofit_exempt": 0.1
+  },
+  "near_miss_bps": 50,
+  "entrance_fee": {
+    "_note": "Life-plan / entrance-fee test for IL-led campuses (RiverSpring River's Edge: fees covered ~86% of financing)",
+    "min_il_units": 80,
+    "fee_to_home_value": 0.9,
+    "presale_occupancy": 0.93,
+    "min_coverage": 0.7,
+    "developer_fee_pct": 0.045
+  }
+}
