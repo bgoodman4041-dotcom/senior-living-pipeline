@@ -353,3 +353,4 @@ button.chip{border:1px solid var(--rule);background:#fff;cursor:pointer;font:inh
 button.chip:hover{border-color:var(--atco-purple)}
 button.chip[aria-pressed="true"]{background:var(--atco-purple);border-color:var(--atco-purple);color:#fff}
 @media (max-width:640px){.timeline{display:none}}
+.approve-strip{border-top:1px solid var(--rule);padding-top:10px;display:grid;gap:3px}.approve-strip>div:first-child{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.approve-strip b{font-size:14px}

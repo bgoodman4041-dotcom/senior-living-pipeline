@@ -4,7 +4,7 @@ import PortfolioDeployment from "@/components/PortfolioDeployment";
 import { capitalPlan } from "@/lib/capital";
 import { playbook } from "@/lib/playbook";
 import { sites, shortlist, funnel, meta, HURDLE, TARGET, trackOf, satThumb, assumptions } from "@/lib/data";
-import { pct, usdM, int, longDate } from "@/lib/format";
+import { pct, usdM, usdK, int, longDate } from "@/lib/format";
 
 export default function Home() {
   const pursue = sites.filter((s) => s.verdict === "Pursue");
@@ -146,6 +146,12 @@ export default function Home() {
                     <div><div className="xs muted">{/entrance-fee/.test(s.verdict_reason) ? "Fee coverage" : "PILOT"}</div><div className="v">{/entrance-fee/.test(s.verdict_reason) ? `${Math.round(s.uw.entrance_fee.coverage * 100)}%` : pct(s.uw.yoc_by_tax_structure.pilot)}</div></div>
                     <div><div className="xs muted">Units · ac</div><div className="v">{s.uw.units} · {s.acres}</div></div>
                   </div>
+                  {(() => { const pb = playbook(s, assumptions); const first = pb.contacts.find((c) => c.group === "Municipal staff"); return (
+                    <div className="approve-strip">
+                      <div><span className="xs muted">Town approval</span><b style={{ color: pb.like >= 65 ? "#3f8a35" : pb.like < 50 ? "#c46f0a" : "var(--atco-blue)" }}>{pb.like}% · {pb.likeBand}</b></div>
+                      <div className="xs muted">{pb.d.pathLabel} · ~{Math.round(pb.totalMonths)} mo · pursuit {usdK(pb.d.budgetTotal)}</div>
+                      {first && <div className="xs muted">First call: <b style={{ color: "var(--ink-2)" }}>{first.name}</b>{first.phone ? ` · ${first.phone}` : ""}</div>}
+                    </div>); })()}
                 </div>
               </a>
             ))}
