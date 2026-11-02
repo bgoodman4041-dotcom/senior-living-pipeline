@@ -1,5 +1,6 @@
 import PipelineExplorer, { type Row } from "@/components/PipelineExplorer";
 import { VerdictChip } from "@/components/ui";
+import PortfolioDeployment from "@/components/PortfolioDeployment";
 import { sites, shortlist, funnel, meta, HURDLE, TARGET, trackOf, satThumb, assumptions } from "@/lib/data";
 import { pct, usdM, int, longDate } from "@/lib/format";
 
@@ -104,6 +105,17 @@ export default function Home() {
               })()}
             </tbody>
           </table></div></div>
+        </div>
+      </section>
+
+      <section className="section anchor" id="capital" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="section-head">
+            <div><div className="eyebrow">Capital deployment</div><h2>How the capital is used</h2>
+              <p>Every dollar has a gate, a control and a return. Equity funds pursuit costs first and is committed in full only after approvals; senior loans fund behind it on certified draws. The Excel models show every month and every input.</p></div>
+            <a className="btn" href="/models/ATCO-senior-living-portfolio.xlsx" download>Portfolio model (.xlsx)</a>
+          </div>
+          <PortfolioDeployment shortlist={shortlist} a={assumptions} />
         </div>
       </section>
 

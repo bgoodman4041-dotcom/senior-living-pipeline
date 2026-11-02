@@ -34,4 +34,19 @@ for (const s of d.sites) {
   check(!!d.markets.find((m: any) => m.state === s.state && m.county === s.county), `${s.id} market row`);
 }
 console.log(`${n - fail}/${n} checks passed`);
-process.exit(fail ? 1 : 0);
+if (fail) process.exitCode = 1;
+
+// 3. Capital deployment: draws reconcile to the budget and the debt sizing for every site
+import { capitalPlan } from "../lib/capital.ts";
+{
+  let cf = 0, cn = 0;
+  for (const s of d.sites) {
+    const c = capitalPlan(s, d.assumptions);
+    const drawn = c.months.reduce((a: number, m: any) => a + m.total, 0);
+    cn += 2;
+    if (Math.abs(drawn - s.uw.total_cost) > 5) { cf++; console.error("FAIL capital draws", s.id, drawn, s.uw.total_cost); }
+    if (Math.abs(c.months.at(-1)!.cumLoan - c.loanCommit) > 5) { cf++; console.error("FAIL loan draws", s.id, c.months.at(-1)!.cumLoan, c.loanCommit); }
+  }
+  console.log(`capital deployment: ${cn - cf}/${cn} checks passed`);
+  if (cf) process.exitCode = 1;
+}

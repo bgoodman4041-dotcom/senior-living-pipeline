@@ -5,6 +5,7 @@ import WhatIf from "@/components/WhatIf";
 import Massing3D from "@/components/Massing3D";
 import PrintButton from "@/components/PrintButton";
 import Diligence from "@/components/Diligence";
+import CapitalDeployment from "@/components/CapitalDeployment";
 import { VerdictChip, I, NV, Bar, SectionHead, Evidence } from "@/components/ui";
 import { sites, siteById, marketOf, markets, assumptions, comps, HURDLE, TARGET, VERDICT_COLOR, STATE_NAME, breakevenLine, trackOf, isShortlist } from "@/lib/data";
 import { pct, usdM, usdK, usd, int, mult } from "@/lib/format";
@@ -76,7 +77,6 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
   const staff = Math.round(u.units * 0.35);
   const parking = Math.round(ilUnits * 1.0 + (u.units - ilUnits) * 0.25 + staff * 0.5);
   const stateComps = comps.filter((c) => c.town.includes(` ${s.state}`) || c.town.endsWith(s.state));
-  const lp = u.equity * 0.9, gp = u.equity * 0.1;
 
   const risks: { t: string; d: string }[] = [];
   if (s.opposition_risk) risks.push({ t: `Opposition: ${s.opposition_risk}`, d: s.approval_case || "" });
@@ -97,7 +97,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
   const sub = [
     ["snapshot", "Snapshot"], ["location", "Site & surroundings"], ["massing", "3D massing"], ["entitlement", "Entitlement"], ["market", "Market & need"], ["program", "Program"],
     ["proforma", "Pro forma"], ["tax", "Tax structure"], ["stress", "Stress"], ...(ef ? [["fees", "Entrance fees"]] : []),
-    ["whatif", "What-if"], ["capital", "Capital stack"], ["risks", "Risks"], ["diligence", "Diligence"], ["sources", "Sources"],
+    ["whatif", "What-if"], ["capital", "Capital deployment"], ["risks", "Risks"], ["diligence", "Diligence"], ["sources", "Sources"],
   ];
   let n = 0;
   const N = () => String(++n).padStart(2, "0");
@@ -110,7 +110,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 10 }}>
             <VerdictChip v={s.verdict} />
             <span className="small meta">Rank #{s.rank} of {sites.length}{isShortlist(s) ? " · Shortlist" : ""} · {trackOf(s)}</span>
-            <span style={{ marginLeft: "auto" }}><PrintButton /></span>
+            <span style={{ marginLeft: "auto", display: "flex", gap: 8 }}><a className="btn no-print" href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Excel model</a><PrintButton /></span>
           </div>
           <h1>{s.name}</h1>
           <div className="sub">{s.municipality} · {s.county} County, {STATE_NAME[s.state]} · {s.acres} acres · {s.drive_min_midtown} min to Midtown</div>
@@ -382,30 +382,16 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
         </section>
 
         <section className="section">
-          <SectionHead id="capital" n={N()} title="Capital stack" />
-          <div className="grid g2">
-            <div className="card card-pad">
-              <div className="label" style={{ marginBottom: 8 }}>Sources · {usdM(u.total_cost)}</div>
-              <div style={{ display: "flex", height: 30, borderRadius: 5, overflow: "hidden", gap: 2 }}>
-                <div style={{ flex: u.loan, background: "#403393" }} title="Senior construction loan" />
-                <div style={{ flex: lp, background: "#6e8bb0" }} title="LP equity" />
-                <div style={{ flex: gp, background: "#F7901E" }} title="GP equity" />
-              </div>
-              <table className="kv" style={{ marginTop: 12 }}><tbody>
-                <tr><td><span style={{ display: "inline-block", width: 10, height: 10, background: "#403393", marginRight: 8 }} />Senior construction loan ({pct(a.debt.ltc, 0)} LTC)</td><td className="num">{usdM(u.loan)}</td></tr>
-                <tr><td><span style={{ display: "inline-block", width: 10, height: 10, background: "#6e8bb0", marginRight: 8 }} />LP equity (90%) <I tip="Illustrative 90/10 LP/GP split" /></td><td className="num">{usdM(lp)}</td></tr>
-                <tr><td><span style={{ display: "inline-block", width: 10, height: 10, background: "#F7901E", marginRight: 8 }} />GP / ATCO co-invest (10%)</td><td className="num">{usdM(gp)}</td></tr>
-              </tbody></table>
-            </div>
-            <div className="card card-pad">
-              <div className="label" style={{ marginBottom: 8 }}>Exit and take-out</div>
-              <ul className="list-clean small">
-                <li><b>Stabilized sale to REIT or operator</b> at {pct(a.exit_cap)} cap: {usdM(u.value_at_exit_cap)}, {pct(u.profit_on_cost, 1)} profit on cost.</li>
-                <li><b>HUD 232 refinance</b> after stabilization; long-term, non-recourse take-out of the construction loan.</li>
-                <li><b>Hold with operator</b> under a management agreement; DSCR {mult(u.dscr)} on construction-loan terms.</li>
-                {ef && <li><b>Entrance-fee life plan</b>: first-generation fees retire temporary debt; nonprofit sponsor plus fee developer is the financeable form.</li>}
-              </ul>
-            </div>
+          <SectionHead id="capital" n={N()} title="Capital deployment" sub={<>How the capital is raised, released and returned: sources and uses, the draw schedule, the gates that release each tranche, cost controls and returns per dollar. <a href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Download the Excel model</a>.</>} />
+          <CapitalDeployment site={s} a={assumptions} />
+          <div className="card card-pad" style={{ marginTop: 18 }}>
+            <div className="label" style={{ marginBottom: 8 }}>Exit and take-out</div>
+            <ul className="list-clean small">
+              <li><b>Stabilized sale to REIT or operator</b> at {pct(a.exit_cap)} cap: {usdM(u.value_at_exit_cap)} on today&apos;s NOI, {pct(u.profit_on_cost, 1)} profit on cost.</li>
+              <li><b>HUD 232 refinance</b> after stabilization; long-term, non-recourse take-out of the construction loan.</li>
+              <li><b>Hold with operator</b> under a management agreement; DSCR {mult(u.dscr)} on construction-loan terms.</li>
+              {ef && <li><b>Entrance-fee life plan</b>: first-generation fees retire temporary debt; nonprofit sponsor plus fee developer is the financeable form.</li>}
+            </ul>
           </div>
         </section>
 
