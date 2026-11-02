@@ -8,6 +8,7 @@ import Diligence from "@/components/Diligence";
 import CapitalDeployment from "@/components/CapitalDeployment";
 import EntitlementDossier from "@/components/EntitlementDossier";
 import ApprovalPlaybook from "@/components/ApprovalPlaybook";
+import { playbook } from "@/lib/playbook";
 import { capitalPlan } from "@/lib/capital";
 import { VerdictChip, I, NV, Bar, SectionHead, Evidence } from "@/components/ui";
 import { sites, siteById, marketOf, markets, assumptions, comps, HURDLE, TARGET, VERDICT_COLOR, STATE_NAME, breakevenLine, trackOf, isShortlist } from "@/lib/data";
@@ -103,6 +104,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
     ["whatif", "What-if"], ["capital", "Capital deployment"], ["risks", "Risks"], ["diligence", "Diligence"], ["sources", "Sources"],
   ];
   const cp = capitalPlan(s, assumptions);
+  const pbk = playbook(s, assumptions);
   let n = 0;
   const N = () => String(++n).padStart(2, "0");
 
@@ -134,6 +136,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
             <div><div className="label">Total capitalization</div><div className="big">{usdM(cp.uses.total, 1)}</div><div className="cap">{usdK(cp.uses.total / u.units)} per unit · land {usdM(u.land_cost, 1)}</div></div>
             <div><div className="label">Equity required</div><div className="big">{usdM(cp.equityCommit, 1)}</div><div className="cap">LP {usdM(cp.lp, 1)} · GP / ATCO {usdM(cp.gp, 1)}</div></div>
             <div><div className="label">Construction debt</div><div className="big">{usdM(cp.loanCommit, 1)}</div><div className="cap">{pct(assumptions.debt.ltc, 0)} LTC · funds after equity</div></div>
+            <div><div className="label">Town approval</div><div className="big"><a href="#playbook" style={{ color: "inherit" }}>{pbk.like}%</a></div><div className="cap">{pbk.likeBand} · {pbk.d.pathLabel} · ~{Math.round(pbk.totalMonths)} mo to permits</div></div>
             <div><div className="label">At risk pre-approval</div><div className="big">{usdM(cp.atRiskPreEntitlement, 2)}</div><div className="cap">Deposit, design and entitlement, months 0–{cp.P - 1}</div></div>
           </div>
         </div>

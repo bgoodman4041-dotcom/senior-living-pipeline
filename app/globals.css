@@ -226,14 +226,14 @@ table.t { width: 100%; border-collapse: collapse; font-size: 13px; }
 .verdict-bar .good { color: var(--pursue); }
 .verdict-bar .bad { color: var(--danger); }
 @media (max-width: 900px) { .verdict-bar { grid-template-columns: repeat(2, 1fr); } .verdict-bar > div:nth-child(odd) { border-left: 0; } .verdict-bar > div:first-child { grid-column: 1 / -1; border-bottom: 1px solid var(--rule); } .verdict-bar > div:nth-child(2), .verdict-bar > div:nth-child(4) { border-left: 0; } .verdict-bar > div:nth-child(3), .verdict-bar > div:nth-child(5) { border-left: 1px solid var(--rule); } }
-.need-bar { display: grid; grid-template-columns: 1.3fr repeat(4, 1fr); margin-top: -1px; background: #f7f6fb; border: 1px solid var(--rule); border-top: 0; }
+.need-bar { display: grid; grid-template-columns: 1.3fr repeat(5, 1fr); margin-top: -1px; background: #f7f6fb; border: 1px solid var(--rule); border-top: 0; }
 .need-bar > div { padding: 12px 16px; border-left: 1px solid var(--rule); }
 .need-bar > div:first-child { border-left: 0; display: flex; flex-direction: column; justify-content: center; }
 .need-bar .label { color: var(--ink-3); }
 .need-bar .need-title .label { color: var(--atco-purple); font-weight: 700; font-size: 13px; }
 .need-bar .big { font-family: var(--sans); font-size: 24px; font-weight: 400; color: var(--atco-purple); line-height: 1.15; margin-top: 4px; }
 .need-bar .cap { font-size: 12px; color: var(--ink-3); margin-top: 2px; }
-@media (max-width: 900px) { .need-bar { grid-template-columns: repeat(2, 1fr); } .need-bar > div:first-child { grid-column: 1 / -1; border-bottom: 1px solid var(--rule); } .need-bar > div:nth-child(2), .need-bar > div:nth-child(4) { border-left: 0; } }
+@media (max-width: 900px) { .need-bar { grid-template-columns: repeat(2, 1fr); } .need-bar > div:first-child { grid-column: 1 / -1; border-bottom: 1px solid var(--rule); } .need-bar > div:nth-child(2), .need-bar > div:nth-child(4), .need-bar > div:nth-child(6) { border-left: 0; } .need-bar > div:nth-child(n+2):nth-child(-n+5) { border-bottom: 1px solid var(--rule); } }
 .subnav { position: sticky; top: 80px; z-index: 40; background: var(--surface); border-bottom: 1px solid var(--rule); }
 .subnav .wrap { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
 .subnav a { padding: 13px 12px; font-family: var(--serif); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); white-space: nowrap; font-weight: 600; }
