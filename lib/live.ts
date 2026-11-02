@@ -1,7 +1,13 @@
 // Live public-data lookups run in the viewer's browser (no keys):
 //  - tax parcels from each state's public ArcGIS service
 //  - points of interest around the site from OpenStreetMap (Overpass API)
-import { haversineMi } from "./geo";
+// self-contained (no imports) so scripts/prefetch-places.mjs can load it in plain Node at build time
+function haversineMi(a: [number, number], b: [number, number]) {
+  const toR = Math.PI / 180, R = 3958.8;
+  const dLat = (b[1] - a[1]) * toR, dLon = (b[0] - a[0]) * toR;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(a[1] * toR) * Math.cos(b[1] * toR) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
 
 export interface ParcelSource { name: string; url: string; note?: string; fields: Record<string, string[]> }
 
@@ -177,26 +183,34 @@ export function parseOverpass(json: any, lat: number, lon: number): Poi[] {
 }
 
 /** Server side: query the Overpass mirrors in turn. Used by /api/places, which caches at the CDN. */
-export async function overpassPois(lat: number, lon: number, perMirrorMs = 25000): Promise<{ pois: Poi[]; fetchedAt: string; source: string }> {
-  const body = new URLSearchParams({ data: overpassQuery(lat, lon) });
-  let lastErr: any = null;
-  for (const url of OVERPASS) {
-    try {
-      const json = await withTimeout(async (signal) => {
-        const r = await fetch(url, { method: "POST", body, signal, headers: { "User-Agent": "ATCO-senior-living-site-selection/1.0", Accept: "application/json" } });
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      }, perMirrorMs);
-      if (json?.remark && /runtime error|timed out/i.test(json.remark) && !(json.elements || []).length) throw new Error(json.remark);
-      return { pois: parseOverpass(json, lat, lon), fetchedAt: new Date().toISOString(), source: `OpenStreetMap via ${new URL(url).host}` };
-    } catch (e) { lastErr = e; }
-  }
-  throw lastErr || new Error("Overpass unavailable");
+/** Query every Overpass mirror at once and take the first good answer. */
+export async function overpassPois(lat: number, lon: number, timeoutMs = 25000): Promise<{ pois: Poi[]; fetchedAt: string; source: string }> {
+  const body = new URLSearchParams({ data: overpassQuery(lat, lon) }).toString();
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), timeoutMs);
+  const one = async (url: string) => {
+    const r = await fetch(url, { method: "POST", body, signal: ctl.signal, headers: { "Content-Type": "application/x-www-form-urlencoded", Accept: "application/json" } });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const json = await r.json();
+    if (!(json?.elements || []).length) throw new Error(json?.remark || "empty");
+    return { pois: parseOverpass(json, lat, lon), fetchedAt: new Date().toISOString(), source: `OpenStreetMap via ${new URL(url).host}` };
+  };
+  try {
+    return await anyOf(OVERPASS.map(one));
+  } finally { clearTimeout(timer); ctl.abort(); }
 }
 
-const CACHE_V = "atco-poi-v3";
-/** Browser side: our cached API route first, then the public mirrors directly. Results kept 3 days in the browser. */
-export async function fetchPois(id: string, lat: number, lon: number): Promise<{ pois: Poi[]; fetchedAt: string; source: string }> {
+function anyOf<T>(ps: Promise<T>[]): Promise<T> {
+  return new Promise((resolve, reject) => {
+    let left = ps.length; let last: any;
+    ps.forEach((p) => p.then(resolve, (e) => { last = e; if (--left === 0) reject(last); }));
+  });
+}
+
+type PoiResult = { pois: Poi[]; fetchedAt: string; source: string };
+const CACHE_V = "atco-poi-v4";
+/** Browser side: browser cache, then the deploy-time snapshot and our cached API route, then the public mirrors directly. */
+export async function fetchPois(id: string, lat: number, lon: number): Promise<PoiResult> {
   try {
     const c = localStorage.getItem(`${CACHE_V}:${id}`);
     if (c) {
@@ -204,19 +218,22 @@ export async function fetchPois(id: string, lat: number, lon: number): Promise<{
       if (Date.now() - new Date(j.fetchedAt).getTime() < 3 * 864e5 && Array.isArray(j.pois) && j.pois.length) return j;
     }
   } catch { /* storage unavailable */ }
-  const save = (res: { pois: Poi[]; fetchedAt: string; source: string }) => {
+  const save = (res: PoiResult) => {
     try { localStorage.setItem(`${CACHE_V}:${id}`, JSON.stringify(res)); } catch { /* quota */ }
     return res;
   };
-  try {
-    const res = await withTimeout(async (signal) => {
-      const r = await fetch(`/api/places/${encodeURIComponent(id)}`, { signal });
-      if (!r.ok) throw new Error(`HTTP ${r.status}`);
-      return r.json();
-    }, 70000);
-    if (Array.isArray(res?.pois)) return save(res);
-  } catch { /* fall through to direct */ }
-  return save(await overpassPois(lat, lon, 30000));
+  const getJson = (url: string, ms: number) => withTimeout(async (signal) => {
+    const r = await fetch(url, { signal });
+    if (!r.ok) { r.body?.cancel().catch(() => {}); throw new Error(`HTTP ${r.status}`); }
+    const j = await r.json();
+    if (!Array.isArray(j?.pois) || !j.pois.length) throw new Error("empty");
+    return j as PoiResult;
+  }, ms);
+  // 1. snapshot baked at deploy (instant), 2. cached API route, 3. mirrors direct (started after a short head start)
+  try { return save(await getJson(`/places/${encodeURIComponent(id)}.json`, 6000)); } catch { /* none baked */ }
+  const api = getJson(`/api/places/${encodeURIComponent(id)}`, 45000);
+  const direct = new Promise<PoiResult>((res, rej) => setTimeout(() => overpassPois(lat, lon, 40000).then(res, rej), 4000));
+  return save(await anyOf([api, direct]));
 }
 
 /** Capture date of the Esri World Imagery tile under a point (its metadata layer), e.g. "Apr 27, 2026". */
