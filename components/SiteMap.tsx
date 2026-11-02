@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Map as MLMap } from "maplibre-gl";
-import { baseStyle, setBasemap } from "@/lib/mapstyle";
+import { baseStyle, setBasemap, usingMapbox } from "@/lib/mapstyle";
 import { circle, pointInGeom, geomAcres, geomCentroid, haversineMi, bboxOf } from "@/lib/geo";
 import { CATS, CAT_COLOR, fetchImageryDate, fetchPois, fetchParcels, parcelSourceFor, readField, type Cat, type Poi } from "@/lib/live";
 
@@ -119,6 +119,7 @@ export default function SiteMap(p: Props) {
   // imagery capture date
   useEffect(() => {
     if (!ready) return;
+    if (usingMapbox()) return; // capture date lookup is for the Esri imagery only
     fetchImageryDate(p.lon, p.lat).then(setImgDate).catch(() => setImgDate(null));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready]);
@@ -206,7 +207,7 @@ export default function SiteMap(p: Props) {
           </div>
         </div>
         <div className="xs muted" style={{ marginTop: 8 }}>
-          Pin: {p.pinAddress ? <b>{p.pinAddress}</b> : "research coordinate"} ({p.pinBasis || "approximate"}). The parcel shown is the one under the pin; on campuses and carve-outs the pad may sit on an adjacent lot. Click any parcel line to inspect it, and confirm block/lot against the tax map before LOI. The envelope circle shows the {p.acres}-acre program footprint for scale only. Places come live from OpenStreetMap{pois.data ? ` (${pois.data.source}, ${pois.data.fetchedAt.slice(0, 10)})` : ""}.
+          Pin: {p.pinAddress ? <b>{p.pinAddress}</b> : "research coordinate"} ({p.pinBasis || "approximate"}). The parcel shown is the one under the pin; on campuses and carve-outs the pad may sit on an adjacent lot. Click any parcel line to inspect it, and confirm block/lot against the tax map before LOI. The envelope circle shows the {p.acres}-acre program footprint for scale only. Nearby places{pois.data ? `: ${pois.data.source}, as of ${pois.data.fetchedAt.slice(0, 10)}` : " load from Mapbox Search when configured, otherwise OpenStreetMap"}.
         </div>
       </div>
 
@@ -236,7 +237,7 @@ export default function SiteMap(p: Props) {
 
         <div className="card card-pad">
           <div className="label" style={{ marginBottom: 10 }}>Proximity scorecard</div>
-          {pois.status === "error" && <div className="small muted">OpenStreetMap lookup did not respond ({pois.msg}). Reload to retry.</div>}
+          {pois.status === "error" && <div className="small muted">The nearby-places service did not respond ({pois.msg}). Reload to retry.</div>}
           <div className="grid" style={{ gap: 10, gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
             {score.map((s) => (
               <div key={s.k} className="score-cell">
@@ -272,7 +273,7 @@ export default function SiteMap(p: Props) {
                         <span>{x.name}<span className="muted"> · {x.kind}</span></span><span className="tnum muted">{fmtMi(x.mi)}</span>
                       </div>
                     ))}
-                    {pois.status === "ok" && !items.length && <div className="xs muted">None tagged in OpenStreetMap within {c.radiusMi} mi.</div>}
+                    {pois.status === "ok" && !items.length && <div className="xs muted">None found within {c.radiusMi} mi.</div>}
                   </div>
                 )}
               </div>

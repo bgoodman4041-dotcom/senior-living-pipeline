@@ -1,6 +1,7 @@
 import PipelineExplorer, { type Row } from "@/components/PipelineExplorer";
 import { VerdictChip } from "@/components/ui";
 import PortfolioDeployment from "@/components/PortfolioDeployment";
+import { capitalPlan } from "@/lib/capital";
 import { sites, shortlist, funnel, meta, HURDLE, TARGET, trackOf, satThumb, assumptions } from "@/lib/data";
 import { pct, usdM, int, longDate } from "@/lib/format";
 
@@ -18,14 +19,15 @@ export default function Home() {
   const protoC = Object.values<number>(assumptions.prototypes.C.mix).reduce((x, y) => x + y, 0);
   const shortCost = shortlist.reduce((a, s) => a + s.uw.total_cost, 0);
 
-  const rows: Row[] = sites.map((s) => ({
+  const rows: Row[] = sites.map((s) => { const cp = capitalPlan(s, assumptions); return {
     id: s.id, rank: s.rank, name: s.name, municipality: s.municipality, county: s.county, state: s.state,
     verdict: s.verdict, verdict_reason: s.verdict_reason, track: trackOf(s), units: s.uw.units, acres: Number(s.acres),
     drive: Number(s.drive_min_midtown), lat: Number(s.lat), lon: Number(s.lon),
     yoc: s.uw.yoc_by_tax_structure, max_land: s.uw.max_land_by_tax_structure, land_cost: s.uw.land_cost,
     land_basis: s.uw.land_cost_basis, dscr: s.uw.dscr, approval: s.scores.approval, rent: s.scores.rent_support,
     need: s.scores.need, total: s.scores.total, next_step: s.next_step, short: s.verdict === "Pursue" || s.verdict === "Pursue-structured",
-  }));
+    capital: cp.uses.total, equity: cp.equityCommit, debt: cp.loanCommit,
+  }; });
 
   return (
     <>

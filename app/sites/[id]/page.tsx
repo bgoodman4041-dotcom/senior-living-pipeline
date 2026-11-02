@@ -6,6 +6,7 @@ import Massing3D from "@/components/Massing3D";
 import PrintButton from "@/components/PrintButton";
 import Diligence from "@/components/Diligence";
 import CapitalDeployment from "@/components/CapitalDeployment";
+import { capitalPlan } from "@/lib/capital";
 import { VerdictChip, I, NV, Bar, SectionHead, Evidence } from "@/components/ui";
 import { sites, siteById, marketOf, markets, assumptions, comps, HURDLE, TARGET, VERDICT_COLOR, STATE_NAME, breakevenLine, trackOf, isShortlist } from "@/lib/data";
 import { pct, usdM, usdK, usd, int, mult } from "@/lib/format";
@@ -99,6 +100,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
     ["proforma", "Pro forma"], ["tax", "Tax structure"], ["stress", "Stress"], ...(ef ? [["fees", "Entrance fees"]] : []),
     ["whatif", "What-if"], ["capital", "Capital deployment"], ["risks", "Risks"], ["diligence", "Diligence"], ["sources", "Sources"],
   ];
+  const cp = capitalPlan(s, assumptions);
   let n = 0;
   const N = () => String(++n).padStart(2, "0");
 
@@ -124,6 +126,13 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
             <div><div className="label">Max land @ {pct(HURDLE, 1)}</div><div className="big">{usdM(u.max_land)}</div><div className="cap">vs {usdM(u.land_cost)} basis</div></div>
             <div><div className="label">Composite</div><div className="big">{s.scores.total}</div><div className="cap">A {s.scores.approval} · R {s.scores.rent_support} · N {s.scores.need} · Y {s.scores.yield}</div></div>
             <div><div className="label">Program</div><div className="big">{u.units} units</div><div className="cap">{u.prototype_name}</div></div>
+          </div>
+          <div className="need-bar" aria-label="Capital needed">
+            <div className="need-title"><div className="label">Capital needed</div><a href="#capital" className="cap no-print">How it is deployed ›</a></div>
+            <div><div className="label">Total capitalization</div><div className="big">{usdM(cp.uses.total, 1)}</div><div className="cap">{usdK(cp.uses.total / u.units)} per unit · land {usdM(u.land_cost, 1)}</div></div>
+            <div><div className="label">Equity required</div><div className="big">{usdM(cp.equityCommit, 1)}</div><div className="cap">LP {usdM(cp.lp, 1)} · GP / ATCO {usdM(cp.gp, 1)}</div></div>
+            <div><div className="label">Construction debt</div><div className="big">{usdM(cp.loanCommit, 1)}</div><div className="cap">{pct(assumptions.debt.ltc, 0)} LTC · funds after equity</div></div>
+            <div><div className="label">At risk pre-approval</div><div className="big">{usdM(cp.atRiskPreEntitlement, 2)}</div><div className="cap">Deposit, design and entitlement, months 0–{cp.P - 1}</div></div>
           </div>
         </div>
       </section>
