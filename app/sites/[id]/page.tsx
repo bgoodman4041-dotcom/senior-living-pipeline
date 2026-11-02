@@ -6,6 +6,7 @@ import Massing3D from "@/components/Massing3D";
 import PrintButton from "@/components/PrintButton";
 import Diligence from "@/components/Diligence";
 import CapitalDeployment from "@/components/CapitalDeployment";
+import EntitlementDossier from "@/components/EntitlementDossier";
 import { capitalPlan } from "@/lib/capital";
 import { VerdictChip, I, NV, Bar, SectionHead, Evidence } from "@/components/ui";
 import { sites, siteById, marketOf, markets, assumptions, comps, HURDLE, TARGET, VERDICT_COLOR, STATE_NAME, breakevenLine, trackOf, isShortlist } from "@/lib/data";
@@ -194,33 +195,20 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
         </section>
 
         <section className="section">
-          <SectionHead id="entitlement" n={N()} title="Entitlement and town approval" />
-          <div className="grid g2">
-            <div className="card card-pad">
-              <table className="kv"><tbody>
-                <tr><td>Current zoning</td><td><Evidence text={r.zoning} /></td></tr>
-                <tr><td>Senior-use path</td><td><Evidence text={r.senior_use_path} /></td></tr>
-                <tr><td>Entitlement status</td><td><NV v={s.entitlement_status} /></td></tr>
-                <tr><td>Approval case</td><td><NV v={s.approval_case} /></td></tr>
-                <tr><td>Approval evidence</td><td><Evidence text={r.approval_evidence} /></td></tr>
-                <tr><td>Opposition risk</td><td><NV v={s.opposition_risk} /></td></tr>
-                <tr><td>Approval score</td><td><b>{s.scores.approval}</b> / 100 <span className="muted small">({s.scores.approval >= 90 ? "entitled" : s.scores.approval >= 75 ? "clear path with precedent" : s.scores.approval >= 55 ? "credible discretionary path" : s.scores.approval >= 35 ? "uncertain" : "not credible"})</span></td></tr>
-              </tbody></table>
-            </div>
-            <div className="card card-pad">
-              <h3>State licensure path · {STATE_NAME[s.state]}</h3>
-              <table className="kv"><tbody>
-                <tr><td>Rental IL</td><td><NV v={reg.rental_il} /></td></tr>
-                <tr><td>AL / MC</td><td><NV v={reg.al_mc} /></td></tr>
-                <tr><td>Skilled nursing</td><td><NV v={reg.snf} /></td></tr>
-                <tr><td>CCRC / life plan</td><td><NV v={reg.ccrc} /></td></tr>
-                <tr><td>Tax tool</td><td><NV v={reg.tax_tool} /></td></tr>
-              </tbody></table>
-              <div className="callout brand" style={{ marginTop: 14 }}>
-                <b>Indicative timeline</b> <I tip="Analyst estimate from the state licensure path and approval score" />: {s.scores.approval >= 90 ? "entitled now; 3–6 months to building permit" : s.scores.approval >= 75 ? "6–12 months to site plan approval" : "12–24 months of discretionary approvals"}, plus {s.state === "NJ" ? "~12-month expedited CN in parallel" : s.state === "NY" ? "9–18 months ALR/EALR licensure in parallel" : "ALSA licensing (no CON) in parallel"}, then 22–26 months construction and 18–24 months lease-up.
-              </div>
-            </div>
-          </div>
+          <SectionHead id="entitlement" n={N()} title="Entitlement and town approval" sub="Approval path, boards, environmental screening from official GIS, utilities, traffic, licensing, a risk score and the pursuit budget and schedule." />
+          <EntitlementDossier site={s} a={a} evidence={
+            <table className="kv"><tbody>
+              <tr><td>Current zoning</td><td><Evidence text={r.zoning} /></td></tr>
+              <tr><td>Senior-use path</td><td><Evidence text={r.senior_use_path} /></td></tr>
+              <tr><td>Entitlement status</td><td><NV v={s.entitlement_status} /></td></tr>
+              <tr><td>Approval case</td><td><NV v={s.approval_case} /></td></tr>
+              <tr><td>Precedent</td><td><Evidence text={r.approval_evidence} /></td></tr>
+              <tr><td>Opposition risk</td><td><NV v={s.opposition_risk} /></td></tr>
+              <tr><td>Approval score</td><td><b>{s.scores.approval}</b> / 100 <span className="muted small">({s.scores.approval >= 90 ? "entitled" : s.scores.approval >= 75 ? "clear path with precedent" : s.scores.approval >= 55 ? "credible discretionary path" : s.scores.approval >= 35 ? "uncertain" : "not credible"})</span></td></tr>
+              <tr><td>Tax tool</td><td><NV v={reg.tax_tool} /></td></tr>
+              <tr><td>Skilled nursing</td><td><NV v={reg.snf} /></td></tr>
+            </tbody></table>
+          } />
         </section>
 
         <section className="section">

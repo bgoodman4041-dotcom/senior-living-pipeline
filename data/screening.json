@@ -1259,9 +1259,7 @@
     }
    },
    "ny": {
-    "dec_wetlands_within_100ft": {
-     "err": "Unable to perform query. Too many requests."
-    }
+    "dec_wetlands_within_100ft": 1
    }
   },
   "NY-04": {
@@ -1521,9 +1519,7 @@
     }
    },
    "ny": {
-    "dec_wetlands_within_100ft": {
-     "err": "Unable to perform query. Too many requests."
-    }
+    "dec_wetlands_within_100ft": 0
    }
   },
   "NY-11": {

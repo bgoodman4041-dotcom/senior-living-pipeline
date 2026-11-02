@@ -44,7 +44,7 @@ const pick = (a, re) => (a.err ? a : a.map((x) => Object.keys(x).filter((k) => r
 
 async function screen(s) {
   const lat = Number(s.lat), lon = Number(s.lon);
-  const R = Math.min(Math.sqrt((Number(s.acres) * 4046.86) / Math.PI), 450); // program footprint radius, m
+  const R = Math.min(Math.sqrt((Number(s.acres) * 4046.86) / Math.PI), 450); // radius of a circle of the site acreage, m (capped)
   const o = { radius_m: Math.round(R), pin_basis: s.pin_basis || null };
   const [fp, fs, nw, nw30, npl, bf, rcra, tri] = await Promise.all([
     safe(q(FEMA, lat, lon, 1, "FLD_ZONE,ZONE_SUBTY,SFHA_TF")), safe(q(FEMA, lat, lon, R, "FLD_ZONE,ZONE_SUBTY,SFHA_TF")),
@@ -75,7 +75,7 @@ async function screen(s) {
 const out = {};
 const queue = [...d.sites];
 let ok = 0, fail = 0;
-await Promise.all(Array.from({ length: 4 }, async () => {
+await Promise.all(Array.from({ length: 2 }, async () => {
   while (queue.length) {
     const s = queue.shift();
     try { out[s.id] = await screen(s); ok++; }

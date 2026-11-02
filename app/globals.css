@@ -317,3 +317,16 @@ table.t { width: 100%; border-collapse: collapse; font-size: 13px; }
   .footer { background: #fff; color: var(--ink-3); }
 }
 .map-date { left: 12px; top: 12px; padding: 4px 9px; font-weight: 500; color: var(--ink-2); }
+
+/* entitlement dossier */
+.dossier-list { list-style: none; margin: 0; padding: 0; }
+.dossier-list li { display: flex; gap: 10px; padding: 9px 0; border-top: 1px solid var(--rule); }
+.dossier-list li:first-child { border-top: 0; padding-top: 2px; }
+.dossier-list .flag { flex: none; width: 9px; height: 9px; border-radius: 50%; margin-top: 6px; }
+.dossier-list .k { font-weight: 600; font-size: 13px; color: var(--ink); }
+.dossier-list .src { font-weight: 400; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); margin-left: 8px; }
+.dossier-list .v { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+.board-list { margin: 0; padding-left: 20px; }
+.board-list li { padding: 8px 0; border-top: 1px solid var(--rule); }
+.board-list li:first-child { border-top: 0; padding-top: 0; }
+.board-list .pill { display: inline-block; margin-left: 8px; font-size: 11px; padding: 1px 8px; border: 1px solid var(--rule); border-radius: 10px; color: var(--ink-2); }

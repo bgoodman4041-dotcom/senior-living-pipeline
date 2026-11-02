@@ -130,7 +130,7 @@ export default function Home() {
           <div className="grid g3">
             {shortlist.map((s) => (
               <a key={s.id} href={`/sites/${s.id}`} className="card shortcard">
-                <div className="img" style={{ backgroundImage: `url("${satThumb(Number(s.lat), Number(s.lon))}")` }}>
+                <div className="img" style={{ backgroundImage: `url("${satThumb(Number(s.lat), Number(s.lon), 1280, 800)}")` }}>
                   <span className="rank">{s.rank}</span>
                   <VerdictChip v={s.verdict} />
                 </div>

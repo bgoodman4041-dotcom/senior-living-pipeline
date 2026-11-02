@@ -259,3 +259,25 @@ export async function fetchImageryDate(lon: number, lat: number): Promise<string
   }
   return best === null ? null : new Date(best).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 }
+
+// ---------------------------------------------------------------- environmental overlays (official GIS, keyless)
+const OVERLAY_SRC = {
+  flood: { url: "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28/query", fields: "FLD_ZONE,ZONE_SUBTY,SFHA_TF", where: "SFHA_TF='T' OR ZONE_SUBTY LIKE '%0.2%'" },
+  wetlands: { url: "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0/query", fields: "WETLAND_TYPE,ATTRIBUTE", where: "1=1" },
+} as const;
+/** FEMA flood zones or NWI wetlands inside a box around the site, as GeoJSON features. */
+export async function fetchOverlay(kind: keyof typeof OVERLAY_SRC, lon: number, lat: number, halfMi = 0.8): Promise<any[]> {
+  const dLat = halfMi / 69, dLon = halfMi / (69 * Math.cos((lat * Math.PI) / 180));
+  const src = OVERLAY_SRC[kind];
+  const params = new URLSearchParams({
+    where: src.where, geometry: `${lon - dLon},${lat - dLat},${lon + dLon},${lat + dLat}`, geometryType: "esriGeometryEnvelope", inSR: "4326", outSR: "4326",
+    spatialRel: "esriSpatialRelIntersects", outFields: src.fields, returnGeometry: "true", geometryPrecision: "5", maxAllowableOffset: "0.00003", f: "geojson",
+  });
+  const j = await withTimeout(async (signal) => {
+    const r = await fetch(`${src.url}?${params}`, { signal });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  }, 25000);
+  if (j.error) throw new Error(j.error.message || "service error");
+  return (j.features || []).filter((f: any) => f.geometry);
+}

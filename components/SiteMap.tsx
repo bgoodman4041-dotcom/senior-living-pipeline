@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { Map as MLMap } from "maplibre-gl";
 import { baseStyle, setBasemap, usingMapbox } from "@/lib/mapstyle";
 import { circle, pointInGeom, geomAcres, geomCentroid, haversineMi, bboxOf } from "@/lib/geo";
-import { CATS, CAT_COLOR, fetchImageryDate, fetchPois, fetchParcels, parcelSourceFor, readField, type Cat, type Poi } from "@/lib/live";
+import { CATS, CAT_COLOR, fetchImageryDate, fetchOverlay, fetchPois, fetchParcels, parcelSourceFor, readField, type Cat, type Poi } from "@/lib/live";
 
 interface Props { id: string; name: string; lat: number; lon: number; state: string; county: string; acres: number; verdictColor: string; pinBasis?: string; pinAddress?: string }
 type Load<T> = { status: "idle" | "loading" | "ok" | "error" | "na"; data?: T; msg?: string };
@@ -22,6 +22,7 @@ export default function SiteMap(p: Props) {
   const [sel, setSel] = useState<any | null>(null);
   const [pois, setPois] = useState<Load<{ pois: Poi[]; fetchedAt: string; source: string }>>({ status: "idle" });
   const [imgDate, setImgDate] = useState<string | null>(null);
+  const [ov, setOv] = useState<Record<"flood" | "wetlands", { on: boolean; status: "idle" | "loading" | "ok" | "error"; n?: number }>>({ flood: { on: false, status: "idle" }, wetlands: { on: false, status: "idle" } });
   const [on, setOn] = useState<Record<Cat, boolean>>(Object.fromEntries(CATS.map((c) => [c.key, true])) as any);
   const [openCat, setOpenCat] = useState<Cat | null>("hospital");
   const center: [number, number] = [p.lon, p.lat];
@@ -46,6 +47,12 @@ export default function SiteMap(p: Props) {
         m.addLayer({ id: "rings-halo", type: "line", source: "rings", paint: { "line-color": "#403393", "line-width": 3, "line-opacity": 0.25 } }, "rings");
         m.addSource("envelope", { type: "geojson", data: circle(center, envelopeMi, 64) });
         m.addLayer({ id: "envelope", type: "line", source: "envelope", paint: { "line-color": "#f3d9a4", "line-width": 2, "line-dasharray": [1.5, 1.2] } });
+        m.addSource("flood", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+        m.addLayer({ id: "flood-fill", type: "fill", source: "flood", layout: { visibility: "none" }, paint: { "fill-color": ["case", ["==", ["get", "SFHA_TF"], "T"], "#2f7fd0", "#9cc7ef"] as any, "fill-opacity": ["case", ["==", ["get", "SFHA_TF"], "T"], 0.42, 0.22] as any } });
+        m.addLayer({ id: "flood-line", type: "line", source: "flood", layout: { visibility: "none" }, paint: { "line-color": "#1d5fa8", "line-width": 1 } });
+        m.addSource("wetlands", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+        m.addLayer({ id: "wetlands-fill", type: "fill", source: "wetlands", layout: { visibility: "none" }, paint: { "fill-color": "#2fb39a", "fill-opacity": 0.38 } });
+        m.addLayer({ id: "wetlands-line", type: "line", source: "wetlands", layout: { visibility: "none" }, paint: { "line-color": "#0d7d69", "line-width": 1.2 } });
         m.addSource("parcels", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
         m.addLayer({ id: "parcels-fill", type: "fill", source: "parcels", paint: { "fill-color": "#ffffff", "fill-opacity": 0.04 } });
         m.addLayer({ id: "parcels-line", type: "line", source: "parcels", paint: { "line-color": "#ffffff", "line-width": 0.9, "line-opacity": 0.75 } });
@@ -80,6 +87,14 @@ export default function SiteMap(p: Props) {
           const full = parcelsRef.current.find((f) => pointInGeom(pt, f.geometry));
           if (full) setSel(full);
         });
+        m.on("click", (e: any) => {
+          const hit = m.queryRenderedFeatures(e.point, { layers: ["pois", "flood-fill", "wetlands-fill"].filter((l) => m.getLayer(l)) });
+          if (!hit.length || hit[0].layer.id === "pois") return;
+          const lines = hit.filter((f: any) => f.layer.id !== "pois").slice(0, 2).map((f: any) => f.layer.id === "flood-fill"
+            ? `<div class="label" style="color:#1d5fa8">FEMA flood zone</div><h4>Zone ${esc(f.properties.FLD_ZONE)}${f.properties.SFHA_TF === "T" ? " · 1% annual chance (SFHA)" : f.properties.ZONE_SUBTY ? " · " + esc(String(f.properties.ZONE_SUBTY).toLowerCase()) : ""}</h4>`
+            : `<div class="label" style="color:#0d7d69">NWI wetland</div><h4>${esc(f.properties.WETLAND_TYPE)}</h4><div class="xs muted">${esc(f.properties.ATTRIBUTE || "")}</div>`).join("");
+          new ml.Popup({ offset: 6, closeButton: false }).setLngLat(e.lngLat).setHTML(lines + '<div class="xs muted">Screening only; confirm by survey and delineation.</div>').addTo(m);
+        });
         ["pois", "parcels-fill"].forEach((l) => {
           m.on("mouseenter", l, () => (m.getCanvas().style.cursor = "pointer"));
           m.on("mouseleave", l, () => (m.getCanvas().style.cursor = ""));
@@ -111,6 +126,19 @@ export default function SiteMap(p: Props) {
       .catch((e) => setParcels({ status: "error", msg: String(e?.message || e) }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready]);
+
+  const toggleOv = (k: "flood" | "wetlands") => {
+    const m = map.current; if (!m) return;
+    const next = !ov[k].on;
+    [`${k}-fill`, `${k}-line`].forEach((l) => m.getLayer(l) && m.setLayoutProperty(l, "visibility", next ? "visible" : "none"));
+    setOv((o) => ({ ...o, [k]: { ...o[k], on: next } }));
+    if (next && ov[k].status !== "ok" && ov[k].status !== "loading") {
+      setOv((o) => ({ ...o, [k]: { on: true, status: "loading" } }));
+      fetchOverlay(k, p.lon, p.lat)
+        .then((fs) => { (m.getSource(k) as any)?.setData({ type: "FeatureCollection", features: fs }); setOv((o) => ({ ...o, [k]: { ...o[k], status: "ok", n: fs.length } })); })
+        .catch(() => setOv((o) => ({ ...o, [k]: { ...o[k], status: "error" } })));
+    }
+  };
 
   useEffect(() => {
     (map.current?.getSource("sel") as any)?.setData({ type: "FeatureCollection", features: sel ? [sel] : [] });
@@ -194,6 +222,10 @@ export default function SiteMap(p: Props) {
               <button onClick={() => fit(3)}>3 mi</button>
               <button onClick={() => fit(5)}>5 mi</button>
             </div>
+            <div className="seg" role="group" aria-label="Environmental overlays">
+              <button aria-pressed={ov.flood.on} onClick={() => toggleOv("flood")} title="FEMA National Flood Hazard Layer">Flood{ov.flood.status === "loading" ? "…" : ov.flood.status === "error" ? " ×" : ""}</button>
+              <button aria-pressed={ov.wetlands.on} onClick={() => toggleOv("wetlands")} title="USFWS National Wetlands Inventory">Wetlands{ov.wetlands.status === "loading" ? "…" : ov.wetlands.status === "error" ? " ×" : ""}</button>
+            </div>
           </div>
           {(parcels.status === "loading" || pois.status === "loading") && (
             <div className="map-overlay map-status small">Loading {parcels.status === "loading" ? "parcels" : ""}{parcels.status === "loading" && pois.status === "loading" ? " and " : ""}{pois.status === "loading" ? "nearby places" : ""}…</div>
@@ -204,6 +236,10 @@ export default function SiteMap(p: Props) {
             <div className="row"><span style={{ width: 14, height: 10, background: "rgba(201,173,125,.45)", border: "2px solid #e8c88a", flex: "none" }} />Selected parcel</div>
             <div className="row"><span style={{ width: 14, borderTop: "2px dashed #d9b56e", flex: "none" }} />{p.acres}-acre program envelope (scale)</div>
             <div className="row"><span style={{ width: 14, borderTop: "2px dashed #888", flex: "none" }} />1 / 3 / 5 mile rings</div>
+            {ov.flood.on && <div className="row"><span style={{ width: 14, height: 10, background: "rgba(47,127,208,.55)", flex: "none" }} />FEMA 1% flood zone (SFHA){ov.flood.status === "ok" && !ov.flood.n ? ": none nearby" : ""}</div>}
+            {ov.flood.status === "error" && ov.flood.on && <div className="row xs">FEMA service did not respond</div>}
+            {ov.wetlands.on && <div className="row"><span style={{ width: 14, height: 10, background: "rgba(47,179,154,.55)", flex: "none" }} />NWI wetlands{ov.wetlands.status === "ok" && !ov.wetlands.n ? ": none nearby" : ""}</div>}
+            {ov.wetlands.status === "error" && ov.wetlands.on && <div className="row xs">Wetlands service did not respond</div>}
           </div>
         </div>
         <div className="xs muted" style={{ marginTop: 8 }}>

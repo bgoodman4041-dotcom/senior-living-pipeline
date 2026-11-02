@@ -9,6 +9,9 @@ export const usingMapbox = () => !!MAPBOX_PUBLIC_TOKEN;
 
 const mbTiles = (style: string) => [`https://api.mapbox.com/styles/v1/mapbox/${style}/tiles/512/{z}/{x}/{y}@2x?access_token=${MAPBOX_PUBLIC_TOKEN}`];
 
+// On high-DPI screens, ask for imagery one zoom level deeper so satellite views render at full retina sharpness.
+const hiDpi = () => typeof window !== "undefined" && (window.devicePixelRatio || 1) > 1.25;
+
 export function baseStyle(): any {
   if (MAPBOX_PUBLIC_TOKEN) {
     return {
@@ -35,7 +38,7 @@ export function baseStyle(): any {
       esri: {
         type: "raster",
         tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"],
-        tileSize: 256, maxzoom: 19, attribution: ATTR_ESRI,
+        tileSize: hiDpi() ? 128 : 256, maxzoom: 19, attribution: ATTR_ESRI,
       },
       esriRef: {
         type: "raster",
