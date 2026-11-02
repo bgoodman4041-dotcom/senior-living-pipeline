@@ -1,7 +1,8 @@
 // Raster basemaps. With NEXT_PUBLIC_MAPBOX_TOKEN set in Vercel: Mapbox satellite-streets and streets.
-// Without it: keyless light streets (CARTO / OSM) and satellite (Esri World Imagery).
+// Without it: keyless Esri World Street Map and Esri World Imagery.
 import { MAPBOX_PUBLIC_TOKEN } from "./mapbox";
 export const ATTR_CARTO = '© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions" target="_blank">CARTO</a>';
+export const ATTR_STREETS = 'Map © <a href="https://www.esri.com" target="_blank">Esri</a>, HERE, Garmin, © OpenStreetMap contributors, and the GIS user community';
 export const ATTR_ESRI = 'Imagery © <a href="https://www.esri.com" target="_blank">Esri</a>, Maxar, Earthstar Geographics';
 
 export const ATTR_MAPBOX = '© <a href="https://www.mapbox.com/about/maps/" target="_blank">Mapbox</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> <a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a> © Maxar';
@@ -32,8 +33,10 @@ export function baseStyle(): any {
     sources: {
       carto: {
         type: "raster",
-        tiles: ["a", "b", "c", "d"].map((s) => `https://${s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png`),
-        tileSize: 256, maxzoom: 20, attribution: ATTR_CARTO,
+        // Esri World Street Map: keyless and served from the same host as the imagery.
+        // (CARTO began returning "API key required" tiles to non-local sites in Nov 2026.)
+        tiles: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"],
+        tileSize: hiDpi() ? 128 : 256, maxzoom: 19, attribution: ATTR_STREETS,
       },
       esri: {
         type: "raster",
@@ -53,7 +56,7 @@ export function baseStyle(): any {
     },
     layers: [
       { id: "bg", type: "background", paint: { "background-color": "#e9ece9" } },
-      { id: "carto", type: "raster", source: "carto", paint: { "raster-saturation": -0.35, "raster-contrast": 0.02 } },
+      { id: "carto", type: "raster", source: "carto", paint: { "raster-saturation": -0.45, "raster-contrast": -0.04, "raster-brightness-min": 0.04 } },
       { id: "esri", type: "raster", source: "esri", layout: { visibility: "none" } },
       { id: "esriRoads", type: "raster", source: "esriRoads", layout: { visibility: "none" }, paint: { "raster-opacity": 0.75 } },
       { id: "esriRef", type: "raster", source: "esriRef", layout: { visibility: "none" } },
