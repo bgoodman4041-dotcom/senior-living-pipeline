@@ -13,12 +13,22 @@ export default function ContactBook({ contacts, site }: { contacts: Contact[]; s
     const txt = [c.name, c.role, c.phone, c.email].filter(Boolean).join(" · ");
     try { await navigator.clipboard.writeText(txt); setCopied(c.name); setTimeout(() => setCopied(null), 1500); } catch { /* clipboard blocked */ }
   };
+  const download = () => {
+    const q = (v: any) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    const rows = [["Site", "Group", "Name", "Role", "Phone", "Email", "Source"], ...contacts.map((c) => [site, c.group, c.name, c.role, c.phone, c.email, c.src])];
+    const blob = new Blob([rows.map((r) => r.map(q).join(",")).join("\n")], { type: "text/csv" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `ATCO-contacts-${site.replace(/[^A-Za-z0-9]+/g, "-").slice(0, 40)}.csv`; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  };
   return (
     <div>
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 10, flexWrap: "wrap", alignItems: "flex-start" }}>
       <div className="chips" role="group" aria-label="Filter contacts" style={{ marginBottom: 12 }}>
         {["All", ...groups].map((x) => (
           <button key={x} className="chip" aria-pressed={g === x} onClick={() => setG(x)}>{x}{x !== "All" ? ` · ${contacts.filter((c) => c.group === x).length}` : ""}</button>
         ))}
+      </div>
+      <button className="btn btn-sm no-print" onClick={download}>Download contacts (CSV)</button>
       </div>
       <div className="contact-grid">
         {list.map((c) => (
