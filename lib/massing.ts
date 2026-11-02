@@ -10,10 +10,10 @@ export interface Massing {
 }
 
 export const CARE_STYLE: Record<string, { color: string; stories: number; label: string }> = {
-  IL: { color: "#9fb3cc", stories: 4, label: "Independent living" },
-  AL: { color: "#d9c19a", stories: 3, label: "Assisted living" },
-  MC: { color: "#b98f55", stories: 2, label: "Memory care" },
-  SNF: { color: "#c98a8a", stories: 2, label: "Skilled nursing" },
+  IL: { color: "#8fb9e0", stories: 4, label: "Independent living" },
+  AL: { color: "#f6b56a", stories: 3, label: "Assisted living" },
+  MC: { color: "#9a90d3", stories: 2, label: "Memory care" },
+  SNF: { color: "#d97585", stories: 2, label: "Skilled nursing" },
 };
 const FT = 0.3048, SF = 0.09290304;
 const DEPTH = 20;            // m, double-loaded corridor wing (~65 ft)
@@ -101,7 +101,7 @@ export function buildMassing(center: [number, number], lines: Line[], gsfPerUnit
   const toLL = ([x, y]: [number, number]): [number, number] => [center[0] + (x - cx) / mPerLon, center[1] + (y - cy) / mPerLat];
   const features: GeoJSON.Feature[] = local.map((p, n) => ({
     type: "Feature", id: n,
-    properties: { kind: p.kind, care: p.care || "", stories: p.stories || 0, height: p.height, base: p.base, color: p.kind === "building" ? CARE_STYLE[p.care!]?.color || "#ccc" : p.kind === "court" ? "#7fa36b" : "#6b7280" },
+    properties: { kind: p.kind, care: p.care || "", stories: p.stories || 0, height: p.height, base: p.base, color: p.kind === "building" ? CARE_STYLE[p.care!]?.color || "#ccc" : p.kind === "court" ? "#76B96A" : "#6b7280" },
     geometry: { type: "Polygon", coordinates: [p.coords.map(toLL)] },
   }));
 

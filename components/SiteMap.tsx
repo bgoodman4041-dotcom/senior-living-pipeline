@@ -42,7 +42,7 @@ export default function SiteMap(p: Props) {
         setBasemap(m, "satellite");
         m.addSource("rings", { type: "geojson", data: { type: "FeatureCollection", features: [1, 3, 5].map((r) => circle(center, r)) } });
         m.addLayer({ id: "rings", type: "line", source: "rings", paint: { "line-color": "#ffffff", "line-width": 1.4, "line-dasharray": [2, 2], "line-opacity": 0.9 } });
-        m.addLayer({ id: "rings-halo", type: "line", source: "rings", paint: { "line-color": "#13243d", "line-width": 3, "line-opacity": 0.25 } }, "rings");
+        m.addLayer({ id: "rings-halo", type: "line", source: "rings", paint: { "line-color": "#403393", "line-width": 3, "line-opacity": 0.25 } }, "rings");
         m.addSource("envelope", { type: "geojson", data: circle(center, envelopeMi, 64) });
         m.addLayer({ id: "envelope", type: "line", source: "envelope", paint: { "line-color": "#f3d9a4", "line-width": 2, "line-dasharray": [1.5, 1.2] } });
         m.addSource("parcels", { type: "geojson", data: { type: "FeatureCollection", features: [] } });

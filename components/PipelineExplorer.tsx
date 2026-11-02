@@ -7,13 +7,13 @@ import { pct, usdM } from "@/lib/format";
 
 type TaxKey = "full_tax" | "pilot" | "nonprofit_exempt";
 const TAX_LABEL: Record<TaxKey, string> = { full_tax: "Fully taxed", pilot: "PILOT", nonprofit_exempt: "Nonprofit" };
-const VERDICT_COLOR: Record<string, string> = { Pursue: "#1E8A5A", "Pursue-structured": "#3B5FC4", Watch: "#C98A1E", Pass: "#98A1AB" };
+const VERDICT_COLOR: Record<string, string> = { Pursue: "#3f8a35", "Pursue-structured": "#3079B3", Watch: "#F7901E", Pass: "#A3A3A3" };
 const VERDICTS = ["Pursue", "Pursue-structured", "Watch", "Pass"];
 const YOC_BANDS = [
-  { label: "≥ 7.5% target", min: 0.075, color: "#1E8A5A" },
-  { label: "6.5% – 7.5%", min: 0.065, color: "#3B5FC4" },
-  { label: "6.0% – 6.5% (near miss)", min: 0.06, color: "#C98A1E" },
-  { label: "< 6.0%", min: -1, color: "#98A1AB" },
+  { label: "≥ 7.5% target", min: 0.075, color: "#3f8a35" },
+  { label: "6.5% – 7.5%", min: 0.065, color: "#3079B3" },
+  { label: "6.0% – 6.5% (near miss)", min: 0.06, color: "#F7901E" },
+  { label: "< 6.0%", min: -1, color: "#A3A3A3" },
 ];
 
 export interface Row {

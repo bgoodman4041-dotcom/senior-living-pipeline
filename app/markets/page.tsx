@@ -41,9 +41,9 @@ export default function Markets() {
           <tbody>{rows.map((m) => (
             <tr key={m.state + m.county}>
               <td><b>{m.county}</b><div className="xs muted">{STATE_NAME[m.state]}</div></td>
-              <td className="num">{cnt(m)}{cnt(m, isShortlist) ? <div className="xs" style={{ color: "var(--brass)", fontWeight: 600 }}>{cnt(m, isShortlist)} shortlist</div> : null}</td>
+              <td className="num">{cnt(m)}{cnt(m, isShortlist) ? <div className="xs" style={{ color: "var(--atco-purple)", fontWeight: 600 }}>{cnt(m, isShortlist)} shortlist</div> : null}</td>
               <td><div style={{ display: "flex", gap: 8, alignItems: "center" }}><span className="tnum" style={{ width: 62 }}>{int(m.pop75)}</span><div className="bar-track" style={{ flex: 1 }}><div className="bar-fill" style={{ width: `${(Number(m.pop75) / maxPop) * 100}%` }} /></div></div></td>
-              <td><div style={{ display: "flex", gap: 8, alignItems: "center" }}><span className="tnum" style={{ width: 62 }}>{usdK(Number(m.med_hh_inc_65plus))}</span><div className="bar-track" style={{ flex: 1 }}><div className="bar-fill" style={{ width: `${(Number(m.med_hh_inc_65plus) / maxInc) * 100}%`, background: "var(--brass)" }} /></div></div></td>
+              <td><div style={{ display: "flex", gap: 8, alignItems: "center" }}><span className="tnum" style={{ width: 62 }}>{usdK(Number(m.med_hh_inc_65plus))}</span><div className="bar-track" style={{ flex: 1 }}><div className="bar-fill" style={{ width: `${(Number(m.med_hh_inc_65plus) / maxInc) * 100}%`, background: "var(--atco-purple)" }} /></div></div></td>
               <td className="num">{usd(Number(m.med_home_value))}</td>
               <td className="num">{Number(m.rent_index).toFixed(2)}</td><td className="num">{Number(m.cost_index).toFixed(2)}</td>
               <td className="num">{usd(Number(m.tax_per_unit))}</td><td className="num">{usd(Number(m.land_per_unit))}</td><td className="num">{m.unmet_demand_ratio}</td>
@@ -59,7 +59,7 @@ export default function Markets() {
           {top.map((r) => (
             <div key={r[0]} className="card card-pad">
               <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-                <span style={{ fontFamily: "var(--serif)", fontWeight: 600, fontSize: 22, color: "var(--brass)", lineHeight: 1 }}>{r[0]}</span>
+                <span style={{ fontFamily: "var(--serif)", fontWeight: 600, fontSize: 22, color: "var(--atco-purple)", lineHeight: 1 }}>{r[0]}</span>
                 <h3 style={{ fontSize: 16 }}><Inline text={r[1].replace(/\*\*/g, "")} /></h3>
               </div>
               <p className="small" style={{ color: "var(--ink-2)", marginTop: 10, marginBottom: 0 }}><Inline text={r[2]} /></p>

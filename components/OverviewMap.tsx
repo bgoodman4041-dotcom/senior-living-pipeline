@@ -37,14 +37,14 @@ export default function OverviewMap({ sites, legend, yocLabel }: { sites: MapSit
       m.addControl(new ml.FullscreenControl(), "bottom-right");
       m.on("load", () => {
         m.addSource("rings", { type: "geojson", data: { type: "FeatureCollection", features: RINGS.map((r) => circle(MIDTOWN, r.mi)) } });
-        m.addLayer({ id: "rings-line", type: "line", source: "rings", paint: { "line-color": "#13243d", "line-width": 1.2, "line-dasharray": [3, 3], "line-opacity": 0.55 } });
+        m.addLayer({ id: "rings-line", type: "line", source: "rings", paint: { "line-color": "#403393", "line-width": 1.2, "line-dasharray": [3, 3], "line-opacity": 0.55 } });
         RINGS.forEach((r) => {
           const d = document.createElement("div");
           d.className = "ring-label"; d.textContent = `≈${r.min} min`;
           new ml.Marker({ element: d }).setLngLat([MIDTOWN[0] + (r.mi / 69.172 / Math.cos((MIDTOWN[1] * Math.PI) / 180)) * 0.7071, MIDTOWN[1] - (r.mi / 69) * 0.7071]).addTo(m);
         });
         const mt = document.createElement("div");
-        mt.className = "ring-label"; mt.textContent = "Midtown"; mt.style.background = "#13243d"; mt.style.color = "#fff";
+        mt.className = "ring-label"; mt.textContent = "Midtown"; mt.style.background = "#403393"; mt.style.color = "#fff";
         new ml.Marker({ element: mt }).setLngLat(MIDTOWN).addTo(m);
         setReady(true);
       });

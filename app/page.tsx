@@ -39,7 +39,7 @@ export default function Home() {
             <div><div className="n">{funnel.sourced}</div><div className="t">Sourced</div><div className="d">NY ≤2 hr · NJ ≤2 hr · CT ≤2.5 hr</div></div>
             <div><div className="n">{funnel.underwritten}</div><div className="t">Underwritten</div><div className="d">Full pro forma, 3 tax structures</div></div>
             <div><div className="n">{funnel.survive}</div><div className="t">Survive</div><div className="d">Pass gates, viable structure</div></div>
-            <div><div className="n" style={{ color: "var(--brass-soft)" }}>{funnel.shortlist}</div><div className="t">Shortlist</div><div className="d">Pursue / Pursue-structured</div></div>
+            <div><div className="n" style={{ color: "var(--atco-orange)" }}>{funnel.shortlist}</div><div className="t">Shortlist</div><div className="d">Pursue / Pursue-structured</div></div>
           </div>
           <div className="hero-meta">
             <span>Hurdle <b>{pct(HURDLE, 1)} YOC floor · {pct(TARGET, 1)} target</b></span>
@@ -59,9 +59,9 @@ export default function Home() {
           </div>
 
           <div className="grid g3" style={{ marginTop: 18 }}>
-            <div className="callout navy"><b>What clears.</b> Rental AL/MC pads of ~{protoC} units inside approved master plans clear {pct(HURDLE, 1)} fully taxed in Morris County NJ, Dutchess and northern Westchester.</div>
-            <div className="callout navy"><b>What needs structure.</b> IL-led campuses miss as rentals everywhere. They work only with entrance fees, a nonprofit sponsor or PILOT, or ground-leased land: the RiverSpring structure.</div>
-            <div className="callout navy"><b>Where the risk sits.</b> Calibrated rent, tax and land indices drive the spread. NIC MAP pulls, rate shops and assessor letters on the shortlist come before any LOI.</div>
+            <div className="callout brand"><b>What clears.</b> Rental AL/MC pads of ~{protoC} units inside approved master plans clear {pct(HURDLE, 1)} fully taxed in Morris County NJ, Dutchess and northern Westchester.</div>
+            <div className="callout brand"><b>What needs structure.</b> IL-led campuses miss as rentals everywhere. They work only with entrance fees, a nonprofit sponsor or PILOT, or ground-leased land: the RiverSpring structure.</div>
+            <div className="callout brand"><b>Where the risk sits.</b> Calibrated rent, tax and land indices drive the spread. NIC MAP pulls, rate shops and assessor letters on the shortlist come before any LOI.</div>
           </div>
         </div>
       </section>
@@ -134,11 +134,11 @@ export default function Home() {
                 </div>
               </a>
             ))}
-            <div className="card card-pad" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", background: "var(--navy-800)", color: "#fff", borderColor: "var(--navy-800)" }}>
+            <div className="card card-pad" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#2D2D2D", color: "#fff", borderColor: "#2D2D2D", position: "relative" }}>
               <div>
-                <div className="eyebrow" style={{ color: "var(--brass-soft)" }}>Next 90 days</div>
+                <div className="eyebrow" style={{ color: "var(--atco-orange)" }}>Next 90 days</div>
                 <h3 style={{ color: "#fff" }}>From shortlist to LOI</h3>
-                <ul style={{ paddingLeft: 18, color: "#c9d2df", fontSize: 13.5, margin: "10px 0 0" }}>
+                <ul style={{ paddingLeft: 18, color: "#d6d6d6", fontSize: 13.5, margin: "10px 0 0" }}>
                   <li>Owner outreach on every shortlisted site; JV terms with master-plan developers on the pads</li>
                   <li>NIC MAP and rate shops for each primary market area</li>
                   <li>Assessor estimate and PILOT term sheet where the spread is thin</li>

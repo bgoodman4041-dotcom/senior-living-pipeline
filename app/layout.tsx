@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "ATCO's RiverSpring-model senior living site pipeline: 44 underwritten sites across NY, NJ and CT, screened against a 6.5% yield-on-cost floor.",
   openGraph: { title: "Senior Living Site Selection | ATCO", description: "44 underwritten sites, 7 shortlisted, underwritten to a 6.5% yield on cost.", type: "website" },
 };
-export const viewport: Viewport = { themeColor: "#13243d", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -20,14 +20,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Condensed:wght@700&display=swap"
         />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body>
         <div className="topbar">
           <div className="wrap">
-            <span>ATCO Properties &amp; Management · A family of real estate companies</span>
+            <span>ATCO Properties &amp; Management · A family of real estate companies · New York</span>
             <span className="hide-sm">Senior Living Platform · Data as of {longDate(meta.as_of)}</span>
           </div>
         </div>
@@ -36,18 +36,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="footer">
           <div className="wrap">
             <div>
-              <div className="wordmark">ATCO</div>
+              <img src="/brand/atco-logo.png" alt="ATCO, a family of real estate companies" className="footer-logo" width="94" height="46" />
               <div style={{ marginTop: 8, maxWidth: 520 }}>
                 Senior living site selection for RiverSpring-model communities in New York, New Jersey and Connecticut.
                 Underwriting figures are model outputs for screening, not appraisals or offers. Indices marked
                 <span className="badge-i">I</span> are calibrated estimates to be replaced with NIC MAP and assessor data before LOI.
               </div>
             </div>
-            <div style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "flex-start" }}>
+            <div className="links" style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "flex-start" }}>
               <a href="/">Pipeline</a><a href="/#shortlist">Shortlist</a><a href="/markets">Markets</a>
               <a href="/model">The Model</a><a href="/method">Methodology</a>
             </div>
-            <div className="xs" style={{ width: "100%", borderTop: "1px solid rgba(255,255,255,.1)", paddingTop: 14 }}>
+            <div className="xs" style={{ width: "100%", borderTop: "1px solid rgba(255,255,255,.14)", paddingTop: 14 }}>
               © {new Date().getFullYear()} ATCO Properties &amp; Management, LLC. Confidential deal flow. Basemaps © OpenStreetMap contributors, © CARTO; imagery © Esri, Maxar, Earthstar Geographics. Parcels: NJGIN, NYS ITS GIS, CT OPM.
             </div>
           </div>

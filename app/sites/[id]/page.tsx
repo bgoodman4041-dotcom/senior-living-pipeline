@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   return s ? { title: `${s.name}, ${s.municipality}`, description: `${s.verdict}: ${s.verdict_reason}. YOC ${(s.uw.yoc * 100).toFixed(2)}% fully taxed.` } : {};
 }
 
-const COST_COLORS = ["#13243d", "#2a4468", "#43628c", "#6e8bb0", "#a3b6cf", "#c9ad7d", "#a8844a", "#7a5d2c"];
+const COST_COLORS = ["#403393", "#7a70c0", "#3D86C6", "#8dbbe2", "#76B96A", "#b5d9ae", "#F7901E", "#BB2034"];
 
 function Hbar({ items, max, hurdle, target }: { items: { label: string; v: number; note?: string }[]; max: number; hurdle: number; target?: number }) {
   const x = (v: number) => `${Math.max(0, Math.min(1, v / max)) * 100}%`;
@@ -30,14 +30,14 @@ function Hbar({ items, max, hurdle, target }: { items: { label: string; v: numbe
             <span>{it.label}{it.note && <span className="muted xs"> · {it.note}</span>}</span>
             <b className="tnum" style={{ color: it.v >= hurdle ? "var(--pursue)" : "var(--danger)" }}>{pct(it.v)}</b>
           </div>
-          <div style={{ position: "relative", height: 14, background: "#efebe3", borderRadius: 4 }}>
-            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: x(it.v), background: it.v >= hurdle ? "#1E8A5A" : "#98A1AB", borderRadius: 4 }} />
-            <div title={`${pct(hurdle, 1)} floor`} style={{ position: "absolute", left: x(hurdle), top: -3, bottom: -3, borderLeft: "2px dashed #b4372f" }} />
-            {target && <div title={`${pct(target, 1)} target`} style={{ position: "absolute", left: x(target), top: -3, bottom: -3, borderLeft: "2px dashed #a8844a" }} />}
+          <div style={{ position: "relative", height: 14, background: "#ececec", borderRadius: 4 }}>
+            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: x(it.v), background: it.v >= hurdle ? "#3f8a35" : "#A3A3A3", borderRadius: 4 }} />
+            <div title={`${pct(hurdle, 1)} floor`} style={{ position: "absolute", left: x(hurdle), top: -3, bottom: -3, borderLeft: "2px dashed #BB2034" }} />
+            {target && <div title={`${pct(target, 1)} target`} style={{ position: "absolute", left: x(target), top: -3, bottom: -3, borderLeft: "2px dashed #F7901E" }} />}
           </div>
         </div>
       ))}
-      <div className="xs muted"><span style={{ borderLeft: "2px dashed #b4372f", paddingLeft: 6 }}>{pct(hurdle, 1)} floor</span>{target && <span style={{ borderLeft: "2px dashed #a8844a", paddingLeft: 6, marginLeft: 14 }}>{pct(target, 1)} target</span>}</div>
+      <div className="xs muted"><span style={{ borderLeft: "2px dashed #BB2034", paddingLeft: 6 }}>{pct(hurdle, 1)} floor</span>{target && <span style={{ borderLeft: "2px dashed #F7901E", paddingLeft: 6, marginLeft: 14 }}>{pct(target, 1)} target</span>}</div>
     </div>
   );
 }
@@ -109,7 +109,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           <div className="crumbs"><a href="/">Pipeline</a> / <a href="/#pipeline">{STATE_NAME[s.state]}</a> / {s.id}</div>
           <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 10 }}>
             <VerdictChip v={s.verdict} />
-            <span className="small" style={{ color: "#c9d2df" }}>Rank #{s.rank} of {sites.length}{isShortlist(s) ? " · Shortlist" : ""} · {trackOf(s)}</span>
+            <span className="small meta">Rank #{s.rank} of {sites.length}{isShortlist(s) ? " · Shortlist" : ""} · {trackOf(s)}</span>
             <span style={{ marginLeft: "auto" }}><PrintButton /></span>
           </div>
           <h1>{s.name}</h1>
@@ -117,10 +117,10 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           <div className="verdict-bar">
             <div>
               <div className="label">Verdict</div>
-              <div className="big" style={{ fontSize: 20 }}>{s.verdict_reason}</div>
-              <div className="cap">Next step: <b style={{ color: "#fff" }}>{s.next_step}</b></div>
+              <div className="big reason">{s.verdict_reason}</div>
+              <div className="cap">Next step: <b>{s.next_step}</b></div>
             </div>
-            <div><div className="label">YOC · taxed</div><div className="big" style={{ color: u.yoc >= HURDLE ? "#8fd3b0" : "#f0b3ad" }}>{pct(u.yoc)}</div><div className="cap">PILOT {pct(u.yoc_by_tax_structure.pilot)}</div></div>
+            <div><div className="label">YOC · taxed</div><div className={`big ${u.yoc >= HURDLE ? "good" : "bad"}`}>{pct(u.yoc)}</div><div className="cap">PILOT {pct(u.yoc_by_tax_structure.pilot)}</div></div>
             <div><div className="label">Max land @ {pct(HURDLE, 1)}</div><div className="big">{usdM(u.max_land)}</div><div className="cap">vs {usdM(u.land_cost)} basis</div></div>
             <div><div className="label">Composite</div><div className="big">{s.scores.total}</div><div className="cap">A {s.scores.approval} · R {s.scores.rent_support} · N {s.scores.need} · Y {s.scores.yield}</div></div>
             <div><div className="label">Program</div><div className="big">{u.units} units</div><div className="cap">{u.prototype_name}</div></div>
@@ -149,7 +149,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
                       <span style={{ fontWeight: 600 }}>{g.k} <span className="xs muted">· weight {pct(g.w, 0)}</span></span>
                       <span style={{ fontFamily: "var(--serif)", fontSize: 24, fontWeight: 600 }}>{g.v}</span>
                     </div>
-                    <Bar value={g.v} color={g.v >= 75 ? "#1E8A5A" : g.v >= 55 ? "#3B5FC4" : g.v >= 35 ? "#C98A1E" : "#98A1AB"} />
+                    <Bar value={g.v} color={g.v >= 75 ? "#3f8a35" : g.v >= 55 ? "#3079B3" : g.v >= 35 ? "#F7901E" : "#A3A3A3"} />
                     <div className="xs muted">{g.d}</div>
                   </div>
                 ))}
@@ -207,7 +207,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
                 <tr><td>CCRC / life plan</td><td><NV v={reg.ccrc} /></td></tr>
                 <tr><td>Tax tool</td><td><NV v={reg.tax_tool} /></td></tr>
               </tbody></table>
-              <div className="callout navy" style={{ marginTop: 14 }}>
+              <div className="callout brand" style={{ marginTop: 14 }}>
                 <b>Indicative timeline</b> <I tip="Analyst estimate from the state licensure path and approval score" />: {s.scores.approval >= 90 ? "entitled now; 3–6 months to building permit" : s.scores.approval >= 75 ? "6–12 months to site plan approval" : "12–24 months of discretionary approvals"}, plus {s.state === "NJ" ? "~12-month expedited CN in parallel" : s.state === "NY" ? "9–18 months ALR/EALR licensure in parallel" : "ALSA licensing (no CON) in parallel"}, then 22–26 months construction and 18–24 months lease-up.
               </div>
             </div>
@@ -265,7 +265,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
               <div className="label" style={{ marginBottom: 8 }}>Unit mix</div>
               <div style={{ display: "flex", height: 34, borderRadius: 5, overflow: "hidden", gap: 2, background: "#fff" }}>
                 {mix.map((l, i) => (
-                  <div key={l.care} title={`${l.care}: ${l.units} units`} style={{ flex: l.units, background: ["#13243d", "#43628c", "#a8844a", "#c9ad7d"][i % 4], color: "#fff", display: "grid", placeItems: "center", fontSize: 12, fontWeight: 600 }}>
+                  <div key={l.care} title={`${l.care}: ${l.units} units`} style={{ flex: l.units, background: ["#403393", "#3D86C6", "#3f8a35", "#d9780c"][i % 4], color: "#fff", display: "grid", placeItems: "center", fontSize: 12, fontWeight: 600 }}>
                     {l.care} {l.units}
                   </div>
                 ))}
@@ -387,14 +387,14 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
             <div className="card card-pad">
               <div className="label" style={{ marginBottom: 8 }}>Sources · {usdM(u.total_cost)}</div>
               <div style={{ display: "flex", height: 30, borderRadius: 5, overflow: "hidden", gap: 2 }}>
-                <div style={{ flex: u.loan, background: "#13243d" }} title="Senior construction loan" />
+                <div style={{ flex: u.loan, background: "#403393" }} title="Senior construction loan" />
                 <div style={{ flex: lp, background: "#6e8bb0" }} title="LP equity" />
-                <div style={{ flex: gp, background: "#a8844a" }} title="GP equity" />
+                <div style={{ flex: gp, background: "#F7901E" }} title="GP equity" />
               </div>
               <table className="kv" style={{ marginTop: 12 }}><tbody>
-                <tr><td><span style={{ display: "inline-block", width: 10, height: 10, background: "#13243d", marginRight: 8 }} />Senior construction loan ({pct(a.debt.ltc, 0)} LTC)</td><td className="num">{usdM(u.loan)}</td></tr>
+                <tr><td><span style={{ display: "inline-block", width: 10, height: 10, background: "#403393", marginRight: 8 }} />Senior construction loan ({pct(a.debt.ltc, 0)} LTC)</td><td className="num">{usdM(u.loan)}</td></tr>
                 <tr><td><span style={{ display: "inline-block", width: 10, height: 10, background: "#6e8bb0", marginRight: 8 }} />LP equity (90%) <I tip="Illustrative 90/10 LP/GP split" /></td><td className="num">{usdM(lp)}</td></tr>
-                <tr><td><span style={{ display: "inline-block", width: 10, height: 10, background: "#a8844a", marginRight: 8 }} />GP / ATCO co-invest (10%)</td><td className="num">{usdM(gp)}</td></tr>
+                <tr><td><span style={{ display: "inline-block", width: 10, height: 10, background: "#F7901E", marginRight: 8 }} />GP / ATCO co-invest (10%)</td><td className="num">{usdM(gp)}</td></tr>
               </tbody></table>
             </div>
             <div className="card card-pad">

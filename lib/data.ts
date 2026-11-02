@@ -15,10 +15,10 @@ export const TARGET = 0.075; // business-plan target for owned rentals (recommen
 
 export const VERDICTS: Verdict[] = ["Pursue", "Pursue-structured", "Watch", "Pass"];
 export const VERDICT_COLOR: Record<Verdict, string> = {
-  Pursue: "#1E8A5A",
-  "Pursue-structured": "#3B5FC4",
-  Watch: "#C98A1E",
-  Pass: "#98A1AB",
+  Pursue: "#3f8a35",
+  "Pursue-structured": "#3079B3",
+  Watch: "#F7901E",
+  Pass: "#A3A3A3",
 };
 export const TAX_LABEL: Record<TaxKey, string> = { full_tax: "Fully taxed", pilot: "PILOT", nonprofit_exempt: "Nonprofit" };
 export const STATE_NAME: Record<string, string> = { NY: "New York", NJ: "New Jersey", CT: "Connecticut" };

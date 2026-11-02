@@ -93,7 +93,7 @@ export default function Massing3D(p: Props) {
           {Array.from(new Set(s.wings.map((w) => w.care))).map((c) => (
             <div className="row" key={c}><span style={{ width: 14, height: 10, background: CARE_STYLE[c]?.color, border: "1px solid rgba(0,0,0,.25)", flex: "none" }} />{CARE_STYLE[c]?.label} · {CARE_STYLE[c]?.stories} st</div>
           ))}
-          <div className="row"><span style={{ width: 14, height: 10, background: "#7fa36b", flex: "none" }} />Courtyard</div>
+          <div className="row"><span style={{ width: 14, height: 10, background: "#76B96A", flex: "none" }} />Courtyard</div>
           <div className="row"><span style={{ width: 14, height: 10, background: "#6b7280", flex: "none" }} />Surface parking</div>
         </div>
       </div>

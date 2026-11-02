@@ -25,7 +25,7 @@ export default function Model() {
         <div className="grid g2">
           {take.map((t, i) => (
             <div key={i} className="card card-pad" style={{ display: "flex", gap: 14 }}>
-              <span style={{ fontFamily: "var(--serif)", fontSize: 26, color: "var(--brass)", fontWeight: 600, lineHeight: 1 }}>{i + 1}</span>
+              <span style={{ fontFamily: "var(--serif)", fontSize: 26, color: "var(--atco-purple)", fontWeight: 600, lineHeight: 1 }}>{i + 1}</span>
               <p className="small" style={{ margin: 0, color: "var(--ink-2)" }}><Inline text={t} /></p>
             </div>
           ))}

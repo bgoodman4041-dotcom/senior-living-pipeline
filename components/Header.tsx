@@ -19,7 +19,7 @@ export default function Header() {
     <header className="header">
       <div className="wrap">
         <Link href="/" className="brand" aria-label="ATCO Senior Living home">
-          <span className="wordmark">ATCO</span>
+          <img src="/brand/atco-logo.png" alt="ATCO" className="brand-logo" width="102" height="50" />
           <span className="brand-sub">Senior Living<br />Site Selection</span>
         </Link>
         <button className="menu-btn" aria-expanded={open} aria-controls="nav" onClick={() => setOpen(!open)}>Menu</button>
