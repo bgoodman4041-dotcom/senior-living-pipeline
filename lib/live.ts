@@ -1,3 +1,4 @@
+import { esriPois } from "./esriPlaces";
 // Live public-data lookups run in the viewer's browser (no keys):
 //  - tax parcels from each state's public ArcGIS service
 //  - points of interest around the site from OpenStreetMap (Overpass API)
@@ -208,7 +209,7 @@ function anyOf<T>(ps: Promise<T>[]): Promise<T> {
 }
 
 type PoiResult = { pois: Poi[]; fetchedAt: string; source: string };
-const CACHE_V = "atco-poi-v5";
+const CACHE_V = "atco-poi-v6";
 /** Browser side: browser cache, then the deploy-time snapshot and our cached API route, then the public mirrors directly. */
 export async function fetchPois(id: string, lat: number, lon: number): Promise<PoiResult> {
   try {
@@ -234,6 +235,7 @@ export async function fetchPois(id: string, lat: number, lon: number): Promise<P
   const keyed = !!(process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "").trim();
   if (keyed) { try { return save(await getJson(`/api/places/${encodeURIComponent(id)}`, 25000)); } catch { /* fall through */ } }
   try { return save(await getJson(`/places/${encodeURIComponent(id)}.json`, 6000)); } catch { /* none baked */ }
+  try { return save(await esriPois(lat, lon, 15000)); } catch { /* fall through to OpenStreetMap */ }
   const api = getJson(`/api/places/${encodeURIComponent(id)}`, 30000);
   const direct = new Promise<PoiResult>((res, rej) => setTimeout(() => overpassPois(lat, lon, 40000).then(res, rej), 4000));
   return save(await anyOf([api, direct]));
