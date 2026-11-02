@@ -1,0 +1,1754 @@
+{
+ "screened_at": "2026-11-02T20:44:08.405Z",
+ "sources": {
+  "fema": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28",
+  "nwi": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0",
+  "epa": "https://geopub.epa.gov/arcgis/rest/services/EMEF/efpoints/MapServer/",
+  "njdep": "https://mapsdep.nj.gov/arcgis/rest/services/Features/",
+  "nysdec_wetlands": "https://services6.arcgis.com/DZHaqZm9cxOD4CWM/arcgis/rest/services/Informational_Freshwater_Wetland_Mapping/FeatureServer/2"
+ },
+ "sites": {
+  "CT-01": {
+   "radius_m": 222,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland"
+   ],
+   "nwi_100ft": 2,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-02": {
+   "radius_m": 151,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X (0.2%)",
+    "AE",
+    "X"
+   ],
+   "sfha_site": true,
+   "nwi_site": [
+    "Riverine",
+    "Freshwater Forested/Shrub Wetland"
+   ],
+   "nwi_100ft": 2,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 1,
+     "names": [
+      "NORDEN SYSTEMS RIVERVIEW"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-03": {
+   "radius_m": 183,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland"
+   ],
+   "nwi_100ft": 1,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-04": {
+   "radius_m": 190,
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Pond",
+    "Freshwater Forested/Shrub Wetland"
+   ],
+   "nwi_100ft": 3,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-05": {
+   "radius_m": 197,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "AE",
+    "X (0.2%)",
+    "X"
+   ],
+   "sfha_site": true,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland"
+   ],
+   "nwi_100ft": 3,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-06": {
+   "radius_m": 205,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "A",
+    "X"
+   ],
+   "sfha_site": true,
+   "nwi_site": [
+    "Lake",
+    "Freshwater Forested/Shrub Wetland",
+    "Freshwater Pond",
+    "Riverine"
+   ],
+   "nwi_100ft": 7,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-07": {
+   "radius_m": 246,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Pond"
+   ],
+   "nwi_100ft": 1,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-08": {
+   "radius_m": 143,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-09": {
+   "radius_m": 161,
+   "pin_basis": "Street or landmark level",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-10": {
+   "radius_m": 190,
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland",
+    "Freshwater Pond",
+    "Riverine"
+   ],
+   "nwi_100ft": 5,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 3,
+     "names": [
+      "ITW SHINEMARK",
+      "SYNTAC COATED PRODUCTS LLC",
+      "COATING SCIENCES INC"
+     ]
+    }
+   }
+  },
+  "CT-12": {
+   "radius_m": 255,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland",
+    "Freshwater Pond",
+    "Riverine"
+   ],
+   "nwi_100ft": 5,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-13": {
+   "radius_m": 450,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Emergent Wetland",
+    "Freshwater Forested/Shrub Wetland",
+    "Freshwater Pond",
+    "Riverine"
+   ],
+   "nwi_100ft": 48,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 1,
+     "names": [
+      "CUMBERLAND FARMS 4769 0820"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-14": {
+   "radius_m": 249,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "AE",
+    "X (0.2%)",
+    "X"
+   ],
+   "sfha_site": true,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland",
+    "Riverine"
+   ],
+   "nwi_100ft": 4,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "CT-16": {
+   "radius_m": 186,
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "AE",
+    "X (0.2%)",
+    "X"
+   ],
+   "sfha_site": true,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland",
+    "Freshwater Pond",
+    "Riverine"
+   ],
+   "nwi_100ft": 8,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   }
+  },
+  "NJ-01": {
+   "radius_m": 221,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Riverine"
+   ],
+   "nwi_100ft": 2,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 0,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [],
+    "in_sewer_service_area": false,
+    "cafra": false,
+    "historic": [
+     "Wellbury Farmstead / IDENTIFIED_INDV / Hopewell Township Cultural Resources Survey: Survey Forms, Blocks 39-133"
+    ],
+    "overburdened_community": false
+   }
+  },
+  "NJ-02": {
+   "radius_m": 124,
+   "pin_basis": "Street or landmark level",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "A",
+    "X"
+   ],
+   "sfha_site": true,
+   "nwi_site": [
+    "Freshwater Emergent Wetland",
+    "Freshwater Forested/Shrub Wetland",
+    "Riverine"
+   ],
+   "nwi_100ft": 8,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 0,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "Somerset Countywide WMP / SW / Oxbridge STP / Somerset County Board of Chosen Freeholders",
+     "Somerset Countywide WMP / SW / Pike Brook / Somerset County Board of Chosen Freeholders"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [],
+    "overburdened_community": false
+   }
+  },
+  "NJ-03": {
+   "radius_m": 197,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Riverine"
+   ],
+   "nwi_100ft": 2,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 1,
+    "kcs_on_site": [
+     "PHARMACIA & UPJOHN LLC / 000695"
+    ],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "Somerset Countywide WMP / SW / Environmental Disposal Corporation WTP / Somerset County BOCF"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [
+     "Building 9  / ELIGIBLE_HD / Beneficial Management Corporation Headquarters Campus / C",
+     "Building 6 / ELIGIBLE_HD / Beneficial Management Corporation Headquarters Campus / C",
+     "Building 7 / ELIGIBLE_HD / Beneficial Management Corporation Headquarters Campus / C",
+     "Building 2 / ELIGIBLE_HD / Beneficial Management Corporation Headquarters Campus / C"
+    ],
+    "overburdened_community": false
+   }
+  },
+  "NJ-04": {
+   "radius_m": 72,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 4,
+     "names": [
+      "OHAUS CORP",
+      "SMITH IND",
+      "AUTOMATIC SWITCH CO",
+      "MIRION TECHNOLOGIES CAPINTEC INC"
+     ]
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 1,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "Morris County / SW / Florham Park Sewer Utility STP / Morris County BOCF"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [],
+    "overburdened_community": false
+   }
+  },
+  "NJ-05": {
+   "radius_m": 108,
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 5,
+     "names": [
+      "HOLLAND MFG CO",
+      "JIM NORRIS SONS TOWING INC",
+      "ROLLINS LEASING CORP 231",
+      "TOOHEY WISHNOW CURTIS TURNER"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 1,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "Morris County / SW / Ajax Terrace WPCP / Morris County BOCF"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [
+     "16-18 MAI / ELIGIBLE_HD / Succasunna Historic District / UNK",
+     "14 MAIN S / ELIGIBLE_HD / Succasunna Historic District / UNK",
+     "22 MAIN S / ELIGIBLE_HD / Succasunna Historic District / UNK",
+     "20 MAIN S / ELIGIBLE_HD / Succasunna Historic District / UNK"
+    ],
+    "overburdened_community": false
+   }
+  },
+  "NJ-06": {
+   "radius_m": 72,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland"
+   ],
+   "nwi_100ft": 3,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 1,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "Morris County / SW / Hanover SA WWTP / Morris County BOCF"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [],
+    "overburdened_community": false
+   }
+  },
+  "NJ-07": {
+   "radius_m": 124,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 0,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "PVSC / SW / PVSC / Essex County BOCF"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [],
+    "overburdened_community": false
+   }
+  },
+  "NJ-08": {
+   "radius_m": 161,
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "A",
+    "X"
+   ],
+   "sfha_site": true,
+   "nwi_site": [
+    "Freshwater Emergent Wetland",
+    "Freshwater Forested/Shrub Wetland"
+   ],
+   "nwi_100ft": 2,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 3,
+     "names": [
+      "PHILIPS CONSUMER COMMUNICATIONS",
+      "TOWNSEND CO",
+      "GENERAL PLUMBING SUPPLY DISTRIBUTION CO"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 7,
+     "names": [
+      "L B RUSSELL CORP",
+      "LOREAL USA PRODUCTS INC",
+      "REXAM BEVERAGE CAN CO PISCATAWAY NJ FACILITY",
+      "COSMAIR INC"
+     ]
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 0,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "LR Middlesex County / SW / Middlesex County UA / Middlesex County BOCF"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [],
+    "overburdened_community": true
+   }
+  },
+  "NJ-09": {
+   "radius_m": 172,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland",
+    "Riverine"
+   ],
+   "nwi_100ft": 5,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 1,
+     "names": [
+      "SISTERS OF CHRISTIAN CHARITY"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 0,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "Morris County / GW / Sisters of Christian Charity / Morris County BOCF"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [
+     "Motherhouse at the Mallinckrodt Convent / The Quellen Spriritual Life Center / IDENTIFIED_INDV / Miscellaneous Resource Property Information File: Morris County"
+    ],
+    "overburdened_community": false
+   }
+  },
+  "NJ-10": {
+   "radius_m": 72,
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 0,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "Morris County / SW / Parsippany Troy Hills STP / Morris County BOCF"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [],
+    "overburdened_community": false
+   }
+  },
+  "NJ-11": {
+   "radius_m": 113,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Emergent Wetland",
+    "Freshwater Forested/Shrub Wetland",
+    "Riverine"
+   ],
+   "nwi_100ft": 8,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 0,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "Bergen County UA / SW / Bergen County UA / Bergen County UA"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [],
+    "overburdened_community": true
+   }
+  },
+  "NJ-12": {
+   "radius_m": 146,
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 1,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 7,
+     "names": [
+      "ELECTRO NUCLEONICS INC",
+      "MBA PRINTED CIRCUITS INC",
+      "S L INDUSTRIES INC WAYNE SITE",
+      "USACE WAYNE INTERIM STORAGE"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 2,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [],
+    "in_sewer_service_area": false,
+    "cafra": false,
+    "historic": [
+     "White House Designs for Life- Living / IDENTIFIED_INDV / OEM Recon 2025",
+     "Al-Ghazaly Jr/Sr High School / IDENTIFIED_INDV / OEM Recon 2025",
+     "879 Black Oak Ridge Rd / IDENTIFIED_INDV / OEM Recon 2025"
+    ],
+    "overburdened_community": false
+   }
+  },
+  "NJ-13": {
+   "radius_m": 152,
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 0,
+    "kcs_on_site": [],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "S Brunswick Twp / SW / Stony Brook RSA   River Road STP / SBRSA"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [],
+    "overburdened_community": true
+   }
+  },
+  "NJ-14": {
+   "radius_m": 197,
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 1,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 4,
+     "names": [
+      "EATONTOWN BOROUGH OF",
+      "EATONTOWN CENTRAL OFFICE NJ BELL",
+      "GETTY SS 56935",
+      "EATONTOWN SEWERAGE AUTH"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "nj": {
+    "kcs_quarter_mi": 4,
+    "kcs_on_site": [
+     "EATONTOWN BORO HALL / 003509"
+    ],
+    "redevelopment_area": [],
+    "sewer_service_area": [
+     "Northeast Monmouth County Regional SA / SW / Two Rivers Water Reclaimation Authority STP / Monmouth County BOCF"
+    ],
+    "in_sewer_service_area": true,
+    "cafra": false,
+    "historic": [
+     "Presbyterian Church of Eatontown  / Eatown Community Center / IDENTIFIED_INDV / Monmouth County Historic Sites Inventory, Eatontown Borough: 1311.",
+     "I. Hathaway House / Eatontown Community Center Annex / ELIGIBLE_INDV / Monmouth County Historic Sites Inventory, Eatontown Borough: 1311.",
+     "154 Broad Street  / Harmony Guest HOuse / IDENTIFIED_INDV / Monmouth County Historic Sites Inventory, Eatontown Borough: 1311.",
+     "Benjamin C. White House / IDENTIFIED_INDV / Monmouth County Historic Sites Inventory, Eatontown Borough: 1311."
+    ],
+    "overburdened_community": false
+   }
+  },
+  "NY-01": {
+   "radius_m": 149,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 1,
+     "names": [
+      "CON EDISON"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 0
+   }
+  },
+  "NY-02": {
+   "radius_m": 102,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 2,
+     "names": [
+      "WESTCHESTER MEDICAL CENTER",
+      "WESTCHESTER MEDICAL CENTER DO NOT USE USE NYD010966935"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 0
+   }
+  },
+  "NY-03": {
+   "radius_m": 88,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 1,
+     "names": [
+      "U S ARMY NATIONAL GUARD CAMP SMITH TRAINING SITE RANGES"
+     ]
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": {
+     "err": "Unable to perform query. Too many requests."
+    }
+   }
+  },
+  "NY-04": {
+   "radius_m": 112,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland"
+   ],
+   "nwi_100ft": 2,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 1,
+     "names": [
+      "NEW YORK PRESBYTERIAN HUDSON VALLEY HOSPITAL"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 1
+   }
+  },
+  "NY-05": {
+   "radius_m": 251,
+   "pin_basis": "Street or landmark level",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Pond"
+   ],
+   "nwi_100ft": 3,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 7,
+     "names": [
+      "GYRODYNE CO OF AMERICA INC",
+      "CDM DYNAMICS",
+      "BIOTHOTIC INC",
+      "STONY BROOK UNIVERSITY HOSPITAL CABINET SHOP"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 3
+   }
+  },
+  "NY-06": {
+   "radius_m": 246,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 1,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 0
+   }
+  },
+  "NY-07": {
+   "radius_m": 72,
+   "pin_basis": "Street or landmark level",
+   "flood_pin": [
+    "AE"
+   ],
+   "flood_site": [
+    "AE"
+   ],
+   "sfha_site": true,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 0
+   }
+  },
+  "NY-08": {
+   "radius_m": 190,
+   "pin_basis": "Street or landmark level",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "AE",
+    "X (0.2%)",
+    "X"
+   ],
+   "sfha_site": true,
+   "nwi_site": [
+    "Riverine"
+   ],
+   "nwi_100ft": 1,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 2,
+     "names": [
+      "ASTRA CO",
+      "MOBIL OIL CORP SS GAK"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 2
+   }
+  },
+  "NY-09": {
+   "radius_m": 179,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland"
+   ],
+   "nwi_100ft": 5,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 2
+   }
+  },
+  "NY-10": {
+   "radius_m": 72,
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 1,
+     "names": [
+      "MID HUDSON REGIONAL HOSPITAL AT WESTCHESTER MEDICAL CENTER"
+     ]
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": {
+     "err": "Unable to perform query. Too many requests."
+    }
+   }
+  },
+  "NY-11": {
+   "radius_m": 152,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "AE",
+    "X (0.2%)",
+    "X"
+   ],
+   "sfha_site": true,
+   "nwi_site": [
+    "Freshwater Pond",
+    "Riverine"
+   ],
+   "nwi_100ft": 8,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 0
+   }
+  },
+  "NY-12": {
+   "radius_m": 338,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "AE",
+    "X (0.2%)",
+    "X"
+   ],
+   "sfha_site": true,
+   "nwi_site": [
+    "Freshwater Emergent Wetland",
+    "Freshwater Forested/Shrub Wetland",
+    "Freshwater Pond",
+    "Riverine"
+   ],
+   "nwi_100ft": 7,
+   "epa": {
+    "npl_1mi": {
+     "n": 1,
+     "names": [
+      "NEPERA CHEMICAL CO INC"
+     ]
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 4
+   }
+  },
+  "NY-13": {
+   "radius_m": 241,
+   "pin_basis": "Street or landmark level",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [
+    "Freshwater Forested/Shrub Wetland"
+   ],
+   "nwi_100ft": 1,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 1
+   }
+  },
+  "NY-14": {
+   "radius_m": 168,
+   "pin_basis": "Street or landmark level",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 0
+   }
+  },
+  "NY-15": {
+   "radius_m": 385,
+   "pin_basis": "Street or landmark level",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "A",
+    "X"
+   ],
+   "sfha_site": true,
+   "nwi_site": [
+    "Freshwater Pond",
+    "Riverine"
+   ],
+   "nwi_100ft": 3,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 3
+   }
+  },
+  "NY-16": {
+   "radius_m": 197,
+   "pin_basis": "Verified address or owner parcel",
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
+   "nwi_site": [],
+   "nwi_100ft": 0,
+   "epa": {
+    "npl_1mi": {
+     "n": 0,
+     "names": []
+    },
+    "brownfield_half_mi": {
+     "n": 0,
+     "names": []
+    },
+    "rcra_adjacent": {
+     "n": 0,
+     "names": []
+    },
+    "tri_half_mi": {
+     "n": 0,
+     "names": []
+    }
+   },
+   "ny": {
+    "dec_wetlands_within_100ft": 0
+   }
+  }
+ }
+}
