@@ -21,10 +21,10 @@ export interface Row {
   verdict: string; verdict_reason: string; track: string; units: number; acres: number; drive: number;
   lat: number; lon: number; yoc: Record<TaxKey, number>; max_land: Record<TaxKey, number>;
   land_cost: number; land_basis: string; dscr: number; approval: number; rent: number; need: number; total: number;
-  next_step: string; short: boolean; capital: number; equity: number; debt: number;
+  next_step: string; short: boolean; capital: number; equity: number; debt: number; entRisk: number; entBand: string; entPath: string;
 }
 
-type SortKey = "rank" | "name" | "state" | "units" | "capital" | "yoc" | "max_land" | "land_cost" | "cushion" | "dscr" | "approval" | "rent" | "need";
+type SortKey = "rank" | "name" | "state" | "units" | "capital" | "entRisk" | "yoc" | "max_land" | "land_cost" | "cushion" | "dscr" | "approval" | "rent" | "need";
 
 export default function PipelineExplorer({ rows, hurdle, target }: { rows: Row[]; hurdle: number; target: number }) {
   const router = useRouter();
@@ -86,11 +86,11 @@ export default function PipelineExplorer({ rows, hurdle, target }: { rows: Row[]
     </th>
   );
   const exportCsv = () => {
-    const head = ["Rank", "ID", "Site", "Municipality", "County", "State", "Verdict", "Track", "Units", "Total capitalization $", "Equity $", "Construction debt $", "Acres", "Drive min", `YOC ${TAX_LABEL[tax]}`, "YOC fully taxed", "YOC PILOT", "YOC nonprofit", `Max land ${TAX_LABEL[tax]}`, "Land basis $", "Land basis source", "Cushion $", "DSCR", "Approval", "Rent support", "Need", "Composite", "Verdict reason", "Next step"];
+    const head = ["Rank", "ID", "Site", "Municipality", "County", "State", "Verdict", "Track", "Units", "Total capitalization $", "Equity $", "Construction debt $", "Acres", "Drive min", `YOC ${TAX_LABEL[tax]}`, "YOC fully taxed", "YOC PILOT", "YOC nonprofit", `Max land ${TAX_LABEL[tax]}`, "Land basis $", "Land basis source", "Cushion $", "DSCR", "Approval", "Entitlement path", "Entitlement risk", "Rent support", "Need", "Composite", "Verdict reason", "Next step"];
     const q = (v: any) => `"${String(v ?? "").replace(/"/g, '""')}"`;
     const lines = sorted.map((r) => [r.rank, r.id, r.name, r.municipality, r.county, r.state, r.verdict, r.track, r.units, Math.round(r.capital), Math.round(r.equity), Math.round(r.debt), r.acres, r.drive,
       (r.yoc[tax] * 100).toFixed(2) + "%", (r.yoc.full_tax * 100).toFixed(2) + "%", (r.yoc.pilot * 100).toFixed(2) + "%", (r.yoc.nonprofit_exempt * 100).toFixed(2) + "%",
-      Math.round(r.max_land[tax]), Math.round(r.land_cost), r.land_basis, Math.round(r.max_land[tax] - r.land_cost), r.dscr.toFixed(2), r.approval, r.rent, r.need, r.total, r.verdict_reason, r.next_step].map(q).join(","));
+      Math.round(r.max_land[tax]), Math.round(r.land_cost), r.land_basis, Math.round(r.max_land[tax] - r.land_cost), r.dscr.toFixed(2), r.approval, r.entPath, r.entRisk, r.rent, r.need, r.total, r.verdict_reason, r.next_step].map(q).join(","));
     const blob = new Blob([[head.map(q).join(","), ...lines].join("\n")], { type: "text/csv;charset=utf-8" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -164,7 +164,7 @@ export default function PipelineExplorer({ rows, hurdle, target }: { rows: Row[]
               {th("max_land", "Max land @ 6.5%", true, "NOI / 6.5% − cost ex-land")}
               {th("land_cost", "Land basis", true)}{th("cushion", "Cushion", true, "Max land − land basis")}
               {th("dscr", "DSCR", true, "60% LTC, 6.75%, 30-yr amortization")}
-              {th("approval", "Appr.", true, "Town approval score (0–100)")}{th("rent", "Rent", true, "Rent support score")}{th("need", "Need", true, "Need score")}
+              {th("approval", "Appr.", true, "Town approval score (0–100)")}{th("entRisk", "Ent. risk", true, "Entitlement risk score (0–100, higher is riskier): path, opposition, environmental screening, utilities")}{th("rent", "Rent", true, "Rent support score")}{th("need", "Need", true, "Need score")}
               <th>Next step</th>
             </tr></thead>
             <tbody>
@@ -183,12 +183,12 @@ export default function PipelineExplorer({ rows, hurdle, target }: { rows: Row[]
                     <td className="num" title={`Land basis: ${r.land_basis}`}>{usdM(r.land_cost)}<div className="xs muted">{r.land_basis}</div></td>
                     <td className="num" style={{ color: cushion >= 0 ? "var(--pursue)" : "var(--danger)" }}>{usdM(cushion)}</td>
                     <td className="num">{r.dscr.toFixed(2)}x</td>
-                    <td className="num">{r.approval}</td><td className="num">{r.rent}</td><td className="num">{r.need}</td>
+                    <td className="num">{r.approval}</td><td className="num" title={`${r.entPath} · ${r.entBand}`} style={{ color: r.entRisk >= 70 ? "var(--danger)" : r.entRisk >= 55 ? "#c46f0a" : "var(--ink-2)" }}>{r.entRisk}</td><td className="num">{r.rent}</td><td className="num">{r.need}</td>
                     <td className="small" style={{ minWidth: 220 }}>{r.next_step}</td>
                   </tr>
                 );
               })}
-              {!sorted.length && <tr><td colSpan={15} className="muted" style={{ padding: 24, textAlign: "center" }}>No sites match these filters.</td></tr>}
+              {!sorted.length && <tr><td colSpan={16} className="muted" style={{ padding: 24, textAlign: "center" }}>No sites match these filters.</td></tr>}
             </tbody>
           </table>
         </div>
