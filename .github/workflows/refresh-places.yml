@@ -1,0 +1,34 @@
+name: Refresh nearby places
+
+# Pulls nearby amenities for every site from OpenStreetMap and commits the snapshots,
+# so the live maps never wait on the public Overpass servers. Each commit redeploys Vercel.
+on:
+  schedule:
+    - cron: "30 6 * * 1"   # Mondays 06:30 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch places
+        env:
+          PREFETCH_PLACES: "1"
+          PREFETCH_BUDGET_MIN: "45"
+          PREFETCH_WORKERS: "1"
+          PREFETCH_MAX_AGE_DAYS: "5"
+        run: node --experimental-strip-types --no-warnings scripts/prefetch-places.mjs
+      - name: Commit snapshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/places
+          git diff --cached --quiet && echo "no changes" || (git commit -m "Refresh nearby places snapshots" && git push)
