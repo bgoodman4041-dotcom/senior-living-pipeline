@@ -101,10 +101,11 @@ export interface Poi { id: string; cat: Cat; name: string; kind: string; lon: nu
 const OVERPASS = [
   "https://overpass-api.de/api/interpreter",
   "https://overpass.private.coffee/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter",
   "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ];
 
-function query(lat: number, lon: number) {
+export function overpassQuery(lat: number, lon: number) {
   const a = (m: number) => `(around:${Math.round(m * 1609.34)},${lat},${lon})`;
   return `[out:json][timeout:40];
 (
@@ -152,47 +153,89 @@ function classify(t: Record<string, string>): { cat: Cat; kind: string; bus?: bo
   return null;
 }
 
-const CACHE_V = "atco-poi-v2";
+export function parseOverpass(json: any, lat: number, lon: number): Poi[] {
+  const seen = new Map<string, Poi>();
+  const out: Poi[] = [];
+  for (const e of json?.elements || []) {
+    const t = e.tags || {};
+    const c = classify(t);
+    if (!c) continue;
+    const plon = e.lon ?? e.center?.lon, plat = e.lat ?? e.center?.lat;
+    if (plon === undefined || plat === undefined) continue;
+    const name = t.name || t.brand || t.operator || (c.bus ? "Bus stop" : c.kind);
+    if (!t.name && !c.bus && (c.cat === "retail" || c.cat === "civic")) continue; // skip unnamed minor POIs
+    const mi = haversineMi([lon, lat], [plon, plat]);
+    const key = `${c.cat}|${name.toLowerCase()}`;
+    const prior = seen.get(key);
+    if (prior && haversineMi([prior.lon, prior.lat], [plon, plat]) < 0.25) continue;
+    const p: Poi = { id: `${e.type}/${e.id}`, cat: c.cat, kind: c.kind, name, lon: plon, lat: plat, mi, bus: c.bus };
+    seen.set(key, p);
+    out.push(p);
+  }
+  out.sort((a, b) => a.mi - b.mi);
+  return out;
+}
+
+/** Server side: query the Overpass mirrors in turn. Used by /api/places, which caches at the CDN. */
+export async function overpassPois(lat: number, lon: number, perMirrorMs = 25000): Promise<{ pois: Poi[]; fetchedAt: string; source: string }> {
+  const body = new URLSearchParams({ data: overpassQuery(lat, lon) });
+  let lastErr: any = null;
+  for (const url of OVERPASS) {
+    try {
+      const json = await withTimeout(async (signal) => {
+        const r = await fetch(url, { method: "POST", body, signal, headers: { "User-Agent": "ATCO-senior-living-site-selection/1.0", Accept: "application/json" } });
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      }, perMirrorMs);
+      if (json?.remark && /runtime error|timed out/i.test(json.remark) && !(json.elements || []).length) throw new Error(json.remark);
+      return { pois: parseOverpass(json, lat, lon), fetchedAt: new Date().toISOString(), source: `OpenStreetMap via ${new URL(url).host}` };
+    } catch (e) { lastErr = e; }
+  }
+  throw lastErr || new Error("Overpass unavailable");
+}
+
+const CACHE_V = "atco-poi-v3";
+/** Browser side: our cached API route first, then the public mirrors directly. Results kept 3 days in the browser. */
 export async function fetchPois(id: string, lat: number, lon: number): Promise<{ pois: Poi[]; fetchedAt: string; source: string }> {
   try {
     const c = localStorage.getItem(`${CACHE_V}:${id}`);
     if (c) {
       const j = JSON.parse(c);
-      if (Date.now() - new Date(j.fetchedAt).getTime() < 7 * 864e5 && Array.isArray(j.pois)) return j;
+      if (Date.now() - new Date(j.fetchedAt).getTime() < 3 * 864e5 && Array.isArray(j.pois) && j.pois.length) return j;
     }
   } catch { /* storage unavailable */ }
-  const body = new URLSearchParams({ data: query(lat, lon) });
-  let lastErr: any = null;
-  for (const url of OVERPASS) {
-    try {
-      const json = await withTimeout(async (signal) => {
-        const r = await fetch(url, { method: "POST", body, signal });
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      }, 45000);
-      const seen = new Map<string, Poi>();
-      const out: Poi[] = [];
-      for (const e of json.elements || []) {
-        const t = e.tags || {};
-        const c = classify(t);
-        if (!c) continue;
-        const plon = e.lon ?? e.center?.lon, plat = e.lat ?? e.center?.lat;
-        if (plon === undefined || plat === undefined) continue;
-        const name = t.name || t.brand || t.operator || (c.bus ? "Bus stop" : c.kind);
-        if (!t.name && !c.bus && (c.cat === "retail" || c.cat === "civic")) continue; // skip unnamed minor POIs
-        const mi = haversineMi([lon, lat], [plon, plat]);
-        const key = `${c.cat}|${name.toLowerCase()}`;
-        const prior = seen.get(key);
-        if (prior && haversineMi([prior.lon, prior.lat], [plon, plat]) < 0.25) continue;
-        const p: Poi = { id: `${e.type}/${e.id}`, cat: c.cat, kind: c.kind, name, lon: plon, lat: plat, mi, bus: c.bus };
-        seen.set(key, p);
-        out.push(p);
-      }
-      out.sort((a, b) => a.mi - b.mi);
-      const res = { pois: out, fetchedAt: new Date().toISOString(), source: new URL(url).host };
-      try { localStorage.setItem(`${CACHE_V}:${id}`, JSON.stringify(res)); } catch { /* quota */ }
-      return res;
-    } catch (e) { lastErr = e; }
+  const save = (res: { pois: Poi[]; fetchedAt: string; source: string }) => {
+    try { localStorage.setItem(`${CACHE_V}:${id}`, JSON.stringify(res)); } catch { /* quota */ }
+    return res;
+  };
+  try {
+    const res = await withTimeout(async (signal) => {
+      const r = await fetch(`/api/places/${encodeURIComponent(id)}`, { signal });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      return r.json();
+    }, 70000);
+    if (Array.isArray(res?.pois)) return save(res);
+  } catch { /* fall through to direct */ }
+  return save(await overpassPois(lat, lon, 30000));
+}
+
+/** Capture date of the Esri World Imagery tile under a point (its metadata layer), e.g. "Apr 27, 2026". */
+export async function fetchImageryDate(lon: number, lat: number): Promise<string | null> {
+  const d = 0.01;
+  const params = new URLSearchParams({
+    geometry: `${lon},${lat}`, geometryType: "esriGeometryPoint", sr: "4326", layers: "all", tolerance: "1",
+    mapExtent: `${lon - d},${lat - d},${lon + d},${lat + d}`, imageDisplay: "800,800,96", returnGeometry: "false", f: "json",
+  });
+  const j = await withTimeout(async (signal) => {
+    const r = await fetch(`https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/identify?${params}`, { signal });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.json();
+  }, 12000);
+  let best: number | null = null;
+  for (const r of j?.results || []) {
+    const raw = r.attributes?.SRC_DATE2 || r.attributes?.SRC_DATE;
+    const t = raw ? Date.parse(raw) : NaN;
+    if (!Number.isNaN(t) && (best === null || t > best)) best = t;
   }
-  throw lastErr || new Error("Overpass unavailable");
+  return best === null ? null : new Date(best).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 }

@@ -3,9 +3,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { Map as MLMap } from "maplibre-gl";
 import { baseStyle, setBasemap } from "@/lib/mapstyle";
 import { circle, pointInGeom, geomAcres, geomCentroid, haversineMi, bboxOf } from "@/lib/geo";
-import { CATS, CAT_COLOR, fetchPois, fetchParcels, parcelSourceFor, readField, type Cat, type Poi } from "@/lib/live";
+import { CATS, CAT_COLOR, fetchImageryDate, fetchPois, fetchParcels, parcelSourceFor, readField, type Cat, type Poi } from "@/lib/live";
 
-interface Props { id: string; name: string; lat: number; lon: number; state: string; county: string; acres: number; verdictColor: string }
+interface Props { id: string; name: string; lat: number; lon: number; state: string; county: string; acres: number; verdictColor: string; pinBasis?: string; pinAddress?: string }
 type Load<T> = { status: "idle" | "loading" | "ok" | "error" | "na"; data?: T; msg?: string };
 
 const esc = (t: any) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" } as any)[c]);
@@ -21,6 +21,7 @@ export default function SiteMap(p: Props) {
   const [parcels, setParcels] = useState<Load<any[]>>({ status: "idle" });
   const [sel, setSel] = useState<any | null>(null);
   const [pois, setPois] = useState<Load<{ pois: Poi[]; fetchedAt: string; source: string }>>({ status: "idle" });
+  const [imgDate, setImgDate] = useState<string | null>(null);
   const [on, setOn] = useState<Record<Cat, boolean>>(Object.fromEntries(CATS.map((c) => [c.key, true])) as any);
   const [openCat, setOpenCat] = useState<Cat | null>("hospital");
   const center: [number, number] = [p.lon, p.lat];
@@ -115,6 +116,13 @@ export default function SiteMap(p: Props) {
     (map.current?.getSource("sel") as any)?.setData({ type: "FeatureCollection", features: sel ? [sel] : [] });
   }, [sel, ready]);
 
+  // imagery capture date
+  useEffect(() => {
+    if (!ready) return;
+    fetchImageryDate(p.lon, p.lat).then(setImgDate).catch(() => setImgDate(null));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ready]);
+
   // amenities
   useEffect(() => {
     if (!ready) return;
@@ -189,6 +197,7 @@ export default function SiteMap(p: Props) {
           {(parcels.status === "loading" || pois.status === "loading") && (
             <div className="map-overlay map-status small">Loading {parcels.status === "loading" ? "parcels" : ""}{parcels.status === "loading" && pois.status === "loading" ? " and " : ""}{pois.status === "loading" ? "nearby places" : ""}…</div>
           )}
+          {imgDate && mode === "satellite" && <div className="map-overlay map-date xs">Imagery captured {imgDate}</div>}
           <div className="map-overlay map-legend">
             <div className="row"><span className="sw" style={{ background: p.verdictColor }} />Underwriting pin</div>
             <div className="row"><span style={{ width: 14, height: 10, background: "rgba(201,173,125,.45)", border: "2px solid #e8c88a", flex: "none" }} />Selected parcel</div>
@@ -197,7 +206,7 @@ export default function SiteMap(p: Props) {
           </div>
         </div>
         <div className="xs muted" style={{ marginTop: 8 }}>
-          The pin is the underwriting coordinate from the research dossier (±250 m) and the parcel shown is the one under it. Click any parcel line to inspect it, and confirm block/lot against the tax map before LOI. The envelope circle shows the {p.acres}-acre program footprint for scale only. Places come live from OpenStreetMap{pois.data ? ` (${pois.data.source}, ${pois.data.fetchedAt.slice(0, 10)})` : ""}.
+          Pin: {p.pinAddress ? <b>{p.pinAddress}</b> : "research coordinate"} ({p.pinBasis || "approximate"}). The parcel shown is the one under the pin; on campuses and carve-outs the pad may sit on an adjacent lot. Click any parcel line to inspect it, and confirm block/lot against the tax map before LOI. The envelope circle shows the {p.acres}-acre program footprint for scale only. Places come live from OpenStreetMap{pois.data ? ` (${pois.data.source}, ${pois.data.fetchedAt.slice(0, 10)})` : ""}.
         </div>
       </div>
 

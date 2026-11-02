@@ -174,7 +174,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
 
         <section className="section">
           <SectionHead id="location" n={N()} title="Site and surroundings" sub="Satellite view with the tax parcel under the pin, the program footprint to scale, and the hospitals, transit, retail and competing senior communities around it." />
-          <SiteMap id={s.id} name={s.name} lat={Number(s.lat)} lon={Number(s.lon)} state={s.state} county={s.county} acres={Number(s.acres)} verdictColor={VERDICT_COLOR[s.verdict as keyof typeof VERDICT_COLOR]} />
+          <SiteMap id={s.id} name={s.name} lat={Number(s.lat)} lon={Number(s.lon)} state={s.state} county={s.county} acres={Number(s.acres)} pinBasis={(s as any).pin_basis} pinAddress={(s as any).pin_address} verdictColor={VERDICT_COLOR[s.verdict as keyof typeof VERDICT_COLOR]} />
         </section>
 
         <section className="section">

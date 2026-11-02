@@ -589,8 +589,8 @@
    "state": "NJ",
    "acres": "4",
    "drive_min_midtown": "45",
-   "lat": "40.788",
-   "lon": "-74.406",
+   "lat": "40.79302",
+   "lon": "-74.37645",
    "approval_score": "62",
    "prototype": "C",
    "mix_IL": "",
@@ -781,7 +781,11 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "lat_prior": "40.788",
+   "lon_prior": "-74.406",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "50 Hanover Rd, Florham Park"
   },
   {
    "id": "NJ-06",
@@ -791,8 +795,8 @@
    "state": "NJ",
    "acres": "4",
    "drive_min_midtown": "45",
-   "lat": "40.816",
-   "lon": "-74.413",
+   "lat": "40.8135",
+   "lon": "-74.4115",
    "approval_score": "66",
    "prototype": "C",
    "mix_IL": "",
@@ -982,7 +986,11 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "lat_prior": "40.816",
+   "lon_prior": "-74.413",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "85 Whippany Rd, Whippany"
   },
   {
    "id": "NY-10",
@@ -1182,7 +1190,9 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
   },
   {
    "id": "NJ-10",
@@ -1382,7 +1392,9 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
   },
   {
    "id": "NY-03",
@@ -1392,8 +1404,8 @@
    "state": "NY",
    "acres": "6",
    "drive_min_midtown": "60",
-   "lat": "41.2935",
-   "lon": "-73.889",
+   "lat": "41.29025",
+   "lon": "-73.88823",
    "approval_score": "68",
    "prototype": "",
    "mix_IL": "",
@@ -1585,7 +1597,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "41.2935",
+   "lon_prior": "-73.889",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "2003 Crompond Rd (V S Construction Corp parcel, 17.1 ac)"
   },
   {
    "id": "CT-02",
@@ -1595,8 +1611,8 @@
    "state": "CT",
    "acres": "17.6",
    "drive_min_midtown": "75",
-   "lat": "41.262",
-   "lon": "-73.214",
+   "lat": "41.29026",
+   "lon": "-73.23345",
    "approval_score": "88",
    "prototype": "",
    "mix_IL": "103",
@@ -1802,7 +1818,11 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "lat_prior": "41.262",
+   "lon_prior": "-73.214",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "48 Monroe Tpke, Trumbull"
   },
   {
    "id": "NY-01",
@@ -1812,8 +1832,8 @@
    "state": "NY",
    "acres": "17.3",
    "drive_min_midtown": "45",
-   "lat": "41.0335",
-   "lon": "-73.683",
+   "lat": "41.03312",
+   "lon": "-73.67591",
    "approval_score": "92",
    "prototype": "",
    "mix_IL": "126",
@@ -2011,7 +2031,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "41.0335",
+   "lon_prior": "-73.683",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "900 King St, Rye Brook"
   },
   {
    "id": "CT-09",
@@ -2021,8 +2045,8 @@
    "state": "CT",
    "acres": "20",
    "drive_min_midtown": "65",
-   "lat": "41.15",
-   "lon": "-73.5",
+   "lat": "41.12287",
+   "lon": "-73.49038",
    "approval_score": "40",
    "prototype": "B",
    "mix_IL": "",
@@ -2218,7 +2242,11 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "lat_prior": "41.15",
+   "lon_prior": "-73.5",
+   "pin_basis": "Street or landmark level",
+   "pin_address": "Waveny Park (Parcel E boundary to confirm)"
   },
   {
    "id": "NY-07",
@@ -2228,8 +2256,8 @@
    "state": "NY",
    "acres": "4",
    "drive_min_midtown": "50",
-   "lat": "40.628",
-   "lon": "-73.725",
+   "lat": "40.62294",
+   "lon": "-73.71079",
    "approval_score": "45",
    "prototype": "C",
    "mix_IL": "",
@@ -2419,7 +2447,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "40.628",
+   "lon_prior": "-73.725",
+   "pin_basis": "Street or landmark level",
+   "pin_address": "Woodmere Club"
   },
   {
    "id": "CT-08",
@@ -2429,8 +2461,8 @@
    "state": "CT",
    "acres": "15.8",
    "drive_min_midtown": "50",
-   "lat": "41.04",
-   "lon": "-73.675",
+   "lat": "41.06052",
+   "lon": "-73.69286",
    "approval_score": "35",
    "prototype": "B",
    "mix_IL": "",
@@ -2627,7 +2659,11 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "lat_prior": "41.04",
+   "lon_prior": "-73.675",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "1165 King St, Greenwich"
   },
   {
    "id": "NY-04",
@@ -2637,8 +2673,8 @@
    "state": "NY",
    "acres": "9.79",
    "drive_min_midtown": "60",
-   "lat": "41.2925",
-   "lon": "-73.8925",
+   "lat": "41.2899",
+   "lon": "-73.89368",
    "approval_score": "72",
    "prototype": "",
    "mix_IL": "",
@@ -2835,7 +2871,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "41.2925",
+   "lon_prior": "-73.8925",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "1985 Crompond Rd, Cortlandt Manor"
   },
   {
    "id": "CT-03",
@@ -2845,8 +2885,8 @@
    "state": "CT",
    "acres": "26",
    "drive_min_midtown": "95",
-   "lat": "41.352",
-   "lon": "-73.012",
+   "lat": "41.325",
+   "lon": "-72.99597",
    "approval_score": "58",
    "prototype": "",
    "mix_IL": "59",
@@ -3043,7 +3083,11 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "lat_prior": "41.352",
+   "lon_prior": "-73.012",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "50 Woodfield Rd, Woodbridge"
   },
   {
    "id": "NJ-13",
@@ -3250,7 +3294,9 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
   },
   {
    "id": "NY-02",
@@ -3260,8 +3306,8 @@
    "state": "NY",
    "acres": "8",
    "drive_min_midtown": "40",
-   "lat": "41.066",
-   "lon": "-73.79",
+   "lat": "41.07189",
+   "lon": "-73.79304",
    "approval_score": "80",
    "prototype": "",
    "mix_IL": "89",
@@ -3466,7 +3512,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "41.066",
+   "lon_prior": "-73.79",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "236 Grasslands Rd, Valhalla"
   },
   {
    "id": "NJ-02",
@@ -3476,8 +3526,8 @@
    "state": "NJ",
    "acres": "11.9",
    "drive_min_midtown": "70",
-   "lat": "40.452",
-   "lon": "-74.661",
+   "lat": "40.44959",
+   "lon": "-74.65914",
    "approval_score": "90",
    "prototype": "",
    "mix_IL": "84",
@@ -3682,7 +3732,11 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "lat_prior": "40.452",
+   "lon_prior": "-74.661",
+   "pin_basis": "Street or landmark level",
+   "pin_address": "2187 Route 206 (vacant 22 ac parcel north of Country Club Meadows)"
   },
   {
    "id": "NJ-05",
@@ -3891,7 +3945,9 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
   },
   {
    "id": "NJ-03",
@@ -3901,8 +3957,8 @@
    "state": "NJ",
    "acres": "30",
    "drive_min_midtown": "62",
-   "lat": "40.713",
-   "lon": "-74.655",
+   "lat": "40.71202",
+   "lon": "-74.6631",
    "approval_score": "72",
    "prototype": "A",
    "mix_IL": "",
@@ -4107,7 +4163,11 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "lat_prior": "40.713",
+   "lon_prior": "-74.655",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "100 US Route 206, Peapack-Gladstone"
   },
   {
    "id": "NJ-11",
@@ -4117,8 +4177,8 @@
    "state": "NJ",
    "acres": "9.88",
    "drive_min_midtown": "30",
-   "lat": "40.961",
-   "lon": "-74.059",
+   "lat": "40.96874",
+   "lon": "-74.06174",
    "approval_score": "62",
    "prototype": "B",
    "mix_IL": "",
@@ -4314,7 +4374,11 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "lat_prior": "40.961",
+   "lon_prior": "-74.059",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "731 Pascack Rd, Paramus"
   },
   {
    "id": "NY-13",
@@ -4324,8 +4388,8 @@
    "state": "NY",
    "acres": "45",
    "drive_min_midtown": "50",
-   "lat": "40.593",
-   "lon": "-74.129",
+   "lat": "40.59632",
+   "lon": "-74.13376",
    "approval_score": "55",
    "prototype": "B",
    "mix_IL": "",
@@ -4521,7 +4585,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "40.593",
+   "lon_prior": "-74.129",
+   "pin_basis": "Street or landmark level",
+   "pin_address": "Brielle Ave at Walcott Ave, Staten Island"
   },
   {
    "id": "NJ-09",
@@ -4531,8 +4599,8 @@
    "state": "NJ",
    "acres": "23",
    "drive_min_midtown": "60",
-   "lat": "40.764",
-   "lon": "-74.61",
+   "lat": "40.75659",
+   "lon": "-74.60412",
    "approval_score": "45",
    "prototype": "A",
    "mix_IL": "",
@@ -4735,7 +4803,11 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "lat_prior": "40.764",
+   "lon_prior": "-74.61",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "350 Bernardsville Rd, Mendham"
   },
   {
    "id": "NJ-01",
@@ -4745,8 +4817,8 @@
    "state": "NJ",
    "acres": "38",
    "drive_min_midtown": "85",
-   "lat": "40.299",
-   "lon": "-74.815",
+   "lat": "40.31809",
+   "lon": "-74.81552",
    "approval_score": "82",
    "prototype": "A",
    "mix_IL": "",
@@ -4950,7 +5022,11 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "lat_prior": "40.299",
+   "lon_prior": "-74.815",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "540 Scotch Rd, Hopewell Twp"
   },
   {
    "id": "CT-16",
@@ -5164,7 +5240,9 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
   },
   {
    "id": "NY-08",
@@ -5174,8 +5252,8 @@
    "state": "NY",
    "acres": "28",
    "drive_min_midtown": "45",
-   "lat": "41.121",
-   "lon": "-73.779",
+   "lat": "41.1071",
+   "lon": "-73.80276",
    "approval_score": "55",
    "prototype": "A",
    "mix_IL": "",
@@ -5380,7 +5458,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "41.121",
+   "lon_prior": "-73.779",
+   "pin_basis": "Street or landmark level",
+   "pin_address": "Church St, Thornwood"
   },
   {
    "id": "NY-06",
@@ -5390,8 +5472,8 @@
    "state": "NY",
    "acres": "47",
    "drive_min_midtown": "120",
-   "lat": "40.929",
-   "lon": "-72.675",
+   "lat": "40.93373",
+   "lon": "-72.68771",
    "approval_score": "60",
    "prototype": "",
    "mix_IL": "60",
@@ -5588,7 +5670,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "40.929",
+   "lon_prior": "-72.675",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "Harrison Ave (Harrison Avenue LLC parcel, 46.8 ac)"
   },
   {
    "id": "NY-11",
@@ -5598,8 +5684,8 @@
    "state": "NY",
    "acres": "18",
    "drive_min_midtown": "50",
-   "lat": "41.1",
-   "lon": "-74.095",
+   "lat": "41.0914",
+   "lon": "-74.0777",
    "approval_score": "38",
    "prototype": "",
    "mix_IL": "",
@@ -5796,7 +5882,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "41.1",
+   "lon_prior": "-74.095",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "430-444 Saddle River Rd (Blue Rill Estates LLC parcels)"
   },
   {
    "id": "CT-01",
@@ -5806,8 +5896,8 @@
    "state": "CT",
    "acres": "38.17",
    "drive_min_midtown": "70",
-   "lat": "41.176",
-   "lon": "-73.433",
+   "lat": "41.17189",
+   "lon": "-73.44025",
    "approval_score": "45",
    "prototype": "",
    "mix_IL": "208",
@@ -6014,7 +6104,11 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "lat_prior": "41.176",
+   "lon_prior": "-73.433",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "345 Belden Hill Rd, Wilton"
   },
   {
    "id": "NY-12",
@@ -6024,8 +6118,8 @@
    "state": "NY",
    "acres": "88.66",
    "drive_min_midtown": "82",
-   "lat": "41.485",
-   "lon": "-74.265",
+   "lat": "41.46413",
+   "lon": "-74.23811",
    "approval_score": "50",
    "prototype": "B",
    "mix_IL": "",
@@ -6221,7 +6315,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "41.485",
+   "lon_prior": "-74.265",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "Maybrook Rd / CR 4 (All Mine of Orange Inc parcel, 84.8 ac)"
   },
   {
    "id": "NJ-07",
@@ -6231,8 +6329,8 @@
    "state": "NJ",
    "acres": "12",
    "drive_min_midtown": "35",
-   "lat": "40.89",
-   "lon": "-74.19",
+   "lat": "40.88993",
+   "lon": "-74.18238",
    "approval_score": "58",
    "prototype": "B",
    "mix_IL": "",
@@ -6429,7 +6527,11 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "lat_prior": "40.89",
+   "lon_prior": "-74.19",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "385 Rifle Camp Rd, Woodland Park"
   },
   {
    "id": "NJ-14",
@@ -6643,7 +6745,9 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
   },
   {
    "id": "CT-14",
@@ -6653,8 +6757,8 @@
    "state": "CT",
    "acres": "48",
    "drive_min_midtown": "120",
-   "lat": "41.78",
-   "lon": "-72.76",
+   "lat": "41.73663",
+   "lon": "-72.77292",
    "approval_score": "50",
    "prototype": "A",
    "mix_IL": "",
@@ -6858,7 +6962,11 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "lat_prior": "41.78",
+   "lon_prior": "-72.76",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "303 Tunxis Rd, West Hartford"
   },
   {
    "id": "NY-05",
@@ -6868,8 +6976,8 @@
    "state": "NY",
    "acres": "49",
    "drive_min_midtown": "85",
-   "lat": "40.905",
-   "lon": "-73.143",
+   "lat": "40.89616",
+   "lon": "-73.14466",
    "approval_score": "40",
    "prototype": "",
    "mix_IL": "",
@@ -7074,7 +7182,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "40.905",
+   "lon_prior": "-73.143",
+   "pin_basis": "Street or landmark level",
+   "pin_address": "Flowerfield, St. James"
   },
   {
    "id": "CT-05",
@@ -7084,8 +7196,8 @@
    "state": "CT",
    "acres": "30",
    "drive_min_midtown": "125",
-   "lat": "41.845",
-   "lon": "-72.8",
+   "lat": "41.83482",
+   "lon": "-72.81327",
    "approval_score": "45",
    "prototype": "A",
    "mix_IL": "",
@@ -7291,7 +7403,11 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "lat_prior": "41.845",
+   "lon_prior": "-72.8",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "200 Hopmeadow St, Simsbury"
   },
   {
    "id": "NY-09",
@@ -7301,8 +7417,8 @@
    "state": "NY",
    "acres": "25",
    "drive_min_midtown": "40",
-   "lat": "41.011",
-   "lon": "-73.918",
+   "lat": "41.02083",
+   "lon": "-73.91617",
    "approval_score": "42",
    "prototype": "A",
    "mix_IL": "",
@@ -7506,7 +7622,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "41.011",
+   "lon_prior": "-73.918",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "334 Route 9W, Palisades"
   },
   {
    "id": "NJ-12",
@@ -7714,7 +7834,9 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
   },
   {
    "id": "CT-13",
@@ -7724,8 +7846,8 @@
    "state": "CT",
    "acres": "157.5",
    "drive_min_midtown": "110",
-   "lat": "41.55",
-   "lon": "-73.41",
+   "lat": "41.52855",
+   "lon": "-73.42136",
    "approval_score": "40",
    "prototype": "A",
    "mix_IL": "",
@@ -7928,7 +8050,11 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "lat_prior": "41.55",
+   "lon_prior": "-73.41",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "401 Danbury Rd, New Milford"
   },
   {
    "id": "CT-07",
@@ -7938,8 +8064,8 @@
    "state": "CT",
    "acres": "46.9",
    "drive_min_midtown": "90",
-   "lat": "41.3",
-   "lon": "-73.045",
+   "lat": "41.27369",
+   "lon": "-73.05749",
    "approval_score": "40",
    "prototype": "A",
    "mix_IL": "",
@@ -8142,7 +8268,11 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "lat_prior": "41.3",
+   "lon_prior": "-73.045",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "584 Derby Milford Rd, Orange"
   },
   {
    "id": "CT-04",
@@ -8356,7 +8486,9 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
   },
   {
    "id": "NY-16",
@@ -8366,8 +8498,8 @@
    "state": "NY",
    "acres": "30",
    "drive_min_midtown": "120",
-   "lat": "41.93",
-   "lon": "-73.92",
+   "lat": "41.93553",
+   "lon": "-73.91263",
    "approval_score": "45",
    "prototype": "A",
    "mix_IL": "",
@@ -8570,7 +8702,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "41.93",
+   "lon_prior": "-73.92",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "6511 Springbrook Ave, Rhinebeck"
   },
   {
    "id": "CT-10",
@@ -8784,7 +8920,9 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
   },
   {
    "id": "CT-06",
@@ -8794,8 +8932,8 @@
    "state": "CT",
    "acres": "32.75",
    "drive_min_midtown": "110",
-   "lat": "41.575",
-   "lon": "-72.905",
+   "lat": "41.63147",
+   "lon": "-72.91978",
    "approval_score": "40",
    "prototype": "A",
    "mix_IL": "",
@@ -9001,7 +9139,11 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "lat_prior": "41.575",
+   "lon_prior": "-72.905",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "2279 Mount Vernon Rd, Southington"
   },
   {
    "id": "CT-12",
@@ -9011,8 +9153,8 @@
    "state": "CT",
    "acres": "50.6",
    "drive_min_midtown": "120",
-   "lat": "41.81",
-   "lon": "-73.1",
+   "lat": "41.83327",
+   "lon": "-73.08979",
    "approval_score": "45",
    "prototype": "A",
    "mix_IL": "",
@@ -9215,7 +9357,11 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
-   }
+   },
+   "lat_prior": "41.81",
+   "lon_prior": "-73.1",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "1301 Torringford West St, Torrington"
   },
   {
    "id": "NJ-08",
@@ -9429,7 +9575,9 @@
     "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
     "ccrc": "DCA registration and disclosure",
     "tax_tool": "Redevelopment-area long-term PILOT"
-   }
+   },
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
   },
   {
    "id": "NY-15",
@@ -9439,8 +9587,8 @@
    "state": "NY",
    "acres": "115",
    "drive_min_midtown": "122",
-   "lat": "42.095",
-   "lon": "-73.96",
+   "lat": "42.11595",
+   "lon": "-73.96005",
    "approval_score": "40",
    "prototype": "A",
    "mix_IL": "",
@@ -9645,7 +9793,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "42.095",
+   "lon_prior": "-73.96",
+   "pin_basis": "Street or landmark level",
+   "pin_address": "Lazy Swan Golf & Country Club, Saugerties"
   },
   {
    "id": "NY-14",
@@ -9655,8 +9807,8 @@
    "state": "NY",
    "acres": "22",
    "drive_min_midtown": "55",
-   "lat": "41.214",
-   "lon": "-74.041",
+   "lat": "41.22462",
+   "lon": "-74.03093",
    "approval_score": "20",
    "prototype": "",
    "mix_IL": "",
@@ -9862,7 +10014,11 @@
     "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
     "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
     "tax_tool": "County IDA PILOT + sales-tax exemption"
-   }
+   },
+   "lat_prior": "41.214",
+   "lon_prior": "-74.041",
+   "pin_basis": "Street or landmark level",
+   "pin_address": "Patriot Hills Golf Club, Stony Point"
   }
  ]
 }

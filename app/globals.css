@@ -308,3 +308,4 @@ table.t { width: 100%; border-collapse: collapse; font-size: 13px; }
   a { color: var(--ink); }
   .footer { background: #fff; color: var(--ink-3); }
 }
+.map-date { left: 12px; top: 12px; padding: 4px 9px; font-weight: 500; color: var(--ink-2); }
