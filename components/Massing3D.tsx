@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Map as MLMap } from "maplibre-gl";
 import { baseStyle, setBasemap } from "@/lib/mapstyle";
-import { buildMassing, CARE_STYLE, type Line } from "@/lib/massing";
+import { buildMassing, CARE_STYLE, FACADE, type Line } from "@/lib/massing";
 import { bboxOf } from "@/lib/geo";
 
 interface Props { lat: number; lon: number; acres: number; lines: Line[]; gsfPerUnit: Record<string, number>; parking: number; units: number; name: string }
@@ -15,6 +15,7 @@ export default function Massing3D(p: Props) {
   const [mode, setMode] = useState<"satellite" | "streets">("satellite");
   const [rotating, setRotating] = useState(false);
   const [is3d, setIs3d] = useState(true);
+  const [look, setLook] = useState<"render" | "program">("render");
   const [hover, setHover] = useState<{ care: string; stories: number } | null>(null);
   const m = useMemo(() => buildMassing([p.lon, p.lat], p.lines, p.gsfPerUnit, p.acres, p.parking), [p.lon, p.lat, p.lines, p.gsfPerUnit, p.acres, p.parking]);
   const bounds = useMemo(() => bboxOf(m.parts.features as any[])!, [m]);
@@ -40,11 +41,20 @@ export default function Massing3D(p: Props) {
           id: "mass-3d", type: "fill-extrusion", source: "mass", filter: ["==", ["get", "kind"], "building"],
           paint: { "fill-extrusion-color": ["get", "color"], "fill-extrusion-height": ["get", "height"], "fill-extrusion-base": ["get", "base"], "fill-extrusion-opacity": 0.94, "fill-extrusion-vertical-gradient": true },
         });
-        mm.on("mousemove", "mass-3d", (e: any) => {
-          const f = e.features?.[0]; mm.getCanvas().style.cursor = "pointer";
-          if (f) setHover({ care: f.properties.care, stories: +f.properties.stories });
+        mm.addSource("render", { type: "geojson", data: m.render });
+        mm.addLayer({
+          id: "render-3d", type: "fill-extrusion", source: "render", layout: { visibility: "visible" },
+          paint: { "fill-extrusion-color": ["get", "color"], "fill-extrusion-height": ["get", "height"], "fill-extrusion-base": ["get", "base"], "fill-extrusion-opacity": 1, "fill-extrusion-vertical-gradient": false },
         });
-        mm.on("mouseleave", "mass-3d", () => { mm.getCanvas().style.cursor = ""; setHover(null); });
+        mm.setLayoutProperty("mass-3d", "visibility", "none");
+        try { mm.setLight({ anchor: "map", position: [1.4, 215, 35], color: "#fff8ee", intensity: 0.42 }); } catch {}
+        for (const id of ["mass-3d", "render-3d"]) {
+          mm.on("mousemove", id, (e: any) => {
+            const f = e.features?.find((x: any) => x.properties.care); mm.getCanvas().style.cursor = f ? "pointer" : "";
+            setHover(f ? { care: f.properties.care, stories: +f.properties.stories } : null);
+          });
+          mm.on("mouseleave", id, () => { mm.getCanvas().style.cursor = ""; setHover(null); });
+        }
         frame(mm, false);
         setReady(true);
       });
@@ -56,6 +66,12 @@ export default function Massing3D(p: Props) {
   }, []);
 
   useEffect(() => { if (ready && map.current) setBasemap(map.current, mode); }, [mode, ready]);
+  useEffect(() => {
+    const mm = map.current;
+    if (!ready || !mm) return;
+    mm.setLayoutProperty("render-3d", "visibility", look === "render" ? "visible" : "none");
+    mm.setLayoutProperty("mass-3d", "visibility", look === "program" ? "visible" : "none");
+  }, [look, ready]);
   useEffect(() => {
     const mm = map.current;
     if (!ready || !mm) return;
@@ -80,6 +96,10 @@ export default function Massing3D(p: Props) {
             <button aria-pressed={mode === "satellite"} onClick={() => setMode("satellite")}>Satellite</button>
             <button aria-pressed={mode === "streets"} onClick={() => setMode("streets")}>Map</button>
           </div>
+          <div className="seg" role="group" aria-label="Style">
+            <button aria-pressed={look === "render"} onClick={() => setLook("render")}>Rendered</button>
+            <button aria-pressed={look === "program"} onClick={() => setLook("program")}>By care level</button>
+          </div>
           <div className="seg" role="group" aria-label="View">
             <button aria-pressed={is3d} onClick={() => { setIs3d(true); map.current && frame(map.current, true, true); }}>3D</button>
             <button aria-pressed={!is3d} onClick={() => { setIs3d(false); setRotating(false); map.current && frame(map.current, true, false); }}>Plan</button>
@@ -91,7 +111,7 @@ export default function Massing3D(p: Props) {
         )}
         <div className="map-overlay map-legend">
           {Array.from(new Set(s.wings.map((w) => w.care))).map((c) => (
-            <div className="row" key={c}><span style={{ width: 14, height: 10, background: CARE_STYLE[c]?.color, border: "1px solid rgba(0,0,0,.25)", flex: "none" }} />{CARE_STYLE[c]?.label} · {CARE_STYLE[c]?.stories} st</div>
+            <div className="row" key={c}><span style={{ width: 14, height: 10, background: look === "render" ? FACADE[c]?.body : CARE_STYLE[c]?.color, border: "1px solid rgba(0,0,0,.25)", flex: "none" }} />{CARE_STYLE[c]?.label} · {CARE_STYLE[c]?.stories} st{look === "render" ? ` · ${FACADE[c]?.label.toLowerCase()}` : ""}</div>
           ))}
           <div className="row"><span style={{ width: 14, height: 10, background: "#76B96A", flex: "none" }} />Courtyard</div>
           <div className="row"><span style={{ width: 14, height: 10, background: "#6b7280", flex: "none" }} />Surface parking</div>
@@ -117,7 +137,7 @@ export default function Massing3D(p: Props) {
             <tbody>{s.wings.map((w) => <tr key={w.care}><td><span style={{ display: "inline-block", width: 10, height: 10, background: CARE_STYLE[w.care]?.color, marginRight: 8, borderRadius: 2 }} />{w.care}</td><td className="num">{w.stories}</td><td className="num">{k(w.sf)}</td><td className="num">{k(w.lengthFt)} ft</td></tr>)}</tbody>
           </table>
           <p className="xs muted" style={{ marginTop: 10, marginBottom: 0 }}>
-            Generated from the underwritten unit mix: double-loaded 65-ft wings around {s.blocks > 1 ? `${s.blocks} courtyards` : "a courtyard"}, IL at 4 stories, AL at 3, MC at 2, surface parking at ~320 SF per space. It shows scale, height and coverage against the site. It is not a site plan; setbacks, grading and access come with the civil and zoning work.
+            Generated from the underwritten unit mix: double-loaded 65-ft wings around {s.blocks > 1 ? `${s.blocks} courtyards` : "a courtyard"}, IL at 4 stories, AL at 3, MC at 2, surface parking at ~320 SF per space. The rendered view adds a stone base, floor-by-floor glazing, cornice, rooftop units, a porte-cochère and landscape as a conceptual character study. It shows scale, height and coverage against the site. It is not a site plan; setbacks, grading and access come with the civil and zoning work.
           </p>
         </div>
       </div>

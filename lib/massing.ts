@@ -5,7 +5,7 @@
 export interface Line { care: string; units: number }
 export interface MassingPart { kind: "building" | "parking" | "court"; care?: string; stories?: number; height: number; base: number; coords: [number, number][] }
 export interface Massing {
-  parts: GeoJSON.FeatureCollection; center: [number, number];
+  parts: GeoJSON.FeatureCollection; render: GeoJSON.FeatureCollection; center: [number, number];
   stats: { gsf: number; footprintSf: number; coveragePct: number; far: number; maxStories: number; heightFt: number; parking: number; parkingSf: number; openSpacePct: number; blocks: number; wings: { care: string; stories: number; sf: number; lengthFt: number }[] };
 }
 
@@ -50,6 +50,8 @@ export function buildMassing(center: [number, number], lines: Line[], gsfPerUnit
   }
   // 3. geometry in local metres, blocks laid out west → east
   const local: MassingPart[] = [];
+  const wings: { care: string; stories: number; a: [number, number]; e: [number, number]; dir: [number, number] }[] = [];
+  const courts: [number, number, number, number][] = [];
   let x0 = 0, maxH = 0;
   const dims = blocks.map((b) => {
     const P = Math.max(b.reduce((a, s) => a + s.len, 0), 60);
@@ -78,6 +80,7 @@ export function buildMassing(center: [number, number], lines: Line[], gsfPerUnit
         const a = [s.start[0] + s.dir[0] * pos, s.start[1] + s.dir[1] * pos];
         const e = [s.start[0] + s.dir[0] * (pos + take), s.start[1] + s.dir[1] * (pos + take)];
         const nx = -s.dir[1] * (DEPTH / 2), ny = s.dir[0] * (DEPTH / 2);
+        wings.push({ care: seg.care, stories: seg.stories, a: a as [number, number], e: e as [number, number], dir: s.dir as [number, number] });
         local.push({ kind: "building", care: seg.care, stories: seg.stories, base: 0, height: heightOf(seg.stories),
           coords: [[a[0] - nx, a[1] - ny], [e[0] - nx, e[1] - ny], [e[0] + nx, e[1] + ny], [a[0] + nx, a[1] + ny], [a[0] - nx, a[1] - ny]] });
         rem -= take; pos += take;
@@ -85,6 +88,7 @@ export function buildMassing(center: [number, number], lines: Line[], gsfPerUnit
       }
     }
     const i = DEPTH / 2 + 2;
+    courts.push([x0 + i, i, x0 + W - i, H - i]);
     local.push({ kind: "court", base: 0, height: 0.3, coords: [[x0 + i, i], [x0 + W - i, i], [x0 + W - i, H - i], [x0 + i, H - i], [x0 + i, i]] });
     x0 += W + DEPTH + GAP;
   });
@@ -105,13 +109,15 @@ export function buildMassing(center: [number, number], lines: Line[], gsfPerUnit
     geometry: { type: "Polygon", coordinates: [p.coords.map(toLL)] },
   }));
 
+  const render = renderParts(wings, courts, { pw, py, ph, totalW }, toLL);
+
   const gsf = segs.reduce((a, s) => a + s.sf, 0);
   const footprintSf = segs.reduce((a, s) => a + s.sf / s.stories, 0);
   const siteSf = acres * 43560;
   const parkingSf = parkM2 / SF;
   const maxStories = Math.max(...segs.map((s) => s.stories));
   return {
-    parts: { type: "FeatureCollection", features }, center,
+    parts: { type: "FeatureCollection", features }, render, center,
     stats: {
       gsf, footprintSf, coveragePct: footprintSf / siteSf, far: gsf / siteSf, maxStories,
       heightFt: heightOf(maxStories) / FT, parking: parkingSpaces, parkingSf,
@@ -119,4 +125,92 @@ export function buildMassing(center: [number, number], lines: Line[], gsfPerUnit
       wings: segs.map((s) => ({ care: s.care, stories: s.stories, sf: s.sf, lengthFt: s.len / FT })),
     },
   };
+}
+
+// ---- architectural render: stone base, floor-by-floor spandrels and inset glazing, cornice, rooftop units,
+// porte-cochere and landscape. Same footprint and heights as the program massing; illustrative only.
+export const FACADE: Record<string, { body: string; label: string }> = {
+  IL: { body: "#e8dfcc", label: "Cream fiber-cement / brick" },
+  AL: { body: "#cdb08a", label: "Warm brick" },
+  MC: { body: "#bcc6cf", label: "Gray-blue board and batten" },
+  SNF: { body: "#d9cbbd", label: "Buff masonry" },
+};
+const STONE = "#9d958a", GLASS = "#2f4356", ROOF = "#8e9298", CORNICE = "#f4f2ec", RTU = "#8d939a", CANOPY = "#f7f5f0", TREE = ["#4f7a3f", "#5d8a47", "#46703a"];
+
+function renderParts(
+  wings: { care: string; stories: number; a: [number, number]; e: [number, number]; dir: [number, number] }[],
+  courts: [number, number, number, number][],
+  park: { pw: number; py: number; ph: number; totalW: number },
+  toLL: (p: [number, number]) => [number, number],
+): GeoJSON.FeatureCollection {
+  const out: GeoJSON.Feature[] = [];
+  let id = 0;
+  const push = (coords: [number, number][], base: number, height: number, color: string, extra: Record<string, any> = {}) =>
+    out.push({ type: "Feature", id: id++, properties: { base, height, color, ...extra }, geometry: { type: "Polygon", coordinates: [[...coords, coords[0]].map(toLL)] } });
+  const rect = (a: [number, number], e: [number, number], dir: [number, number], half: number, inset: number): [number, number][] => {
+    const nx = -dir[1] * half, ny = dir[0] * half;
+    const ax = a[0] + dir[0] * inset, ay = a[1] + dir[1] * inset, ex = e[0] - dir[0] * inset, ey = e[1] - dir[1] * inset;
+    return [[ax - nx, ay - ny], [ex - nx, ey - ny], [ex + nx, ey + ny], [ax + nx, ay + ny]];
+  };
+  const ring = (outer: [number, number][], inner: [number, number][], base: number, height: number, color: string, extra: Record<string, any>) =>
+    out.push({ type: "Feature", id: id++, properties: { base, height, color, ...extra }, geometry: { type: "Polygon", coordinates: [[...outer, outer[0]].map(toLL), [...inner, inner[0]].reverse().map(toLL)] } });
+  for (const w of wings) {
+    const len = Math.hypot(w.e[0] - w.a[0], w.e[1] - w.a[1]);
+    if (len < 0.5) continue;
+    const props = { care: w.care, stories: w.stories };
+    const full = rect(w.a, w.e, w.dir, DEPTH / 2, 0);
+    const body = FACADE[w.care]?.body || "#ddd";
+    const top = GROUND + FLOOR * (w.stories - 1);
+    push(full, 0, 1.2, STONE, props);                       // stone water table
+    push(full, 1.2, top, body, props);                      // facade body
+    for (let f = 1; f < w.stories; f++) {                   // floor-line trim
+      const z = GROUND + FLOOR * (f - 1);
+      push(rect(w.a, w.e, w.dir, DEPTH / 2 + 0.08, -0.08), z - 0.12, z + 0.18, CORNICE, props);
+    }
+    push(full, top, top + 0.7, ROOF, props);                // roof membrane
+    ring(rect(w.a, w.e, w.dir, DEPTH / 2 + 0.3, -0.3), rect(w.a, w.e, w.dir, DEPTH / 2 - 0.5, 0.5), top, top + 1.2, CORNICE, props); // cornice / parapet
+    // punched windows on both long faces, every ~3.4 m, set slightly proud as glazing frames
+    const n = Math.floor((len - 2) / 3.4);
+    const off = (len - n * 3.4) / 2;
+    for (let f = 0; f < w.stories; f++) {
+      const z0 = f === 0 ? 0 : GROUND + FLOOR * (f - 1);
+      const h = f === 0 ? GROUND : FLOOR;
+      const zb = z0 + (f === 0 ? 1.4 : 0.9), zt = z0 + h - (f === 0 ? 0.9 : 0.6);
+      for (let i = 0; i < n; i++) {
+        const d0 = off + i * 3.4 + 0.95, d1 = d0 + 1.5;
+        for (const sgn of [1, -1]) {
+          const nx = -w.dir[1] * sgn, ny = w.dir[0] * sgn;
+          const P = (d: number, o: number): [number, number] => [w.a[0] + w.dir[0] * d + nx * o, w.a[1] + w.dir[1] * d + ny * o];
+          push([P(d0, DEPTH / 2 - 0.05), P(d1, DEPTH / 2 - 0.05), P(d1, DEPTH / 2 + 0.1), P(d0, DEPTH / 2 + 0.1)], zb, zt, GLASS, props);
+        }
+      }
+    }
+    // rooftop units every ~18 m, set back from the edge
+    for (let d = 6; d < len - 4; d += 18) {
+      const c: [number, number] = [w.a[0] + w.dir[0] * d, w.a[1] + w.dir[1] * d];
+      const c2: [number, number] = [c[0] + w.dir[0] * 3.2, c[1] + w.dir[1] * 3.2];
+      push(rect(c, c2, w.dir, 1.6, 0), top + 0.7, top + 2.2, RTU, props);
+    }
+  }
+  // trees: octagonal canopies in each courtyard and along the parking edge
+  const tree = (x: number, y: number, r: number, k: number) => {
+    const pts: [number, number][] = Array.from({ length: 8 }, (_, i) => [x + r * Math.cos((i * Math.PI) / 4 + 0.39), y + r * Math.sin((i * Math.PI) / 4 + 0.39)]);
+    const oct = (rr: number): [number, number][] => Array.from({ length: 8 }, (_, i) => [x + rr * Math.cos((i * Math.PI) / 4 + 0.39), y + rr * Math.sin((i * Math.PI) / 4 + 0.39)]);
+    const ht = 7 + (k % 3) * 1.4;
+    push(oct(0.25), 0, 2.6, "#6b5340", { kind: "tree" });
+    push(pts, 2.6, ht - 1.6, TREE[k % 3], { kind: "tree" });
+    push(oct(r * 0.65), ht - 1.6, ht, TREE[(k + 1) % 3], { kind: "tree" });
+  };
+  let k = 0;
+  for (const [x1, y1, x2, y2] of courts) {
+    for (let x = x1 + 7; x < x2 - 5; x += 13) for (let y = y1 + 7; y < y2 - 5; y += 13) if ((Math.round((x - x1) / 13) + Math.round((y - y1) / 13)) % 2 === 0) tree(x, y, 3.1, k++);
+  }
+  const ty = park.py + 4;
+  const ex = Math.min(30, park.totalW / 4);
+  for (let x = 4; x < Math.max(park.totalW, park.pw); x += 11) if (Math.abs(x - ex) > 11) tree(x, ty - 1, 2.6, k++);
+  for (let x = 4; x < park.pw; x += 22) tree(x, park.py - park.ph / 2, 2.4, k++);  // parking islands
+  // porte-cochere at the main entry, on the south face of the first block
+  push([[ex - 7, -DEPTH / 2], [ex + 7, -DEPTH / 2], [ex + 7, -DEPTH / 2 - 9], [ex - 7, -DEPTH / 2 - 9]], 4.2, 4.9, CANOPY, { kind: "canopy" });
+  for (const [cx, cy] of [[ex - 6.4, -DEPTH / 2 - 8.4], [ex + 6.4, -DEPTH / 2 - 8.4]]) push([[cx - 0.3, cy - 0.3], [cx + 0.3, cy - 0.3], [cx + 0.3, cy + 0.3], [cx - 0.3, cy + 0.3]], 0, 4.2, STONE, { kind: "canopy" });
+  return { type: "FeatureCollection", features: out };
 }

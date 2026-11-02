@@ -1,0 +1,136 @@
+{
+  "researched_at": "2026-11-02",
+  "note": "Named officials and staff are taken from official municipal and county pages on the date above; confirm before outreach, since boards reorganize each January.",
+  "sites": {
+    "NJ-04": {
+      "path_note": "AL/MC is not in the approved 305-unit age-restricted plan, which is tied to the borough's fourth-round fair share plan. Adding a care pad means amending that plan and the site plan, with Garden Homes as partner and a DOH expedited CN running in parallel.",
+      "likelihood_note": "High. The borough already accepted senior housing on this site in its fair share plan and approved Arbor Terrace's 100-bed AL in 2024. Opposition is low to medium. The open question is whether Garden Homes and the borough will reopen an approval the town relies on for affordable-housing compliance.",
+      "contacts": [
+        { "group": "Counterparty", "name": "Garden Homes", "role": "Owner of the 55-acre former ASCO site; approved for 305 age-restricted units", "src": "https://njbiz.com/garden-homes-florham-park-55-acre-305-units/" },
+        { "group": "Municipal staff", "name": "Alyssa Van Liew", "role": "Administrative Officer, Planning Board and Zoning Board of Adjustment", "phone": "973-410-5301", "email": "avanliew@florhamparknj.gov", "src": "https://www.florhamparknj.gov/departments/planningboard" },
+        { "group": "Municipal staff", "name": "Kayla Kaplan", "role": "Borough Engineer and Zoning Official", "phone": "973-410-5334", "email": "kkaplan@florhamparknj.gov", "src": "https://www.florhamparknj.gov/directory/landusezoning" },
+        { "group": "Elected", "name": "Mayor Mark Taylor", "role": "Mayor (term to 12/31/2027); Council President Scott Carpenter", "phone": "973-410-5300", "src": "https://www.morriscountyclerk.org/files/sharedassets/clerk/v/15/elections/2026-municipal-elected-officials-080726.pdf" },
+        { "group": "Boards", "name": "Planning Board", "role": "Chair Michael DeAngelis, Vice Chair Joseph Guerin; meets the 2nd and 4th Mondays", "src": "https://www.florhamparknj.gov/departments/planningboard" },
+        { "group": "State and county", "name": "NJ DOH Certificate of Need and Licensing", "role": "Expedited CN for the AL beds; Arbor Terrace Florham Park ERCN (5/2024) is the local precedent", "src": "https://nj.gov/health/healthfacilities/documents/CN/2024/ercn-arbor-terrance-florham-park-05212024.pdf" }
+      ],
+      "methods": [
+        "Approach Garden Homes first with a pad purchase or JV that does not reduce their affordable-unit count. The borough's fair share compliance rides on this site, so any amendment must keep or add credits.",
+        "Offer the 10% Medicaid AL beds the CN requires as additional fair share credit, subject to the age-restricted cap, and position the pad as helping the borough's compliance.",
+        "Hold a staff meeting with the Administrative Officer and the Borough Engineer before a concept plan goes to the Planning Board. Ask them which instrument applies: a fair share plan amendment, a redevelopment plan amendment or an amended site plan.",
+        "Brief Mayor Taylor and the council president before filing. Any change to the fair share plan goes back through the governing body and the court-approved compliance process."
+      ],
+      "sources": ["https://www.florhamparknj.gov/media/Public Notices/2026/2026-01-25 - Florham Park - Amended Housing Element and Fair Share Plan.pdf"]
+    },
+    "NJ-06": {
+      "path_note": "OB-RL3 permits licensed nursing homes and hospitals (2019 code). Before any amendment, ask the zoning officer for a written determination, or the Zoning Board for an interpretation under N.J.S.A. 40:55D-70b, that licensed AL/MC falls within that health-care use. If it does not, add AL as a permitted or conditional use in the JMF plan.",
+      "likelihood_note": "High. The health-care use is already permitted in the zone, opposition is low, and the township has worked with JMF on 400 homes and a hotel. The risk is a narrow reading of 'nursing home' that excludes assisted living.",
+      "contacts": [
+        { "group": "Counterparty", "name": "JMF Properties", "role": "Owner and master developer; plans for 400 homes and a hotel on the Whippany site", "src": "https://re-nj.com/forging-ahead-jmf-eyes-400-homes-hotel-in-whippany-after-acquiring-coveted-development-site/" },
+        { "group": "Municipal staff", "name": "Land Use Office", "role": "Planning Board and Board of Adjustment applications", "phone": "973-428-2461", "src": "https://www.hanovertownship.com/directory" },
+        { "group": "Municipal staff", "name": "Construction Code Official / Zoning Officer", "role": "Zoning determinations (Building & Zoning Department)", "phone": "973-428-2462", "src": "https://www.hanovertownship.com/directory" },
+        { "group": "Elected", "name": "Mayor Thomas \"Ace\" Gallagher", "role": "Mayor; Township Committee: Brian J. Cahill, Michael A. Mihalko, John L. Ferramosca, Ronald F. Francioli", "phone": "973-428-2500", "src": "https://www.morriscountyclerk.org/files/sharedassets/clerk/v/15/elections/2026-municipal-elected-officials-080726.pdf" },
+        { "group": "State and county", "name": "Morris County Planning Board", "role": "County site plan review (Route 10 / Whippany Road access and drainage)", "src": "https://www.morriscountynj.gov/" }
+      ],
+      "methods": [
+        "Ask for a zoning officer's determination first. It is cheap, fast and appealable, and it can turn an amendment path into a site-plan-only path.",
+        "Structure the deal with JMF as a pad sale with shared infrastructure and reciprocal easements, so the AL/MC rides on their access, utilities and stormwater approvals.",
+        "Frame the use as health care, not housing: licensed beds and clinical staff fit the OB-RL3 purpose next to the township's office and medical base.",
+        "Meet with the Land Use Office to confirm the Planning Board's submission checklist and escrow, and whether the township planner will support an interpretation."
+      ],
+      "sources": ["https://njbiz.com/cushman-wakefield-morris-county-development-site/"]
+    },
+    "NJ-10": {
+      "path_note": "Brookside at Montville was approved by the Zoning Board of Adjustment (5-2, 18 variances, 10/4/2023) and appealed by Montville Residents for Responsible Growth LLC. Diversified closed title in March 2026. Adding AL/MC means amending that use-variance approval at the Zoning Board, which needs 5 of 7 votes and reopens the record to the same objectors. Montville is in the Highlands region, so Highlands consistency also applies.",
+      "likelihood_note": "Moderate. The board has approved senior use here, but by a variance and over organized, funded opposition that appealed. A care component draws less traffic than the 266 units, but any amendment invites a second challenge.",
+      "contacts": [
+        { "group": "Counterparty", "name": "Diversified Properties (Nicholas Minoia, managing member)", "role": "Owner; approved for 266 age-restricted units with about 15 acres of conservation land", "src": "https://www.roi-nj.com/2026/03/09/real_estate_development/diversified-properties-closes-on-montville-property-advancing-plans-for-55-community/" },
+        { "group": "Municipal staff", "name": "Land Use Office", "role": "Planning Board and Zoning Board of Adjustment administration", "phone": "973-331-3319", "src": "https://www.montvillenj.org/directory" },
+        { "group": "Elected", "name": "Mayor Frank W. Cooney", "role": "Mayor; Deputy Mayor Matthew S. Kayne; Committee: June Witty, Christopher Fano, Daria Senaldi", "phone": "973-331-3300", "src": "https://www.morriscountyclerk.org/files/sharedassets/clerk/v/15/elections/2026-municipal-elected-officials-080726.pdf" },
+        { "group": "Opposition", "name": "Montville Residents for Responsible Growth LLC", "role": "Appellant against the 2023 Zoning Board approval; organized and funded", "src": "https://www.gofundme.com/f/montville-residents-for-responsible-growth-appeal" },
+        { "group": "State and county", "name": "NJ Highlands Council", "role": "Montville is a Highlands municipality; a consistency review applies to major development", "src": "https://www.nj.gov/njhighlands/region/local/montville_township.shtml" }
+      ],
+      "methods": [
+        "Confirm the status of the 2023 appeal before any LOI. Do not file an amendment while the original approval is being litigated.",
+        "Build the amendment on lower impact: AL/MC trips are a fraction of the 266 units, and placing the care building on the already-disturbed footprint avoids new wetlands or conservation-area impacts.",
+        "Meet with the objectors' leadership before the Zoning Board does. Offer a conservation and tree-replacement package and a construction traffic plan.",
+        "Use Diversified's existing professionals and approved stormwater design, so the board reviews a delta rather than a new project."
+      ],
+      "sources": ["https://www.gofundme.com/f/montville-residents-for-responsible-growth-appeal"]
+    },
+    "NY-10": {
+      "path_note": "Hudson Heritage's approved master plan includes assisted living. The pad needs Planning Board site plan approval within the approved plan, and SEQRA consistency with the master plan's findings, so a new EIS is not needed if the program fits the envelope. DOH ALR / EALR licensure runs in parallel.",
+      "likelihood_note": "High. The use and density are already approved, the master developer is building, and town staff are professionally led. The main risk is commercial: pad pricing and timing with EFG/Saber.",
+      "contacts": [
+        { "group": "Counterparty", "name": "EFG/Saber Heritage", "role": "Master developer of the $300M Hudson Heritage mixed-use project", "src": "https://www.prweb.com/releases/work-progresses-on-300m-hudson-heritage-project-in-town-of-poughkeepsie-n-y--800664038.html" },
+        { "group": "Municipal staff", "name": "Michael Welti, AICP", "role": "Director of Municipal Development", "phone": "845-485-3657", "src": "https://www.townofpoughkeepsie-ny.gov/Directory.aspx?did=19" },
+        { "group": "Municipal staff", "name": "Kristen E. Taylor, AICP", "role": "Senior Planner", "phone": "845-485-3657", "src": "https://www.townofpoughkeepsie-ny.gov/Directory.aspx?did=19" },
+        { "group": "Elected", "name": "Supervisor Rebecca Edwards", "role": "Town Supervisor; Town Hall, 1 Overocker Road", "phone": "845-485-3600", "src": "https://spectrumlocalnews.com/nys/central-ny/know-your-electeds/2024/05/06/know-your-electeds-poughkeepsie-supervisor-rebecca-edwards" },
+        { "group": "Boards", "name": "Planning Board", "role": "Chair Carl Whitehead", "src": "https://www.townofpoughkeepsie-ny.gov/Directory.aspx?did=19" },
+        { "group": "State and county", "name": "Dutchess County Department of Planning and Development", "role": "GML §239-m referral", "src": "https://dos.ny.gov/node/27306" }
+      ],
+      "methods": [
+        "Negotiate the pad with EFG/Saber on a finished-pad basis (utilities, access and stormwater delivered) so the town reviews only the building.",
+        "Meet with Michael Welti to confirm the program fits the master plan's SEQRA findings statement. If it does, the Planning Board can act on a consistency determination with no new EIS.",
+        "File the DOH ALR / EALR application at schematic design. Licensure is usually the longer pole than the site plan here.",
+        "Present the project as the care component the town already approved, so the board is completing its own plan."
+      ],
+      "sources": ["https://realestateindepth.com/work-progresses-on-300m-hudson-heritage-mixed-use-project-in-town-of-poughkeepsie"]
+    },
+    "NY-03": {
+      "path_note": "The Medical Oriented District (2023) encourages AL, IL and SNF across from NYP Hudson Valley Hospital. VS Construction's 96,850 SF assisted living at 2003 Crompond Road is in a Planning Board public hearing for site plan approval plus tree, wetland and steep-slope permits. The hearing was adjourned on 5/5/2026 to 6/2/2026 over stormwater, a retaining wall and fire access.",
+      "likelihood_note": "High on use, medium on timing. The town created the district for this use. The open items are technical, not about the use itself, but neighbors along Route 202 have pushed back on MOD projects generally.",
+      "contacts": [
+        { "group": "Counterparty", "name": "VS Construction Corporation", "role": "Applicant for the AL at 2003 Crompond Road (MOD)", "src": "https://www.townofcortlandtny.gov/uppages/Planning Board Minutes 05_05_2026.pdf" },
+        { "group": "Municipal staff", "name": "Heather LaVarnway, CNU-A, AICP", "role": "Director, Department of Planning & Community Development", "phone": "914-734-1080", "email": "HeatherL@townofcortlandtny.gov", "src": "https://www.townofcortlandtny.gov/cn/webpage.cfm?tpid=2514" },
+        { "group": "Municipal staff", "name": "Michelle Robbins, AICP", "role": "Assistant Planner", "phone": "914-734-1080", "email": "micheller@townofcortlandtny.gov", "src": "https://www.townofcortlandtny.gov/cn/webpage.cfm?tpid=2514" },
+        { "group": "Elected", "name": "Supervisor Richard H. Becker, MD", "role": "Town Supervisor; Town Board: James F. Creighton, Cristin Jacoby, Robert E. Mayes, Joyce C. White", "src": "https://www.townofcortlandtny.gov/uppages/AGENDA-MAY26-FOR POSTING.pdf" },
+        { "group": "Boards", "name": "Planning Board", "role": "Chairman Steven Kessler, Vice Chairman Thomas A. Bianchi", "src": "https://www.townofcortlandtny.gov/uppages/Planning Board Minutes 05_05_2026.pdf" },
+        { "group": "Counsel and consultants", "name": "Zarin & Steinmetz (David Steinmetz)", "role": "Applicant counsel on the MOD assisted living; DTS Provident (Val and Mandy Santucci, Matt Steinberg) are the engineers and planners", "src": "https://www.townofcortlandtny.gov/uppages/Planning Board Minutes 05_05_2026.pdf" },
+        { "group": "Counsel and consultants", "name": "LaBella Associates", "role": "Town engineering review consultant; their comment memos set the technical bar", "src": "https://www.townofcortlandtny.gov/uppages/Planning Board Minutes 05_05_2026.pdf" }
+      ],
+      "methods": [
+        "Track the 6/2/2026 and later hearings. Once stormwater and fire access close, the approval is buildable, and buying it with the site is cheaper than re-entitling.",
+        "If you partner rather than buy, keep the existing team (Zarin & Steinmetz, DTS Provident). They hold the board's confidence and the full record.",
+        "Close the LaBella and Fire Advisory Board comments in writing before each hearing. This board adjourns rather than denies when technical items stay open.",
+        "Frame the project around the hospital across the street and the Envision Cortlandt plan the town adopted unanimously."
+      ],
+      "sources": ["https://www.theexaminernews.com/?p=75353172", "https://www.townofcortlandtny.gov/documents/mod/evergreen_eaf_project_narrative_revised.pdf"]
+    },
+    "CT-02": {
+      "path_note": "The Planning & Zoning Commission approved a zone change and text amendments in January 2019 (Silver Heights Development) and later a site plan 4-1, after a three-year process that included an appeal and an Inland Wetlands approval. Confirm vesting and expiry: CGS 8-3(i) gives 5 years to complete site plan work, extendable. Then file any program changes as a site plan modification, and negotiate a CGS 12-65b tax abatement with the Town Council.",
+      "likelihood_note": "High. The use is decided and the record is built. The risks are an expired or lapsed approval and the town's current posture: Trumbull leadership has publicly fought state housing mandates, so do not frame the project as housing policy.",
+      "contacts": [
+        { "group": "Counterparty", "name": "Senior Living Development, LLC (Mark De Pecol)", "role": "Owner and entitlement holder for the 340-unit campus at 48 Monroe Turnpike", "src": "https://beta.nerej.com/340-unit-senior-housing-campus-approved-in-trumbull" },
+        { "group": "Municipal staff", "name": "Rob Librandi", "role": "Land Use Planner", "phone": "203-452-5047", "src": "https://trumbull-ct.gov/Directory.aspx?DID=17" },
+        { "group": "Municipal staff", "name": "Brian Fitzgerald", "role": "Zoning Enforcement Officer (vesting and permit status)", "phone": "203-452-5052", "src": "https://trumbull-ct.gov/Directory.aspx?DID=17" },
+        { "group": "Municipal staff", "name": "Planning & Zoning office", "role": "5866 Main Street, 2nd floor, Trumbull", "phone": "203-452-5044", "src": "https://trumbull-ct.gov/Directory.aspx?DID=17" },
+        { "group": "Elected", "name": "First Selectman Vicki Tesoro", "role": "Re-elected November 2025; the Town Council approves 12-65b abatement agreements", "src": "https://patch.com/connecticut/trumbull/amp/33169314/trumbull-election-results-2025-projected-winner-revealed-in-trumbull-first-selectman-race" }
+      ],
+      "methods": [
+        "Before price talks, get the approval resolutions, the wetlands permit and any extensions from the Land Use Planner, and confirm with the ZEO that they are vested and unexpired.",
+        "Keep any changes inside the approved envelope (units, height, footprint) so they go to staff or the Commission as a minor modification, not a new public hearing.",
+        "Frame the deal as reuse of an empty office building with taxes, jobs and no school children. Avoid affordable-housing framing given the town's stance on state mandates.",
+        "Negotiate the 12-65b abatement with the First Selectman's office alongside the purchase, since it decides the fully taxed versus structured yield."
+      ],
+      "sources": ["https://commercialrecord.com/2019/01/developer-gets-ok-to-convert-trumbull-office-building-to-assisted-living-facility", "https://www.ctpublic.org/news/2025-05-01/we-got-a-lot-of-communists-in-the-state-trumbull-officials-blast-ct-affordable-housing-laws"]
+    },
+    "NY-01": {
+      "path_note": "The 900 King Street PUD is approved and in hand. The Planning Board adopted a second-amended SEQRA finding and an amended PUD site plan on 5/14/2026, with no change in units or bedrooms and conditions on the school easement, path and construction management. What remains: the Architectural Review Board, a construction management plan and building permits. Sunrise Senior Living came in as contract vendee in October 2024.",
+      "likelihood_note": "Very high on entitlement, since it is approved. The practical question is access to the deal: Sunrise is under contract. The village is also running a positive-declaration SEQR review of Erickson Living's 834-unit senior PUD at 975 Anderson Hill Road, which confirms appetite for senior use but adds competing supply.",
+      "contacts": [
+        { "group": "Counterparty", "name": "900 King Street Owner, LLC / 900 King Associates", "role": "Owner of the approved PUD; Sunrise Senior Living is contract vendee (10/2024)", "src": "https://westmorenews.com/news/2024/oct/10/900-king-associates-partners-with-sunrise-to-develop-long-awaited-senior-housing" },
+        { "group": "Municipal staff", "name": "Christopher Bradbury", "role": "Village Administrator (SEQR contact for village senior PUDs)", "phone": "914-939-0111", "src": "https://dec.ny.gov/news/environmental-notice-bulletin/2026-08-12/seqr/village-of-rye-brook-erickson-living-properties-llc" },
+        { "group": "Elected", "name": "Mayor Jason A. Klein", "role": "Mayor; Trustees Susan R. Epstein, David M. Heiser, Donald T. Krom Jr., Salvatore W. Morlino; meets 2nd and 4th Tuesdays", "src": "https://ryebrookny.gov/departments/board-of-trustees" },
+        { "group": "Counsel and consultants", "name": "Zarin & Steinmetz (David Steinmetz)", "role": "Counsel to Sunrise on the 900 King amendments; Perkins Eastman (Stuart Lax) is the architect", "src": "https://westmorenews.com/news/2024/dec/19/sunrise-senior-living-looks-to-modify-plan-for-900-king-st-community" },
+        { "group": "Opposition", "name": "The Arbors Homeowners Association (Dan Barnett, president; counsel Leslie Snyder)", "role": "Neighboring townhouse community; engaged on balconies, views and screening", "src": "https://westmorenews.com/news/2024/dec/19/sunrise-senior-living-looks-to-modify-plan-for-900-king-st-community" }
+      ],
+      "methods": [
+        "Approach the owner and Sunrise about taking a JV or capital position rather than competing for the site, since the entitlement is spoken for.",
+        "If the Sunrise contract lapses, move fast. The approval and the 5/14/2026 amended findings are the asset, and The Arbors relationship comes with it.",
+        "Keep a standing line to the Village Administrator. The village extends approvals in exchange for monthly progress reporting.",
+        "Watch the Erickson DEIS. If it advances, use it in the market study as both validation and competing supply."
+      ],
+      "sources": ["https://cpo.soar.com/articles/8005340/Rye-Brook/Westchester-County/New-York/Rye-Brook-planning-board-adopts-SEQRA-finding-and-approves-amended-site-plan-for-900-King-Street-applicants-to-formalize-school-easement-and-safety-measures", "https://ryebrookny.gov/900-king-street"]
+    }
+  }
+}

@@ -7,6 +7,7 @@ import PrintButton from "@/components/PrintButton";
 import Diligence from "@/components/Diligence";
 import CapitalDeployment from "@/components/CapitalDeployment";
 import EntitlementDossier from "@/components/EntitlementDossier";
+import ApprovalPlaybook from "@/components/ApprovalPlaybook";
 import { capitalPlan } from "@/lib/capital";
 import { VerdictChip, I, NV, Bar, SectionHead, Evidence } from "@/components/ui";
 import { sites, siteById, marketOf, markets, assumptions, comps, HURDLE, TARGET, VERDICT_COLOR, STATE_NAME, breakevenLine, trackOf, isShortlist } from "@/lib/data";
@@ -97,7 +98,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
   ];
 
   const sub = [
-    ["snapshot", "Snapshot"], ["location", "Site & surroundings"], ["massing", "3D massing"], ["entitlement", "Entitlement"], ["market", "Market & need"], ["program", "Program"],
+    ["snapshot", "Snapshot"], ["location", "Site & surroundings"], ["massing", "3D massing"], ["entitlement", "Entitlement"], ["playbook", "Approval playbook"], ["market", "Market & need"], ["program", "Program"],
     ["proforma", "Pro forma"], ["tax", "Tax structure"], ["stress", "Stress"], ...(ef ? [["fees", "Entrance fees"]] : []),
     ["whatif", "What-if"], ["capital", "Capital deployment"], ["risks", "Risks"], ["diligence", "Diligence"], ["sources", "Sources"],
   ];
@@ -209,6 +210,11 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
               <tr><td>Skilled nursing</td><td><NV v={reg.snf} /></td></tr>
             </tbody></table>
           } />
+        </section>
+
+        <section className="section">
+          <SectionHead id="playbook" n={N()} title="Approval playbook" sub="How likely the town is to approve, the step-by-step path, who to talk to and how to run the approval." />
+          <ApprovalPlaybook site={s} a={a} />
         </section>
 
         <section className="section">
