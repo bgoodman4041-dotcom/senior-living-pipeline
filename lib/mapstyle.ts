@@ -58,8 +58,8 @@ export function baseStyle(): any {
       { id: "bg", type: "background", paint: { "background-color": "#e9ece9" } },
       { id: "carto", type: "raster", source: "carto", paint: { "raster-saturation": -0.45, "raster-contrast": -0.04, "raster-brightness-min": 0.04 } },
       { id: "esri", type: "raster", source: "esri", layout: { visibility: "none" } },
-      { id: "esriRoads", type: "raster", source: "esriRoads", layout: { visibility: "none" }, paint: { "raster-opacity": 0.75 } },
-      { id: "esriRef", type: "raster", source: "esriRef", layout: { visibility: "none" } },
+      { id: "esriRoads", type: "raster", source: "esriRoads", maxzoom: 17, layout: { visibility: "none" }, paint: { "raster-opacity": 0.75 } },
+      { id: "esriRef", type: "raster", source: "esriRef", maxzoom: 17, layout: { visibility: "none" } },
     ],
   };
 }
