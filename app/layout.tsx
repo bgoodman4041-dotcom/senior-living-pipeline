@@ -3,6 +3,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
 import { meta } from "@/lib/data";
+import { longDate } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: { default: "Senior Living Site Selection | ATCO", template: "%s | ATCO Senior Living" },
@@ -27,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="topbar">
           <div className="wrap">
             <span>ATCO Properties &amp; Management · A family of real estate companies</span>
-            <span className="hide-sm">Senior Living Platform · Data as of {meta.as_of}</span>
+            <span className="hide-sm">Senior Living Platform · Data as of {longDate(meta.as_of)}</span>
           </div>
         </div>
         <Header />

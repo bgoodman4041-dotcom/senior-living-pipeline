@@ -1,13 +1,19 @@
 import PipelineExplorer, { type Row } from "@/components/PipelineExplorer";
 import { VerdictChip } from "@/components/ui";
 import { sites, shortlist, funnel, meta, HURDLE, TARGET, trackOf, satThumb, assumptions } from "@/lib/data";
-import { pct, usdM, int } from "@/lib/format";
+import { pct, usdM, int, longDate } from "@/lib/format";
 
 export default function Home() {
   const pursue = sites.filter((s) => s.verdict === "Pursue");
   const wYoc = pursue.reduce((a, s) => a + s.uw.noi, 0) / pursue.reduce((a, s) => a + s.uw.total_cost, 0);
   const headroom = pursue.reduce((a, s) => a + (s.uw.land_cushion || 0), 0);
   const shortUnits = shortlist.reduce((a, s) => a + s.uw.units, 0);
+  const capRows = shortlist.map((s) => {
+    const ef = /entrance-fee/.test(s.verdict_reason);
+    const struct = ef ? "Entrance fee" : s.verdict === "Pursue-structured" ? "PILOT" : "Fully taxed";
+    const noi = struct === "PILOT" ? s.uw.noi + s.uw.taxes * (1 - assumptions.tax_structures.pilot) : s.uw.noi;
+    return { s, ef, struct, noi, y: noi / s.uw.total_cost, val: noi / assumptions.exit_cap };
+  });
   const protoC = Object.values<number>(assumptions.prototypes.C.mix).reduce((x, y) => x + y, 0);
   const shortCost = shortlist.reduce((a, s) => a + s.uw.total_cost, 0);
 
@@ -38,7 +44,7 @@ export default function Home() {
           <div className="hero-meta">
             <span>Hurdle <b>{pct(HURDLE, 1)} YOC floor · {pct(TARGET, 1)} target</b></span>
             <span>Drive bands <b>NY {meta.drive_bands_min.NY} · NJ {meta.drive_bands_min.NJ} · CT {meta.drive_bands_min.CT} min</b></span>
-            <span>Data as of <b>{meta.as_of}</b></span>
+            <span>Data as of <b>{longDate(meta.as_of)}</b></span>
           </div>
         </div>
       </section>
@@ -57,6 +63,47 @@ export default function Home() {
             <div className="callout navy"><b>What needs structure.</b> IL-led campuses miss as rentals everywhere. They work only with entrance fees, a nonprofit sponsor or PILOT, or ground-leased land: the RiverSpring structure.</div>
             <div className="callout navy"><b>Where the risk sits.</b> Calibrated rent, tax and land indices drive the spread. NIC MAP pulls, rate shops and assessor letters on the shortlist come before any LOI.</div>
           </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="section-head">
+            <div><div className="eyebrow">Capital summary</div><h2>The shortlist as a portfolio</h2>
+              <p>Stabilized, fully taxed unless the verdict depends on a PILOT, in which case NOI, value and DSCR reflect it. Debt at {pct(assumptions.debt.ltc, 0)} LTC; value at a {pct(assumptions.exit_cap)} exit cap. Entrance-fee campuses are judged on fee coverage and presales, not on rental metrics (n/m), and sit outside the portfolio total.</p></div>
+          </div>
+          <div className="card"><div className="table-wrap"><table className="t">
+            <thead><tr><th>#</th><th>Site</th><th>Structure</th><th className="num">Units</th><th className="num">Total cost</th><th className="num">Cost / unit</th><th className="num">NOI</th><th className="num">YOC</th><th className="num">Value @ exit</th><th className="num">Profit on cost</th><th className="num">Equity</th><th className="num">DSCR</th></tr></thead>
+            <tbody>
+              {capRows.map(({ s, struct, noi, y, val, ef }) => (
+                <tr key={s.id}>
+                  <td className="num">{s.rank}</td>
+                  <td style={{ minWidth: 200 }}><a href={`/sites/${s.id}`} className="site-name">{s.name}</a><div className="xs muted">{s.municipality}, {s.state}</div></td>
+                  <td>{ef ? <span className="tag">Entrance fee · {Math.round(s.uw.entrance_fee.coverage * 100)}% coverage</span> : struct}</td>
+                  <td className="num">{s.uw.units}</td><td className="num">{usdM(s.uw.total_cost)}</td><td className="num">${Math.round(s.uw.total_cost / s.uw.units / 1000)}k</td>
+                  <td className="num">{ef ? <span className="muted">n/m</span> : usdM(noi, 2)}</td>
+                  <td className="num" style={{ fontWeight: 700, color: !ef && y >= HURDLE ? "var(--pursue)" : "var(--ink-2)" }}>{ef ? <span className="muted">n/m</span> : pct(y)}</td>
+                  <td className="num">{ef ? <span className="muted">n/m</span> : usdM(val)}</td>
+                  <td className="num">{ef ? <span className="muted">n/m</span> : pct(val / s.uw.total_cost - 1, 1)}</td>
+                  <td className="num">{usdM(s.uw.equity)}</td>
+                  <td className="num">{ef ? <span className="muted">n/m</span> : `${(noi / s.uw.annual_debt_service).toFixed(2)}x`}</td>
+                </tr>
+              ))}
+              {(() => {
+                const R = capRows.filter((r) => !r.ef);
+                const units = R.reduce((a, r) => a + r.s.uw.units, 0), cost = R.reduce((a, r) => a + r.s.uw.total_cost, 0);
+                const noi = R.reduce((a, r) => a + r.noi, 0), val = R.reduce((a, r) => a + r.val, 0), eq = R.reduce((a, r) => a + r.s.uw.equity, 0);
+                return (
+                  <tr style={{ background: "var(--surface-2)" }}>
+                    <td /><td><b>Rental portfolio ({R.length} sites)</b></td><td className="small muted">As structured</td><td className="num"><b>{int(units)}</b></td>
+                    <td className="num"><b>{usdM(cost)}</b></td><td className="num"><b>${Math.round(cost / units / 1000)}k</b></td><td className="num"><b>{usdM(noi, 2)}</b></td>
+                    <td className="num"><b>{pct(noi / cost)}</b></td><td className="num"><b>{usdM(val)}</b></td><td className="num"><b>{pct(val / cost - 1, 1)}</b></td>
+                    <td className="num"><b>{usdM(eq)}</b></td><td />
+                  </tr>
+                );
+              })()}
+            </tbody>
+          </table></div></div>
         </div>
       </section>
 
@@ -92,7 +139,7 @@ export default function Home() {
                 <div className="eyebrow" style={{ color: "var(--brass-soft)" }}>Next 90 days</div>
                 <h3 style={{ color: "#fff" }}>From shortlist to LOI</h3>
                 <ul style={{ paddingLeft: 18, color: "#c9d2df", fontSize: 13.5, margin: "10px 0 0" }}>
-                  <li>Owner outreach on all seven; JV terms with master-plan developers on the pads</li>
+                  <li>Owner outreach on every shortlisted site; JV terms with master-plan developers on the pads</li>
                   <li>NIC MAP and rate shops for each primary market area</li>
                   <li>Assessor estimate and PILOT term sheet where the spread is thin</li>
                   <li>Zoning opinion and licensure path (NJ CN, NY ALR, CT ALSA)</li>

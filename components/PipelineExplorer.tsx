@@ -84,6 +84,18 @@ export default function PipelineExplorer({ rows, hurdle, target }: { rows: Row[]
       {label}{sort.k === k ? (sort.dir === 1 ? " ▲" : " ▼") : ""}
     </th>
   );
+  const exportCsv = () => {
+    const head = ["Rank", "ID", "Site", "Municipality", "County", "State", "Verdict", "Track", "Units", "Acres", "Drive min", `YOC ${TAX_LABEL[tax]}`, "YOC fully taxed", "YOC PILOT", "YOC nonprofit", `Max land ${TAX_LABEL[tax]}`, "Land basis $", "Land basis source", "Cushion $", "DSCR", "Approval", "Rent support", "Need", "Composite", "Verdict reason", "Next step"];
+    const q = (v: any) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+    const lines = sorted.map((r) => [r.rank, r.id, r.name, r.municipality, r.county, r.state, r.verdict, r.track, r.units, r.acres, r.drive,
+      (r.yoc[tax] * 100).toFixed(2) + "%", (r.yoc.full_tax * 100).toFixed(2) + "%", (r.yoc.pilot * 100).toFixed(2) + "%", (r.yoc.nonprofit_exempt * 100).toFixed(2) + "%",
+      Math.round(r.max_land[tax]), Math.round(r.land_cost), r.land_basis, Math.round(r.max_land[tax] - r.land_cost), r.dscr.toFixed(2), r.approval, r.rent, r.need, r.total, r.verdict_reason, r.next_step].map(q).join(","));
+    const blob = new Blob([[head.map(q).join(","), ...lines].join("\n")], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = `atco-senior-living-pipeline-${tax}.csv`; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
   const reset = () => { setState("All"); setCounty("All"); setVerdicts(VERDICTS); setTrack("All"); setMinApproval(0); setMinYoc(0); setMaxDrive(150); setQ(""); };
 
   return (
@@ -139,6 +151,7 @@ export default function PipelineExplorer({ rows, hurdle, target }: { rows: Row[]
       <div className="section-head" style={{ marginTop: 34 }}>
         <div><h2 className="rule-title">Ranked pipeline</h2>
           <p>Every underwritten site, ranked by verdict then composite score. YOC, max land and cushion follow the tax-structure toggle. Click a row for the full dossier.</p></div>
+        <button className="btn" onClick={exportCsv}>Export {filtered.length} sites to CSV</button>
       </div>
       <div className="card hide-sm">
         <div className="table-wrap">

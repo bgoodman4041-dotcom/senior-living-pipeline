@@ -269,3 +269,17 @@ table.t { width: 100%; border-collapse: collapse; font-size: 13px; }
 @media (min-width: 1081px) { .map-sticky { position: sticky; top: 124px; } }
 @media (max-width: 720px) { .map-tall { height: 440px; } }
 @media (max-width: 720px) { .map-legend { font-size: 11px; padding: 6px 9px; bottom: 26px; left: 8px; } .map-legend .xs { display: none; } .map-tools { right: 8px; top: 8px; } }
+
+@media print {
+  @page { margin: 14mm; }
+  body { background: #fff; font-size: 11.5px; }
+  .topbar, .header, .subnav, .no-print, .map-shell, .map-tools, .footer nav, .btn, input[type="range"] { display: none !important; }
+  .site-hero, .hero { background: #fff !important; color: var(--ink) !important; }
+  .site-hero h1, .hero h1, .site-hero .sub, .crumbs, .crumbs a, .verdict-bar .big, .verdict-bar .label, .verdict-bar .cap, .verdict-bar b { color: var(--ink) !important; }
+  .verdict-bar { border-color: var(--rule-strong); background: #fff; }
+  .card { box-shadow: none; break-inside: avoid; }
+  .section { padding: 14px 0; }
+  .g-side, .g2, .g3, .g4 { grid-template-columns: 1fr 1fr; }
+  a { color: var(--ink); }
+  .footer { background: #fff; color: var(--ink-3); }
+}

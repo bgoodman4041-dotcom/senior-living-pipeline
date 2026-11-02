@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import SiteMap from "@/components/SiteMap";
 import WhatIf from "@/components/WhatIf";
+import Massing3D from "@/components/Massing3D";
+import PrintButton from "@/components/PrintButton";
 import Diligence from "@/components/Diligence";
 import { VerdictChip, I, NV, Bar, SectionHead, Evidence } from "@/components/ui";
 import { sites, siteById, marketOf, markets, assumptions, comps, HURDLE, TARGET, VERDICT_COLOR, STATE_NAME, breakevenLine, trackOf, isShortlist } from "@/lib/data";
@@ -93,7 +95,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
   ];
 
   const sub = [
-    ["snapshot", "Snapshot"], ["location", "Site & surroundings"], ["entitlement", "Entitlement"], ["market", "Market & need"], ["program", "Program"],
+    ["snapshot", "Snapshot"], ["location", "Site & surroundings"], ["massing", "3D massing"], ["entitlement", "Entitlement"], ["market", "Market & need"], ["program", "Program"],
     ["proforma", "Pro forma"], ["tax", "Tax structure"], ["stress", "Stress"], ...(ef ? [["fees", "Entrance fees"]] : []),
     ["whatif", "What-if"], ["capital", "Capital stack"], ["risks", "Risks"], ["diligence", "Diligence"], ["sources", "Sources"],
   ];
@@ -108,6 +110,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 10 }}>
             <VerdictChip v={s.verdict} />
             <span className="small" style={{ color: "#c9d2df" }}>Rank #{s.rank} of {sites.length}{isShortlist(s) ? " · Shortlist" : ""} · {trackOf(s)}</span>
+            <span style={{ marginLeft: "auto" }}><PrintButton /></span>
           </div>
           <h1>{s.name}</h1>
           <div className="sub">{s.municipality} · {s.county} County, {STATE_NAME[s.state]} · {s.acres} acres · {s.drive_min_midtown} min to Midtown</div>
@@ -172,6 +175,13 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
         <section className="section">
           <SectionHead id="location" n={N()} title="Site and surroundings" sub="Satellite view with the tax parcel under the pin, the program footprint to scale, and the hospitals, transit, retail and competing senior communities around it." />
           <SiteMap id={s.id} name={s.name} lat={Number(s.lat)} lon={Number(s.lon)} state={s.state} county={s.county} acres={Number(s.acres)} verdictColor={VERDICT_COLOR[s.verdict as keyof typeof VERDICT_COLOR]} />
+        </section>
+
+        <section className="section">
+          <SectionHead id="massing" n={N()} title="Concept massing in 3D" sub={`What the underwritten ${u.units}-unit program looks like on the ground: drag to orbit, right-drag or Ctrl-drag to tilt, hover a wing for its use.`} />
+          <Massing3D name={s.name} lat={Number(s.lat)} lon={Number(s.lon)} acres={Number(s.acres)} units={u.units} parking={parking}
+            lines={mix.map((l) => ({ care: l.care, units: l.units }))}
+            gsfPerUnit={Object.fromEntries(Object.entries<any>(a.care_levels).map(([k, v]) => [k, v.gsf_per_unit]))} />
         </section>
 
         <section className="section">

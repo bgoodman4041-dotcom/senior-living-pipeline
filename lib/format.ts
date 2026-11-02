@@ -13,3 +13,7 @@ export const int = (x: number | string | null | undefined) => {
 };
 export const mult = (x: number | null | undefined) => (x === null || x === undefined ? "—" : `${x.toFixed(2)}x`);
 export const miles = (m: number) => (m < 0.1 ? "<0.1 mi" : `${m.toFixed(1)} mi`);
+export const longDate = (iso: string) => {
+  const d = new Date(iso + "T12:00:00Z");
+  return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+};
