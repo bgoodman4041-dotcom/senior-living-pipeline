@@ -13,7 +13,7 @@
 | NOI margin before property tax | IL 46%, AL 37%, MC 35% | After-tax margins IL 38–45%, AL 28–35%, MC 25–32% [I]; REIT portfolios >25% [V] |
 | Property tax / unit / yr | $6,000 (Litchfield, Fairfield CT) to $11,000 (Nassau) | [I] effective rates × stabilized value; get assessor letters |
 | Hard cost | $360/SF × county index 0.90–1.05 | CBRE 2Q26 national hard $262.75/SF [V] × ~1.37 NY premium [I] |
-| GSF / unit | IL 1,350, AL 875, MC 725 | Net-to-gross 55.5% (CBRE) [V]; Osborn FAR 0.43 [V] |
+| GSF / unit | IL 1,350, AL 950, MC 800 (raised from 875/725 on 2026-11-03) | Benchmark East Brunswick 969 SF/unit (JLL, Jun 2026) [V]; Cortlandt Evergreen Manor 96,850 SF / 100 units [V]; Osborn FAR 0.43 [V] |
 | Site work | $325k/acre | [I] |
 | FF&E | $22k/unit | CBRE national $11,900 [V] × NY scope [I] |
 | Soft costs | 20% of hard + site | CBRE soft 16.2% of total [V] |

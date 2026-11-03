@@ -2,11 +2,13 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import icFlags from "@/data/ic-flags.json";
 import ops from "@/data/operators.json";
-import { shortlist, siteById, markets, assumptions, meta, HURDLE } from "@/lib/data";
+import { onHold, shortlist, siteById, markets, assumptions, meta, HURDLE } from "@/lib/data";
 import { capitalPlan, CAP } from "@/lib/capital";
 import { scenarios } from "@/lib/scenarios";
 import { underwrite } from "@/lib/underwrite";
-import { structuring, structVerdict } from "@/lib/structuring";
+import { structuring, structVerdict, recLabel } from "@/lib/structuring";
+import { waterfall } from "@/lib/waterfall";
+import { rentEvidence } from "@/components/RentComps";
 import { playbook } from "@/lib/playbook";
 import { gcFor } from "@/lib/contractors";
 import { absorptionFor } from "@/components/Absorption";
@@ -36,11 +38,13 @@ export default async function Memo({ params }: { params: Promise<{ id: string }>
   const all = sc?.at(-1);
   const tw = underwrite(s, markets, a);
   const st = structuring(s, markets, a);
+  const ef = cp.efCase;
+  const wf = ef ? null : waterfall(cp.levCF);
   const uses = [["Land", cp.uses.land], ["Hard cost", cp.uses.hard], ["Site work", cp.uses.siteWork], ["Contingency", cp.uses.contingency], ["FF&E", cp.uses.ffe], ["Soft cost", cp.uses.soft], ["Construction interest", cp.uses.interest], ["Lease-up reserve", cp.uses.leaseup]] as [string, number][];
   const risks: [string, string][] = [
     ["Entitlement", `${pb.d.pathLabel}; approval odds ${pb.like}% (${pb.likeBand}). ${clean(s.entitlement_status)}.`],
     ["Lease-up", `${u.leaseup_months} months to stabilization at industry-norm net move-ins (2–4 a month for AL/MC, 3–6 for IL; NIC MAP). The downside case adds 6 months.`],
-    ["Rents", `Rents run at ${tw.rent_index.toFixed(2)}x the base rate card, a calibrated estimate. A NIC MAP pull and a rate shop of the competitive set come before LOI.`],
+    ["Rents", rentEvidence(s.id) ? `${rentEvidence(s.id)!.verdict} A NIC MAP pull and a rate shop confirm before LOI.` : `Rents run at ${tw.rent_index.toFixed(2)}x the base rate card, a calibrated estimate. A NIC MAP pull and a rate shop of the competitive set come before LOI.`],
     ...(ab?.v ? [["Absorption", `${ab.v.status}. ${ab.v.text}`] as [string, string]] : []),
     ["Taxes", cp.struct === "PILOT" ? `The return depends on a PILOT (fully taxed YOC ${pct(u.yoc)}). Close only on a signed term sheet.` : `Underwritten fully taxed at $${int(Math.round(tw.tax_per_unit))} a unit; an assessor letter confirms it before LOI.`],
   ];
@@ -58,9 +62,15 @@ export default async function Memo({ params }: { params: Promise<{ id: string }>
         <div className="memo-kpis">
           <div><span>Capital required</span><b>{usdM(cp.uses.total, 1)}</b></div>
           <div><span>Equity · loan</span><b>{usdM(cp.equityCommit, 1)} · {usdM(cp.loanCommit, 1)}</b></div>
+          {ef ? <>
+            <div><span>Entrance-fee coverage of IL cost</span><b>{Math.round(u.entrance_fee.coverage * 100)}%</b></div>
+            <div><span>Nonprofit sponsor · lev. IRR</span><b>{pct(ef.nonprofit.irrL, 1)} · {mult(ef.nonprofit.em)}</b></div>
+            <div><span>Profit · nonprofit / for-profit</span><b>{usdM(ef.nonprofit.profit, 1)} / {usdM(ef.taxable.profit, 1)}</b></div>
+          </> : <>
           <div><span>Yield on cost · {cp.struct.toLowerCase()}</span><b>{pct(cp.yoc)}</b></div>
-          <div><span>Levered IRR · multiple</span><b>{pct(cp.irrLevered, 1)} · {mult(cp.equityMultiple)}</b></div>
+          <div><span>Levered IRR · LP net</span><b>{pct(cp.irrLevered, 1)} · {wf ? pct(wf.lpIrr, 1) : "n/m"}</b></div>
           <div><span>Profit at stabilization</span><b>{usdM(cp.profit, 1)}</b></div>
+          </>}
           <div><span>At risk before approval</span><b>{usdM(cp.atRiskPreEntitlement, 2)}</b></div>
         </div>
         <h2>Thesis</h2>
@@ -68,7 +78,8 @@ export default async function Memo({ params }: { params: Promise<{ id: string }>
           <li><b>Approvability.</b> {clean(s.approval_case)}. Opposition risk is {String(s.opposition_risk).toLowerCase()}.</li>
           <li><b>Deal route.</b> {clean(s.deal_route)}. {clean(s.land_note)}.</li>
           <li><b>Need and rents.</b> Need {s.scores.need}, rent support {s.scores.rent_support} and approval {s.scores.approval} on a 100-point scale.{ab ? ` About ${int(Math.round(ab.q))} age- and income-qualified households 75+ in the 7-mile market.` : ""}</li>
-          <li><b>Returns.</b> {pct(cp.yoc)} yield on cost against a {pct(HURDLE, 1)} floor. Value at a {pct(a.exit_cap)} exit cap is {usdM(cp.value, 1)} on trended NOI of {usdM(cp.noiTrended, 2)}. Max land at the floor is {usdM(u.max_land, 1)} against a {usdM(u.land_cost, 1)} basis.</li>
+          {ef ? <li><b>Returns.</b> Judged as an entrance-fee life plan, not a rental: first-generation fees cover {Math.round(u.entrance_fee.coverage * 100)}% of IL cost against a 70% screen. Owned tax-exempt by a nonprofit sponsor it makes {usdM(ef.nonprofit.profit, 1)}; ATCO&apos;s development fee is about {usdM(u.entrance_fee.developer_fee, 1)}, plus the GC contract.</li> :
+          <li><b>Returns.</b> {pct(cp.yoc)} yield on cost against a {pct(HURDLE, 1)} floor. Value at a {pct(a.exit_cap)} exit cap is {usdM(cp.value, 1)} on trended NOI of {usdM(cp.noiTrended, 2)}. Max land at the floor is {usdM(u.max_land, 1)} against a {usdM(u.land_cost, 1)} basis. LP net IRR after an 8% pref and 80/20 split: {wf ? pct(wf.lpIrr, 1) : "n/m"}.</li>}
         </ul>
         <div className="memo-cols">
           <div>
@@ -105,7 +116,7 @@ export default async function Memo({ params }: { params: Promise<{ id: string }>
         </div></>}
         {st && <div className="memo-keep">
           <h2>Structuring the downside</h2>
-          <div className={`memo-rec ic-${st.nothing ? "bad" : st.rec.key === "fee" ? "warn" : "go"}`} style={{ marginBottom: 6 }}><b>Recommended: {st.rec.label}.</b> {structVerdict(st, s)}</div>
+          <div className={`memo-rec ic-${onHold(s) || st.nothing ? "bad" : st.rec.key === "fee" ? "warn" : "go"}`} style={{ marginBottom: 6 }}><b>{recLabel(st, onHold(s))}.</b> {structVerdict(st, s, onHold(s))}</div>
           <table className="memo-t full"><thead><tr><th>Structure</th><th className="num">Base YOC</th><th className="num">Base profit</th><th className="num">Downside YOC</th><th className="num">Downside profit</th><th>Breakeven?</th></tr></thead>
             <tbody>{st.opts.map((o) => <tr key={o.key} className={o.key === st.rec.key ? "tot" : undefined}><td>{o.label}</td><td className="num">{pct(o.base.yoc)}</td><td className="num">{usdM(o.base.profit, 1)}</td><td className="num">{pct(o.down.yoc)}</td><td className="num">{usdM(o.down.profit, 1)}</td><td>{o.ok ? "Yes" : "No"}</td></tr>)}</tbody>
           </table>

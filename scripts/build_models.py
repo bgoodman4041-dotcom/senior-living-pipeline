@@ -544,7 +544,7 @@ def build_structuring(wb, s):
     x = STRUCTS["_assumptions"]; sh = x["shocks"]
     S.put("B3", f"Combined downside: rents {sh['rent']:+.0%}, hard costs {sh['hard']:+.0%}, exit cap +{sh['exitBps']} bps, lease-up +{sh['leaseupMonths']} months. "
                f"GMP leaves the owner {x['gmpOwnerShare']:.0%} of a hard-cost overrun; ground rent {x['groundRentYield']:.0%} of land; master lease at {x['leaseRentShare']:.0%} of base NOI, sold {x['leaseCapPremium']*1e4:.0f} bps wider.", font=F_NOTE)
-    S.put("B4", f"Recommended: {next(o['label'] for o in r['opts'] if o['key'] == r['rec'])}. {r['verdict']}", bold=True, wrap=True)
+    S.put("B4", f"{r['lead']}. {r['verdict']}", bold=True, wrap=True)
     ws.merge_cells("B4:K4"); ws.row_dimensions[4].height = 46
     hdr = ["Structure", "Base YOC", "Base lev. IRR", "Base profit", "Down. YOC", "Down. lev. IRR", "Down. profit", "Equity", "Breakeven?", "Notes"]
     for i, h in enumerate(hdr):

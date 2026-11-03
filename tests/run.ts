@@ -24,7 +24,7 @@ check(d.sites.length === 44, "44 sites");
 const short = d.sites.filter((s: any) => s.verdict === "Pursue" || s.verdict === "Pursue-structured");
 check(short.length === d.funnel.shortlist, `shortlist count ${short.length} vs funnel ${d.funnel.shortlist}`);
 const fp = d.sites.find((s: any) => s.id === "NJ-04");
-check(fp.uw.yoc === 0.0775 && fp.uw.yoc_by_tax_structure.pilot === 0.0858 && Math.round(fp.uw.max_land / 1e5) === 169, "Florham Park acceptance figures (industry-norm lease-up, 2026-11-03)");
+check(fp.uw.yoc === 0.0727 && fp.uw.yoc_by_tax_structure.pilot === 0.0805 && Math.round(fp.uw.max_land / 1e5) === 130, "Florham Park acceptance figures (norm lease-up, comp-based GSF, 2026-11-03)");
 const ids = new Set(d.sites.map((s: any) => s.id));
 check(ids.size === d.sites.length, "unique ids");
 for (const s of d.sites) {
@@ -32,6 +32,15 @@ for (const s of d.sites) {
   check(["Pursue", "Pursue-structured", "Watch", "Pass"].includes(s.verdict), `${s.id} verdict`);
   check(Array.isArray(s.diligence) && s.diligence.length === 15, `${s.id} diligence 15`);
   check(!!d.markets.find((m: any) => m.state === s.state && m.county === s.county), `${s.id} market row`);
+}
+// LP evidence: the model rent quoted beside each comp set must equal the underwriting's private-pay AL rate
+{
+  const ev = JSON.parse(readFileSync(new URL("../data/lp-evidence.json", import.meta.url), "utf8"));
+  for (const [id, r] of Object.entries<any>(ev.rents)) {
+    if (id.startsWith("_")) continue;
+    const s = d.sites.find((x: any) => x.id === id);
+    check(Math.round(d.assumptions.care_levels.AL.base_monthly_rate * Number(s.rent_index_site)) === r.model, `${id} lp-evidence model rent matches underwriting`);
+  }
 }
 // the Excel Structuring tab reads data/structuring.json; it must match the live model
 {

@@ -8,6 +8,7 @@ import Diligence from "@/components/Diligence";
 import CapitalDeployment from "@/components/CapitalDeployment";
 import Downside from "@/components/Downside";
 import Structuring from "@/components/Structuring";
+import RentComps, { rentEvidence } from "@/components/RentComps";
 import EntitlementDossier from "@/components/EntitlementDossier";
 import ApprovalPlaybook from "@/components/ApprovalPlaybook";
 import ModelDownload from "@/components/ModelDownload";
@@ -243,6 +244,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
         <section className="section">
           <SectionHead id="market" n={N()} title="Market, rent support and need" sub={breakevenLine(s)} />
           {hasAbs && <div id="absorption" className="anchor" style={{ marginBottom: 18 }}><Absorption id={s.id} units={u.units} /></div>}
+          {rentEvidence(s.id) && <div id="rent-comps" className="anchor" style={{ marginBottom: 18 }}><RentComps id={s.id} /></div>}
           <div className="grid g3">
             <div className="card card-pad">
               <h3>{s.county} County</h3>

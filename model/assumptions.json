@@ -18,14 +18,15 @@
       "stabilized_occupancy": 0.91,
       "ancillary_pct": 0.1,
       "noi_margin_pre_tax": 0.37,
-      "gsf_per_unit": 875
+      "gsf_per_unit": 950,
+      "_gsf_basis": "Raised 875->950 and MC 725->800 on 2026-11-03: Benchmark East Brunswick (87 AL/MC units in 84,276 SF = 969 SF/unit, JLL Jun 2026)"
     },
     "MC": {
       "base_monthly_rate": 15000,
       "stabilized_occupancy": 0.9,
       "ancillary_pct": 0.03,
       "noi_margin_pre_tax": 0.35,
-      "gsf_per_unit": 725
+      "gsf_per_unit": 800
     },
     "SNF": {
       "base_monthly_rate": 14500,

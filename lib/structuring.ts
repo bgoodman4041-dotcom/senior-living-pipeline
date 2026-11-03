@@ -33,11 +33,23 @@ const toCase = (p: ReturnType<typeof capitalPlan>, p50: ReturnType<typeof capita
 
 export function pilotPath(s: any): { available: boolean; note: string } {
   const tool = String(s.regulatory?.tax_tool || "");
+  // site evidence (data/lp-evidence.json "redevelopment"), checked 2026-11-03
+  const NJ: Record<string, string> = {
+    "NJ-04": "Florham Park has declared the ASCO site an Area in Need of Redevelopment (Res. 20-94); the redevelopment plan is in draft, so a 40A:20 PILOT is available once it is adopted.",
+    "NJ-06": "The site's redevelopment approval (Ord. 2-2025) is for JMF's non-senior plan; an AL PILOT would need an amendment.",
+    "NJ-10": "No redevelopment designation found for Brookside. Montville has granted 30-year PILOTs through affordable-housing settlements (AvalonBay, Mill Creek); this needs a new agreement.",
+  };
+  if (NJ[s.id]) return { available: true, note: NJ[s.id] };
   if (structureOf(s) === "PILOT") return { available: true, note: "Already in the base case; close only on a signed term sheet." };
   if (s.state === "NJ") return { available: true, note: "Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township." };
   if (s.state === "NY") return { available: true, note: "Through the county IDA; needs an IDA application and a public hearing." };
   return { available: /12-65b|PILOT|abat/i.test(tool), note: tool || "Local fixed assessment agreement." };
 }
+
+export const recLabel = (r: { rec: { label: string; key: string }; baseStruct?: string }, hold = false) => {
+  const l = r.baseStruct === "PILOT" && !r.rec.key.includes("pilot") && r.rec.key !== "fee" ? `${r.rec.label} + PILOT` : r.rec.label;
+  return hold ? `On hold · contingency: ${l}` : `Recommended: ${l}`;
+};
 
 export function structuring(s: any, markets: any[], a: any): { opts: Opt[]; rec: Opt; baseStruct: Struct; nothing: boolean } | null {
   const baseStruct = structureOf(s);
@@ -91,11 +103,12 @@ export function structuring(s: any, markets: any[], a: any): { opts: Opt[]; rec:
 }
 
 /** Plain-English verdict for the recommended structure. */
-export function structVerdict(r: NonNullable<ReturnType<typeof structuring>>, site: any): string {
+export function structVerdict(r: NonNullable<ReturnType<typeof structuring>>, site: any, hold = false): string {
+  if (hold) return `On hold for absorption: do not pursue now. If a NIC MAP pull or the Arbor Terrace lease-up shows the demand is there, the contingency structure is ${r.rec.label}, which ${r.rec.ok ? "would hold breakeven in the combined downside" : "still would not hold breakeven"}.`;
   const o = r.rec, d = o.down;
   const m = (v: number) => `$${(Math.abs(v) / 1e6).toFixed(1)}M`;
   if (r.nothing) return `Nothing keeps ${site.municipality} at breakeven, even fee development: the nonprofit sponsor would lose ${m(d.profit)} in the downside. Take it only as GC, or pass.`;
   if (o.key === "fee") return `No ownership structure holds breakeven. It works only as fee development: a nonprofit sponsor owns it tax-exempt and keeps ${m(d.profit)} of profit even in the downside, and ATCO earns about ${m(o.atcoProfitDown)} of fees with no ownership equity.`;
-  const cond = o.availability && o.key.includes("pilot") ? ` Condition: ${o.availability}` : "";
+  const cond = o.availability && o.key.includes("pilot") ? ` Condition: ${o.availability}` : r.baseStruct === "PILOT" ? ` Condition: ${pilotPath(site).note}` : "";
   return `${o.label}${r.baseStruct === "PILOT" ? ", on top of the PILOT already in the base case," : ""} holds breakeven: the combined downside still returns ${m(d.profit)} of profit (${(d.yoc * 100).toFixed(2)}% YOC, ${(d.irrL * 100).toFixed(1)}% levered IRR).${cond}`;
 }

@@ -1,0 +1,99 @@
+{
+  "as_of": "2026-11-03",
+  "rents": {
+    "_note": "Listed starting prices for assisted living (base rent before level-of-care fees, which typically add $1,000-3,500 a month). Pulled from public directory listings on 2026-11-03; operators confirm on a rate shop. Model rate is the private-pay AL base rent the underwriting uses.",
+    "NJ-04": {
+      "area": "Florham Park, Madison, Livingston, Summit, Mountain Lakes (Morris / Essex)",
+      "comps": [
+        ["The Delaney at The Green", "Florham Park", 10800, "Class A, opened 2020s"],
+        ["Sunrise of Livingston", "Livingston", 9971, "Class A"],
+        ["Sunrise of Mountain Lakes", "Mountain Lakes", 9971, "Class A"],
+        ["Sunrise of Summit", "Summit", 9546, "Class A"],
+        ["Sunrise of Madison", "Madison", 9333, "Class A"],
+        ["Brookdale Florham Park", "Florham Park", 7450, "Older"],
+        ["Juniper Village at Chatham", "Chatham", 7135, "Older"],
+        ["Brighton Gardens of Florham Park", "Florham Park", 6962, "Older"],
+        ["Benchmark at Roseland", "Roseland", 6900, "Older"]
+      ],
+      "classA_median": 9971,
+      "model": 10780,
+      "verdict": "Supported. The model's $10,780 private-pay rate sits 8% above the Class A median and below The Delaney, inside the 15-20% premium CBRE says new development needs. No change.",
+      "src": [["Caring.com Florham Park listings", "https://caring.com/senior-living/assisted-living/new-jersey/florham-park"]]
+    },
+    "NJ-06": { "same_as": "NJ-04", "model": 9900, "verdict": "Supported by the same Morris comp set (Class A median $9,971). On hold for absorption, not rent." },
+    "NJ-10": { "same_as": "NJ-04", "model": 9680, "verdict": "Supported: 3% under the Class A median of the Morris comp set." },
+    "NY-03": {
+      "area": "Northern and central Westchester",
+      "comps": [
+        ["Benchmark at Mount Pleasant", "Thornwood", 9810, "Class A; same operator Benchmark proposes for this site"],
+        ["The Club at Briarcliff Manor", "Briarcliff Manor", 9555, "Class A"],
+        ["Atria Woodlands", "Ardsley", 7795, ""],
+        ["Atria on the Hudson", "Ossining", 6995, ""],
+        ["Atria Briarcliff Manor", "Briarcliff Manor", 6745, ""],
+        ["The Country House in Westchester", "Yorktown Heights", 5985, "Older"],
+        ["The Springvale Inn", "Croton-on-Hudson", 4670, "Older"]
+      ],
+      "classA_median": 9683,
+      "area_avg": [["Westchester County average (A Place for Mom, updated 11/2/26)", 8646], ["Cortlandt Manor area average (Caring.com)", 6200]],
+      "model": 9680,
+      "verdict": "Recalibrated from $9,900 to $9,680 to sit at the Class A median. Cortlandt itself has no Class A product; the rate assumes Benchmark prices it like Mount Pleasant.",
+      "src": [["Caring.com Yorktown Heights listings", "https://www.caring.com/senior-living/assisted-living/new-york/yorktown-heights"], ["A Place for Mom Westchester County", "https://www.aplaceformom.com/assisted-living/new-york/westchester-county"], ["Caring.com Mohegan Lake / Cortlandt Manor", "https://www.caring.com/senior-living/assisted-living/new-york/mohegan-lake"]]
+    },
+    "NY-10": {
+      "area": "Poughkeepsie and Dutchess County",
+      "comps": [
+        ["Pine Ridge Family Type Home for Adults", "Wappingers Falls", 6000, "Small adult home"],
+        ["The Fountains at Millbrook", "Millbrook", 4150, ""],
+        ["Landing of Poughkeepsie", "Poughkeepsie", null, "Pricing not published"],
+        ["Wingate at Dutchess", "Fishkill", null, "Pricing not published"]
+      ],
+      "area_avg": [["Poughkeepsie median (Caring.com)", 4770], ["Poughkeepsie average starting price (A Place for Mom)", 5228]],
+      "model": 6820,
+      "verdict": "Not supported at the old $7,920: no Dutchess listing is above $6,000. Recalibrated to $6,820 (30% over the area average, generous for a first Class A building). At that rate Poughkeepsie falls below 6.5% under every structure and drops to Pass.",
+      "src": [["Caring.com Poughkeepsie", "https://www.caring.com/senior-living/assisted-living/new-york/poughkeepsie"], ["A Place for Mom Poughkeepsie", "https://www.aplaceformom.com/assisted-living/new-york/poughkeepsie"]]
+    },
+    "CT-02": {
+      "area": "Trumbull, Shelton, Fairfield, Southport",
+      "comps": [
+        ["Sturges Ridge of Fairfield", "Fairfield", 11180, "Class A"],
+        ["Maplewood at Southport", "Southport", 9475, "Class A"],
+        ["Sunrise of Fairfield", "Fairfield", 8451, "Class A"],
+        ["Benchmark at Split Rock", "Shelton", 8440, "Class A"],
+        ["Carriage Green at Milford", "Milford", 7985, ""],
+        ["Middlebrook Farms at Trumbull", "Trumbull", 7835, ""],
+        ["Monarch Spring Meadows", "Trumbull", 5995, "Older"]
+      ],
+      "classA_median": 8963,
+      "model": 9680,
+      "verdict": "Recalibrated from $10,120 to $9,680, 8% over the Class A median. The campus now works only as an entrance-fee life plan, not as a rental.",
+      "src": [["Caring.com Trumbull", "https://www.caring.com/senior-living/connecticut/trumbull"]]
+    }
+  },
+  "costs": {
+    "_note": "Public cost evidence for new AL/MC in the region. CN 'total project cost' is the applicant's filed budget; loan amounts are construction loans, so total cost is higher.",
+    "comps": [
+      ["Peapack Senior Living, Peapack NJ", "96 units / 115 beds", "CN total project cost $57.18M", 595625, null, "NJ DOH ERCN, Jul 10 2026", "https://www.nj.gov/health/healthfacilities/documents/CN/2026/ercn-peapack-senior-living.pdf"],
+      ["Benchmark East Islip, NY", "90 units (64 AL / 26 MC)", "$41.1M construction loan", 456667, null, "JLL via REBusiness, Oct 1 2026", "https://rebusinessonline.com/jll-arranges-41-1m-construction-loan-for-long-island-seniors-housing-project/"],
+      ["Benchmark East Brunswick, NJ", "87 units (62 AL / 25 MC), 84,276 SF", "$35.1M construction loan", 403448, 969, "JLL, Jun 16 2026", "https://www.jll.com/en-us/newsroom/construction-loan-for-east-brunswick-senior-living-community"],
+      ["Evergreen Manor, Cortlandt NY (our NY-03)", "100 units / 118 beds, 96,850 SF", "Site plan application", null, 969, "Cortlandt Planning Board, Feb 3 2026", "https://www.townofcortlandtny.gov/uppages/2_3_2026 Minutes.pdf"],
+      ["Brightview East Brunswick, NJ", "84 units / 93 beds", "CN total project cost $27.47M", 327000, null, "NJ DOH CN, Sep 9 2025", "https://www.nj.gov/health/bc/documents/shpb/cn/cn-brightview-east-brunswick-09092025.pdf"],
+      ["Arbor Terrace Florham Park, NJ", "100 beds (about 80 units)", "CN total project cost $22.12M", null, null, "NJ DOH ERCN, May 21 2024", "https://nj.gov/health/healthfacilities/documents/CN/2024/ercn-arbor-terrance-florham-park-05212024.pdf"]
+    ],
+    "psf": [["Weitz / ASHA, AL hard cost, mid-level", "$280-356/SF", "national, Feb 2026"], ["Weitz / ASHA, AL hard cost, high-level", "$363-452/SF", "national, Feb 2026"], ["CBRE, average development cost", "$388K-389K/unit", "national, 2023-26"]],
+    "psf_src": "https://seniorhousingnews.com/2026/02/03/assisted-living-construction-costs-rise-in-2026-independent-living-costs-remain-flat/",
+    "verdict": "Two independent comps (Benchmark East Brunswick and the Cortlandt site plan itself) show about 969 SF a unit for AL/MC, against the 828 we used. Building size was raised (AL 950, MC 800 SF a unit), lifting all-in cost on a 114-unit pad from about $505K to $540K a unit. That now sits between the Benchmark loan-implied figure and the Peapack CN budget. Our $342-360/SF hard cost is at the low end of Weitz's national high-level AL range before any New York premium, so a GC estimate is the remaining test (Ben to commission)."
+  },
+  "control": {
+    "NJ-04": { "owner": "Garden Homes (bought from the Northern Trust Co., trustee of the Emerson Charitable Trust)", "status": "Closed Sept 2025; deed shows $33.43M (a second record shows $45.81M, so confirm with the county). Block 303, Lots 5 and 12.", "assessed": "2026 assessment per public records aggregator; confirm with the Florham Park assessor", "path": "JV or pad carve-out from Garden Homes: a 90-day exclusive LOI for a 4-5 acre AL/MC pad at a fixed land price inside our max land, conditioned on a redevelopment-plan amendment and the AL CN.", "src": [["NJBIZ, Oct 29 2025", "https://njbiz.com/garden-homes-florham-park-55-acre-305-units"], ["NJ property record, Block 303 Lot 5", "https://njpropertyrecords.com/property/1411_303_5"]] },
+    "NJ-06": { "owner": "JMF Properties (bought from Bayer)", "status": "Closed; JMF's approved plan is 320 townhomes, 80 rentals, a hotel, office and retail, with no senior housing.", "path": "None now. An AL pad would need JMF to amend its approved plan. On hold.", "src": [["RE-NJ", "https://re-nj.com/forging-ahead-jmf-eyes-400-homes-hotel-in-whippany-after-acquiring-coveted-development-site/"]] },
+    "NJ-10": { "owner": "Diversified Properties (Nicholas Minoia, managing member)", "status": "Closed title Mar 2026; fully approved for 266 age-restricted homes on 30 acres, about 15 acres deed-restricted conservation.", "path": "Pad purchase or JV for an AL/MC building as a later phase; option tied to a site-plan amendment and a PILOT.", "src": [["ROI-NJ, Mar 9 2026", "https://www.roi-nj.com/2026/03/09/real_estate_development/diversified-properties-closes-on-montville-property-advancing-plans-for-55-community/"]] },
+    "NY-03": { "owner": "VS Construction Corp. is the applicant (Gyrodyne shares the off-site improvements)", "status": "Site plan for a 100-unit, 118-bed AL (96,850 SF) in public hearing; Benchmark is the prospective operator.", "path": "ATCO as capital partner or GC alongside VS and Benchmark, not as owner-developer.", "src": [["Cortlandt Planning Board minutes, Feb 3 2026", "https://www.townofcortlandtny.gov/uppages/2_3_2026 Minutes.pdf"]] },
+    "CT-02": { "owner": "Senior Living Development, LLC (Mark De Pecol), bought 2018", "status": "Approved 4-1 by Trumbull P&Z for 193 IL/AL/MC units plus 147 active-adult units; the property was marketed for sale in 2023.", "path": "Buy the entitlement or JV with the owner; entrance-fee structure with a nonprofit sponsor.", "src": [["NEREJ", "https://beta.nerej.com/340-unit-senior-housing-campus-approved-in-trumbull"], ["The Real Deal, Apr 2023", "https://therealdeal.com/new-york/tristate/2023/04/20/former-health-care-hq-for-sale-in-trumbull"]] },
+    "NY-01": { "owner": "900 King Street Owner, LLC", "status": "Village lists it as 'Awaiting Construction'; Sunrise is reported as contract vendee.", "path": "GC or fee developer to Sunrise or a nonprofit sponsor; not an ownership play.", "src": [["Village of Rye Brook", "https://ryebrookny.gov/900-king-street"], ["Westfair", "https://westfaironline.com/?p=188939"]] }
+  },
+  "redevelopment": {
+    "NJ-04": { "status": "Designated", "text": "The Borough declared the ASCO site an Area in Need of Redevelopment (Resolution 20-94) and a draft ASCO/50 Hanover Road Redevelopment Plan is pending adoption; the amended Fair Share Plan proposes 49 affordable age-restricted units there. A long-term tax exemption (PILOT) under N.J.S.A. 40A:20 is legally available once the plan is adopted.", "src": [["Florham Park Amended Housing Element and Fair Share Plan, Jan 2026", "https://www.florhamparknj.gov/media/Public Notices/2026/2026-01-25 - Florham Park - Amended Housing Element and Fair Share Plan.pdf"]] },
+    "NJ-06": { "status": "Approved for another use", "text": "The former Bayer property was approved under Ordinance 2-2025 for JMF's 320-unit plan. No senior or AL component.", "src": [["GatherGov Hanover pipeline", "https://www.gathergov.com/municipalities/hanover-nj/development-pipeline"], ["RE-NJ", "https://re-nj.com/forging-ahead-jmf-eyes-400-homes-hotel-in-whippany-after-acquiring-coveted-development-site/"]] },
+    "NJ-10": { "status": "Not found", "text": "No redevelopment designation found for Brookside. Montville has granted 30-year PILOTs before (AvalonBay on the GI Salvage site, Mill Creek on the former Bayer site), but through affordable-housing settlements. A PILOT for an AL pad would need a new designation or agreement.", "src": [["Montville PILOT agreements", "https://morristownminute.town.news/g/morristown-nj/n/171252/montville-township-clarifies-pilot-agreements-avalon-bay-and-mill-creek"]] }
+  }
+}

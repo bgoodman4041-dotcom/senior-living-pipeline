@@ -138,7 +138,7 @@ export function capitalPlan(s: any, a: any, structOverride?: Struct) {
   // nonprofit sponsor (RiverSpring / LCS model: tax-exempt operations).
   const efCase = struct === "Entrance fee" && u.entrance_fee ? { taxable: efRun(false), nonprofit: efRun(true) } : null;
   return {
-    struct, noi, P, B, L, N, months, uses, efCase, loanCommit, equityCommit, lp: equityCommit * CAP.lpShare, gp: equityCommit * (1 - CAP.lpShare),
+    struct, noi, P, B, L, N, months, uses, efCase, levCF: lev, loanCommit, equityCommit, lp: equityCommit * CAP.lpShare, gp: equityCommit * (1 - CAP.lpShare),
     gates, atRiskPreEntitlement, value, netSale, profit: netSale - total, profitOnCost: (netSale - total) / total,
     yoc: noi / total, irrUnlevered: irrU, irrLevered: irrL, equityMultiple,
     noiPerEquityDollar: noiTrended / equityCommit, valuePerDollar: value / total,

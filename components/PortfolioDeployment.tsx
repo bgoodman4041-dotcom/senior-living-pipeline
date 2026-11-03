@@ -1,7 +1,7 @@
 import { capitalPlan } from "@/lib/capital";
 import { scenarios } from "@/lib/scenarios";
 import { structuring } from "@/lib/structuring";
-import { markets } from "@/lib/data";
+import { markets, onHold } from "@/lib/data";
 
 export const START_YEAR = 2027; // first site control, Q1
 import { pct, usdM, mult } from "@/lib/format";
@@ -41,13 +41,15 @@ export default function PortfolioDeployment({ shortlist, a }: { shortlist: any[]
   for (let k = 0; k < cal.length; k++) cal[k] ??= { y: START_YEAR + k, equity: 0, loan: 0, dist: 0, sales: [] };
   let net = 0; const calRows = cal.map((c) => { net += c.dist - c.equity; return { ...c, net }; });
   // portfolio downside: equity-weighted levered IRR with every shock applied at once
-  const down = rental.map((r) => ({ r, d: scenarios(r.s, markets, a)?.at(-1) })).filter((x) => x.d);
+  const held = rental.filter((r) => onHold(r.s));
+  const down = rental.filter((r) => !onHold(r.s)).map((r) => ({ r, d: scenarios(r.s, markets, a)?.at(-1) })).filter((x) => x.d);
   const dEq = down.reduce((acc, x) => acc + x.d!.equity, 0);
   const dIrr = down.reduce((acc, x) => acc + x.d!.equity * x.d!.irrL, 0) / (dEq || 1);
   const dProfit = down.reduce((acc, x) => acc + x.d!.profit, 0);
   const dHold = down.filter((x) => x.d!.profit > 0).map((x) => x.r.s.municipality);
   // with each site's recommended structure (lib/structuring.ts); fee-development sites contribute the fee and no equity
-  const st = rental.map((r) => ({ r, x: structuring(r.s, markets, a)!, d: down.find((y) => y.r === r)?.d })).filter((y) => y.x);
+  const stAll = rental.map((r) => ({ r, x: structuring(r.s, markets, a)!, d: scenarios(r.s, markets, a)?.at(-1), hold: onHold(r.s) })).filter((y) => y.x);
+  const st = stAll.filter((y) => !y.hold);
   const owned = st.filter((y) => y.x.rec.key !== "fee");
   const sEq = owned.reduce((acc, y) => acc + y.x.rec.down.equity, 0);
   const sIrr = owned.reduce((acc, y) => acc + y.x.rec.down.equity * y.x.rec.down.irrL, 0) / (sEq || 1);
@@ -127,17 +129,20 @@ export default function PortfolioDeployment({ shortlist, a }: { shortlist: any[]
         <div className="card">
           <div className="card-pad" style={{ paddingBottom: 6 }}>
             <h3>Portfolio downside, and how we structure around it</h3>
-            <p className="small" style={{ marginBottom: 0 }}>Every rental site with rents −10%, hard costs +10%, exit cap +50 bps and lease-up +6 months, all at once.</p>
+            <p className="small" style={{ marginBottom: 0 }}>Every active rental site with rents −10%, hard costs +10%, exit cap +50 bps and lease-up +6 months, all at once.{held.length ? ` Excludes ${held.map((r) => r.s.municipality).join(", ")} (on hold).` : ""}</p>
           </div>
           <div className="grid g2" style={{ padding: "8px 24px 4px", gap: 18 }}>
             <div className="kpi" style={{ padding: 0 }}><div className="label">As underwritten · levered IRR</div><div className="v" style={{ color: dIrr < 0 ? "#8a1a2a" : undefined }}>{pct(dIrr, 1)}</div>
               <div className="s">{dProfit >= 0 ? `${usdM(dProfit, 1)} portfolio profit` : `${usdM(-dProfit, 1)} portfolio loss`} vs. {pct(wIrrL, 1)} base. {dHold.length ? `Still profitable: ${dHold.join(", ")}.` : "No site stays profitable."}</div></div>
             <div className="kpi" style={{ padding: 0 }}><div className="label">With recommended structures · levered IRR</div><div className="v" style={{ color: sIrr < 0 ? "#8a1a2a" : "#33772a" }}>{pct(sIrr, 1)}</div>
-              <div className="s">{sProfit >= 0 ? `${usdM(sProfit, 1)} to ATCO and its investors` : `${usdM(-sProfit, 1)} loss`} on {usdM(sEq, 0)} of equity, fees included. {sBreak === st.length ? "Every site at or above breakeven." : `${st.length - sBreak} site(s) still below breakeven.`}</div></div>
+              <div className="s">{sProfit >= 0 ? `${usdM(sProfit, 1)} to ATCO and its investors` : `${usdM(-sProfit, 1)} loss`} on {usdM(sEq, 0)} of equity, fees included. {sBreak === st.length ? "Every active site at or above breakeven." : `${st.length - sBreak} site(s) still below breakeven.`}</div></div>
           </div>
           <div className="table-wrap"><table className="t">
             <thead><tr><th>Site</th><th>Recommended structure</th><th className="num">Downside profit, as underwritten</th><th className="num">Downside profit, structured</th><th className="hide-sm">Condition</th></tr></thead>
-            <tbody>{st.map(({ r, x, d }) => (
+            <tbody>{stAll.map(({ r, x, d, hold }) => hold ? (
+              <tr key={r.s.id} style={{ opacity: 0.75 }}><td><a href={`/sites/${r.s.id}#structuring`} className="site-name">{r.s.municipality}</a></td><td><b>On hold</b> (absorption)<div className="xs muted">Contingency: {x.rec.label}</div></td>
+                <td className="num">{d ? usdM(d.profit, 1) : "—"}</td><td className="num">{usdM(x.rec.atcoProfitDown, 1)}<div className="xs muted">if revived</div></td>
+                <td className="small hide-sm">Excluded from both totals until a NIC MAP pull shows the demand</td></tr>) : (
               <tr key={r.s.id}><td><a href={`/sites/${r.s.id}#structuring`} className="site-name">{r.s.municipality}</a></td><td>{x.rec.label}</td>
                 <td className="num" style={{ color: (d?.profit ?? 0) < 0 ? "#8a1a2a" : undefined }}>{d ? usdM(d.profit, 1) : "—"}</td>
                 <td className="num" style={{ fontWeight: 700, color: x.rec.atcoProfitDown < 0 ? "#8a1a2a" : "#33772a" }}>{usdM(x.rec.atcoProfitDown, 1)}{x.rec.key === "fee" && <div className="xs muted">ATCO fee</div>}</td>

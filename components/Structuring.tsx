@@ -1,16 +1,18 @@
-import { structuring, structVerdict, STRUCT } from "@/lib/structuring";
+import { structuring, structVerdict, recLabel, STRUCT } from "@/lib/structuring";
+import { onHold } from "@/lib/data";
 import { pct, usdM } from "@/lib/format";
 
 /** Which deal structure keeps the combined downside at or above breakeven. */
 export default function Structuring({ site, markets, a }: { site: any; markets: any[]; a: any }) {
   const r = structuring(site, markets, a);
   if (!r) return null;
-  const tone = r.nothing ? "bad" : r.rec.key === "fee" ? "warn" : "go";
+  const hold = onHold(site);
+  const tone = hold || r.nothing ? "bad" : r.rec.key === "fee" ? "warn" : "go";
   return (
     <div className="card structuring">
       <div className="card-pad" style={{ paddingBottom: 6 }}>
         <div className="label">Structuring the downside · base and combined downside, with and without each fix</div>
-        <div className={`memo-rec ic-${tone}`} style={{ marginTop: 10, marginBottom: 0 }}><b>Recommended: {r.rec.label}.</b> {structVerdict(r, site)}</div>
+        <div className={`memo-rec ic-${tone}`} style={{ marginTop: 10, marginBottom: 0 }}><b>{recLabel(r, hold)}.</b> {structVerdict(r, site, hold)}</div>
       </div>
       <div className="table-wrap"><table className="t">
         <thead><tr><th>Structure</th><th className="num">Base YOC</th><th className="num">Base lev. IRR</th><th className="num">Base profit</th><th className="num">Downside YOC</th><th className="num">Downside lev. IRR</th><th className="num">Downside profit</th><th className="num">Equity</th><th>Breakeven?</th></tr></thead>

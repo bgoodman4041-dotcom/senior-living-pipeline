@@ -68,7 +68,7 @@ export default function Home() {
           </div>
 
           <div className="grid g3" style={{ marginTop: 18 }}>
-            <div className="callout brand"><b>What clears.</b> Rental AL/MC pads of ~{protoC} units inside approved master plans clear {pct(HURDLE, 1)} fully taxed in Morris County NJ at industry-norm lease-up (2–4 move-ins a month). In Dutchess and northern Westchester they clear only with a PILOT.</div>
+            <div className="callout brand"><b>What clears.</b> Rental AL/MC pads of ~{protoC} units inside approved master plans clear {pct(HURDLE, 1)} fully taxed only in the Florham Park submarket, on comp-checked rents, comp-sized buildings and industry-norm lease-up. Montville and northern Westchester need a PILOT; Dutchess rents do not support new Class A product. See the <a href="/diligence">LP diligence</a> evidence.</div>
             <div className="callout brand"><b>What needs structure.</b> IL-led campuses miss as rentals everywhere. They work only with entrance fees, a nonprofit sponsor or PILOT, or ground-leased land: the RiverSpring structure.</div>
             <div className="callout brand"><b>Where the risk sits.</b> Calibrated rent, tax and land indices drive the spread. NIC MAP pulls, rate shops and assessor letters on the shortlist come before any LOI.</div>
           </div>
