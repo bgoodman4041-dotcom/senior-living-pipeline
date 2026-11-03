@@ -6,6 +6,7 @@ import { shortlist, siteById, markets, assumptions, meta, HURDLE } from "@/lib/d
 import { capitalPlan, CAP } from "@/lib/capital";
 import { scenarios } from "@/lib/scenarios";
 import { underwrite } from "@/lib/underwrite";
+import { structuring, structVerdict } from "@/lib/structuring";
 import { playbook } from "@/lib/playbook";
 import { gcFor } from "@/lib/contractors";
 import { absorptionFor } from "@/components/Absorption";
@@ -34,6 +35,7 @@ export default async function Memo({ params }: { params: Promise<{ id: string }>
   const mix = (u.lines as { care: string; units: number }[]).map((l) => `${l.units} ${l.care}`).join(" · ");
   const all = sc?.at(-1);
   const tw = underwrite(s, markets, a);
+  const st = structuring(s, markets, a);
   const uses = [["Land", cp.uses.land], ["Hard cost", cp.uses.hard], ["Site work", cp.uses.siteWork], ["Contingency", cp.uses.contingency], ["FF&E", cp.uses.ffe], ["Soft cost", cp.uses.soft], ["Construction interest", cp.uses.interest], ["Lease-up reserve", cp.uses.leaseup]] as [string, number][];
   const risks: [string, string][] = [
     ["Entitlement", `${pb.d.pathLabel}; approval odds ${pb.like}% (${pb.likeBand}). ${clean(s.entitlement_status)}.`],
@@ -101,12 +103,19 @@ export default async function Memo({ params }: { params: Promise<{ id: string }>
           </table>
           {all && <p className="memo-note">All four shocks at once (rents −10%, hard costs +10%, exit cap +50 bps, lease-up +6 months) take yield on cost to {pct(all.yoc)} and the levered IRR to {pct(all.irrL, 1)}{all.profit < 0 ? `, a ${usdM(-all.profit, 1)} loss on a sale at stabilization` : `, still ${usdM(all.profit, 1)} of profit at stabilization`}.</p>}
         </div></>}
+        {st && <div className="memo-keep">
+          <h2>Structuring the downside</h2>
+          <div className={`memo-rec ic-${st.nothing ? "bad" : st.rec.key === "fee" ? "warn" : "go"}`} style={{ marginBottom: 6 }}><b>Recommended: {st.rec.label}.</b> {structVerdict(st, s)}</div>
+          <table className="memo-t full"><thead><tr><th>Structure</th><th className="num">Base YOC</th><th className="num">Base profit</th><th className="num">Downside YOC</th><th className="num">Downside profit</th><th>Breakeven?</th></tr></thead>
+            <tbody>{st.opts.map((o) => <tr key={o.key} className={o.key === st.rec.key ? "tot" : undefined}><td>{o.label}</td><td className="num">{pct(o.base.yoc)}</td><td className="num">{usdM(o.base.profit, 1)}</td><td className="num">{pct(o.down.yoc)}</td><td className="num">{usdM(o.down.profit, 1)}</td><td>{o.ok ? "Yes" : "No"}</td></tr>)}</tbody>
+          </table>
+        </div>}
         <h2>Key risks and how we close them</h2>
         <table className="memo-t full"><tbody>{risks.map(([k, v]) => <tr key={k}><td style={{ width: 96, fontWeight: 700 }}>{k}</td><td>{v}</td></tr>)}</tbody></table>
         <h2>Next steps</h2>
         <ol>
           <li>{clean(s.next_step)}.</li>
-          {pb.gates.slice(0, 3).map((gt) => <li key={gt.name}>{gt.name} by month {gt.month}, {usdM(gt.atRisk, 2)} at risk. {clean(gt.test)}.</li>)}
+          {pb.gates.slice(0, 2).map((gt) => <li key={gt.name}>{gt.name} by month {gt.month}, {usdM(gt.atRisk, 2)} at risk. {clean(gt.test)}.</li>)}
         </ol>
         <footer className="memo-foot">Model outputs for screening, not an appraisal, offer or investment advice. Estimates are replaced with NIC MAP and assessor data before LOI. Full dossier: senior-living-pipeline-1cia.vercel.app/sites/{s.id}. Excel model: senior-living-pipeline-1cia.vercel.app/models/ATCO-{s.id}-proforma.xlsx</footer>
       </article>

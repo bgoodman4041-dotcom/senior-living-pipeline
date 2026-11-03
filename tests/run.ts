@@ -33,6 +33,17 @@ for (const s of d.sites) {
   check(Array.isArray(s.diligence) && s.diligence.length === 15, `${s.id} diligence 15`);
   check(!!d.markets.find((m: any) => m.state === s.state && m.county === s.county), `${s.id} market row`);
 }
+// the Excel Structuring tab reads data/structuring.json; it must match the live model
+{
+  const { structuring } = await import("../lib/structuring.ts");
+  const sj = JSON.parse(readFileSync(new URL("../data/structuring.json", import.meta.url), "utf8"));
+  for (const s of d.sites.filter((x: any) => x.verdict === "Pursue" || x.verdict === "Pursue-structured")) {
+    const r = structuring(s, d.markets, d.assumptions);
+    if (!r) continue;
+    check(sj[s.id]?.rec === r.rec.key, `${s.id} structuring.json rec current (run scripts/export_structuring.ts)`);
+    check(Math.abs(sj[s.id]?.opts.find((o: any) => o.key === r.rec.key).down.profit - r.rec.down.profit) < 1, `${s.id} structuring.json downside profit current`);
+  }
+}
 console.log(`${n - fail}/${n} checks passed`);
 if (fail) process.exitCode = 1;
 

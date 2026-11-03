@@ -7,6 +7,7 @@ import PrintButton from "@/components/PrintButton";
 import Diligence from "@/components/Diligence";
 import CapitalDeployment from "@/components/CapitalDeployment";
 import Downside from "@/components/Downside";
+import Structuring from "@/components/Structuring";
 import EntitlementDossier from "@/components/EntitlementDossier";
 import ApprovalPlaybook from "@/components/ApprovalPlaybook";
 import ModelDownload from "@/components/ModelDownload";
@@ -17,7 +18,7 @@ import ops from "@/data/operators.json";
 import { playbook } from "@/lib/playbook";
 import { capitalPlan } from "@/lib/capital";
 import { VerdictChip, I, NV, Bar, SectionHead, Evidence } from "@/components/ui";
-import { sites, siteById, marketOf, markets, assumptions, comps, HURDLE, TARGET, VERDICT_COLOR, STATE_NAME, breakevenLine, trackOf, isShortlist } from "@/lib/data";
+import { onHold, sites, siteById, marketOf, markets, assumptions, comps, HURDLE, TARGET, VERDICT_COLOR, STATE_NAME, breakevenLine, trackOf, isShortlist } from "@/lib/data";
 import { pct, usdM, usdK, usd, int, mult } from "@/lib/format";
 
 export function generateStaticParams() {
@@ -125,7 +126,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
         <div className="wrap">
           <div className="crumbs"><a href="/">Pipeline</a> / <a href="/#pipeline">{STATE_NAME[s.state]}</a> / {s.id}</div>
           <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 10 }}>
-            <VerdictChip v={s.verdict} />
+            <VerdictChip v={s.verdict} hold={onHold(s)} />
             <span className="small meta">Rank #{s.rank} of {sites.length}{isShortlist(s) ? " · Shortlist" : ""} · {trackOf(s)}</span>
             <span style={{ marginLeft: "auto", display: "flex", gap: 8 }}><a className="btn btn-xl no-print" href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Download Excel model</a>{isShortlist(s) && <a className="btn no-print" href={`/memos/ATCO-${s.id}-IC-memo.pdf`} download>IC memo PDF</a>}<a className="btn no-print hide-sm" href="#model">What is in it</a><PrintButton /></span>
           </div>
@@ -411,6 +412,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           <SectionHead id="capital" n={N()} title="Capital deployment" sub={<>How the capital is raised, released and returned: sources and uses, the draw schedule, the gates that release each tranche, cost controls and returns per dollar. <a href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Download the Excel model</a>.</>} />
           <CapitalDeployment site={s} a={assumptions} />
           <div id="downside" style={{ marginTop: 18 }}><Downside site={s} markets={markets} a={assumptions} /></div>
+          <div id="structuring" style={{ marginTop: 18 }}><Structuring site={s} markets={markets} a={assumptions} /></div>
           <div className="card card-pad" style={{ marginTop: 18 }}>
             <div className="label" style={{ marginBottom: 8 }}>Exit and take-out</div>
             <ul className="list-clean small">

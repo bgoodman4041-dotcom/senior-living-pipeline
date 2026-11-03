@@ -1,10 +1,10 @@
 import { VERDICT_COLOR, type Verdict } from "@/lib/data";
 
-export function VerdictChip({ v }: { v: Verdict }) {
+export function VerdictChip({ v, hold }: { v: Verdict; hold?: boolean }) {
   return (
     <span className={`chip v-${v}`}>
       <span className="dot" style={{ background: VERDICT_COLOR[v] }} />
-      {v}
+      {v}{hold ? " · on hold" : ""}
     </span>
   );
 }

@@ -8,7 +8,7 @@ import icFlags from "@/data/ic-flags.json";
 import { gcFor } from "@/lib/contractors";
 import { capitalPlan } from "@/lib/capital";
 import { playbook } from "@/lib/playbook";
-import { sites, shortlist, funnel, meta, HURDLE, TARGET, trackOf, satThumb, assumptions } from "@/lib/data";
+import { onHold, sites, shortlist, funnel, meta, HURDLE, TARGET, trackOf, satThumb, assumptions } from "@/lib/data";
 import { pct, usdM, usdK, int, longDate } from "@/lib/format";
 
 export default function Home() {
@@ -61,7 +61,7 @@ export default function Home() {
       <section className="section">
         <div className="wrap">
           <div className="grid g4">
-            <div className="card kpi"><div className="label">Shortlist</div><div className="v">{shortlist.length} sites</div><div className="s">{pursue.length} Pursue · {shortlist.length - pursue.length} Pursue-structured</div></div>
+            <div className="card kpi"><div className="label">Shortlist</div><div className="v">{shortlist.length} sites</div><div className="s">{pursue.length} Pursue ({shortlist.filter(onHold).length} on hold) · {shortlist.length - pursue.length} Pursue-structured</div></div>
             <div className="card kpi"><div className="label">Shortlisted units</div><div className="v">{int(shortUnits)}</div><div className="s">{usdM(shortCost, 0)} all-in development cost</div></div>
             <div className="card kpi"><div className="label">Weighted YOC · Pursue</div><div className="v">{pct(wYoc)}</div><div className="s">Fully taxed, cost-weighted; {Math.round((wYoc - HURDLE) * 10000)} bps over floor</div></div>
             <div className="card kpi"><div className="label">Land headroom · Pursue</div><div className="v">{usdM(headroom)}</div><div className="s">Sum of max land at {pct(HURDLE, 1)} less land basis</div></div>
@@ -159,7 +159,7 @@ export default function Home() {
               <a key={s.id} href={`/sites/${s.id}`} className="card shortcard">
                 <div className="img" style={{ backgroundImage: `url("${satThumb(Number(s.lat), Number(s.lon), 800, 500)}")` }}>
                   <span className="rank">{s.rank}</span>
-                  <VerdictChip v={s.verdict} />
+                  <VerdictChip v={s.verdict} hold={onHold(s)} />
                 </div>
                 <div className="body">
                   <div>

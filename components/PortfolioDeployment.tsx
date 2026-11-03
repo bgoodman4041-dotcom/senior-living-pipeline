@@ -1,5 +1,6 @@
 import { capitalPlan } from "@/lib/capital";
 import { scenarios } from "@/lib/scenarios";
+import { structuring } from "@/lib/structuring";
 import { markets } from "@/lib/data";
 
 export const START_YEAR = 2027; // first site control, Q1
@@ -45,6 +46,13 @@ export default function PortfolioDeployment({ shortlist, a }: { shortlist: any[]
   const dIrr = down.reduce((acc, x) => acc + x.d!.equity * x.d!.irrL, 0) / (dEq || 1);
   const dProfit = down.reduce((acc, x) => acc + x.d!.profit, 0);
   const dHold = down.filter((x) => x.d!.profit > 0).map((x) => x.r.s.municipality);
+  // with each site's recommended structure (lib/structuring.ts); fee-development sites contribute the fee and no equity
+  const st = rental.map((r) => ({ r, x: structuring(r.s, markets, a)!, d: down.find((y) => y.r === r)?.d })).filter((y) => y.x);
+  const owned = st.filter((y) => y.x.rec.key !== "fee");
+  const sEq = owned.reduce((acc, y) => acc + y.x.rec.down.equity, 0);
+  const sIrr = owned.reduce((acc, y) => acc + y.x.rec.down.equity * y.x.rec.down.irrL, 0) / (sEq || 1);
+  const sProfit = st.reduce((acc, y) => acc + y.x.rec.atcoProfitDown, 0);
+  const sBreak = st.filter((y) => y.x.rec.ok).length;
 
   const W = 760, H = 220, pl = 58, pr = 12, pt = 12, pb = 30;
   const max = cumE[months - 1] + cumL[months - 1];
@@ -116,12 +124,25 @@ export default function PortfolioDeployment({ shortlist, a }: { shortlist: any[]
               <td className="num">{c.dist ? usdM(c.dist, 1) : "—"}</td><td className="num" style={{ fontWeight: 700, color: c.net < 0 ? "#8a1a2a" : "#33772a" }}>{usdM(c.net, 1)}</td>
               <td className="small hide-sm">{c.sales.join(", ") || "—"}</td></tr>))}</tbody>
         </table></div></div>
-        <div className="card card-pad">
-          <h3>Portfolio downside</h3>
-          <p className="small">Every rental site with rents −10%, hard costs +10%, exit cap +50 bps and lease-up +6 months, all at once.</p>
-          <div className="kpi" style={{ padding: 0 }}><div className="label">Levered IRR, equity-weighted</div><div className="v" style={{ color: dIrr < 0 ? "#8a1a2a" : undefined }}>{pct(dIrr, 1)}</div>
-            <div className="s">{dProfit >= 0 ? `${usdM(dProfit, 1)} portfolio profit` : `${usdM(-dProfit, 1)} portfolio loss`} vs. {pct(wIrrL, 1)} base. {dHold.length ? `Still profitable: ${dHold.join(", ")}.` : "No site stays profitable."}</div></div>
-          <p className="xs muted" style={{ marginTop: 10 }}>Site-by-site cases are on each dossier under Capital deployment.</p>
+        <div className="card">
+          <div className="card-pad" style={{ paddingBottom: 6 }}>
+            <h3>Portfolio downside, and how we structure around it</h3>
+            <p className="small" style={{ marginBottom: 0 }}>Every rental site with rents −10%, hard costs +10%, exit cap +50 bps and lease-up +6 months, all at once.</p>
+          </div>
+          <div className="grid g2" style={{ padding: "8px 24px 4px", gap: 18 }}>
+            <div className="kpi" style={{ padding: 0 }}><div className="label">As underwritten · levered IRR</div><div className="v" style={{ color: dIrr < 0 ? "#8a1a2a" : undefined }}>{pct(dIrr, 1)}</div>
+              <div className="s">{dProfit >= 0 ? `${usdM(dProfit, 1)} portfolio profit` : `${usdM(-dProfit, 1)} portfolio loss`} vs. {pct(wIrrL, 1)} base. {dHold.length ? `Still profitable: ${dHold.join(", ")}.` : "No site stays profitable."}</div></div>
+            <div className="kpi" style={{ padding: 0 }}><div className="label">With recommended structures · levered IRR</div><div className="v" style={{ color: sIrr < 0 ? "#8a1a2a" : "#33772a" }}>{pct(sIrr, 1)}</div>
+              <div className="s">{sProfit >= 0 ? `${usdM(sProfit, 1)} to ATCO and its investors` : `${usdM(-sProfit, 1)} loss`} on {usdM(sEq, 0)} of equity, fees included. {sBreak === st.length ? "Every site at or above breakeven." : `${st.length - sBreak} site(s) still below breakeven.`}</div></div>
+          </div>
+          <div className="table-wrap"><table className="t">
+            <thead><tr><th>Site</th><th>Recommended structure</th><th className="num">Downside profit, as underwritten</th><th className="num">Downside profit, structured</th><th className="hide-sm">Condition</th></tr></thead>
+            <tbody>{st.map(({ r, x, d }) => (
+              <tr key={r.s.id}><td><a href={`/sites/${r.s.id}#structuring`} className="site-name">{r.s.municipality}</a></td><td>{x.rec.label}</td>
+                <td className="num" style={{ color: (d?.profit ?? 0) < 0 ? "#8a1a2a" : undefined }}>{d ? usdM(d.profit, 1) : "—"}</td>
+                <td className="num" style={{ fontWeight: 700, color: x.rec.atcoProfitDown < 0 ? "#8a1a2a" : "#33772a" }}>{usdM(x.rec.atcoProfitDown, 1)}{x.rec.key === "fee" && <div className="xs muted">ATCO fee</div>}</td>
+                <td className="small hide-sm">{x.rec.key === "fee" ? "Nonprofit sponsor willing to own it" : x.rec.key.includes("pilot") ? (x.rec.availability || "PILOT") : r.p.struct === "PILOT" ? "Signed PILOT term sheet" : "GMP signed at financial close"}</td></tr>))}</tbody>
+          </table></div>
         </div>
       </div>
       <div className="xs muted">IRRs assume sale at stabilization at a {pct(a.exit_cap)} cap on NOI trended 3% a year from today, less 2% sale costs; equity funds before the {pct(a.debt.ltc, 0)} LTC construction loan. {rows.length > rental.length ? "Entrance-fee campus excluded from the rental return figures." : ""}</div>

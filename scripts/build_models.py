@@ -367,6 +367,7 @@ def build_site(s):
     build_program(wb, s, u, lines)
     build_capital(wb, s)
     build_hold(wb)
+    build_structuring(wb, s)
     build_notes(wb, s, mk)
     build_readme(wb, s, struct)
     wb.calculation.fullCalcOnLoad = True
@@ -528,6 +529,38 @@ def build_hold(wb):
     S.put("B21", "Year-10 reversion at exit cap"); S.calc("C21", "=L15*(1+RevGrowth)/ExitCap", USD)
 
 
+STRUCT_PATH = ROOT / "data" / "structuring.json"
+STRUCTS = json.loads(STRUCT_PATH.read_text()) if STRUCT_PATH.exists() else {}
+
+
+def build_structuring(wb, s):
+    """Downside structuring (values from lib/structuring.ts via scripts/export_structuring.ts; shortlist sites only)."""
+    r = STRUCTS.get(s["id"])
+    if not r:
+        return
+    ws = wb.create_sheet("Downside Structuring"); S = Sheet(wb, ws); ws.sheet_view.showGridLines = False
+    S.widths({"A": 3, "B": 34, "C": 12, "D": 13, "E": 14, "F": 13, "G": 14, "H": 15, "I": 14, "J": 12, "K": 70})
+    S.put("B2", "Downside Structuring", font=F_TITLE)
+    x = STRUCTS["_assumptions"]; sh = x["shocks"]
+    S.put("B3", f"Combined downside: rents {sh['rent']:+.0%}, hard costs {sh['hard']:+.0%}, exit cap +{sh['exitBps']} bps, lease-up +{sh['leaseupMonths']} months. "
+               f"GMP leaves the owner {x['gmpOwnerShare']:.0%} of a hard-cost overrun; ground rent {x['groundRentYield']:.0%} of land; master lease at {x['leaseRentShare']:.0%} of base NOI, sold {x['leaseCapPremium']*1e4:.0f} bps wider.", font=F_NOTE)
+    S.put("B4", f"Recommended: {next(o['label'] for o in r['opts'] if o['key'] == r['rec'])}. {r['verdict']}", bold=True, wrap=True)
+    ws.merge_cells("B4:K4"); ws.row_dimensions[4].height = 46
+    hdr = ["Structure", "Base YOC", "Base lev. IRR", "Base profit", "Down. YOC", "Down. lev. IRR", "Down. profit", "Equity", "Breakeven?", "Notes"]
+    for i, h in enumerate(hdr):
+        c = S.put(f"{chr(66 + i)}6", h, font=F_HDR, fill=HDR_FILL)
+    for k, o in enumerate(r["opts"]):
+        row = 7 + k; b, d = o["base"], o["down"]
+        rec = o["key"] == r["rec"]
+        S.put(f"B{row}", o["label"], bold=rec, fill=SUB_FILL if rec else None)
+        for col, v, f in (("C", b["yoc"], "0.00%"), ("D", b["irrL"], "0.0%"), ("E", b["profit"], "$#,##0,,.0\"M\""), ("F", d["yoc"], "0.00%"), ("G", d["irrL"], "0.0%"), ("H", d["profit"], "$#,##0,,.0\"M\";[Red]-$#,##0,,.0\"M\""), ("I", b["equity"], "$#,##0,,.0\"M\"")):
+            S.put(f"{col}{row}", v if v == v else None, f, bold=rec, fill=SUB_FILL if rec else None)
+        S.put(f"J{row}", "Yes" if o["ok"] else "No", bold=rec, fill=SUB_FILL if rec else None)
+        S.put(f"K{row}", " ".join(t for t in (o["what"], o.get("note") or "") if t), wrap=True)
+        ws.row_dimensions[row].height = 30
+    S.put(f"B{8 + len(r['opts'])}", "Values are computed by the website model (lib/structuring.ts) from the same inputs as this workbook. Change inputs on the Assumptions tabs to re-run the base case; this tab is a static record of the structuring analysis.", font=F_NOTE)
+
+
 def build_notes(wb, s, mk):
     ws = wb.create_sheet("Sources & Notes"); S = Sheet(wb, ws); ws.sheet_view.showGridLines = False
     S.widths({"A": 3, "B": 120})
@@ -605,7 +638,7 @@ def build_readme(wb, s, struct):
         ("7. Capital deployment", "Capital Deployment", "Monthly draws: land deposit at site control, soft costs through predevelopment, hard costs on an S-curve. Equity funds first, then the 60% LTC loan."),
         ("8. Returns", "Capital Deployment", "Sale at stabilization: NOI trended at 3% a year / exit cap, less 2% sale cost. IRRs from the monthly cash flows."),
         ("9. Hold case", "10 Year Cash Flow", "Permanent loan sized at 10% debt yield (max 75% LTV); ten years of cash flow after debt service."),
-    ]
+    ] + ([("10. Downside structuring", "Downside Structuring", "Combined downside with and without each structural fix (GMP, PILOT, ground lease, master lease, nonprofit fee development); the recommended structure is the cheapest one that holds breakeven.")] if s["id"] in STRUCTS else [])
     S.sub(f"B{r}", f"D{r}", ["Step", "Where", "Calculation"]); r += 1
     for a_, b_, c_ in flow:
         S.put(f"B{r}", a_, bold=True); S.put(f"C{r}", b_); S.put(f"D{r}", c_, wrap=True); ws.row_dimensions[r].height = 30; r += 1
@@ -620,7 +653,7 @@ def build_readme(wb, s, struct):
            ("Soft costs / contingency", f"{A['soft_cost_pct']:.0%} / {A['contingency_pct']:.0%}", "Of hard and site work"),
            ("Construction loan", f"{A['debt']['ltc']:.0%} LTC at {A['debt']['rate']:.2%}", "Funds after equity is fully in"),
            ("Growth to stabilization", f"{CAP['trend']:.0%} a year", "Rents and expenses"),
-           ("Schedule", f"{CAP['predev']} mo predevelopment, then construction and lease-up by prototype", "See Capital Deployment")]
+           ("Schedule", f"{CAP['predev']} mo predevelopment, then construction, then lease-up at industry-norm move-ins (AL/MC 2-4 a month, IL 3-6; NIC MAP)", "See Capital Deployment")]
     S.sub(f"B{r}", f"D{r}", ["Assumption", "Value", "Basis"]); r += 1
     for a_, b_, c_ in ass:
         S.put(f"B{r}", a_); S.put(f"C{r}", b_, bold=True); S.put(f"D{r}", c_, wrap=True); r += 1

@@ -26,4 +26,6 @@
 | NJ Medicaid AL set-aside | 10% of AL at $3,500/mo | CN condition [V]; rate [I] |
 | Tax structures | PILOT = 50% of full tax; nonprofit = 10% | [I] |
 | Entrance-fee test | fee = 90% of submarket home value; 93% presale; viable at ≥70% IL-cost coverage | River's Edge fees cover ~86% of financing [V] |
+| Downside case | Rents −10%, hard cost +10%, exit cap +50 bps, lease-up +6 months; each alone and combined | [I] IC convention; shown on every rental dossier and IC memo |
+| Downside structuring | GMP leaves owner 30% of a hard-cost overrun; ground rent 6% of land value; master lease at 85% of base NOI sold 50 bps wider; nonprofit fee = 4.5% of cost | [I] Recommended structure = cheapest that keeps combined-downside profit ≥ 0; NJ PILOT needs a redevelopment-area designation (N.J.S.A. 40A:20) |
 | Score weights | approval 30, rent support 25, yield 25, need 20 | Ben's two tests (approval, rent/need) weighted with the hurdle |

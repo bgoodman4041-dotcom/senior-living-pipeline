@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import type { Metadata } from "next";
 import { VerdictChip } from "@/components/ui";
-import { sites, shortlist, meta } from "@/lib/data";
+import { sites, shortlist, meta, onHold } from "@/lib/data";
 import { pct, longDate } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Data room", description: "Document index: IC memos, Excel pro formas for every site, the portfolio workbook, underwriting basis and market research." };
@@ -39,7 +39,7 @@ export default function DataRoom() {
           <thead><tr><th>#</th><th>Site</th><th>Verdict</th><th className="num">YOC taxed</th><th className="num hide-sm">Size</th><th></th></tr></thead>
           <tbody>{ordered.map((s) => { const f = `models/ATCO-${s.id}-proforma.xlsx`; return (
             <tr key={s.id}><td>{idx()}</td><td><a href={`/sites/${s.id}`} className="site-name">{s.name}</a><div className="xs muted">{s.municipality}, {s.state} · {s.id}</div></td>
-              <td><VerdictChip v={s.verdict} /></td><td className="num">{pct(s.uw.yoc)}</td><td className="num hide-sm">{size(f)}</td><td><a href={`/${f}`} download>Download</a></td></tr>); })}</tbody>
+              <td><VerdictChip v={s.verdict} hold={onHold(s)} /></td><td className="num">{pct(s.uw.yoc)}</td><td className="num hide-sm">{size(f)}</td><td><a href={`/${f}`} download>Download</a></td></tr>); })}</tbody>
         </table></div></div>
 
         <div className="card"><div className="table-wrap"><table className="t dr-t">

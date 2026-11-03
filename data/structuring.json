@@ -1,0 +1,959 @@
+{
+ "_assumptions": {
+  "gmpOwnerShare": 0.3,
+  "groundRentYield": 0.06,
+  "leaseRentShare": 0.85,
+  "leaseCapPremium": 0.005,
+  "leaseRampMonths": 12,
+  "lowLtc": 0.5,
+  "minCoverage": 1,
+  "shocks": {
+   "rent": -0.1,
+   "hard": 0.1,
+   "exitBps": 50,
+   "leaseupMonths": 6
+  }
+ },
+ "NJ-04": {
+  "rec": "gmp",
+  "nothing": false,
+  "verdict": "GMP contract holds breakeven: the combined downside still returns $5.4M of profit (6.64% YOC, 4.7% levered IRR).",
+  "opts": [
+   {
+    "key": "none",
+    "label": "As underwritten",
+    "what": "Base structure, no mitigants",
+    "ok": true,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07750562107699867,
+     "irrL": 0.17241432784692656,
+     "irrL50": 0.14795243720162166,
+     "profit": 20484957.610486448,
+     "equity": 23322576.800000004,
+     "total": 58306442
+    },
+    "down": {
+     "yoc": 0.06321477972834451,
+     "irrL": 0.020973029476190508,
+     "irrL50": 0.017310335070232608,
+     "profit": 2433253.0329598114,
+     "equity": 25163120.106185608,
+     "total": 62907800.26546401
+    }
+   },
+   {
+    "key": "gmp",
+    "label": "GMP contract",
+    "what": "Guaranteed maximum price at financial close; the owner keeps about 30% of a hard-cost overrun",
+    "ok": true,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07750562107699867,
+     "irrL": 0.17241432784692656,
+     "irrL50": 0.14795243720162166,
+     "profit": 20484957.610486448,
+     "equity": 23322576.800000004,
+     "total": 58306442
+    },
+    "down": {
+     "yoc": 0.066379945938539,
+     "irrL": 0.04696502515315837,
+     "irrL50": 0.03909769428664367,
+     "profit": 5432858.4249598235,
+     "equity": 23963277.9493856,
+     "total": 59908194.873463996
+    }
+   },
+   {
+    "key": "gmp_pilot",
+    "label": "GMP + PILOT",
+    "what": "PILOT at 50% of full taxes. Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township.",
+    "ok": true,
+    "note": null,
+    "availability": "Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township.",
+    "coverage": null,
+    "base": {
+     "yoc": 0.08581516601544646,
+     "irrL": 0.2255969103692872,
+     "irrL50": 0.19553658170918875,
+     "profit": 28932353.64097689,
+     "equity": 23322576.800000004,
+     "total": 58306442
+    },
+    "down": {
+     "yoc": 0.07446732031233451,
+     "irrL": 0.10478968860439508,
+     "irrL50": 0.088696221919909,
+     "profit": 13393659.726180486,
+     "equity": 23963277.9493856,
+     "total": 59908194.873463996
+    }
+   },
+   {
+    "key": "gmp_ground",
+    "label": "GMP + ground lease",
+    "what": "Landowner keeps the fee and takes ground rent at 6% of land value; land leaves the capital stack",
+    "ok": true,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07940238573823336,
+     "irrL": 0.19305978824774717,
+     "irrL50": 0.1656636520192234,
+     "profit": 20222089.824257895,
+     "equity": 21042576.8,
+     "total": 52606442
+    },
+    "down": {
+     "yoc": 0.06705079823189722,
+     "irrL": 0.05401110065097958,
+     "irrL50": 0.04494048671845996,
+     "profit": 5513469.2711569965,
+     "equity": 21683277.9493856,
+     "total": 54208194.873463996
+    }
+   },
+   {
+    "key": "gmp_pilot_ground",
+    "label": "GMP + PILOT + ground lease",
+    "what": "Both of the above",
+    "ok": true,
+    "note": null,
+    "availability": "Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township.",
+    "coverage": null,
+    "base": {
+     "yoc": 0.08861228440425604,
+     "irrL": 0.2525207869484891,
+     "irrL50": 0.2189284213552236,
+     "profit": 28669485.85474834,
+     "equity": 21042576.8,
+     "total": 52606442
+    },
+    "down": {
+     "yoc": 0.07598856126073351,
+     "irrL": 0.11864880953375945,
+     "irrL50": 0.10045960825841482,
+     "profit": 13474270.572377674,
+     "equity": 21683277.9493856,
+     "total": 54208194.873463996
+    }
+   },
+   {
+    "key": "gmp_lease",
+    "label": "GMP + operator master lease",
+    "what": "Triple-net lease to the operator at 85% of base NOI from delivery; sold at a cap 50 bps wider",
+    "ok": true,
+    "note": "Operator rent coverage in the downside: 1.04x.",
+    "availability": null,
+    "coverage": 1.0352719832406172,
+    "base": {
+     "yoc": 0.07294703408032527,
+     "irrL": 0.1186663090806026,
+     "irrL50": 0.10069308592640791,
+     "profit": 6834219.227912083,
+     "equity": 21063038.400000002,
+     "total": 52657596
+    },
+    "down": {
+     "yoc": 0.07120859844851071,
+     "irrL": 0.028730471309819983,
+     "irrL50": 0.024059715662778425,
+     "profit": 1582553.4447179511,
+     "equity": 21577256.3072,
+     "total": 53943140.768
+    }
+   },
+   {
+    "key": "fee",
+    "label": "Fee development for a nonprofit",
+    "what": "A tax-exempt sponsor owns and finances it; ATCO earns a 4.5% development fee plus the GC contract",
+    "ok": true,
+    "note": "ATCO's fee is about $2.6M with no ownership equity. The sponsor's downside profit is $19.8M.",
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.0924628019662047,
+     "irrL": 0.2636358756142636,
+     "irrL50": 0.22998593722563299,
+     "profit": 35690270.465369254,
+     "equity": 23322576.800000004,
+     "total": 58306442
+    },
+    "down": {
+     "yoc": 0.08093721981137092,
+     "irrL": 0.14445205446008558,
+     "irrL50": 0.12349252411427614,
+     "profit": 19762300.76715701,
+     "equity": 23963277.9493856,
+     "total": 59908194.873463996
+    }
+   }
+  ]
+ },
+ "NJ-06": {
+  "rec": "gmp_pilot",
+  "nothing": false,
+  "verdict": "GMP + PILOT holds breakeven: the combined downside still returns $7.4M of profit (6.85% YOC, 6.3% levered IRR). Condition: Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township.",
+  "opts": [
+   {
+    "key": "none",
+    "label": "As underwritten",
+    "what": "Base structure, no mitigants",
+    "ok": false,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07058201427773474,
+     "irrL": 0.12166895995829585,
+     "irrL50": 0.10327179319968294,
+     "profit": 13318858.02620621,
+     "equity": 23101199.6,
+     "total": 57752999
+    },
+    "down": {
+     "yoc": 0.05742607782204002,
+     "irrL": -0.03361142111758286,
+     "irrL50": -0.02719558224622598,
+     "profit": -3516424.1118166745,
+     "equity": 24924032.61924801,
+     "total": 62310081.548120014
+    }
+   },
+   {
+    "key": "gmp",
+    "label": "GMP contract",
+    "what": "Guaranteed maximum price at financial close; the owner keeps about 30% of a hard-cost overrun",
+    "ok": false,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07058201427773474,
+     "irrL": 0.12166895995829585,
+     "irrL50": 0.10327179319968294,
+     "profit": 13318858.02620621,
+     "equity": 23101199.6,
+     "total": 57752999
+    },
+    "down": {
+     "yoc": 0.06033038046535355,
+     "irrL": -0.00493283791488941,
+     "irrL50": -0.004035186598983054,
+     "profit": -516818.7198166624,
+     "equity": 23724190.462448,
+     "total": 59310476.15612
+    }
+   },
+   {
+    "key": "gmp_pilot",
+    "label": "GMP + PILOT",
+    "what": "PILOT at 50% of full taxes. Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township.",
+    "ok": true,
+    "note": null,
+    "availability": "Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township.",
+    "coverage": null,
+    "base": {
+     "yoc": 0.07897118901132735,
+     "irrL": 0.18211319671417514,
+     "irrL50": 0.15655421199789865,
+     "profit": 21766254.056696653,
+     "equity": 23101199.6,
+     "total": 57752999
+    },
+    "down": {
+     "yoc": 0.06849925772617127,
+     "irrL": 0.06313364373509467,
+     "irrL50": 0.05280902037042767,
+     "profit": 7443982.5814040005,
+     "equity": 23724190.462448,
+     "total": 59310476.15612
+    }
+   },
+   {
+    "key": "gmp_ground",
+    "label": "GMP + ground lease",
+    "what": "Landowner keeps the fee and takes ground rent at 6% of land value; land leaves the capital stack",
+    "ok": false,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.0717407848104967,
+     "irrL": 0.136043128482499,
+     "irrL50": 0.11541081590828539,
+     "profit": 13055990.239977673,
+     "equity": 20821199.6,
+     "total": 52052999
+    },
+    "down": {
+     "yoc": 0.060365507343298666,
+     "irrL": -0.004759304428443967,
+     "irrL50": -0.0038857582133654534,
+     "profit": -436207.8736194968,
+     "equity": 21444190.462448,
+     "total": 53610476.15612
+    }
+   },
+   {
+    "key": "gmp_pilot_ground",
+    "label": "GMP + PILOT + ground lease",
+    "what": "Both of the above",
+    "ok": true,
+    "note": null,
+    "availability": "Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township.",
+    "coverage": null,
+    "base": {
+     "yoc": 0.08104860586418854,
+     "irrL": 0.20407767181439684,
+     "irrL50": 0.17543771304623745,
+     "profit": 21503386.270468116,
+     "equity": 20821199.6,
+     "total": 52052999
+    },
+    "down": {
+     "yoc": 0.06940292007936687,
+     "irrL": 0.07223672176300533,
+     "irrL50": 0.06040860357719002,
+     "profit": 7524593.427601166,
+     "equity": 21444190.462448,
+     "total": 53610476.15612
+    }
+   },
+   {
+    "key": "gmp_lease",
+    "label": "GMP + operator master lease",
+    "what": "Triple-net lease to the operator at 85% of base NOI from delivery; sold at a cap 50 bps wider",
+    "ok": false,
+    "note": "Operator rent coverage in the downside: 1.03x.",
+    "availability": null,
+    "coverage": 1.0327137506551283,
+    "base": {
+     "yoc": 0.06580008988636701,
+     "irrL": 0.018820253042516555,
+     "irrL50": 0.015736584012175925,
+     "profit": 1005542.4517874569,
+     "equity": 21063038.400000002,
+     "total": 52657596
+    },
+    "down": {
+     "yoc": 0.06423197649728662,
+     "irrL": -0.07595508988263355,
+     "irrL50": -0.06246481911056778,
+     "profit": -3857544.8796650395,
+     "equity": 21577256.3072,
+     "total": 53943140.768
+    }
+   },
+   {
+    "key": "fee",
+    "label": "Fee development for a nonprofit",
+    "what": "A tax-exempt sponsor owns and finances it; ATCO earns a 4.5% development fee plus the GC contract",
+    "ok": true,
+    "note": "ATCO's fee is about $2.6M with no ownership equity. The sponsor's downside profit is $13.8M.",
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.08568252879820146,
+     "irrL": 0.22453516841617271,
+     "irrL50": 0.19455470710855338,
+     "profit": 28524170.881089017,
+     "equity": 23101199.6,
+     "total": 57752999
+    },
+    "down": {
+     "yoc": 0.07503435953482544,
+     "irrL": 0.10835384648983015,
+     "irrL50": 0.09178716013123722,
+     "profit": 13812623.622380525,
+     "equity": 23724190.462448,
+     "total": 59310476.15612
+    }
+   }
+  ]
+ },
+ "NJ-10": {
+  "rec": "gmp_pilot",
+  "nothing": false,
+  "verdict": "GMP + PILOT holds breakeven: the combined downside still returns $6.0M of profit (6.70% YOC, 5.2% levered IRR). Condition: Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township.",
+  "opts": [
+   {
+    "key": "none",
+    "label": "As underwritten",
+    "what": "Base structure, no mitigants",
+    "ok": false,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.06883032051681033,
+     "irrL": 0.1077012712942571,
+     "irrL50": 0.09111975349635992,
+     "profit": 11527324.6624932,
+     "equity": 23045855.200000003,
+     "total": 57614638
+    },
+    "down": {
+     "yoc": 0.05596150782329384,
+     "irrL": -0.04925695012645526,
+     "irrL50": -0.03960471086831174,
+     "profit": -5003843.398010768,
+     "equity": 24864260.747513607,
+     "total": 62160651.86878401
+    }
+   },
+   {
+    "key": "gmp",
+    "label": "GMP contract",
+    "what": "Guaranteed maximum price at financial close; the owner keeps about 30% of a hard-cost overrun",
+    "ok": false,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.06883032051681033,
+     "irrL": 0.1077012712942571,
+     "irrL50": 0.09111975349635992,
+     "profit": 11527324.6624932,
+     "equity": 23045855.200000003,
+     "total": 57614638
+    },
+    "down": {
+     "yoc": 0.05879888901595202,
+     "irrL": -0.019671557318305943,
+     "irrL50": -0.01600417285570066,
+     "profit": -2004238.006010756,
+     "equity": 23664418.590713598,
+     "total": 59161046.476784
+    }
+   },
+   {
+    "key": "gmp_pilot",
+    "label": "GMP + PILOT",
+    "what": "PILOT at 50% of full taxes. Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township.",
+    "ok": true,
+    "note": null,
+    "availability": "Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township.",
+    "coverage": null,
+    "base": {
+     "yoc": 0.07723964177298137,
+     "irrL": 0.17033947818378792,
+     "irrL50": 0.14608622874567656,
+     "profit": 19974720.692983642,
+     "equity": 23045855.200000003,
+     "total": 57614638
+    },
+    "down": {
+     "yoc": 0.0669883993247348,
+     "irrL": 0.05164843739015024,
+     "irrL50": 0.04305083841881907,
+     "profit": 5956563.295209914,
+     "equity": 23664418.590713598,
+     "total": 59161046.476784
+    }
+   },
+   {
+    "key": "gmp_ground",
+    "label": "GMP + ground lease",
+    "what": "Landowner keeps the fee and takes ground rent at 6% of land value; land leaves the capital stack",
+    "ok": false,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.06979985105549615,
+     "irrL": 0.12025178235369749,
+     "irrL50": 0.10166459239584613,
+     "profit": 11264456.876264647,
+     "equity": 20765855.200000003,
+     "total": 51914638
+    },
+    "down": {
+     "yoc": 0.05867082693972524,
+     "irrL": -0.021643042255433675,
+     "irrL50": -0.01756444236255672,
+     "profit": -1923627.1598135903,
+     "equity": 21384418.5907136,
+     "total": 53461046.476784
+    }
+   },
+   {
+    "key": "gmp_pilot_ground",
+    "label": "GMP + PILOT + ground lease",
+    "what": "Both of the above",
+    "ok": true,
+    "note": null,
+    "availability": "Needs a redevelopment-area designation for a long-term tax exemption (N.J.S.A. 40A:20). Not yet confirmed with the township.",
+    "coverage": null,
+    "base": {
+     "yoc": 0.07913247897442721,
+     "irrL": 0.19090554571174856,
+     "irrL50": 0.16371125471883374,
+     "profit": 19711852.906755105,
+     "equity": 20765855.200000003,
+     "total": 51914638
+    },
+    "down": {
+     "yoc": 0.06773350026787266,
+     "irrL": 0.05935550457847083,
+     "irrL50": 0.04945235821592875,
+     "profit": 6037174.141407095,
+     "equity": 21384418.5907136,
+     "total": 53461046.476784
+    }
+   },
+   {
+    "key": "gmp_lease",
+    "label": "GMP + operator master lease",
+    "what": "Triple-net lease to the operator at 85% of base NOI from delivery; sold at a cap 50 bps wider",
+    "ok": false,
+    "note": "Operator rent coverage in the downside: 1.03x.",
+    "availability": null,
+    "coverage": 1.0319850661238388,
+    "base": {
+     "yoc": 0.06401334576686714,
+     "irrL": -0.00863328956059628,
+     "irrL50": -0.007186246107351302,
+     "profit": -451633.32454084605,
+     "equity": 21063038.400000002,
+     "total": 52657596
+    },
+    "down": {
+     "yoc": 0.0624878131308144,
+     "irrL": -0.10514513517080093,
+     "irrL50": -0.08597829264248413,
+     "profit": -5217575.604238115,
+     "equity": 21577256.3072,
+     "total": 53943140.768
+    }
+   },
+   {
+    "key": "fee",
+    "label": "Fee development for a nonprofit",
+    "what": "A tax-exempt sponsor owns and finances it; ATCO earns a 4.5% development fee plus the GC contract",
+    "ok": true,
+    "note": "ATCO's fee is about $2.6M with no ownership equity. The sponsor's downside profit is $12.3M.",
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.0839670987779182,
+     "irrL": 0.2140475997478153,
+     "irrL50": 0.18511233802999505,
+     "profit": 26732637.51737599,
+     "equity": 23045855.200000003,
+     "total": 57614638
+    },
+    "down": {
+     "yoc": 0.07354000757176103,
+     "irrL": 0.09854931735257377,
+     "irrL50": 0.0832612556459682,
+     "profit": 12325204.336186446,
+     "equity": 23664418.590713598,
+     "total": 59161046.476784
+    }
+   }
+  ]
+ },
+ "CT-02": {
+  "rec": "fee",
+  "nothing": false,
+  "verdict": "No ownership structure holds breakeven. It works only as fee development: a nonprofit sponsor owns it tax-exempt and keeps $1.1M of profit even in the downside, and ATCO earns about $4.8M of fees with no ownership equity.",
+  "opts": [
+   {
+    "key": "none",
+    "label": "As underwritten",
+    "what": "Base structure, no mitigants",
+    "ok": false,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.06614419981759989,
+     "irrL": 0.08827674903452354,
+     "irrL50": 0.07464738047823483,
+     "profit": 15604329.412663192,
+     "equity": 42295149.2,
+     "total": 105737873
+    },
+    "down": {
+     "yoc": 0.05431393396761459,
+     "irrL": -0.07534618487110178,
+     "irrL50": -0.060341257440106544,
+     "profit": -12825567.228379562,
+     "equity": 45823801.0708608,
+     "total": 114559502.67715201
+    }
+   },
+   {
+    "key": "gmp",
+    "label": "GMP contract",
+    "what": "Guaranteed maximum price at financial close; the owner keeps about 30% of a hard-cost overrun",
+    "ok": false,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.06614419981759989,
+     "irrL": 0.08827674903452354,
+     "irrL50": 0.07464738047823483,
+     "profit": 15604329.412663192,
+     "equity": 42295149.2,
+     "total": 105737873
+    },
+    "down": {
+     "yoc": 0.05717691866482509,
+     "irrL": -0.04146363441020251,
+     "irrL50": -0.0336524689848986,
+     "profit": -7089299.679451555,
+     "equity": 43529294.0512896,
+     "total": 108823235.128224
+    }
+   },
+   {
+    "key": "gmp_ground",
+    "label": "GMP + ground lease",
+    "what": "Landowner keeps the fee and takes ground rent at 6% of land value; land leaves the capital stack",
+    "ok": false,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.0666267718802916,
+     "irrL": 0.09624784159354172,
+     "irrL50": 0.08127620391101797,
+     "profit": 15288812.921810403,
+     "equity": 39215149.2,
+     "total": 98037873
+    },
+    "down": {
+     "yoc": 0.05696195593886717,
+     "irrL": -0.04521188642961138,
+     "irrL50": -0.036593165554577256,
+     "profit": -6943098.966239795,
+     "equity": 40449294.0512896,
+     "total": 101123235.128224
+    }
+   },
+   {
+    "key": "gmp_lease",
+    "label": "GMP + operator master lease",
+    "what": "Triple-net lease to the operator at 85% of base NOI from delivery; sold at a cap 50 bps wider",
+    "ok": false,
+    "note": "Operator rent coverage in the downside: 1.05x.",
+    "availability": null,
+    "coverage": 1.0466491303996577,
+    "base": {
+     "yoc": 0.05982474183459397,
+     "irrL": -0.06207662517089285,
+     "irrL50": -0.051200751088578245,
+     "profit": -6387033.374484867,
+     "equity": 39748470.4,
+     "total": 99371176
+    },
+    "down": {
+     "yoc": 0.05838043504342833,
+     "irrL": -0.15570694419363684,
+     "irrL50": -0.12561471420629522,
+     "profit": -15044376.264697865,
+     "equity": 40731830.419404805,
+     "total": 101829576.048512
+    }
+   },
+   {
+    "key": "fee",
+    "label": "Fee development for a nonprofit",
+    "what": "A tax-exempt sponsor owns and finances it; ATCO earns a 4.5% development fee plus the GC contract",
+    "ok": true,
+    "note": "ATCO's fee is about $4.8M with no ownership equity. The sponsor's downside profit is $1.1M.",
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07088989770013626,
+     "irrL": 0.13002483907491835,
+     "irrL50": 0.1109592234695711,
+     "profit": 24310360.094719306,
+     "equity": 42295149.2,
+     "total": 105737873
+    },
+    "down": {
+     "yoc": 0.06178806626955068,
+     "irrL": 0.00603961118297236,
+     "irrL50": 0.00498355055891575,
+     "profit": 1115238.160614118,
+     "equity": 43529294.0512896,
+     "total": 108823235.128224
+    }
+   }
+  ]
+ },
+ "NY-10": {
+  "rec": "gmp",
+  "nothing": false,
+  "verdict": "GMP contract, on top of the PILOT already in the base case, holds breakeven: the combined downside still returns $2.4M of profit (6.28% YOC, 2.2% levered IRR).",
+  "opts": [
+   {
+    "key": "none",
+    "label": "As underwritten",
+    "what": "Base structure, no mitigants",
+    "ok": false,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07252573071940373,
+     "irrL": 0.13088252098861086,
+     "irrL50": 0.11136249100293605,
+     "profit": 14692876.287580028,
+     "equity": 20976560.8,
+     "total": 52441402
+    },
+    "down": {
+     "yoc": 0.059645878166131254,
+     "irrL": -0.004097353194402298,
+     "irrL50": -0.003343202660405775,
+     "profit": -442568.5239066407,
+     "equity": 22649786.780256003,
+     "total": 56624466.95064001
+    }
+   },
+   {
+    "key": "gmp",
+    "label": "GMP contract",
+    "what": "Guaranteed maximum price at financial close; the owner keeps about 30% of a hard-cost overrun",
+    "ok": true,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07252573071940373,
+     "irrL": 0.13088252098861086,
+     "irrL50": 0.11136249100293605,
+     "profit": 14692876.287580028,
+     "equity": 20976560.8,
+     "total": 52441402
+    },
+    "down": {
+     "yoc": 0.06279740187791447,
+     "irrL": 0.022230512621434606,
+     "irrL50": 0.018324109426268498,
+     "profit": 2399162.900093369,
+     "equity": 21513094.210656002,
+     "total": 53782735.52664
+    }
+   },
+   {
+    "key": "gmp_ground",
+    "label": "GMP + ground lease",
+    "what": "Landowner keeps the fee and takes ground rent at 6% of land value; land leaves the capital stack",
+    "ok": true,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07324557994952431,
+     "irrL": 0.1386680288250346,
+     "irrL50": 0.11791977588599956,
+     "profit": 14524495.499907203,
+     "equity": 19836560.8,
+     "total": 49591402
+    },
+    "down": {
+     "yoc": 0.06295393372859204,
+     "irrL": 0.023893795875409962,
+     "irrL50": 0.019675432239965485,
+     "profit": 2404649.6778702512,
+     "equity": 20373094.210656002,
+     "total": 50932735.52664
+    }
+   },
+   {
+    "key": "gmp_lease",
+    "label": "GMP + operator master lease",
+    "what": "Triple-net lease to the operator at 85% of base NOI from delivery; sold at a cap 50 bps wider",
+    "ok": false,
+    "note": "Operator rent coverage in the downside: 1.04x.",
+    "availability": null,
+    "coverage": 1.0447183694713054,
+    "base": {
+     "yoc": 0.06809333386383892,
+     "irrL": 0.05390166073149216,
+     "irrL50": 0.045263549986742646,
+     "profit": 2592849.8218161985,
+     "equity": 18990689.2,
+     "total": 47476723
+    },
+    "down": {
+     "yoc": 0.06639027351090974,
+     "irrL": -0.04275782992090171,
+     "irrL50": -0.03535540818201155,
+     "profit": -1963006.7956382036,
+     "equity": 19477843.2384,
+     "total": 48694608.096
+    }
+   },
+   {
+    "key": "fee",
+    "label": "Fee development for a nonprofit",
+    "what": "A tax-exempt sponsor owns and finances it; ATCO earns a 4.5% development fee plus the GC contract",
+    "ok": true,
+    "note": "ATCO's fee is about $2.4M with no ownership equity. The sponsor's downside profit is $7.7M.",
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07861252450878412,
+     "irrL": 0.16988205620040864,
+     "irrL50": 0.14583889197089572,
+     "profit": 20327187.091235936,
+     "equity": 20976560.8,
+     "total": 52441402
+    },
+    "down": {
+     "yoc": 0.06873239192396544,
+     "irrL": 0.0657260118579297,
+     "irrL50": 0.0549880064468633,
+     "profit": 7708920.914909877,
+     "equity": 21513094.210656002,
+     "total": 53782735.52664
+    }
+   }
+  ]
+ },
+ "NY-03": {
+  "rec": "gmp",
+  "nothing": false,
+  "verdict": "GMP contract, on top of the PILOT already in the base case, holds breakeven: the combined downside still returns $2.0M of profit (6.29% YOC, 1.7% levered IRR).",
+  "opts": [
+   {
+    "key": "none",
+    "label": "As underwritten",
+    "what": "Base structure, no mitigants",
+    "ok": false,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07277733953572352,
+     "irrL": 0.13825407164576076,
+     "irrL50": 0.11781754795955335,
+     "profit": 16403467.591365278,
+     "equity": 24688030.800000004,
+     "total": 61720077
+    },
+    "down": {
+     "yoc": 0.060018438104198456,
+     "irrL": -0.009354913155297018,
+     "irrL50": -0.007644140490318585,
+     "profit": -1079190.49995777,
+     "equity": 26539451.92700001,
+     "total": 66348629.81750001
+    }
+   },
+   {
+    "key": "gmp",
+    "label": "GMP contract",
+    "what": "Guaranteed maximum price at financial close; the owner keeps about 30% of a hard-cost overrun",
+    "ok": true,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07277733953572352,
+     "irrL": 0.13825407164576076,
+     "irrL50": 0.11781754795955335,
+     "profit": 16403467.591365278,
+     "equity": 24688030.800000004,
+     "total": 61720077
+    },
+    "down": {
+     "yoc": 0.06293073420541902,
+     "irrL": 0.01726486850774589,
+     "irrL50": 0.014240585472520495,
+     "profit": 1991278.3000422344,
+     "equity": 25311264.407000005,
+     "total": 63278161.017500006
+    }
+   },
+   {
+    "key": "gmp_ground",
+    "label": "GMP + ground lease",
+    "what": "Landowner keeps the fee and takes ground rent at 6% of land value; land leaves the capital stack",
+    "ok": true,
+    "note": null,
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07474877958376608,
+     "irrL": 0.16144100613242962,
+     "irrL50": 0.13757899348001912,
+     "profit": 16044233.751847148,
+     "equity": 21388030.8,
+     "total": 53470077
+    },
+    "down": {
+     "yoc": 0.06337011936290261,
+     "irrL": 0.022047315523067823,
+     "irrL50": 0.018161801267625455,
+     "profit": 2127961.5211472586,
+     "equity": 22011264.407000005,
+     "total": 55028161.017500006
+    }
+   },
+   {
+    "key": "gmp_lease",
+    "label": "GMP + operator master lease",
+    "what": "Triple-net lease to the operator at 85% of base NOI from delivery; sold at a cap 50 bps wider",
+    "ok": false,
+    "note": "Operator rent coverage in the downside: 1.04x.",
+    "availability": null,
+    "coverage": 1.0429778555388314,
+    "base": {
+     "yoc": 0.06703384779124757,
+     "irrL": 0.03642432892857017,
+     "irrL50": 0.03053897933952321,
+     "profit": 2175987.375387892,
+     "equity": 22782816,
+     "total": 56957040
+    },
+    "down": {
+     "yoc": 0.0655200948175012,
+     "irrL": -0.0542710506518963,
+     "irrL50": -0.044793718829617024,
+     "profit": -3082129.6496379673,
+     "equity": 23309182.080000006,
+     "total": 58272955.2
+    }
+   },
+   {
+    "key": "fee",
+    "label": "Fee development for a nonprofit",
+    "what": "A tax-exempt sponsor owns and finances it; ATCO earns a 4.5% development fee plus the GC contract",
+    "ok": true,
+    "note": "ATCO's fee is about $2.8M with no ownership equity. The sponsor's downside profit is $9.2M.",
+    "availability": null,
+    "coverage": null,
+    "base": {
+     "yoc": 0.07990630018170587,
+     "irrL": 0.18863668734299543,
+     "irrL50": 0.16240289372802863,
+     "profit": 24056119.893159166,
+     "equity": 24688030.800000004,
+     "total": 61720077
+    },
+    "down": {
+     "yoc": 0.06988416004657637,
+     "irrL": 0.07256872918746105,
+     "irrL50": 0.06089286857782761,
+     "profit": 9203115.436837755,
+     "equity": 25311264.407000005,
+     "total": 63278161.017500006
+    }
+   }
+  ]
+ }
+}

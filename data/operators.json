@@ -26,7 +26,7 @@
     "NY-10": { "first": "Benchmark / National Development", "second": "Juniper or a regional middle-market operator", "why": "Middle-market rents fit their suburban format (our inference).", "watch": "Thinner operator bench in Dutchess. Ask EFG/Saber who they have already spoken to." },
     "NY-03": { "first": "Benchmark (already in)", "second": "None needed", "why": "The applicant's attorney told the Planning Board on Feb 3, 2026 that Benchmark wants a 100-unit, 118-bed AL here.", "watch": "ATCO's role is capital or GC alongside VS Construction and Benchmark. For an ATCO-controlled deal in the district, use NY-04 and pitch Sunrise or Brightview." },
     "CT-02": { "first": "Epoch (memory-care component)", "second": "Benchmark (21 CT communities)", "why": "Epoch is expanding CT memory care and already runs Bridges at Trumbull.", "watch": "The owner said in 2023 he would sell or joint-venture with an operator." },
-    "NY-01": { "first": "Sunrise (contract vendee)", "second": "LCS + The Osborn (nonprofit entrance-fee route)", "why": "Sunrise controls the site; offer ATCO as GC or fee developer.", "watch": "For-profit the deal loses about $7.9M; nonprofit-sponsored it makes about $26M with a $6.7M ATCO fee. ATCO's money is in fees and construction, not ownership." }
+    "NY-01": { "first": "Sunrise (contract vendee)", "second": "LCS + The Osborn (nonprofit entrance-fee route)", "why": "Sunrise controls the site; offer ATCO as GC or fee developer.", "watch": "For-profit the deal loses about $11.6M; nonprofit-sponsored it makes about $21.4M with a $6.8M ATCO fee. ATCO's money is in fees and construction, not ownership." }
   },
   "structures": [
     { "t": "Management contract on an ATCO-owned asset", "who": "Sunrise, Atria, Juniper, Benchmark", "econ": "Keep 90–100% of equity; pay about 5% of revenue plus an incentive fee (industry norm)", "when": "Where ATCO wants the long-term hold and a lender-approved operator" },
@@ -35,7 +35,7 @@
     { "t": "Fee development for a nonprofit sponsor", "who": "LCS + Purchase College; ID2 at River's Edge", "econ": "Development fee of about 4–5% of cost, plus GC and possibly ground rent", "when": "Rye Brook and any institutional land; tax-exempt bonds need a 501(c)(3) borrower" }
   ],
   "next": [
-    "Benchmark / National Development: pitch Whippany and Poughkeepsie as a two-site program; ask about Cortlandt and an ATCO capital or GC role.",
+    "Benchmark / National Development: pitch Poughkeepsie now and Whippany only if Florham Park falls away (Whippany is on hold for absorption); ask about Cortlandt and an ATCO capital or GC role.",
     "Engel Burman: pitch Florham Park and Montville as look-alike CCRC pads with the age-restricted builders already approved.",
     "Sunrise: open Rye Brook (GC or fee-development role) and their Westchester pipeline under the new BDT & MSD capital.",
     "LCS + The Osborn: test a nonprofit entrance-fee Rye Brook as the fallback if Sunrise does not close.",

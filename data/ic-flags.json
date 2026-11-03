@@ -20,7 +20,7 @@
  "NY-01": {
   "tone": "info",
   "label": "Pass as owner \u00b7 fee development (pending Ben)",
-  "text": "At the slower lease-up, entrance-fee coverage falls to 70%, below the screen, and a for-profit owner loses about $7.9M. It works only as fee development for a nonprofit sponsor: ATCO earns about a $6.7M development fee plus the GC contract. Sunrise is the contract vendee.",
+  "text": "At the slower lease-up, entrance-fee coverage falls to 70%, at the bottom of the screen, and a for-profit owner loses about $11.6M even with entrance fees. Owned by a nonprofit sponsor tax-exempt it makes about $21.4M, and ATCO earns about a $6.8M development fee plus the GC contract. Sunrise is the contract vendee.",
   "href": "#capital"
  },
  "NY-10": {
@@ -28,5 +28,17 @@
   "label": "Needs PILOT",
   "text": "At industry-norm lease-up (35 months), fully taxed YOC is 6.49%, a hair under the 6.5% floor. A Town of Poughkeepsie PILOT lifts it to 7.25%. Close only on a signed PILOT term sheet.",
   "href": "#capital"
+ },
+ "CT-02": {
+  "tone": "warn",
+  "label": "Downside: fee development only",
+  "text": "Even with the PILOT and a GMP, the combined downside loses money for an owner. Only a nonprofit sponsor structure holds breakeven, with ATCO earning about a $4.8M development fee. Pursue it as fee development or as GC.",
+  "href": "#structuring"
+ },
+ "NJ-10": {
+  "tone": "warn",
+  "label": "Downside needs a PILOT",
+  "text": "Base case clears fully taxed, but the combined downside holds breakeven only with a GMP and a redevelopment-area PILOT, which the township has not designated. Ask about designation before LOI.",
+  "href": "#structuring"
  }
 }

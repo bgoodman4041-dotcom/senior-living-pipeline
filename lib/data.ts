@@ -1,3 +1,4 @@
+import icFlags from "@/data/ic-flags.json";
 import raw from "@/data/site-data.json";
 
 export type Verdict = "Pursue" | "Pursue-structured" | "Watch" | "Pass";
@@ -23,6 +24,7 @@ export const VERDICT_COLOR: Record<Verdict, string> = {
 export const TAX_LABEL: Record<TaxKey, string> = { full_tax: "Fully taxed", pilot: "PILOT", nonprofit_exempt: "Nonprofit" };
 export const STATE_NAME: Record<string, string> = { NY: "New York", NJ: "New Jersey", CT: "Connecticut" };
 
+export const onHold = (s: any) => (icFlags as Record<string, { tone: string }>)[s.id]?.tone === "bad";
 export const isShortlist = (s: any) => s.verdict === "Pursue" || s.verdict === "Pursue-structured";
 export const shortlist = sites.filter(isShortlist).sort((a, b) => a.rank - b.rank);
 export const siteById = (id: string) => sites.find((s) => s.id === id);
