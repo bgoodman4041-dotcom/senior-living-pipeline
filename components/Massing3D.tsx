@@ -21,7 +21,8 @@ export default function Massing3D(p: Props) {
   const bounds = useMemo(() => bboxOf(m.parts.features as any[])!, [m]);
 
   const frame = (mm: MLMap, animate = true, threeD = true) => {
-    mm.fitBounds([[bounds[0], bounds[1]], [bounds[2], bounds[3]]], { padding: 70, pitch: threeD ? 58 : 0, bearing: threeD ? -28 : 0, duration: animate ? 900 : 0, maxZoom: 18.2 });
+    const w = mm.getContainer().clientWidth; const pad = w < 560 ? { top: 70, bottom: 40, left: 16, right: 16 } : 70;
+    mm.fitBounds([[bounds[0], bounds[1]], [bounds[2], bounds[3]]], { padding: pad, pitch: threeD ? 58 : 0, bearing: threeD ? -28 : 0, duration: animate ? 900 : 0, maxZoom: 18.2 });
   };
 
   useEffect(() => {
