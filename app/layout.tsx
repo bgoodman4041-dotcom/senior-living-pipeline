@@ -2,13 +2,13 @@ import "./globals.css";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { Metadata, Viewport } from "next";
 import Header from "@/components/Header";
-import { meta } from "@/lib/data";
+import { meta, shortlist } from "@/lib/data";
 import { longDate } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: { default: "Senior Living Site Selection | ATCO", template: "%s | ATCO Senior Living" },
   description: "ATCO's RiverSpring-model senior living site pipeline: 44 underwritten sites across NY, NJ and CT, screened against a 6.5% yield-on-cost floor.",
-  openGraph: { title: "Senior Living Site Selection | ATCO", description: "44 underwritten sites, 7 shortlisted, underwritten to a 6.5% yield on cost.", type: "website" },
+  openGraph: { title: "Senior Living Site Selection | ATCO", description: `44 underwritten sites, ${shortlist.length} shortlisted, underwritten to a 6.5% yield on cost.`, type: "website" },
 };
 export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width", initialScale: 1 };
 
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <div className="links" style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "flex-start" }}>
               <a href="/">Pipeline</a><a href="/#shortlist">Shortlist</a><a href="/markets">Markets</a>
-              <a href="/operators">Operators</a><a href="/news">News</a><a href="/model">The Model</a><a href="/method">Methodology</a><a href="/method#assumptions">Assumptions</a>
+              <a href="/operators">Operators</a><a href="/news">News</a><a href="/data-room">Data room</a><a href="/model">The Model</a><a href="/method">Methodology</a><a href="/method#assumptions">Assumptions</a>
             </div>
             <div className="xs" style={{ width: "100%", borderTop: "1px solid rgba(255,255,255,.14)", paddingTop: 14 }}>
               © {new Date().getFullYear()} ATCO Properties &amp; Management, LLC. Confidential deal flow. Basemaps and imagery © Esri, HERE, Garmin, Maxar, Earthstar Geographics and the GIS user community; © OpenStreetMap contributors. Parcels: NJGIN, NYS ITS GIS, CT OPM.

@@ -10,6 +10,7 @@ const NAV = [
   { href: "/markets", label: "Markets" },
   { href: "/operators", label: "Operators" },
   { href: "/news", label: "News" },
+  { href: "/data-room", label: "Data room" },
   { href: "/model", label: "The Model" },
   { href: "/method", label: "Methodology" },
 ];

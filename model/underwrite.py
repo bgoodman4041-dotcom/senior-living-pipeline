@@ -93,7 +93,8 @@ def prototype_proforma(proto: dict, a: dict, market: dict, tax_per_unit: float,
     pre_land = hard + site_work + ffe + soft
     # Financing carry and lease-up operating deficit, funded in the budget
     carry = pre_land * a["construction_interest_pct_of_cost"]
-    leaseup = noi * a["leaseup_deficit_months_of_noi"] / 12
+    lu_months = leaseup_months(proto["mix"], a, market)
+    leaseup = noi * lu_months * a["leaseup"]["deficit_share_of_noi"] / 12
     contingency = (hard + site_work) * a["contingency_pct"]
     cost_ex_land = pre_land + carry + leaseup + contingency
 
@@ -103,10 +104,22 @@ def prototype_proforma(proto: dict, a: dict, market: dict, tax_per_unit: float,
         "noi_margin": round(noi / gpr, 4) if gpr else 0,
         "hard": round(hard), "site_work": round(site_work), "ffe": round(ffe),
         "soft": round(soft), "carry": round(carry), "leaseup": round(leaseup),
-        "contingency": round(contingency), "cost_ex_land": round(cost_ex_land),
+        "contingency": round(contingency), "cost_ex_land": round(cost_ex_land), "leaseup_months": lu_months,
         "cost_per_unit_ex_land": round(cost_ex_land / units) if units else 0,
         "lines": lines,
     }
+
+
+def leaseup_months(mix: dict, a: dict, market: dict) -> int:
+    """Months from opening to stabilization at industry-norm net move-ins (AL/MC 2-4/mo, IL 3-6/mo)."""
+    lp = a["leaseup"]
+    ratio = num(market.get("unmet_demand_ratio"), 1.0)
+    adj = lp["adj"] if ratio >= 1.3 else (-lp["adj"] if ratio <= 0.9 else 0.0)
+    cl = a["care_levels"]
+    il = mix.get("IL", 0) * cl["IL"]["stabilized_occupancy"]
+    almc = sum(mix.get(c, 0) * cl[c]["stabilized_occupancy"] for c in ("AL", "MC", "SNF"))
+    m = max(il / (lp["il_pace"] + adj) if il else 0.0, almc / (lp["almc_pace"] + adj) if almc else 0.0)
+    return int(max(lp["min_months"], math.ceil(m - 1e-9)))
 
 
 def debt_check(noi: float, total_cost: float, a: dict) -> dict:

@@ -1,4 +1,8 @@
 import { capitalPlan } from "@/lib/capital";
+import { scenarios } from "@/lib/scenarios";
+import { markets } from "@/lib/data";
+
+export const START_YEAR = 2027; // first site control, Q1
 import { pct, usdM, mult } from "@/lib/format";
 
 /** Shortlist capital deployment: one closing per quarter in rank order, equity first then loan, per site. */
@@ -20,6 +24,27 @@ export default function PortfolioDeployment({ shortlist, a }: { shortlist: any[]
   const wEm = sum((r) => r.p.equityCommit * r.p.equityMultiple) / eqR;
   const wIrrU = sum((r) => r.p.uses.total * r.p.irrUnlevered) / sum((r) => r.p.uses.total);
   const atRisk = sum((r) => r.p.atRiskPreEntitlement, rows);
+  // capital calendar: calendar-year equity calls, loan draws and distributions (sale at stabilization less loan payoff)
+  const cal: { y: number; equity: number; loan: number; dist: number; sales: string[] }[] = [];
+  for (const r of rows) {
+    for (const m of r.p.months) {
+      const k = Math.floor((r.i * 3 + m.m) / 12);
+      cal[k] ??= { y: START_YEAR + k, equity: 0, loan: 0, dist: 0, sales: [] };
+      cal[k].equity += m.equity; cal[k].loan += m.loan;
+    }
+    if (r.p.struct !== "Entrance fee") {
+      const k = Math.floor((r.i * 3 + r.p.N) / 12);
+      cal[k].dist += r.p.netSale - r.p.months[r.p.N].cumLoan; cal[k].sales.push(r.s.municipality);
+    }
+  }
+  for (let k = 0; k < cal.length; k++) cal[k] ??= { y: START_YEAR + k, equity: 0, loan: 0, dist: 0, sales: [] };
+  let net = 0; const calRows = cal.map((c) => { net += c.dist - c.equity; return { ...c, net }; });
+  // portfolio downside: equity-weighted levered IRR with every shock applied at once
+  const down = rental.map((r) => ({ r, d: scenarios(r.s, markets, a)?.at(-1) })).filter((x) => x.d);
+  const dEq = down.reduce((acc, x) => acc + x.d!.equity, 0);
+  const dIrr = down.reduce((acc, x) => acc + x.d!.equity * x.d!.irrL, 0) / (dEq || 1);
+  const dProfit = down.reduce((acc, x) => acc + x.d!.profit, 0);
+  const dHold = down.filter((x) => x.d!.profit > 0).map((x) => x.r.s.municipality);
 
   const W = 760, H = 220, pl = 58, pr = 12, pt = 12, pb = 30;
   const max = cumE[months - 1] + cumL[months - 1];
@@ -82,7 +107,24 @@ export default function PortfolioDeployment({ shortlist, a }: { shortlist: any[]
           );
         })}</tbody>
       </table></div></div>
-      <div className="xs muted">IRRs assume sale at stabilization at a {pct(a.exit_cap)} cap on NOI trended 3% a year from today, less 2% sale costs; equity funds before the {pct(a.debt.ltc, 0)} LTC construction loan. Entrance-fee campus excluded from the rental return figures.</div>
+      <div className="grid" style={{ gap: 18, gridTemplateColumns: "minmax(0, 1fr)" }}>
+        <div className="card"><div className="table-wrap"><table className="t">
+          <caption className="label" style={{ textAlign: "left", padding: "14px 16px 4px" }}>Capital calendar · first site control Q1 {START_YEAR}, one closing per quarter</caption>
+          <thead><tr><th>Year</th><th className="num">Equity called</th><th className="num">Construction loan drawn</th><th className="num">Distributions</th><th className="num">Cumulative net to equity</th><th className="hide-sm">Sales at stabilization</th></tr></thead>
+          <tbody>{calRows.map((c) => (
+            <tr key={c.y}><td>{c.y}</td><td className="num">{c.equity ? usdM(c.equity, 1) : "—"}</td><td className="num">{c.loan ? usdM(c.loan, 1) : "—"}</td>
+              <td className="num">{c.dist ? usdM(c.dist, 1) : "—"}</td><td className="num" style={{ fontWeight: 700, color: c.net < 0 ? "#8a1a2a" : "#33772a" }}>{usdM(c.net, 1)}</td>
+              <td className="small hide-sm">{c.sales.join(", ") || "—"}</td></tr>))}</tbody>
+        </table></div></div>
+        <div className="card card-pad">
+          <h3>Portfolio downside</h3>
+          <p className="small">Every rental site with rents −10%, hard costs +10%, exit cap +50 bps and lease-up +6 months, all at once.</p>
+          <div className="kpi" style={{ padding: 0 }}><div className="label">Levered IRR, equity-weighted</div><div className="v" style={{ color: dIrr < 0 ? "#8a1a2a" : undefined }}>{pct(dIrr, 1)}</div>
+            <div className="s">{dProfit >= 0 ? `${usdM(dProfit, 1)} portfolio profit` : `${usdM(-dProfit, 1)} portfolio loss`} vs. {pct(wIrrL, 1)} base. {dHold.length ? `Still profitable: ${dHold.join(", ")}.` : "No site stays profitable."}</div></div>
+          <p className="xs muted" style={{ marginTop: 10 }}>Site-by-site cases are on each dossier under Capital deployment.</p>
+        </div>
+      </div>
+      <div className="xs muted">IRRs assume sale at stabilization at a {pct(a.exit_cap)} cap on NOI trended 3% a year from today, less 2% sale costs; equity funds before the {pct(a.debt.ltc, 0)} LTC construction loan. {rows.length > rental.length ? "Entrance-fee campus excluded from the rental return figures." : ""}</div>
     </div>
   );
 }

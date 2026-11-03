@@ -75,7 +75,6 @@
   "ffe_per_unit": 22000,
   "soft_cost_pct": 0.2,
   "construction_interest_pct_of_cost": 0.065,
-  "leaseup_deficit_months_of_noi": 9,
   "contingency_pct": 0.05,
   "replacement_reserve_per_unit": 500,
   "debt": {
@@ -112,5 +111,13 @@
     "presale_occupancy": 0.93,
     "min_coverage": 0.7,
     "developer_fee_pct": 0.045
+  },
+  "leaseup": {
+    "_basis": "Net move-ins a month at the industry norm: AL/MC 2-4, IL 3-6 (research/market-demand.md s5; NIC MAP). Base AL/MC 3.0 and IL 4.5, +0.5 where the county unmet-demand ratio is >= 1.3 and -0.5 where <= 0.9. Products lease concurrently; months = the slower product. Operating deficit = 50% of stabilized NOI over the lease-up months.",
+    "almc_pace": 3.0,
+    "il_pace": 4.5,
+    "adj": 0.5,
+    "min_months": 12,
+    "deficit_share_of_noi": 0.5
   }
 }

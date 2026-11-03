@@ -18,7 +18,7 @@
 | FF&E | $22k/unit | CBRE national $11,900 [V] × NY scope [I] |
 | Soft costs | 20% of hard + site | CBRE soft 16.2% of total [V] |
 | Construction interest | 6.5% of pre-land cost | 60–65% LTC at SOFR + 250–325 [V JLL via MHN], ~20-month draw [I] |
-| Lease-up deficit | 9 months of stabilized NOI | [I] |
+| Lease-up | Per site: AL/MC 3.0 and IL 4.5 net move-ins a month (±0.5 by county unmet-demand ratio), minimum 12 months; products lease concurrently. Operating deficit reserve = 50% of stabilized NOI over the lease-up (was a flat 9 months of NOI until 2026-11-03) | Industry norm AL/MC 2–4, IL 3–6 a month (NIC MAP; research/market-demand.md s5) [I] |
 | Contingency | 5% of hard + site | [I] |
 | Reserves | $500/unit/yr | [I] |
 | Debt check | 60% LTC, 6.75%, 30-yr amort | [I] |

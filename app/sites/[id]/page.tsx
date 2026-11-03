@@ -6,6 +6,7 @@ import Massing3D from "@/components/Massing3D";
 import PrintButton from "@/components/PrintButton";
 import Diligence from "@/components/Diligence";
 import CapitalDeployment from "@/components/CapitalDeployment";
+import Downside from "@/components/Downside";
 import EntitlementDossier from "@/components/EntitlementDossier";
 import ApprovalPlaybook from "@/components/ApprovalPlaybook";
 import ModelDownload from "@/components/ModelDownload";
@@ -74,7 +75,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
     { k: "FF&E", v: u.ffe, basis: `$${int(a.ffe_per_unit)}/unit` },
     { k: "Soft cost", v: u.soft, basis: `${pct(a.soft_cost_pct, 0)} of hard + site` },
     { k: "Construction carry", v: u.carry, basis: `${pct(a.construction_interest_pct_of_cost, 1)} of pre-land cost` },
-    { k: "Lease-up deficit", v: u.leaseup, basis: `${a.leaseup_deficit_months_of_noi} months of stabilized NOI` },
+    { k: "Lease-up deficit", v: u.leaseup, basis: `${pct(a.leaseup.deficit_share_of_noi, 0)} of stabilized NOI over a ${u.leaseup_months}-month lease-up` },
     { k: "Contingency", v: u.contingency, basis: `${pct(a.contingency_pct, 0)} of hard + site` },
     { k: "Land", v: u.land_cost, basis: `Basis: ${u.land_cost_basis}` },
   ];
@@ -98,7 +99,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
   if (s.kills?.length) risks.push({ t: "Gate failure", d: s.kills.join("; ") });
   const programRisks = [
     "Calibrated rent, tax and land indices [I]: confirm with NIC MAP, rate shops and an assessor letter.",
-    "Lease-up pace: 9 months of NOI carried in budget; a slower absorption erodes equity returns, not YOC.",
+    `Lease-up pace: ${u.leaseup_months} months to stabilization at industry-norm move-ins (AL/MC 2.5–3.5, IL 4–5 a month); the operating deficit is funded in the budget. A slower fill erodes equity returns and adds reserve.`,
     `Exit-cap spread: Class A AL trades near ${pct(a.exit_cap)} (CBRE H1 2026) and our Northeast research range is 6.75–7.25% [I]; the development spread depends on clearing the ${pct(TARGET, 1)} target.`,
     "Labor and agency cost in AL/MC operations; margin assumptions are operator-dependent.",
   ];
@@ -126,7 +127,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 10 }}>
             <VerdictChip v={s.verdict} />
             <span className="small meta">Rank #{s.rank} of {sites.length}{isShortlist(s) ? " · Shortlist" : ""} · {trackOf(s)}</span>
-            <span style={{ marginLeft: "auto", display: "flex", gap: 8 }}><a className="btn btn-xl no-print" href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Download Excel model</a><a className="btn no-print hide-sm" href="#model">What is in it</a><PrintButton /></span>
+            <span style={{ marginLeft: "auto", display: "flex", gap: 8 }}><a className="btn btn-xl no-print" href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Download Excel model</a>{isShortlist(s) && <a className="btn no-print" href={`/memos/ATCO-${s.id}-IC-memo.pdf`} download>IC memo PDF</a>}<a className="btn no-print hide-sm" href="#model">What is in it</a><PrintButton /></span>
           </div>
           <h1>{s.name}</h1>
           <div className="sub">{s.municipality} · {s.county} County, {STATE_NAME[s.state]} · {s.acres} acres · {s.drive_min_midtown} min to Midtown</div>
@@ -409,6 +410,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
         <section className="section">
           <SectionHead id="capital" n={N()} title="Capital deployment" sub={<>How the capital is raised, released and returned: sources and uses, the draw schedule, the gates that release each tranche, cost controls and returns per dollar. <a href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Download the Excel model</a>.</>} />
           <CapitalDeployment site={s} a={assumptions} />
+          <div id="downside" style={{ marginTop: 18 }}><Downside site={s} markets={markets} a={assumptions} /></div>
           <div className="card card-pad" style={{ marginTop: 18 }}>
             <div className="label" style={{ marginBottom: 8 }}>Exit and take-out</div>
             <ul className="list-clean small">

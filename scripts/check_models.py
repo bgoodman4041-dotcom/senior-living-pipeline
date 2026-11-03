@@ -24,7 +24,7 @@ for f in files:
     if f.name.startswith("ATCO-") and "-proforma" in f.name:
         sid = f.name[5:-14]
         t = cap[sid]; s = wb["One Page Summary"]; c = wb["Capital Deployment"]
-        got = dict(yoc=s["G5"].value, total=s["J37"].value, irrU=c["J8"].value, irrL=c["J9"].value, em=c["J10"].value, check=c["J98"].value)
+        got = dict(yoc=s["G5"].value, total=s["J37"].value, irrU=c["J8"].value, irrL=c["J9"].value, em=c["J10"].value, check=next(c[f"J{r}"].value for r in range(90, 200) if str(c[f"B{r}"].value or "").startswith("Check: total draws")))
         exp_yoc = t["noi"] / t["total"]
         bad = []
         if abs(got["yoc"] - exp_yoc) > 1e-6: bad.append(("yoc", got["yoc"], exp_yoc))

@@ -48,7 +48,7 @@ export function capitalPlan(s: any, a: any, structOverride?: Struct) {
   const u = s.uw;
   const struct = structOverride || structureOf(s);
   const noi = noiFor(s, a, struct === "Entrance fee" ? "Fully taxed" : struct);
-  const P = CAP.predevMonths, B = CAP.buildMonths[protoKey(s)] ?? 24, L = CAP.leaseupMonths[protoKey(s)] ?? 20;
+  const P = CAP.predevMonths, B = CAP.buildMonths[protoKey(s)] ?? 24, L = u.leaseup_months ?? CAP.leaseupMonths[protoKey(s)] ?? 20;
   const N = P + B + L; // month index 0..N; month 0 = site control, P = financial close, P+B = completion, N = stabilization
   const hardBudget = u.hard + u.site_work + u.contingency;
   const softPre = u.soft * CAP.predevSoftPct, softPost = u.soft - softPre;

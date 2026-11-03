@@ -3,6 +3,18 @@
 
 export type Dict = Record<string, any>;
 
+/** Months from opening to stabilization at industry-norm net move-ins (AL/MC 2-4/mo, IL 3-6/mo); mirrors model/underwrite.py. */
+export function leaseupMonthsFor(mix: Record<string, number>, a: any, market: any): number {
+  const lp = a.leaseup;
+  const ratio = Number(market.unmet_demand_ratio) || 1.0;
+  const adj = ratio >= 1.3 ? lp.adj : ratio <= 0.9 ? -lp.adj : 0;
+  const cl = a.care_levels;
+  const il = (mix.IL || 0) * cl.IL.stabilized_occupancy;
+  const almc = ["AL", "MC", "SNF"].reduce((x, c) => x + (mix[c] || 0) * cl[c].stabilized_occupancy, 0);
+  const m = Math.max(il ? il / (lp.il_pace + adj) : 0, almc ? almc / (lp.almc_pace + adj) : 0);
+  return Math.max(lp.min_months, Math.ceil(m - 1e-9));
+}
+
 export function num(v: any, d: number | null = null): number | null {
   if (v === null || v === undefined) return d;
   const s = String(v).trim().replace(/\$/g, "").replace(/,/g, "");
@@ -22,6 +34,7 @@ export interface WhatIf {
   taxPerUnit?: number;     // $/unit/yr
   landCost?: number;       // $ total
   occupancyDelta?: number; // added to each care level's stabilized occupancy (e.g. -0.03)
+  leaseupExtraMonths?: number; // added to the norm lease-up period (downside cases)
 }
 
 export function marketFor(site: Dict, markets: Dict[], a: Dict): Dict {
@@ -102,7 +115,8 @@ export function underwrite(site: Dict, markets: Dict[], a: Dict, w: WhatIf = {})
   const soft = (hard + siteWork) * a.soft_cost_pct;
   const preLand = hard + siteWork + ffe + soft;
   const carry = preLand * a.construction_interest_pct_of_cost;
-  const leaseup = (noi * a.leaseup_deficit_months_of_noi) / 12;
+  const leaseupMonths = leaseupMonthsFor(proto.mix, a, market) + (w.leaseupExtraMonths || 0);
+  const leaseup = (noi * leaseupMonths * a.leaseup.deficit_share_of_noi) / 12;
   const contingency = (hard + siteWork) * a.contingency_pct;
   const costExLand = preLand + carry + leaseup + contingency;
 
@@ -128,7 +142,7 @@ export function underwrite(site: Dict, markets: Dict[], a: Dict, w: WhatIf = {})
   const noiRd = (gpr - opex) * 0.9 - taxes - reserves;
   return {
     prototype: protoKey, units, gsf, revenue: gpr, opex, taxes, reserves, noi,
-    hard, site_work: siteWork, ffe, soft, carry, leaseup, contingency, cost_ex_land: costExLand,
+    hard, site_work: siteWork, ffe, soft, carry, leaseup, leaseup_months: leaseupMonths, contingency, cost_ex_land: costExLand,
     land_cost: landCost, land_cost_basis: basis, total_cost: totalCost, yoc, max_land: maxLand,
     land_cushion: maxLand - landCost, yoc_by_tax_structure: yocBy, max_land_by_tax_structure: maxLandBy,
     loan, dscr: pmt ? noi / pmt : null, equity: totalCost - loan,

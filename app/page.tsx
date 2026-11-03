@@ -68,7 +68,7 @@ export default function Home() {
           </div>
 
           <div className="grid g3" style={{ marginTop: 18 }}>
-            <div className="callout brand"><b>What clears.</b> Rental AL/MC pads of ~{protoC} units inside approved master plans clear {pct(HURDLE, 1)} fully taxed in Morris County NJ, Dutchess and northern Westchester.</div>
+            <div className="callout brand"><b>What clears.</b> Rental AL/MC pads of ~{protoC} units inside approved master plans clear {pct(HURDLE, 1)} fully taxed in Morris County NJ at industry-norm lease-up (2–4 move-ins a month). In Dutchess and northern Westchester they clear only with a PILOT.</div>
             <div className="callout brand"><b>What needs structure.</b> IL-led campuses miss as rentals everywhere. They work only with entrance fees, a nonprofit sponsor or PILOT, or ground-leased land: the RiverSpring structure.</div>
             <div className="callout brand"><b>Where the risk sits.</b> Calibrated rent, tax and land indices drive the spread. NIC MAP pulls, rate shops and assessor letters on the shortlist come before any LOI.</div>
           </div>
@@ -135,14 +135,14 @@ export default function Home() {
           </div>
           <div className="card" style={{ marginBottom: 18 }}><div className="table-wrap"><table className="t ic-table">
             <caption className="label" style={{ textAlign: "left", padding: "14px 16px 4px" }}>Investment committee view · base case, {pct(assumptions.exit_cap)} exit cap</caption>
-            <thead><tr><th>Site</th><th>Recommendation</th><th className="num">Capital needed</th><th className="num">Equity</th><th className="num">YOC</th><th className="num">Levered IRR</th><th className="num">Approval odds</th><th className="hide-sm">Operator, first call</th><th className="hide-sm">General contractor</th></tr></thead>
-            <tbody>{shortlist.map((s) => {
+            <thead><tr><th>Site</th><th>Recommendation</th><th className="num">Capital needed</th><th className="num">Equity</th><th className="num">YOC</th><th className="num">Levered IRR</th><th className="num">Approval odds</th><th className="hide-sm">Operator, first call</th><th className="hide-sm">General contractor</th><th>Memo</th></tr></thead>
+            <tbody>{[...shortlist, ...sites.filter((x) => !shortlist.includes(x) && (icFlags as Record<string, unknown>)[x.id])].map((s) => {
               const cp = capitalPlan(s, assumptions); const pb = playbook(s, assumptions); const f = (icFlags as Record<string, { tone: string; label: string }>)[s.id];
               const fit = (ops.fit as Record<string, { first: string }>)[s.id]; const g = gcFor(s);
               const irr = cp.efCase ? cp.efCase.nonprofit.irrL : cp.irrLevered;
               return (
                 <tr key={s.id}>
-                  <td style={{ minWidth: 170 }}><a href={`/sites/${s.id}`} className="site-name">{s.municipality}</a><div className="xs muted">{s.id} · {s.uw.units} units</div></td>
+                  <td style={{ minWidth: 170 }}><a href={`/sites/${s.id}`} className="site-name">{s.municipality}</a><div className="xs muted">{s.id} · {s.uw.units} units{!shortlist.includes(s) && " · off shortlist"}</div></td>
                   <td style={{ minWidth: 150 }}>{f ? <span className={`ic-chip ic-${f.tone}`}>{f.label}</span> : <span className="ic-chip ic-go">Advance to LOI</span>}</td>
                   <td className="num">{usdM(cp.uses.total, 1)}</td>
                   <td className="num">{usdM(cp.equityCommit, 1)}</td>
@@ -151,6 +151,7 @@ export default function Home() {
                   <td className="num">{pb.like}%</td>
                   <td className="small hide-sm">{fit?.first ?? "—"}</td>
                   <td className="small hide-sm">{g.primary.name}</td>
+                  <td className="small">{shortlist.includes(s) ? <a href={`/memos/ATCO-${s.id}-IC-memo.pdf`} download>PDF</a> : "—"}</td>
                 </tr>); })}</tbody>
           </table></div></div>
           <div className="grid g3">

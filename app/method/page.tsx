@@ -13,7 +13,7 @@ const F = ({ children }: { children: React.ReactNode }) => (
 export default function Method() {
   const reg = parseTable(readDoc("model/ASSUMPTIONS.md")).slice(1);
   const capRows: [string, string, string][] = [
-    ["Schedule", `${CAP.predevMonths} mo predevelopment; build ${CAP.buildMonths.C}–${CAP.buildMonths.A} mo; lease-up ${CAP.leaseupMonths.C}–${CAP.leaseupMonths.A} mo by prototype`, "[I] 114-unit AL/MC at 18 months is about 6 move-ins a month, above the 2–4 a month rule of thumb; Northeast lease-ups have run faster with occupancy above 90% [V NIC]"],
+    ["Schedule", `${CAP.predevMonths} mo predevelopment; build ${CAP.buildMonths.C}–${CAP.buildMonths.A} mo; lease-up sized per site: AL/MC ${a.leaseup.almc_pace} and IL ${a.leaseup.il_pace} net move-ins a month, ±${a.leaseup.adj} by county unmet demand, minimum ${a.leaseup.min_months} months`, "Industry norm of 2–4 AL/MC and 3–6 IL net move-ins a month (research/market-demand.md s5; NIC MAP). A 114-unit AL/MC pad takes about 30 months."],
     ["Growth to sale", `${pct(CAP.trend, 0)} a year on rent and expense`, "[I] in line with recent AL rate increases"],
     ["Sale costs", pct(CAP.saleCostPct, 0), "[I]"],
     ["Equity split", `LP ${pct(CAP.lpShare, 0)} / GP ${pct(1 - CAP.lpShare, 0)}`, "[I] typical programmatic JV"],

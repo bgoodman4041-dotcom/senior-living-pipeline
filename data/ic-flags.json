@@ -1,6 +1,32 @@
 {
-  "NJ-04": { "tone": "warn", "label": "Absorption thin", "text": "With Arbor Terrace's 80 units counted, the project needs about 30% of unmet demand in a 7-mile market. Get a NIC MAP pull and a pre-leasing plan before LOI. Florham Park is the one Morris County pad to advance.", "href": "#absorption" },
-  "NJ-06": { "tone": "bad", "label": "Hold: absorption", "text": "Arbor Terrace Florham Park (80 AL/MC, opening late 2027) uses up most of the unmet demand this pad needs. Hold behind Florham Park; do not pursue both.", "href": "#absorption" },
-  "NY-03": { "tone": "info", "label": "Partner role", "text": "VS Construction controls the site and Benchmark is already the named operator (Planning Board, Feb 3 2026). ATCO's role is capital or GC alongside them, not a separate development.", "href": "#operators" },
-  "NY-01": { "tone": "info", "label": "Fee development (pending Ben)", "text": "Loses about $7.9M for a for-profit owner even with entrance fees; works with a nonprofit sponsor, with ATCO earning about a $6.7M development fee plus the GC contract. Sunrise is the contract vendee.", "href": "#capital" }
+ "NJ-04": {
+  "tone": "warn",
+  "label": "Absorption thin",
+  "text": "With Arbor Terrace's 80 units counted, the project needs about 30% of unmet demand in a 7-mile market. Get a NIC MAP pull and a pre-leasing plan before LOI. Florham Park is the one Morris County pad to advance.",
+  "href": "#absorption"
+ },
+ "NJ-06": {
+  "tone": "bad",
+  "label": "Hold: absorption",
+  "text": "Arbor Terrace Florham Park (80 AL/MC, opening late 2027) uses up most of the unmet demand this pad needs. Hold behind Florham Park; do not pursue both.",
+  "href": "#absorption"
+ },
+ "NY-03": {
+  "tone": "info",
+  "label": "Partner role \u00b7 needs PILOT",
+  "text": "VS Construction controls the site and Benchmark is the named operator (Planning Board, Feb 3 2026), so ATCO's role is capital or GC. Fully taxed YOC is 6.39% at norm lease-up; a PILOT lifts it to 7.28%.",
+  "href": "#operators"
+ },
+ "NY-01": {
+  "tone": "info",
+  "label": "Pass as owner \u00b7 fee development (pending Ben)",
+  "text": "At the slower lease-up, entrance-fee coverage falls to 70%, below the screen, and a for-profit owner loses about $7.9M. It works only as fee development for a nonprofit sponsor: ATCO earns about a $6.7M development fee plus the GC contract. Sunrise is the contract vendee.",
+  "href": "#capital"
+ },
+ "NY-10": {
+  "tone": "warn",
+  "label": "Needs PILOT",
+  "text": "At industry-norm lease-up (35 months), fully taxed YOC is 6.49%, a hair under the 6.5% floor. A Town of Poughkeepsie PILOT lifts it to 7.25%. Close only on a signed PILOT term sheet.",
+  "href": "#capital"
+ }
 }

@@ -31,7 +31,7 @@ A = D["assumptions"]
 CAP = dict(predev=9, build={"A": 30, "B": 24, "C": 20}, leaseup={"A": 24, "B": 20, "C": 18}, deposit=0.05,
            predev_soft=0.35, ffe_months=3, sale_cost=0.02, lp_share=0.9, perm_dy=0.10, perm_ltv=0.75,
            perm_rate=0.06, perm_amort=35, trend=0.03, retainage=0.10, co_threshold=250000)
-MAXM = 63  # months 0..63 cover the longest schedule (9 + 30 + 24)
+MAXM = 96  # months 0..96 cover the longest schedule (9 + 30 + 48-month lease-up)
 
 # ---------- styles (106 Court: Aptos Narrow 11, slate headers, blue inputs, yellow key output) ----------
 FONT = "Aptos Narrow"
@@ -273,10 +273,10 @@ def build_site(s):
            ("Soft costs (% of hard + site)", A["soft_cost_pct"], PCT1, "SoftPct"),
            ("Construction interest (% of cost)", A["construction_interest_pct_of_cost"], PCT1, "InterestPct"),
            ("Contingency (% of hard + site)", A["contingency_pct"], PCT1, "ContingencyPct"),
-           ("Lease-up reserve (months of NOI)", A["leaseup_deficit_months_of_noi"], "0.0", "LeaseupMonths")]
+           ("Lease-up reserve (months of NOI)", "=LeaseupMo*DeficitShare", "0.0", "LeaseupMonths")]
     for i, (lab, v, fmt, nm) in enumerate(ops):
         r = 41 + i
-        S.put(f"F{r}", lab); S.inp(f"J{r}", v, fmt, nm)
+        S.put(f"F{r}", lab); (S.calc if str(v).startswith("=") else S.inp)(f"J{r}", v, fmt, nm)
 
     # Value and returns
     S.header("B51", "D51", "Value & Profit")
@@ -336,10 +336,11 @@ def build_site(s):
         (S.inp if not str(v).startswith("=") else S.calc)(f"N{r}", v, fmt)
     S.header("M13", "N13", "Supplemental: Schedule (months)")
     sch = [("Predevelopment (to financial close)", CAP["predev"], "PredevMonths"), ("Construction", CAP["build"][proto], "BuildMonths"),
-           ("Lease-up to stabilization", CAP["leaseup"][proto], "LeaseupMo"), ("Total to stabilization", "=PredevMonths+BuildMonths+LeaseupMo", "MonthsN")]
+           ("Lease-up to stabilization", u.get("leaseup_months", CAP["leaseup"][proto]), "LeaseupMo"), ("Total to stabilization", "=PredevMonths+BuildMonths+LeaseupMo", "MonthsN")]
     for i, (lab, v, nm) in enumerate(sch):
         r = 14 + i
         S.put(f"M{r}", lab); (S.calc if str(v).startswith("=") else S.inp)(f"N{r}", v, NUM, nm)
+    S.put("M18", "Operating deficit (share of NOI over lease-up)"); S.inp("N18", A["leaseup"]["deficit_share_of_noi"], PCT1, "DeficitShare")
     S.header("M19", "N19", "Supplemental: Capital Release Rules")
     rel = [("Land deposit at site control", CAP["deposit"], PCT1, "DepositPct"), ("Soft costs spent before close", CAP["predev_soft"], PCT1, "PredevSoftPct"),
            ("FF&E delivery (final months)", CAP["ffe_months"], NUM, "FFEMonths"), ("LP share of equity", CAP["lp_share"], PCT1, "LPShare"),
@@ -419,16 +420,16 @@ def build_capital(wb, s):
     su = [("Total capitalization", "=TotalCost"), ("Senior construction loan", "=LoanCommit"), ("Equity commitment", "=EquityCommit"),
           ("  LP equity", "=EquityCommit*LPShare"), ("  GP / ATCO co-invest", "=EquityCommit*(1-LPShare)"),
           ("Capital at risk before entitlement", "=PredevTotal"), ("  as % of equity", "=PredevTotal/EquityCommit"),
-          ("Peak equity month", "=MATCH(EquityCommit-1,M33:M96,1)-1"), ("Months to stabilization", "=MonthsN")]
+          ("Peak equity month", "=MATCH(EquityCommit-1,M33:M129,1)-1"), ("Months to stabilization", "=MonthsN")]
     for i, (lab, f) in enumerate(su):
         r = 6 + i
         S.put(f"B{r}", lab); S.calc(f"D{r}", f, PCT1 if "%" in lab else (NUM if "month" in lab.lower() else USD))
 
     S.header("G5", "J5", "Returns per Dollar Deployed")
     rr = [("Yield on cost (today's NOI)", "=YOC", PCT), ("Yield on cost (trended)", "=NOITrended/TotalCost", PCT),
-          ("Unlevered IRR", "=IFERROR((1+IRR(O33:O96,0.01))^12-1,IFERROR((1+IRR(O33:O96,-0.03))^12-1,\"n/m\"))", PCT1), ("Levered IRR", "=IFERROR((1+IRR(P33:P96,0.01))^12-1,IFERROR((1+IRR(P33:P96,-0.03))^12-1,\"n/m\"))", PCT1),
+          ("Unlevered IRR", "=IFERROR((1+IRR(O33:O129,0.01))^12-1,IFERROR((1+IRR(O33:O129,-0.03))^12-1,\"n/m\"))", PCT1), ("Levered IRR", "=IFERROR((1+IRR(P33:P129,0.01))^12-1,IFERROR((1+IRR(P33:P129,-0.03))^12-1,\"n/m\"))", PCT1),
           ("Equity multiple", "=(NetSale-LoanAtSale)/EquityCommit", X), ("Profit on cost (net sale)", "=(NetSale-TotalCost)/TotalCost", PCT1),
-          ("NOI per $1 of equity", "=NOITrended/EquityCommit", '"$"0.000'), ("Loan balance at sale", "=INDEX(N33:N96,MonthsN+1)", USD)]
+          ("NOI per $1 of equity", "=NOITrended/EquityCommit", '"$"0.000'), ("Loan balance at sale", "=INDEX(N33:N129,MonthsN+1)", USD)]
     for i, (lab, f, _fmt) in enumerate(rr):
         r = 6 + i
         S.put(f"G{r}", lab)
@@ -438,11 +439,11 @@ def build_capital(wb, s):
 
     S.header("B16", "F16", "Capital Release Gates")
     S.sub("B17", "F17", ["Gate", "Months", "Released", "% of total", "Release test"])
-    gates = [("1. Site control", "0", "=SUMIFS(J33:J96,B33:B96,0)", "LOI inside max land; title, Phase I, survey ordered"),
-             ("2. Entitlement & design", '="1-"&(PredevMonths-1)', "=SUMIFS(J33:J96,B33:B96,\">0\",B33:B96,\"<\"&PredevMonths)", "Approvals in hand; CN/ERCN filed; GMP within 3% of budget"),
-             ("3. Financial close", "=PredevMonths", "=SUMIFS(J33:J96,B33:B96,PredevMonths)", "Loan committed at or under LTC; operator agreement; equity fully subscribed"),
-             ("4. Construction", '=(PredevMonths+1)&"-"&(PredevMonths+BuildMonths-1)', "=SUMIFS(J33:J96,B33:B96,\">\"&PredevMonths,B33:B96,\"<\"&(PredevMonths+BuildMonths))", "Monthly draws certified by lender's construction monitor; 10% retainage"),
-             ("5. Lease-up", '=(PredevMonths+BuildMonths)&"-"&MonthsN', "=SUMIFS(J33:J96,B33:B96,\">=\"&(PredevMonths+BuildMonths))", "Deficit reserve released only against monthly variance reports")]
+    gates = [("1. Site control", "0", "=SUMIFS(J33:J129,B33:B129,0)", "LOI inside max land; title, Phase I, survey ordered"),
+             ("2. Entitlement & design", '="1-"&(PredevMonths-1)', "=SUMIFS(J33:J129,B33:B129,\">0\",B33:B129,\"<\"&PredevMonths)", "Approvals in hand; CN/ERCN filed; GMP within 3% of budget"),
+             ("3. Financial close", "=PredevMonths", "=SUMIFS(J33:J129,B33:B129,PredevMonths)", "Loan committed at or under LTC; operator agreement; equity fully subscribed"),
+             ("4. Construction", '=(PredevMonths+1)&"-"&(PredevMonths+BuildMonths-1)', "=SUMIFS(J33:J129,B33:B129,\">\"&PredevMonths,B33:B129,\"<\"&(PredevMonths+BuildMonths))", "Monthly draws certified by lender's construction monitor; 10% retainage"),
+             ("5. Lease-up", '=(PredevMonths+BuildMonths)&"-"&MonthsN', "=SUMIFS(J33:J129,B33:B129,\">=\"&(PredevMonths+BuildMonths))", "Deficit reserve released only against monthly variance reports")]
     for i, (g, m, f, t) in enumerate(gates):
         r = 18 + i
         S.put(f"B{r}", g); S.calc(f"C{r}", m); S.calc(f"D{r}", f, USD); S.calc(f"E{r}", f"=D{r}/TotalCost", PCT1); S.put(f"F{r}", t)
@@ -638,7 +639,7 @@ def build_readme(wb, s, struct):
 def plan_static(s):
     """Python mirror of lib/capital.ts capitalPlan for the portfolio roll-up."""
     u = s["uw"]; proto = (u["prototype"] or "C").rstrip("*")[:1] or "C"
-    P, B, L = CAP["predev"], CAP["build"][proto], CAP["leaseup"][proto]; N = P + B + L
+    P, B, L = CAP["predev"], CAP["build"][proto], u.get("leaseup_months", CAP["leaseup"][proto]); N = P + B + L
     hb = u["hard"] + u["site_work"] + u["contingency"]; sp = u["soft"] * CAP["predev_soft"]; spo = u["soft"] - sp
     k = math.sin(math.pi / (2 * B))
     raw = []

@@ -24,7 +24,7 @@ check(d.sites.length === 44, "44 sites");
 const short = d.sites.filter((s: any) => s.verdict === "Pursue" || s.verdict === "Pursue-structured");
 check(short.length === d.funnel.shortlist, `shortlist count ${short.length} vs funnel ${d.funnel.shortlist}`);
 const fp = d.sites.find((s: any) => s.id === "NJ-04");
-check(fp.uw.yoc === 0.0806 && fp.uw.yoc_by_tax_structure.pilot === 0.0893 && Math.round(fp.uw.max_land / 1e5) === 192, "Florham Park acceptance figures");
+check(fp.uw.yoc === 0.0775 && fp.uw.yoc_by_tax_structure.pilot === 0.0858 && Math.round(fp.uw.max_land / 1e5) === 169, "Florham Park acceptance figures (industry-norm lease-up, 2026-11-03)");
 const ids = new Set(d.sites.map((s: any) => s.id));
 check(ids.size === d.sites.length, "unique ids");
 for (const s of d.sites) {
