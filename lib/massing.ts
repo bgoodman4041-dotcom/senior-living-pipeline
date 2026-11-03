@@ -6,6 +6,8 @@ export interface Line { care: string; units: number }
 export interface MassingPart { kind: "building" | "parking" | "court"; care?: string; stories?: number; height: number; base: number; coords: [number, number][] }
 export interface Massing {
   parts: GeoJSON.FeatureCollection; render: GeoJSON.FeatureCollection; center: [number, number];
+  /** camera anchors for the guided tour, in lng/lat */
+  anchors: { entry: [number, number]; arrival: [number, number]; courts: [number, number][]; parking: [number, number]; extent: number };
   stats: { gsf: number; footprintSf: number; coveragePct: number; far: number; maxStories: number; heightFt: number; parking: number; parkingSf: number; openSpacePct: number; blocks: number; wings: { care: string; stories: number; sf: number; lengthFt: number }[] };
 }
 
@@ -110,6 +112,12 @@ export function buildMassing(center: [number, number], lines: Line[], gsfPerUnit
   }));
 
   const render = renderParts(wings, courts, { pw, py, ph, totalW }, toLL);
+  const ex0 = Math.min(30, totalW / 4);
+  const anchors = {
+    entry: toLL([ex0, -DEPTH / 2 - 4]), arrival: toLL([ex0, py - Math.min(ph, 30) * 0.6]),
+    courts: courts.map(([a, b, c, d]) => toLL([(a + c) / 2, (b + d) / 2])), parking: toLL([pw / 2, py - ph / 2]),
+    extent: Math.max(totalW, maxH - py + ph),
+  };
 
   const gsf = segs.reduce((a, s) => a + s.sf, 0);
   const footprintSf = segs.reduce((a, s) => a + s.sf / s.stories, 0);
@@ -117,7 +125,7 @@ export function buildMassing(center: [number, number], lines: Line[], gsfPerUnit
   const parkingSf = parkM2 / SF;
   const maxStories = Math.max(...segs.map((s) => s.stories));
   return {
-    parts: { type: "FeatureCollection", features }, render, center,
+    parts: { type: "FeatureCollection", features }, render, center, anchors,
     stats: {
       gsf, footprintSf, coveragePct: footprintSf / siteSf, far: gsf / siteSf, maxStories,
       heightFt: heightOf(maxStories) / FT, parking: parkingSpaces, parkingSf,
@@ -135,6 +143,7 @@ export const FACADE: Record<string, { body: string; label: string }> = {
   MC: { body: "#bcc6cf", label: "Gray-blue board and batten" },
   SNF: { body: "#d9cbbd", label: "Buff masonry" },
 };
+const SLATE = ["#5a5f66", "#62676e", "#6a6f76", "#72777e", "#7a7f86"], ASPHALT = "#3d4146", STRIPE = "#f2f2ee", PAVER = "#d9d1c1", LAWN = "#7da066", WATER = "#5d8fb3", RAIL = "#dfe6ea";
 const STONE = "#9d958a", GLASS = "#2f4356", ROOF = "#8e9298", CORNICE = "#f4f2ec", RTU = "#8d939a", CANOPY = "#f7f5f0", TREE = ["#4f7a3f", "#5d8a47", "#46703a"];
 
 function renderParts(
@@ -167,8 +176,21 @@ function renderParts(
       const z = GROUND + FLOOR * (f - 1);
       push(rect(w.a, w.e, w.dir, DEPTH / 2 + 0.08, -0.08), z - 0.12, z + 0.18, CORNICE, props);
     }
-    push(full, top, top + 0.7, ROOF, props);                // roof membrane
-    ring(rect(w.a, w.e, w.dir, DEPTH / 2 + 0.3, -0.3), rect(w.a, w.e, w.dir, DEPTH / 2 - 0.5, 0.5), top, top + 1.2, CORNICE, props); // cornice / parapet
+    const pitched = w.care !== "MC";
+    if (pitched) {
+      // residential wings: eave band, then a stepped hip roof rising ~4 m to the ridge (slate)
+      push(rect(w.a, w.e, w.dir, DEPTH / 2 + 0.45, -0.45), top, top + 0.45, CORNICE, props);
+      const steps = 5;
+      for (let i = 0; i < steps; i++) {
+        const half = DEPTH / 2 + 0.3 - (i + 1) * ((DEPTH / 2 - 1.4) / steps);
+        const inset = Math.min(len / 2 - 1, -0.3 + (i + 0.6) * ((DEPTH / 2 - 1.4) / steps));
+        if (half <= 0.5 || len - 2 * inset < 1) break;
+        push(rect(w.a, w.e, w.dir, half, inset), top + 0.45 + i * 0.8, top + 0.45 + (i + 1) * 0.8, SLATE[i], props);
+      }
+    } else {
+      push(full, top, top + 0.7, ROOF, props);              // roof membrane
+      ring(rect(w.a, w.e, w.dir, DEPTH / 2 + 0.3, -0.3), rect(w.a, w.e, w.dir, DEPTH / 2 - 0.5, 0.5), top, top + 1.2, CORNICE, props); // cornice / parapet
+    }
     // punched windows on both long faces, every ~3.4 m, set slightly proud as glazing frames
     const n = Math.floor((len - 2) / 3.4);
     const off = (len - n * 3.4) / 2;
@@ -185,8 +207,23 @@ function renderParts(
         }
       }
     }
-    // rooftop units every ~18 m, set back from the edge
-    for (let d = 6; d < len - 4; d += 18) {
+    // balconies on IL wings: every other bay, floors 2+, both faces, with a glass rail
+    if (w.care === "IL") {
+      for (let f = 1; f < w.stories; f++) {
+        const z = GROUND + FLOOR * (f - 1);
+        for (let i = f % 2; i < n; i += 2) {
+          const d0 = off + i * 3.4 + 0.4, d1 = d0 + 2.6;
+          for (const sgn of [1, -1]) {
+            const nx = -w.dir[1] * sgn, ny = w.dir[0] * sgn;
+            const P = (d: number, o: number): [number, number] => [w.a[0] + w.dir[0] * d + nx * o, w.a[1] + w.dir[1] * d + ny * o];
+            push([P(d0, DEPTH / 2), P(d1, DEPTH / 2), P(d1, DEPTH / 2 + 1.6), P(d0, DEPTH / 2 + 1.6)], z - 0.05, z + 0.2, CORNICE, props);
+            push([P(d0, DEPTH / 2 + 1.5), P(d1, DEPTH / 2 + 1.5), P(d1, DEPTH / 2 + 1.6), P(d0, DEPTH / 2 + 1.6)], z + 0.2, z + 1.15, RAIL, props);
+          }
+        }
+      }
+    }
+    // rooftop units on the flat (memory-care) roofs, every ~18 m, set back from the edge
+    for (let d = 6; !pitched && d < len - 4; d += 18) {
       const c: [number, number] = [w.a[0] + w.dir[0] * d, w.a[1] + w.dir[1] * d];
       const c2: [number, number] = [c[0] + w.dir[0] * 3.2, c[1] + w.dir[1] * 3.2];
       push(rect(c, c2, w.dir, 1.6, 0), top + 0.7, top + 2.2, RTU, props);
@@ -201,9 +238,39 @@ function renderParts(
     push(pts, 2.6, ht - 1.6, TREE[k % 3], { kind: "tree" });
     push(oct(r * 0.65), ht - 1.6, ht, TREE[(k + 1) % 3], { kind: "tree" });
   };
+  // courtyards: lawn, a paver loop and cross paths, and a water feature at the centre
+  for (const [x1, y1, x2, y2] of courts) {
+    const sq = (a: number, b: number, c: number, d: number): [number, number][] => [[a, b], [c, b], [c, d], [a, d]];
+    push(sq(x1, y1, x2, y2), 0, 0.12, LAWN, { kind: "court" });
+    const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+    ring(sq(x1 + 2.5, y1 + 2.5, x2 - 2.5, y2 - 2.5), sq(x1 + 4.7, y1 + 4.7, x2 - 4.7, y2 - 4.7), 0, 0.2, PAVER, { kind: "court" });
+    push(sq(mx - 1.1, y1 + 2.5, mx + 1.1, y2 - 2.5), 0, 0.2, PAVER, { kind: "court" });
+    push(sq(x1 + 2.5, my - 1.1, x2 - 2.5, my + 1.1), 0, 0.2, PAVER, { kind: "court" });
+    const oct = (r: number): [number, number][] => Array.from({ length: 8 }, (_, i) => [mx + r * Math.cos((i * Math.PI) / 4 + 0.39), my + r * Math.sin((i * Math.PI) / 4 + 0.39)]);
+    push(oct(4.2), 0, 0.5, STONE, { kind: "court" });
+    push(oct(3.5), 0.5, 0.55, WATER, { kind: "court" });
+  }
+  // parking field: asphalt, double-loaded stall rows (2.7 m x 5.5 m) on 6.7 m aisles, plus the drive to the porte-cochere
+  {
+    const { pw, py, ph } = park;
+    push([[0, py], [pw, py], [pw, py - ph], [0, py - ph]], 0, 0.1, ASPHALT, { kind: "parking" });
+    const mod = 5.5 * 2 + 6.7;
+    for (let y0 = py - 0.6; y0 - mod > py - ph - 0.5; y0 -= mod) {
+      for (const [ya, yb] of [[y0, y0 - 5.5], [y0 - 5.5 - 6.7, y0 - mod]]) {
+        for (let x = 1.5; x <= pw - 1.5; x += 2.7) push([[x - 0.06, ya], [x + 0.06, ya], [x + 0.06, yb], [x - 0.06, yb]], 0.1, 0.13, STRIPE, { kind: "parking" });
+      }
+    }
+    const ex = Math.min(30, park.totalW / 4);
+    push([[ex - 4, py], [ex + 4, py], [ex + 4, -DEPTH / 2 - 9], [ex - 4, -DEPTH / 2 - 9]], 0, 0.1, ASPHALT, { kind: "parking" });
+    push([[0, -DEPTH / 2 - 0.1], [Math.max(park.totalW, pw), -DEPTH / 2 - 0.1], [Math.max(park.totalW, pw), -DEPTH / 2 - 2.6], [0, -DEPTH / 2 - 2.6]], 0, 0.16, PAVER, { kind: "walk" });
+  }
   let k = 0;
   for (const [x1, y1, x2, y2] of courts) {
-    for (let x = x1 + 7; x < x2 - 5; x += 13) for (let y = y1 + 7; y < y2 - 5; y += 13) if ((Math.round((x - x1) / 13) + Math.round((y - y1) / 13)) % 2 === 0) tree(x, y, 3.1, k++);
+    for (let x = x1 + 7; x < x2 - 5; x += 13) for (let y = y1 + 7; y < y2 - 5; y += 13) if ((Math.round((x - x1) / 13) + Math.round((y - y1) / 13)) % 2 === 0) {
+      const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
+      if (Math.hypot(x - mx, y - my) < 8 || Math.abs(x - mx) < 3.5 || Math.abs(y - my) < 3.5) continue;
+      tree(x, y, 3.1, k++);
+    }
   }
   const ty = park.py + 4;
   const ex = Math.min(30, park.totalW / 4);

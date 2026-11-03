@@ -362,6 +362,7 @@ def build_site(s):
     build_capital(wb, s)
     build_hold(wb)
     build_notes(wb, s, mk)
+    build_readme(wb, s, struct)
     wb.calculation.fullCalcOnLoad = True
     return wb
 
@@ -539,6 +540,93 @@ def build_notes(wb, s, mk):
     for i, t in enumerate(notes):
         S.put(f"B{4 + i}", t, wrap=True)
         ws.row_dimensions[4 + i].height = 32
+
+NAME_DESC = {
+    "Units": "Total units", "TotalGSF": "Gross square feet", "SiteAcres": "Site acres", "Revenue": "Stabilized revenue (today's rates)",
+    "OpexNeg": "Operating expenses before tax (negative)", "TaxFullNeg": "Real estate tax, fully taxed (negative)", "TaxFactor": "Share of full tax paid under the structure",
+    "NOI_Full": "NOI, fully taxed", "NOIStruct": "NOI as structured", "Hard": "Hard cost", "HardPSF": "Hard cost $/GSF (Westchester base)", "CostIndex": "County cost index x site factor",
+    "SiteWork": "Site work", "FFEBudget": "FF&E", "Soft": "Soft costs", "Carry": "Construction interest", "Leaseup": "Lease-up / operating deficit reserve",
+    "Contingency": "Hard-cost contingency", "CostExLand": "Development cost excluding land", "Land": "Land basis", "TotalCost": "Total development cost",
+    "YOC": "Yield on cost = NOI as structured / total cost", "Hurdle": "Minimum yield on cost (6.5%)", "MaxLand": "Most we can pay for land and still clear the hurdle",
+    "LoanCommit": "Senior construction loan commitment", "LoanLTC": "Loan to cost", "EquityCommit": "Equity commitment", "LPShare": "LP share of equity",
+    "PredevTotal": "Capital spent before financial close (at risk pre-approval)", "ExitCap": "Exit cap rate", "Trend": "Annual growth to stabilization",
+    "NOITrended": "NOI at stabilization", "NetSale": "Sale value less sale costs", "IRR_U": "Unlevered IRR", "IRR_L": "Levered IRR",
+    "PermLoan": "Permanent (HUD 232-style) loan", "PermDS": "Permanent loan debt service", "MonthsN": "Months from site control to stabilization",
+}
+
+
+def build_readme(wb, s, struct):
+    """First tab: what the model answers, how to use it, how the numbers flow, and a glossary of named cells."""
+    ws = wb.create_sheet("Read Me", 0); S = Sheet(wb, ws); ws.sheet_view.showGridLines = False
+    wb.active = 0
+    S.widths({"A": 3, "B": 30, "C": 22, "D": 70})
+    S.put("B2", f"{s['name']} · Pro Forma Model", font=F_TITLE)
+    S.put("B3", f"ATCO Properties & Management · Senior living site selection · {s['municipality']}, {s['county']} County, {s['state']} · Site {s['id']}", font=F_NOTE)
+    S.header("B5", "D5", "What this model answers")
+    qs = [
+        "Does the project clear a 6.5% yield on cost at today's rents and the land basis? (One Page Summary)",
+        "What is the most we can pay for the land? (Max land at hurdle, One Page Summary)",
+        "How much capital is needed, when is it drawn, and what is at risk before approvals? (Capital Deployment)",
+        "What do investors earn: unlevered and levered IRR, equity multiple, and the hold case after a permanent take-out? (Capital Deployment, 10 Year Cash Flow)",
+    ]
+    for i, q in enumerate(qs):
+        S.put(f"B{6 + i}", f"{i + 1}.", bold=True); S.put(f"C{6 + i}", q); ws.merge_cells(f"C{6 + i}:D{6 + i}")
+    r = 11
+    S.header(f"B{r}", f"D{r}", "Key results (live: they update when you change an input)"); r += 1
+    res = [("Yield on cost (as structured)", "=YOC", PCT), ("Hurdle", "=Hurdle", PCT), ("Total development cost", "=TotalCost", USD),
+           ("NOI as structured", "=NOIStruct", USD), ("Max land at hurdle", "=MaxLand", USD), ("Land basis", "=Land", USD),
+           ("Equity commitment", "=EquityCommit", USD), ("Construction loan", "=LoanCommit", USD), ("At risk before approvals", "=PredevTotal", USD),
+           ("Unlevered IRR", "=IRR_U", PCT1), ("Levered IRR", "=IRR_L", PCT1)]
+    for k, f, fmt in res:
+        S.put(f"B{r}", k); S.calc(f"C{r}", f, fmt, bold=True); r += 1
+    S.box("C12")
+    r += 1
+    S.header(f"B{r}", f"D{r}", "How to use it"); r += 1
+    how = [("Blue cells", "Inputs. Change any of them and every tab recalculates."), ("Black cells", "Formulas. Do not overwrite; trace them with Formulas > Trace Precedents."),
+           ("Yellow box", "The key output on each tab."), ("Named cells", "Most formulas use names (e.g. TotalCost, NOIStruct) instead of cell addresses, so they read like sentences. Formulas > Name Manager lists them; the glossary below explains each."),
+           ("Tax structure", f"Modeled as: {struct}. Change it on the One Page Summary (Fully taxed, PILOT, Nonprofit exempt) to see the swing.")]
+    for k, v in how:
+        S.put(f"B{r}", k, bold=True); S.put(f"C{r}", v, wrap=True); ws.merge_cells(f"C{r}:D{r}"); ws.row_dimensions[r].height = 30; r += 1
+    r += 1
+    S.header(f"B{r}", f"D{r}", "How the numbers flow"); r += 1
+    flow = [
+        ("1. Program", "Program & Massing", "Units by care level (IL, AL, MC) x GSF per unit = building size."),
+        ("2. Revenue", "Program & Massing", "Units x monthly rate x 12 x stabilized occupancy x (1 + ancillary). Rates = base rate x submarket rent index."),
+        ("3. Operating expenses", "Program & Massing", "Revenue x (1 - pre-tax NOI margin) by care level, plus replacement reserves per unit."),
+        ("4. NOI", "One Page Summary", "Revenue - operating expenses - real estate tax (x tax factor for PILOT / nonprofit) - reserves."),
+        ("5. Development cost", "One Page Summary", "Hard (GSF x $/GSF x cost index) + site work + contingency + FF&E + soft + construction interest + lease-up reserve + land."),
+        ("6. Yield and max land", "One Page Summary", "YOC = NOI / total cost. Max land = NOI / hurdle - cost excluding land. Cushion = max land - land basis."),
+        ("7. Capital deployment", "Capital Deployment", "Monthly draws: land deposit at site control, soft costs through predevelopment, hard costs on an S-curve. Equity funds first, then the 60% LTC loan."),
+        ("8. Returns", "Capital Deployment", "Sale at stabilization: NOI trended at 3% a year / exit cap, less 2% sale cost. IRRs from the monthly cash flows."),
+        ("9. Hold case", "10 Year Cash Flow", "Permanent loan sized at 10% debt yield (max 75% LTV); ten years of cash flow after debt service."),
+    ]
+    S.sub(f"B{r}", f"D{r}", ["Step", "Where", "Calculation"]); r += 1
+    for a_, b_, c_ in flow:
+        S.put(f"B{r}", a_, bold=True); S.put(f"C{r}", b_); S.put(f"D{r}", c_, wrap=True); ws.row_dimensions[r].height = 30; r += 1
+    r += 1
+    S.header(f"B{r}", f"D{r}", "Key assumptions"); r += 1
+    cl = A["care_levels"]
+    ass = [("Hurdle yield on cost", f"{A['hurdle_yoc']:.1%}", "ATCO underwriting floor"),
+           ("Exit cap rate", f"{A['exit_cap']:.2%}", "Class A AL/MC trades, CBRE / NIC MAP range; sensitize on the One Page Summary"),
+           ("Occupancy (IL / AL / MC)", f"{cl['IL']['stabilized_occupancy']:.0%} / {cl['AL']['stabilized_occupancy']:.0%} / {cl['MC']['stabilized_occupancy']:.0%}", "Stabilized, NIC MAP-style benchmarks"),
+           ("Pre-tax NOI margin (IL / AL / MC)", f"{cl['IL']['noi_margin_pre_tax']:.0%} / {cl['AL']['noi_margin_pre_tax']:.0%} / {cl['MC']['noi_margin_pre_tax']:.0%}", "Operator benchmarks, before real estate tax"),
+           ("Hard cost (Westchester base)", f"${A['hard_cost_psf']}/GSF", "Scaled by county cost index; CBRE 2Q26 cost data"),
+           ("Soft costs / contingency", f"{A['soft_cost_pct']:.0%} / {A['contingency_pct']:.0%}", "Of hard and site work"),
+           ("Construction loan", f"{A['debt']['ltc']:.0%} LTC at {A['debt']['rate']:.2%}", "Funds after equity is fully in"),
+           ("Growth to stabilization", f"{CAP['trend']:.0%} a year", "Rents and expenses"),
+           ("Schedule", f"{CAP['predev']} mo predevelopment, then construction and lease-up by prototype", "See Capital Deployment")]
+    S.sub(f"B{r}", f"D{r}", ["Assumption", "Value", "Basis"]); r += 1
+    for a_, b_, c_ in ass:
+        S.put(f"B{r}", a_); S.put(f"C{r}", b_, bold=True); S.put(f"D{r}", c_, wrap=True); r += 1
+    r += 1
+    S.header(f"B{r}", f"D{r}", "Glossary of named cells"); r += 1
+    S.sub(f"B{r}", f"D{r}", ["Name", "Current value", "Meaning"]); r += 1
+    for nm, desc in NAME_DESC.items():
+        if nm not in wb.defined_names:
+            continue
+        S.put(f"B{r}", nm, bold=True); S.calc(f"C{r}", f"={nm}", PCT if nm in ("YOC", "Hurdle", "LoanLTC", "LPShare", "ExitCap", "Trend", "IRR_U", "IRR_L", "TaxFactor") else (NUM if nm in ("Units", "TotalGSF", "MonthsN") else ("0.00" if nm in ("SiteAcres", "CostIndex") else USD))); S.put(f"D{r}", desc); r += 1
+    r += 1
+    S.put(f"B{r}", "Screening model, not an appraisal or an offer. Confirm parcel, zoning, tax treatment and operator terms before LOI.", font=F_NOTE)
 
 
 # ---------------- portfolio workbook ----------------

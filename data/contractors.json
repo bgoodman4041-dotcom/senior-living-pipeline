@@ -1,0 +1,58 @@
+{
+  "updated": "2026-11-03",
+  "note": "Every contractor below is named on a built or under-construction senior living project in the region, with the source linked. The pick for each site is ATCO's judgment from those comparables; confirm capacity, bonding and current backlog in preconstruction.",
+  "gcs": {
+    "KBE": { "name": "KBE Building Corporation", "hq": "Farmington, CT", "role": "Construction manager at risk",
+      "projects": [
+        { "p": "Benchmark at Mount Pleasant", "where": "Thornwood, Westchester County, NY", "what": "114 AL/MC residences, 91,000 SF, 4 stories, for Shelbourne Healthcare Development", "url": "https://www.kbebuilding.com/news/benchmark-at-mount-pleasant-opens-in-westchester-county" },
+        { "p": "Sunrise of Tarrytown", "where": "Tarrytown, Westchester County, NY", "what": "85 AL/MC residences, 80,000 SF addition plus restoration of the Goebel House; started Nov 2025", "url": "https://www.kbebuilding.com/news/sunrise-senior-living-takes-shape-in-tarrytown" },
+        { "p": "StoneRidge expansion", "where": "Mystic, CT", "what": "$72M, 68 new units plus amenity renovations; started Oct 2026", "url": "https://www.kbebuilding.com/news/kbe-begins-construction-on-expansion-at-stoneridge-senior-living" },
+        { "p": "Maplewood at Princeton", "where": "Princeton, NJ", "what": "98,000 SF luxury senior living", "url": "https://www.kbebuilding.com/news/building-for-dignity-kbe-delivers-luxury-senior-living-in-princeton" },
+        { "p": "Jefferson's Ferry expansion", "where": "South Setauket, Suffolk County, NY", "what": "Nine-phase life plan community expansion and renovation", "url": "https://www.kbebuilding.com/news" }
+      ] },
+    "IMC": { "name": "IMC Construction", "hq": "Malvern / Philadelphia, PA", "role": "General contractor",
+      "projects": [
+        { "p": "Benchmark at Scotch Plains", "where": "Scotch Plains, Union County, NJ", "what": "86 AL/MC units for National Development and Benchmark; started Jan 2025, opening late 2026", "url": "https://www.benchmarkseniorliving.com/news-article/benchmark-senior-living-expanding-to-new-jersey/" },
+        { "p": "Benchmark at Cedar Grove", "where": "Cedar Grove, Essex County, NJ", "what": "138 IL/AL/MC units; completion 2027", "url": "https://www.multihousingnews.com/benchmark-senior-living-breaks-ground-on-new-jersey-community/" },
+        { "p": "Brightview Joy's Farm", "where": "Paramus, Bergen County, NJ", "what": "332 units (162 IL, 170 AL/MC); under construction from 2025", "url": "https://seniorhousingnews.com/2025/06/26/in-the-pipeline-benchmark-starts-on-next-development-332-unit-new-jersey-project-now-underway/" }
+      ] },
+    "OAP": { "name": "O.A. Peterson Construction", "hq": "Montclair, NJ", "role": "General contractor",
+      "projects": [
+        { "p": "Arbor Terrace Florham Park", "where": "Florham Park, Morris County, NJ", "what": "80 AL/MC units for Braemar Partners and GEM Realty; construction from Oct 2026, opening late 2027", "url": "https://www.newswire.com/news/construction-set-to-begin-on-arbor-terrace-florham-park-senior-living-community" }
+      ] },
+    "Congress": { "name": "The Congress Companies", "hq": "Boston, MA (NY/NJ operations)", "role": "Construction manager",
+      "projects": [
+        { "p": "All American Assisted Living of Hillsborough", "where": "Hillsborough, Somerset County, NJ", "what": "112-bed AL/MC, about 58,000 SF, for Kaplan Development Group", "url": "https://eldiariony.com/latinowire/the-congress-companies-to-build-new-senior-housing-in-hillsborough-nj-for-kaplan-development-group/" }
+      ] },
+    "Callahan": { "name": "Callahan Construction Managers", "hq": "Bridgewater, MA", "role": "Construction manager",
+      "projects": [
+        { "p": "Residence at Basking Ridge", "where": "Basking Ridge, Somerset County, NJ", "what": "90 senior housing units for LCB Senior Living (2021–23)", "url": "https://rebusinessonline.com/callahan-construction-breaks-ground-on-90-unit-seniors-housing-project-in-basking-ridge-new-jersey/" }
+      ] },
+    "Andron": { "name": "Andron Construction", "hq": "Westchester County, NY", "role": "General contractor / construction manager",
+      "projects": [
+        { "p": "The Club at Briarcliff Manor", "where": "Briarcliff Manor, Westchester County, NY", "what": "287 IL/AL/MC units, 343,150 SF", "url": "https://www.androncc.com/senior-living-residential/" },
+        { "p": "Kendal on Hudson", "where": "Sleepy Hollow, Westchester County, NY", "what": "Life plan community, 595,079 SF (222 IL, 24 AL, 42 SNF) and the later memory-care addition", "url": "https://www.androncc.com/senior-living-residential/" },
+        { "p": "Meadow Ridge", "where": "Redding, Fairfield County, CT", "what": "120 units, 215,000 SF", "url": "https://www.androncc.com/senior-living-residential/" },
+        { "p": "Sisters of the Catholic Apostolate", "where": "Harriman, Orange County, NY", "what": "48-unit assisted living and skilled care, 42,000 SF", "url": "https://www.androncc.com/senior-living-residential/" },
+        { "p": "United Hebrew, Willow Towers", "where": "New Rochelle, NY", "what": "129 AL apartments, 117,000 SF", "url": "https://www.androncc.com/senior-living-residential/" }
+      ] },
+    "Floyd": { "name": "C.E. Floyd Company", "hq": "Bedford, MA (CT operations)", "role": "General contractor",
+      "projects": [
+        { "p": "Bridges by Epoch at Trumbull", "where": "Trumbull, Fairfield County, CT", "what": "64-unit memory care for National Development and Epoch", "url": "https://thebluebook.com/iProView/11664/c-e-floyd-co/general-contractors/construction-projects/bridges-at-trumbull-memory-care-assisted-living-community-468583" },
+        { "p": "Bridges by Epoch at Norwalk", "where": "Norwalk, Fairfield County, CT", "what": "64 memory care suites for Epoch and National Development", "url": "https://beta.nerej.com/bridges-by-epoch-breaks-ground-on-64-unit-memory-care-community" }
+      ] }
+  },
+  "byCounty": {
+    "NY Westchester": ["KBE", "Andron"], "NY Rockland": ["Andron", "KBE"], "NY Orange": ["Andron", "KBE"], "NY Dutchess": ["Andron", "KBE"], "NY Ulster": ["Andron", "KBE"],
+    "NY Nassau": ["KBE", "Andron"], "NY Suffolk": ["KBE", "Andron"], "NY Richmond": ["Andron", "KBE"],
+    "NJ Morris": ["IMC", "OAP"], "NJ Bergen": ["IMC", "OAP"], "NJ Passaic": ["IMC", "OAP"], "NJ Somerset": ["Congress", "IMC"], "NJ Middlesex": ["IMC", "Congress"], "NJ Mercer": ["KBE", "IMC"], "NJ Monmouth": ["IMC", "Congress"],
+    "CT Fairfield": ["Floyd", "KBE"], "CT New Haven": ["KBE", "Floyd"], "CT Hartford": ["KBE", "Floyd"], "CT Litchfield": ["KBE", "Floyd"]
+  },
+  "atcoNear": ["NY Westchester", "NY Rockland", "NY Nassau", "NY Richmond", "NJ Bergen", "NJ Passaic", "NJ Morris", "NJ Somerset", "NJ Middlesex", "CT Fairfield"],
+  "override": {
+    "NY-03": { "atco": "ATCO as GC or capital alongside the site owner, VS Construction, and Benchmark (already the named operator). Bring KBE's Benchmark at Mount Pleasant team as the pricing check.", "mode": "jv" },
+    "NY-01": { "atco": "Sunrise is the contract vendee and used KBE at Tarrytown. ATCO's best entry is as GC or fee developer; on the nonprofit route, ATCO builds for the sponsor.", "mode": "jv" },
+    "NJ-04": { "atco": "If Engel Burman takes the pad, they build in-house and ATCO's money is in the land. If ATCO keeps it, self-perform with IMC as the bid check; O.A. Peterson is building Arbor Terrace next door.", "mode": "self" },
+    "NJ-10": { "atco": "If Engel Burman takes the pad, they build in-house. If ATCO keeps it, self-perform with IMC as the bid check.", "mode": "self" }
+  }
+}

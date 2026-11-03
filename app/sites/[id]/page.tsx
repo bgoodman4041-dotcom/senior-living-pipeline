@@ -8,6 +8,9 @@ import Diligence from "@/components/Diligence";
 import CapitalDeployment from "@/components/CapitalDeployment";
 import EntitlementDossier from "@/components/EntitlementDossier";
 import ApprovalPlaybook from "@/components/ApprovalPlaybook";
+import ModelDownload from "@/components/ModelDownload";
+import { gcFor } from "@/lib/contractors";
+import ops from "@/data/operators.json";
 import { playbook } from "@/lib/playbook";
 import { capitalPlan } from "@/lib/capital";
 import { VerdictChip, I, NV, Bar, SectionHead, Evidence } from "@/components/ui";
@@ -98,10 +101,13 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
     "Labor and agency cost in AL/MC operations; margin assumptions are operator-dependent.",
   ];
 
+  const fit = (ops.fit as Record<string, { first: string; second: string; why: string; watch: string }>)[s.id];
+  const gcr = gcFor(s);
+  const partners = ops.partners.filter((p) => p.sites.includes(s.id));
   const sub = [
     ["snapshot", "Snapshot"], ["location", "Site & surroundings"], ["massing", "3D massing"], ["entitlement", "Entitlement"], ["playbook", "Approval playbook"], ["market", "Market & need"], ["program", "Program"],
     ["proforma", "Pro forma"], ["tax", "Tax structure"], ["stress", "Stress"], ...(ef ? [["fees", "Entrance fees"]] : []),
-    ["whatif", "What-if"], ["capital", "Capital deployment"], ["risks", "Risks"], ["diligence", "Diligence"], ["sources", "Sources"],
+    ["whatif", "What-if"], ["capital", "Capital deployment"], ["model", "Excel model"], ...(fit ? [["operators", "Operator partners"]] : []), ["builder", "General contractor"], ["risks", "Risks"], ["diligence", "Diligence"], ["sources", "Sources"],
   ];
   const cp = capitalPlan(s, assumptions);
   const pbk = playbook(s, assumptions);
@@ -116,7 +122,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 10 }}>
             <VerdictChip v={s.verdict} />
             <span className="small meta">Rank #{s.rank} of {sites.length}{isShortlist(s) ? " · Shortlist" : ""} · {trackOf(s)}</span>
-            <span style={{ marginLeft: "auto", display: "flex", gap: 8 }}><a className="btn no-print" href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Excel model</a><PrintButton /></span>
+            <span style={{ marginLeft: "auto", display: "flex", gap: 8 }}><a className="btn btn-xl no-print" href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Download Excel model</a><a className="btn no-print hide-sm" href="#model">What is in it</a><PrintButton /></span>
           </div>
           <h1>{s.name}</h1>
           <div className="sub">{s.municipality} · {s.county} County, {STATE_NAME[s.state]} · {s.acres} acres · {s.drive_min_midtown} min to Midtown</div>
@@ -132,7 +138,14 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
             <div><div className="label">Program</div><div className="big">{u.units} units</div><div className="cap">{u.prototype_name}</div></div>
           </div>
           <div className="need-bar" aria-label="Capital needed">
-            <div className="need-title"><div className="label">Capital needed</div><a href="#capital" className="cap no-print">How it is deployed ›</a></div>
+            <div className="need-title">
+              <div className="label">Capital needed</div>
+              <div className="need-split" aria-label="Equity and debt split">
+                <span style={{ width: `${(cp.equityCommit / cp.uses.total) * 100}%` }} title="Equity" />
+                <span style={{ width: `${(cp.loanCommit / cp.uses.total) * 100}%` }} title="Construction debt" />
+              </div>
+              <div className="cap">{Math.round((cp.equityCommit / cp.uses.total) * 100)}% equity · {Math.round((cp.loanCommit / cp.uses.total) * 100)}% debt · <a href="#capital" className="no-print">how it is deployed ›</a></div>
+            </div>
             <div><div className="label">Total capitalization</div><div className="big">{usdM(cp.uses.total, 1)}</div><div className="cap">{usdK(cp.uses.total / u.units)} per unit · land {usdM(u.land_cost, 1)}</div></div>
             <div><div className="label">Equity required</div><div className="big">{usdM(cp.equityCommit, 1)}</div><div className="cap">LP {usdM(cp.lp, 1)} · GP / ATCO {usdM(cp.gp, 1)}</div></div>
             <div><div className="label">Construction debt</div><div className="big">{usdM(cp.loanCommit, 1)}</div><div className="cap">{pct(assumptions.debt.ltc, 0)} LTC · funds after equity</div></div>
@@ -398,6 +411,63 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
               <li><b>Hold with operator</b> under a management agreement; DSCR {mult(u.dscr)} on construction-loan terms.</li>
               {ef && <li><b>Entrance-fee life plan</b>: first-generation fees retire temporary debt; nonprofit sponsor plus fee developer is the financeable form.</li>}
             </ul>
+          </div>
+        </section>
+
+        <section className="section">
+          <SectionHead id="model" n={N()} title="Excel model" sub="Download the working pro forma behind this page and follow every number from rent to IRR." />
+          <ModelDownload site={s} cp={cp} />
+        </section>
+
+        {fit && (
+          <section className="section">
+            <SectionHead id="operators" n={N()} title="Operator partners" sub={<>Who to bring to this site and why. <a href="/operators">All operator research</a>.</>} />
+            <div className="grid g2">
+              <div className="card card-pad">
+                <div className="label">First call</div>
+                <div className="op-first">{fit.first}</div>
+                <p className="small">{fit.why}</p>
+                <div className="label" style={{ marginTop: 12 }}>Second call</div>
+                <div className="small"><b>{fit.second}</b></div>
+                <div className="callout warn" style={{ marginTop: 14 }}><b>Watch:</b> {fit.watch}</div>
+              </div>
+              <div className="card card-pad">
+                <div className="label" style={{ marginBottom: 8 }}>Partner profiles</div>
+                {partners.length ? partners.map((p) => (
+                  <div key={p.name} style={{ marginBottom: 14 }}>
+                    <b>{p.name}</b> <span className="xs muted">· lead partner #{p.rank}</span>
+                    <div className="small">{p.structure}.</div>
+                    <div className="xs muted">{p.signal}</div>
+                  </div>
+                )) : <p className="small">See the bench and nonprofit sponsors on the <a href="/operators">Operators</a> page.</p>}
+              </div>
+            </div>
+          </section>
+        )}
+
+        <section className="section">
+          <SectionHead id="builder" n={N()} title="General contractor" sub="Who should build it, on the evidence of comparable senior living projects in the region, and where ATCO should self-perform." />
+          <div className="grid g-side">
+            <div className="card card-pad">
+              <div className="label">Recommended GC</div>
+              <div className="op-first">{gcr.primary.name}</div>
+              <div className="xs muted" style={{ marginBottom: 12 }}>{gcr.primary.role} · {gcr.primary.hq}</div>
+              <div className="label" style={{ marginBottom: 6 }}>Comparable senior living work</div>
+              <ul className="list-clean small gc-comps">{gcr.primary.comps.slice(0, 4).map((c) => <li key={c.p}><a href={c.url} target="_blank" rel="noreferrer"><b>{c.p}</b></a>, {c.where}. <span className="muted">{c.what}.</span></li>)}</ul>
+              <div className="label" style={{ margin: "14px 0 6px" }}>Alternate: {gcr.alt.name}</div>
+              <div className="small">{gcr.alt.comps.slice(0, 2).map((c, i) => <span key={c.p}>{i ? "; " : ""}<a href={c.url} target="_blank" rel="noreferrer">{c.p}</a> ({c.where})</span>)}.</div>
+            </div>
+            <div className="card card-pad">
+              <div className="label">ATCO&apos;s role in construction</div>
+              <div className={`gc-mode gc-${gcr.mode}`}>{gcr.mode === "self" ? "ATCO self-performs" : gcr.mode === "jv" ? "ATCO builds alongside a partner" : "Third-party GC, ATCO as owner's rep"}</div>
+              <p className="small">{gcr.atco}</p>
+              <table className="kv small"><tbody>
+                <tr><td>Construction contract (hard, site work, contingency)</td><td className="tnum"><b>{usdM(u.hard + u.site_work + u.contingency, 1)}</b></td></tr>
+                <tr><td>Per unit</td><td className="tnum"><b>{usdK((u.hard + u.site_work + u.contingency) / u.units)}</b></td></tr>
+                <tr><td>Total capital needed</td><td className="tnum"><b>{usdM(cp.uses.total, 1)}</b></td></tr>
+              </tbody></table>
+              <p className="xs muted" style={{ marginTop: 10 }}>{gcr.note}</p>
+            </div>
           </div>
         </section>
 

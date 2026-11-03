@@ -1,6 +1,9 @@
 import PipelineExplorer, { type Row } from "@/components/PipelineExplorer";
 import { VerdictChip } from "@/components/ui";
 import PortfolioDeployment from "@/components/PortfolioDeployment";
+import NewsFeed from "@/components/NewsFeed";
+import news from "@/data/news.json";
+import ops from "@/data/operators.json";
 import { capitalPlan } from "@/lib/capital";
 import { playbook } from "@/lib/playbook";
 import { sites, shortlist, funnel, meta, HURDLE, TARGET, trackOf, satThumb, assumptions } from "@/lib/data";
@@ -168,6 +171,25 @@ export default function Home() {
               </div>
               <a href="/method" className="btn" style={{ marginTop: 16, alignSelf: "flex-start" }}>How we underwrite →</a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="section-head">
+            <div><div className="eyebrow">Why now</div><h2>The market is short on new supply</h2>
+              <p>{news.pulse.slice(0, 3).map((p) => `${p.k}: ${p.v}`).join(" · ")}. Latest coverage from the data houses, brokers and the business press.</p></div>
+            <a href="/news" className="btn">All market news →</a>
+          </div>
+          <NewsFeed items={news.items} limit={3} />
+          <div className="card card-pad op-teaser" style={{ marginTop: 18 }}>
+            <div style={{ minWidth: 0 }}>
+              <div className="label">Operator partners</div>
+              <div className="small" style={{ marginTop: 4 }}>{ops.partners.map((p) => p.name).join(" · ")}</div>
+              <div className="xs muted" style={{ marginTop: 4 }}>{ops.bottomLine}</div>
+            </div>
+            <a href="/operators" className="btn btn-primary">Who to build with →</a>
           </div>
         </div>
       </section>
