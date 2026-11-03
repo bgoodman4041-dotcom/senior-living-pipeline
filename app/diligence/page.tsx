@@ -30,12 +30,13 @@ export default function Diligence() {
   });
   const score: [string, "Closed" | "Partly closed" | "Needs Ben", string, string][] = [
     ["Are the rents real?", "Partly closed", "Public comp set for every shortlist market. Florham Park, Whippany and Montville are inside the Class A range; Cortlandt and Trumbull were cut to the Class A median; Poughkeepsie was cut 14% and dropped to Pass.", "#rents"],
-    ["Is the cost realistic?", "Partly closed", "Six public NJ/NY cost comps. Building size raised to the 969 SF a unit seen at Benchmark East Brunswick and in the Cortlandt site plan, adding about 7% to all-in cost. A Florham Park GC budget is ready to price.", "#costs"],
+    ["Is the cost realistic?", "Partly closed", "Six public NJ/NY cost comps. Comps show about 969 SF a unit (Benchmark East Brunswick, the Cortlandt site plan); the model was raised from 828 to about 900 SF a unit on the AL/MC mix (AL 950, MC 800), adding about 7% to all-in cost. A Florham Park GC budget is ready to price.", "#costs"],
     ["Do you control the land?", "Needs Ben", "Owner of record, deal status and a control path for each site. No site is under LOI or option yet.", "#control"],
     ["Is the NJ PILOT real?", "Partly closed", "Florham Park is designated (Res. 20-94). Whippany's approval is for a non-senior plan. Nothing found for Montville.", "#redevelopment"],
     ["What if it goes wrong?", "Closed", "Every site carries each shock alone and combined, plus the structure that keeps it at breakeven and how much cushion is left.", "#cushion"],
     ["What do LPs actually net?", "Partly closed", `Illustrative waterfall: ${pct(WF.pref, 0)} preferred return, then ${Math.round(WF.lpSplit * 100)}/${Math.round((1 - WF.lpSplit) * 100)}. Ben to set final terms.`, "#waterfall"],
     ["Who operates it?", "Needs Ben", "Lead operator per site, with draft outreach letters and term-sheet outlines (internal). None signed.", "#operators"],
+    ["Is there a pipeline behind Florham Park?", "Partly closed", "Every other site re-run on the tougher assumptions: none clears with acceptable approval odds. Two new Morris and Somerset pads with approvals in hand (Woodmont Parsippany, Peapack) are partner targets.", "#pipeline"],
     ["Is there a market study?", "Needs Ben", "Absorption is modeled from ACS data and state licensing lists. A NIC MAP pull or third-party study is the remaining gap.", "#gaps"],
   ];
   const tone = { "Closed": "go", "Partly closed": "warn", "Needs Ben": "bad" } as const;
@@ -110,7 +111,22 @@ export default function Diligence() {
         <h3 id="operators" className="anchor">7 · Operators</h3>
         <p className="small" style={{ marginBottom: 24 }}>Lead operator per site is on the <a href="/operators">Operators</a> page. Draft outreach letters and term-sheet outlines for Engel Burman, Benchmark / National Development, Sunrise and LCS are prepared for Ben (internal, not published). None is signed.</p>
 
-        <h3 id="gaps" className="anchor">8 · Still open, and who closes it</h3>
+        <h3 id="pipeline" className="anchor">8 · What sits behind the anchor deal</h3>
+        <p className="small">{ev.rescreen._note}</p>
+        <div className="card" style={{ marginBottom: 12 }}><div className="table-wrap"><table className="t">
+          <thead><tr><th>Watch site</th><th className="num">YOC fully taxed</th><th className="num hide-sm">With PILOT</th><th className="num hide-sm">Approval</th><th>Why it stays on Watch</th></tr></thead>
+          <tbody>{(ev.rescreen.rows as (string | number)[][]).map((r) => (
+            <tr key={String(r[0])}><td style={{ minWidth: 120 }}><a href={`/sites/${r[0]}`} className="site-name">{r[1]}</a><div className="xs muted">{r[0]}</div></td><td className="num">{pct(Number(r[2]))}</td><td className="num hide-sm">{pct(Number(r[3]))}</td><td className="num hide-sm">{r[4]}</td><td className="small">{r[5]}</td></tr>))}</tbody>
+        </table></div></div>
+        <p className="small">{ev.candidates._note}</p>
+        <div className="card" style={{ marginBottom: 24 }}><div className="table-wrap"><table className="t">
+          <thead><tr><th>New candidate</th><th>Program and status</th><th>Fit</th><th>ATCO&apos;s way in</th></tr></thead>
+          <tbody>{(ev.candidates.rows as { name: string; place: string; program: string; status: string; fit: string; route: string; tone: string; src: [string, string][] }[]).map((c) => (
+            <tr key={c.name}><td style={{ minWidth: 150 }}><b>{c.name}</b><div className="xs muted">{c.place}</div><span className={`ic-chip ic-${c.tone}`} style={{ marginTop: 4 }}>{c.tone === "go" ? "Pursue as partner" : "Comp only"}</span></td>
+              <td className="small">{c.program}. {c.status}<div className="xs muted"><Src s={c.src} /></div></td><td className="small">{c.fit}</td><td className="small">{c.route}</td></tr>))}</tbody>
+        </table></div></div>
+
+        <h3 id="gaps" className="anchor">9 · Still open, and who closes it</h3>
         <div className="card card-pad"><ul className="list-clean small">
           <li><b>NIC MAP pull or third-party market study</b> for Florham Park, Montville and Cortlandt: confirms rents, occupancy and pipeline. <i>Ben: buy or commission.</i></li>
           <li><b>GC pricing</b> of the Florham Park budget by KBE or IMC: replaces the model hard cost. <i>Ben: send the budget outline.</i></li>
@@ -118,6 +134,7 @@ export default function Diligence() {
           <li><b>PILOT conversations:</b> Florham Park redevelopment counsel, Montville administrator. <i>Ben or land-use counsel.</i></li>
           <li><b>Operator LOIs:</b> letters are drafted. <i>Ben: send.</i></li>
           <li><b>Fund terms:</b> pref, promote, fees and GP commitment. <i>Ben.</i></li>
+          <li><b>Partner calls:</b> Woodmont (Parsippany approval) and Peapack Senior Living (CN in hand) as JV, equity or GC targets. <i>Ben.</i></li>
           <li><b>Track record:</b> ATCO&apos;s senior-housing or comparable ground-up history for the LP deck. <i>Ben.</i></li>
         </ul></div>
       </div>

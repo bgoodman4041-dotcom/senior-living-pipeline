@@ -12,7 +12,7 @@ import { onHold, sites, shortlist, funnel, meta, HURDLE, TARGET, trackOf, satThu
 import { pct, usdM, usdK, int, longDate } from "@/lib/format";
 
 export default function Home() {
-  const pursue = sites.filter((s) => s.verdict === "Pursue");
+  const pursue = sites.filter((s) => s.verdict === "Pursue" && !onHold(s)); // on-hold sites are not active Pursue
   const wYoc = pursue.reduce((a, s) => a + s.uw.noi, 0) / pursue.reduce((a, s) => a + s.uw.total_cost, 0);
   const headroom = pursue.reduce((a, s) => a + (s.uw.land_cushion || 0), 0);
   const shortUnits = shortlist.reduce((a, s) => a + s.uw.units, 0);
@@ -61,14 +61,14 @@ export default function Home() {
       <section className="section">
         <div className="wrap">
           <div className="grid g4">
-            <div className="card kpi"><div className="label">Shortlist</div><div className="v">{shortlist.length} sites</div><div className="s">{pursue.length} Pursue ({shortlist.filter(onHold).length} on hold) · {shortlist.length - pursue.length} Pursue-structured</div></div>
+            <div className="card kpi"><div className="label">Shortlist</div><div className="v">{shortlist.length} sites</div><div className="s">{shortlist.filter((s) => s.verdict === "Pursue").length} Pursue ({shortlist.filter(onHold).length} on hold) · {shortlist.filter((s) => s.verdict === "Pursue-structured").length} Pursue-structured</div></div>
             <div className="card kpi"><div className="label">Shortlisted units</div><div className="v">{int(shortUnits)}</div><div className="s">{usdM(shortCost, 0)} all-in development cost</div></div>
-            <div className="card kpi"><div className="label">Weighted YOC · Pursue</div><div className="v">{pct(wYoc)}</div><div className="s">Fully taxed, cost-weighted; {Math.round((wYoc - HURDLE) * 10000)} bps over floor</div></div>
-            <div className="card kpi"><div className="label">Land headroom · Pursue</div><div className="v">{usdM(headroom)}</div><div className="s">Sum of max land at {pct(HURDLE, 1)} less land basis</div></div>
+            <div className="card kpi"><div className="label">Weighted YOC · active Pursue</div><div className="v">{pct(wYoc)}</div><div className="s">Fully taxed, cost-weighted; {Math.round((wYoc - HURDLE) * 10000)} bps over floor</div></div>
+            <div className="card kpi"><div className="label">Land headroom · active Pursue</div><div className="v">{usdM(headroom)}</div><div className="s">Sum of max land at {pct(HURDLE, 1)} less land basis</div></div>
           </div>
 
           <div className="grid g3" style={{ marginTop: 18 }}>
-            <div className="callout brand"><b>What clears.</b> Rental AL/MC pads of ~{protoC} units inside approved master plans clear {pct(HURDLE, 1)} fully taxed only in the Florham Park submarket, on comp-checked rents, comp-sized buildings and industry-norm lease-up. Montville and northern Westchester need a PILOT; Dutchess rents do not support new Class A product. See the <a href="/diligence">LP diligence</a> evidence.</div>
+            <div className="callout brand"><b>What clears.</b> Rental AL/MC pads of ~{protoC} units inside approved master plans clear {pct(HURDLE, 1)} fully taxed only in the Florham Park submarket, on comp-checked rents, comp-sized buildings and industry-norm lease-up. Montville and northern Westchester need a PILOT; Dutchess rents do not support new Class A product. See the <a href="/anchor">Florham Park anchor deal</a> and the <a href="/diligence">LP diligence</a> evidence.</div>
             <div className="callout brand"><b>What needs structure.</b> IL-led campuses miss as rentals everywhere. They work only with entrance fees, a nonprofit sponsor or PILOT, or ground-leased land: the RiverSpring structure.</div>
             <div className="callout brand"><b>Where the risk sits.</b> Calibrated rent, tax and land indices drive the spread. NIC MAP pulls, rate shops and assessor letters on the shortlist come before any LOI.</div>
           </div>

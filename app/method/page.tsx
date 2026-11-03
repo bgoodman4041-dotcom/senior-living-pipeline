@@ -49,7 +49,7 @@ export default function Method() {
           </div>
           <div className="card card-pad prose">
             <h3>3. Pro forma</h3>
-            <p>Rents are Westchester base rates × the submarket rent index; hard costs are ${a.hard_cost_psf}/SF × the county cost index. Opex is a margin on revenue by care level; property tax is added per unit because it varies five-fold by town.</p>
+            <p>Rents are Westchester base rates × the submarket rent index, checked against public Class A comps for every shortlist market (see <a href="/diligence#rents">LP diligence</a>); building size is {a.care_levels.AL.gsf_per_unit} gross SF a unit for AL and {a.care_levels.MC.gsf_per_unit} for MC, calibrated to public NJ/NY comps; hard costs are ${a.hard_cost_psf}/SF × the county cost index. Opex is a margin on revenue by care level; property tax is added per unit because it varies five-fold by town.</p>
             <F>YOC = stabilized NOI ÷ all-in cost (incl. land)</F>
             <F>Max land = NOI ÷ {pct(HURDLE, 1)} − cost ex-land</F>
             <F>Land cushion = max land − land basis (ask → estimate → county comp per unit)</F>

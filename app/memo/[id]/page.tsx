@@ -50,7 +50,7 @@ export default async function Memo({ params }: { params: Promise<{ id: string }>
   ];
   return (
     <div className="memo">
-      <div className="memo-bar no-print"><a href={`/sites/${s.id}`}>← Back to the dossier</a><a className="btn" href={`/memos/ATCO-${s.id}-IC-memo.pdf`} download>Download PDF</a></div>
+      <div className="memo-bar no-print"><a href={`/sites/${s.id}`}>← Back to the dossier</a>{s.id === "NJ-04" && <a href="/anchor">Anchor-deal package</a>}<a className="btn" href={`/memos/ATCO-${s.id}-IC-memo.pdf`} download>Download PDF</a></div>
       <article className="memo-page">
         <header className="memo-head">
           <img src="/brand/atco-logo.png" alt="ATCO" width="94" height="46" />

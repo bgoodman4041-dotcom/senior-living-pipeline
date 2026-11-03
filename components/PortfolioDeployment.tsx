@@ -140,7 +140,7 @@ export default function PortfolioDeployment({ shortlist, a }: { shortlist: any[]
           <div className="table-wrap"><table className="t">
             <thead><tr><th>Site</th><th>Recommended structure</th><th className="num">Downside profit, as underwritten</th><th className="num">Downside profit, structured</th><th className="hide-sm">Condition</th></tr></thead>
             <tbody>{stAll.map(({ r, x, d, hold }) => hold ? (
-              <tr key={r.s.id} style={{ opacity: 0.75 }}><td><a href={`/sites/${r.s.id}#structuring`} className="site-name">{r.s.municipality}</a></td><td><b>On hold</b> (absorption)<div className="xs muted">Contingency: {x.rec.label}</div></td>
+              <tr key={r.s.id} style={{ background: "#f6f6f8" }}><td><a href={`/sites/${r.s.id}#structuring`} className="site-name">{r.s.municipality}</a></td><td><b>On hold</b> (absorption)<div className="xs muted">Contingency: {x.rec.label}</div></td>
                 <td className="num">{d ? usdM(d.profit, 1) : "—"}</td><td className="num">{usdM(x.rec.atcoProfitDown, 1)}<div className="xs muted">if revived</div></td>
                 <td className="small hide-sm">Excluded from both totals until a NIC MAP pull shows the demand</td></tr>) : (
               <tr key={r.s.id}><td><a href={`/sites/${r.s.id}#structuring`} className="site-name">{r.s.municipality}</a></td><td>{x.rec.label}</td>
