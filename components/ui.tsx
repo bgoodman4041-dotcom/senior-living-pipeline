@@ -30,7 +30,7 @@ export function SectionHead({ n, title, sub, id }: { n?: string; title: string; 
   return (
     <div className="section-head anchor" id={id}>
       <div>
-        <h2>{n && <span className="sec-num">{n}</span>}{title}</h2>
+        <h2>{n && <span className="sec-num" aria-hidden="true">{n}</span>}{title}</h2>
         {sub && <p>{sub}</p>}
       </div>
     </div>

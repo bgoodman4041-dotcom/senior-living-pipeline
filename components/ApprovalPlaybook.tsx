@@ -2,7 +2,7 @@ import { usdK } from "@/lib/format";
 import { playbook, PLAYBOOK_DATE } from "@/lib/playbook";
 import ContactBook from "./ContactBook";
 
-const BAND_C: Record<string, string> = { "Very likely": "#3f8a35", Likely: "#3f8a35", Even: "#3079B3", Uphill: "#F7901E", Unlikely: "#BB2034" };
+const BAND_C: Record<string, string> = { "Very likely": "#33772a", Likely: "#33772a", Even: "#3079B3", Uphill: "#F7901E", Unlikely: "#BB2034" };
 
 function Gauge({ v, c }: { v: number; c: string }) {
   const r = 70, cx = 90, cy = 86;
@@ -83,7 +83,7 @@ export default function ApprovalPlaybook({ site, a }: { site: any; a: any }) {
           <h3>Go / no-go gates and capital at risk</h3>
           <table className="t gates"><thead><tr><th>Gate</th><th className="num">By</th><th className="num">Spent if we walk</th></tr></thead>
             <tbody>{p.gates.map((g) => (
-              <tr key={g.name}><td><b>{g.name}</b><div className="xs muted"><span style={{ color: "#3f8a35" }}>Go:</span> {g.test}</div><div className="xs muted"><span style={{ color: "#BB2034" }}>Stop:</span> {g.kill}</div></td><td className="num">M{Math.round(g.month)}</td><td className="num">{usdK(g.atRisk)}</td></tr>
+              <tr key={g.name}><td><b>{g.name}</b><div className="xs muted"><span style={{ color: "#33772a" }}>Go:</span> {g.test}</div><div className="xs muted"><span style={{ color: "#BB2034" }}>Stop:</span> {g.kill}</div></td><td className="num">M{Math.round(g.month)}</td><td className="num">{usdK(g.atRisk)}</td></tr>
             ))}</tbody>
           </table>
           <div className="xs muted" style={{ marginTop: 8 }}>Cumulative share of the {usdK(p.d.budgetTotal)} pursuit budget spent by each gate. Land is not at risk until Gate 5.</div>

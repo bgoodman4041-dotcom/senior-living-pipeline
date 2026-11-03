@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { assumptions as a, meta, HURDLE, TARGET } from "@/lib/data";
 import { pct } from "@/lib/format";
-import { readDoc, section, numbered, Inline } from "@/lib/md";
+import { readDoc, section, numbered, Inline, parseTable } from "@/lib/md";
+import { CAP } from "@/lib/capital";
 
 export const metadata: Metadata = { title: "Methodology", description: "Gates, approval rubric, rent-support and need scoring, max-land and breakeven formulas, verdict rules and data gaps." };
 
@@ -10,6 +11,15 @@ const F = ({ children }: { children: React.ReactNode }) => (
 );
 
 export default function Method() {
+  const reg = parseTable(readDoc("model/ASSUMPTIONS.md")).slice(1);
+  const capRows: [string, string, string][] = [
+    ["Schedule", `${CAP.predevMonths} mo predevelopment; build ${CAP.buildMonths.C}–${CAP.buildMonths.A} mo; lease-up ${CAP.leaseupMonths.C}–${CAP.leaseupMonths.A} mo by prototype`, "[I] 114-unit AL/MC at 18 months is about 6 move-ins a month, above the 2–4 a month rule of thumb; Northeast lease-ups have run faster with occupancy above 90% [V NIC]"],
+    ["Growth to sale", `${pct(CAP.trend, 0)} a year on rent and expense`, "[I] in line with recent AL rate increases"],
+    ["Sale costs", pct(CAP.saleCostPct, 0), "[I]"],
+    ["Equity split", `LP ${pct(CAP.lpShare, 0)} / GP ${pct(1 - CAP.lpShare, 0)}`, "[I] typical programmatic JV"],
+    ["Permanent take-out", `${pct(CAP.permDebtYield, 0)} debt yield, ${pct(CAP.permMaxLtv, 0)} LTV, ${pct(CAP.permRate, 1)}, ${CAP.permAmortYears}-yr amortization`, "[I] HUD 232 style"],
+    ["Entrance-fee IL monthly fee", `${pct(CAP.efMonthlyPct, 0)} of the rental IL rate`, "[I] life-plan contracts"],
+  ];
   const gaps = numbered(section(readDoc("research/market-demand.md"), "9. Next steps"));
   const w = a.score_weights;
   return (
@@ -71,12 +81,30 @@ export default function Method() {
           </div>
         </div></section>
 
+        <section className="section anchor" id="assumptions">
+          <div className="section-head"><div><h2 className="rule-title">Assumptions register</h2><p>Every underwriting input, its value and its basis. [V] is a sourced figure; [I] is a calibrated estimate to replace before LOI. The Excel models carry the same inputs as blue cells.</p></div></div>
+          <div className="card"><div className="table-wrap"><table className="t">
+            <thead><tr><th>Input</th><th>Value</th><th>Basis</th></tr></thead>
+            <tbody>
+              {reg.map((r) => <tr key={r[0]}><td style={{ minWidth: 150 }}><b><Inline text={r[0]} /></b></td><td className="small" style={{ minWidth: 200 }}><Inline text={r[1]} /></td><td className="small"><Inline text={r[2] || ""} /></td></tr>)}
+              {capRows.map((r) => <tr key={r[0]}><td><b>{r[0]}</b></td><td className="small">{r[1]}</td><td className="small">{r[2]}</td></tr>)}
+            </tbody>
+          </table></div></div>
+        </section>
+
         <section className="section anchor" id="data-gaps">
           <div className="card card-pad prose">
             <h3>8. Data gaps <span className="badge-i">I</span></h3>
             <p>{meta.note}</p>
             <ol>{gaps.map((g, i) => <li key={i}><Inline text={g} /></li>)}</ol>
             <p className="small muted">Live layers on site pages (tax parcels from NJGIN, NYS ITS and CT OPM; places from OpenStreetMap) load in the viewer&apos;s browser from public services and can lag official records.</p>
+          </div>
+        </section>
+
+        <section className="section anchor" id="disclaimer">
+          <div className="card card-pad prose" style={{ borderLeft: "4px solid var(--atco-purple)" }}>
+            <h3>Important notice</h3>
+            <p className="small">This site and the linked Excel models are a screening tool prepared by ATCO Properties &amp; Management for internal discussion with prospective partners. They are not an offer to sell or a solicitation of an offer to buy any security or interest, and they are not investment, tax, legal or accounting advice. Figures are model outputs built on stated assumptions, many of them calibrated estimates marked [I]; they are not appraisals, market studies, bids or guarantees of future results. Rents, costs, taxes, absorption, entitlement odds and returns will differ from what is shown, possibly materially. Site information comes from public records, news reports and third-party data believed reliable but not independently verified; ATCO has no agreement with any landowner, operator or contractor named unless stated. Verify every figure before relying on it.</p>
           </div>
         </section>
       </div>

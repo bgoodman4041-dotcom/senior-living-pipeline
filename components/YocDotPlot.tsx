@@ -4,7 +4,7 @@ import type { Row } from "./PipelineExplorer";
 
 const X0 = 0.03, X1 = 0.11;
 const xp = (v: number) => `${((Math.max(X0, Math.min(X1, v)) - X0) / (X1 - X0)) * 100}%`;
-const VERDICT_COLOR: Record<string, string> = { Pursue: "#3f8a35", "Pursue-structured": "#3079B3", Watch: "#F7901E", Pass: "#A3A3A3" };
+const VERDICT_COLOR: Record<string, string> = { Pursue: "#33772a", "Pursue-structured": "#3079B3", Watch: "#F7901E", Pass: "#A3A3A3" };
 
 export default function YocDotPlot({ rows, hurdle, target, highlight }: { rows: Row[]; hurdle: number; target: number; highlight: string }) {
   const [tip, setTip] = useState<{ x: number; y: number; r: Row } | null>(null);

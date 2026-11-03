@@ -1,7 +1,7 @@
 {
   "_note": "Base rates are Westchester (rent_index 1.00). Each market scales rents by rent_index and hard costs by cost_index. Every value carries a basis in model/ASSUMPTIONS.md.",
   "hurdle_yoc": 0.065,
-  "exit_cap": 0.0625,
+  "exit_cap": 0.065,
   "pursue_score": 60,
   "default_tax_per_unit": 9000,
   "default_land_per_unit": 60000,

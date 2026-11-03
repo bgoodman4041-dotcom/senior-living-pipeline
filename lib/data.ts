@@ -15,7 +15,7 @@ export const TARGET = 0.075; // business-plan target for owned rentals (recommen
 
 export const VERDICTS: Verdict[] = ["Pursue", "Pursue-structured", "Watch", "Pass"];
 export const VERDICT_COLOR: Record<Verdict, string> = {
-  Pursue: "#3f8a35",
+  Pursue: "#33772a",
   "Pursue-structured": "#3079B3",
   Watch: "#F7901E",
   Pass: "#A3A3A3",

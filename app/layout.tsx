@@ -40,15 +40,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div style={{ marginTop: 8, maxWidth: 520 }}>
                 Senior living site selection for RiverSpring-model communities in New York, New Jersey and Connecticut.
                 Underwriting figures are model outputs for screening, not appraisals or offers. Indices marked
-                <span className="badge-i">I</span> are calibrated estimates to be replaced with NIC MAP and assessor data before LOI.
+                <span className="badge-i">I</span> are calibrated estimates to be replaced with NIC MAP and assessor data before LOI. Not an offer or investment advice; see the <a href="/method#disclaimer" style={{ color: "inherit", textDecoration: "underline" }}>important notice</a>.
               </div>
             </div>
             <div className="links" style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "flex-start" }}>
               <a href="/">Pipeline</a><a href="/#shortlist">Shortlist</a><a href="/markets">Markets</a>
-              <a href="/model">The Model</a><a href="/method">Methodology</a>
+              <a href="/operators">Operators</a><a href="/news">News</a><a href="/model">The Model</a><a href="/method">Methodology</a><a href="/method#assumptions">Assumptions</a>
             </div>
             <div className="xs" style={{ width: "100%", borderTop: "1px solid rgba(255,255,255,.14)", paddingTop: 14 }}>
-              © {new Date().getFullYear()} ATCO Properties &amp; Management, LLC. Confidential deal flow. Basemaps © OpenStreetMap contributors, © CARTO; imagery © Esri, Maxar, Earthstar Geographics. Parcels: NJGIN, NYS ITS GIS, CT OPM.
+              © {new Date().getFullYear()} ATCO Properties &amp; Management, LLC. Confidential deal flow. Basemaps and imagery © Esri, HERE, Garmin, Maxar, Earthstar Geographics and the GIS user community; © OpenStreetMap contributors. Parcels: NJGIN, NYS ITS GIS, CT OPM.
             </div>
           </div>
         </footer>

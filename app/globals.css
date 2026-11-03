@@ -21,10 +21,10 @@
   --surface-2: #f7f7f7;
   --ink: #2D2D2D;
   --ink-2: #555F61;
-  --ink-3: #6f7779;
+  --ink-3: #5c6467;
   --rule: #e6e6e6;
   --rule-strong: #cfcfcf;
-  --pursue: #3f8a35;
+  --pursue: #33772a;
   --structured: #3079B3;
   --watch: #d9780c;
   --pass: #9a9a9a;
@@ -431,3 +431,26 @@ button.chip[aria-pressed="true"]{background:var(--atco-purple);border-color:var(
 .gc-mode{display:inline-block;margin:6px 0 10px;padding:5px 10px;border-radius:2px;font:700 11px/1.2 var(--serif);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--atco-link)}
 .gc-mode.gc-self{background:var(--atco-purple)}
 .gc-mode.gc-jv{background:var(--atco-orange)}
+.t tr.row-base td{background:#f4f2fb}
+/* ---- IC flags ---- */
+.ic-flag{display:block;margin:14px 0 0;padding:11px 16px;border-left:4px solid;font-size:13.5px;color:var(--ink);background:#fff;border-radius:2px;box-shadow:0 1px 0 var(--rule)}
+.ic-flag:hover{text-decoration:none;filter:brightness(.98)}
+.ic-flag.ic-warn{border-color:var(--atco-orange);background:#fff7ee}
+.ic-flag.ic-bad{border-color:var(--atco-red);background:#fcf0f2}
+.ic-flag.ic-info{border-color:var(--atco-blue);background:#eef5fb}
+.ic-chip{display:inline-block;align-self:flex-start;font:700 10.5px/1 var(--serif);letter-spacing:.1em;text-transform:uppercase;padding:5px 8px;border-radius:2px;color:#fff}
+.ic-chip.ic-warn{background:var(--atco-orange)}.ic-chip.ic-bad{background:var(--atco-red)}.ic-chip.ic-info{background:var(--atco-blue)}
+/* ---- contrast (WCAG AA) ---- */
+.btn.btn-xl,.tour-btn,.ic-chip.ic-warn{color:#1f1f1f}
+.btn.btn-xl:hover{color:#1f1f1f}
+.ic-chip.ic-info{background:#2a6ea3}
+.ic-chip.ic-bad{background:#a51c2e}
+.gc-mode{background:#2a6ea3}
+.gc-mode.gc-jv{background:#F7901E;color:#1f1f1f}
+.tour-btn.on{color:#fff}
+.small a:not(.btn):not(.tag),.xs a:not(.btn):not(.tag),td a:not(.btn):not(.tag),.prose a,.cap a,.callout a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;text-decoration-color:rgba(48,121,179,.45)}
+.news-title a{text-decoration:none}
+.sec-num{color:#a85a06 !important}
+.crumbs a{color:#2a6ea3}
+.section-head p a,.lede a{text-decoration:underline;text-underline-offset:2px}
+.ic-chip.ic-go{background:#33772a}

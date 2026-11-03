@@ -354,6 +354,11 @@ def build_site(s):
           ("Both", "=((Revenue+OpexNeg)*0.9+TaxFullNeg-Units*ReservePerUnit)/(CostExLand*1.1+Land)")]
     for i, (lab, f) in enumerate(st):
         S.put(f"M{29 + i}", lab); S.calc(f"N{29 + i}", f, PCT)
+    S.header("M36", "N36", "Exit Cap Sensitivity: profit on cost at sale")
+    for i, c in enumerate((0.0625, 0.065, 0.0675, 0.07)):
+        S.put(f"M{37 + i}", f"Exit cap {c:.2%}" + (" (base)" if abs(c - A["exit_cap"]) < 1e-9 else ""))
+        S.calc(f"N{37 + i}", f"=(NOITrended/{c}*(1-SaleCostPct)-TotalCost)/TotalCost", PCT1)
+    S.put("M41", "For IRRs at another cap, change the blue Exit cap input (D54).", font=F_NOTE)
     S.put("M33", "Model reconciles to the website underwriting for this site.", font=F_NOTE)
     S.put("M34", f"Website YOC (fully taxed): {u['yoc']:.2%}", font=F_NOTE)
     ws.freeze_panes = "A5"

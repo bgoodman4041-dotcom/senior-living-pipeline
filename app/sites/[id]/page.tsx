@@ -10,6 +10,8 @@ import EntitlementDossier from "@/components/EntitlementDossier";
 import ApprovalPlaybook from "@/components/ApprovalPlaybook";
 import ModelDownload from "@/components/ModelDownload";
 import { gcFor } from "@/lib/contractors";
+import Absorption, { absorptionFor } from "@/components/Absorption";
+import icFlags from "@/data/ic-flags.json";
 import ops from "@/data/operators.json";
 import { playbook } from "@/lib/playbook";
 import { capitalPlan } from "@/lib/capital";
@@ -39,7 +41,7 @@ function Hbar({ items, max, hurdle, target }: { items: { label: string; v: numbe
             <b className="tnum" style={{ color: it.v >= hurdle ? "var(--pursue)" : "var(--danger)" }}>{pct(it.v)}</b>
           </div>
           <div style={{ position: "relative", height: 14, background: "#ececec", borderRadius: 4 }}>
-            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: x(it.v), background: it.v >= hurdle ? "#3f8a35" : "#A3A3A3", borderRadius: 4 }} />
+            <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: x(it.v), background: it.v >= hurdle ? "#33772a" : "#A3A3A3", borderRadius: 4 }} />
             <div title={`${pct(hurdle, 1)} floor`} style={{ position: "absolute", left: x(hurdle), top: -3, bottom: -3, borderLeft: "2px dashed #BB2034" }} />
             {target && <div title={`${pct(target, 1)} target`} style={{ position: "absolute", left: x(target), top: -3, bottom: -3, borderLeft: "2px dashed #F7901E" }} />}
           </div>
@@ -97,12 +99,14 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
   const programRisks = [
     "Calibrated rent, tax and land indices [I]: confirm with NIC MAP, rate shops and an assessor letter.",
     "Lease-up pace: 9 months of NOI carried in budget; a slower absorption erodes equity returns, not YOC.",
-    "Exit-cap spread: Class A AL trades near the 6.25% exit cap; development spread depends on clearing the target.",
+    `Exit-cap spread: Class A AL trades near ${pct(a.exit_cap)} (CBRE H1 2026) and our Northeast research range is 6.75–7.25% [I]; the development spread depends on clearing the ${pct(TARGET, 1)} target.`,
     "Labor and agency cost in AL/MC operations; margin assumptions are operator-dependent.",
   ];
 
   const fit = (ops.fit as Record<string, { first: string; second: string; why: string; watch: string }>)[s.id];
   const gcr = gcFor(s);
+  const flag = (icFlags as Record<string, { tone: string; label: string; text: string; href: string }>)[s.id];
+  const hasAbs = !!absorptionFor(s.id);
   const partners = ops.partners.filter((p) => p.sites.includes(s.id));
   const sub = [
     ["snapshot", "Snapshot"], ["location", "Site & surroundings"], ["massing", "3D massing"], ["entitlement", "Entitlement"], ["playbook", "Approval playbook"], ["market", "Market & need"], ["program", "Program"],
@@ -137,6 +141,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
             <div><div className="label">Composite</div><div className="big">{s.scores.total}</div><div className="cap">A {s.scores.approval} · R {s.scores.rent_support} · N {s.scores.need} · Y {s.scores.yield}</div></div>
             <div><div className="label">Program</div><div className="big">{u.units} units</div><div className="cap">{u.prototype_name}</div></div>
           </div>
+          {flag && <a href={flag.href} className={`ic-flag ic-${flag.tone}`}><b>Investment committee: {flag.label}.</b> {flag.text}</a>}
           <div className="need-bar" aria-label="Capital needed">
             <div className="need-title">
               <div className="label">Capital needed</div>
@@ -176,7 +181,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
                       <span style={{ fontWeight: 600 }}>{g.k} <span className="xs muted">· weight {pct(g.w, 0)}</span></span>
                       <span style={{ fontFamily: "var(--serif)", fontSize: 24, fontWeight: 600 }}>{g.v}</span>
                     </div>
-                    <Bar value={g.v} color={g.v >= 75 ? "#3f8a35" : g.v >= 55 ? "#3079B3" : g.v >= 35 ? "#F7901E" : "#A3A3A3"} />
+                    <Bar value={g.v} color={g.v >= 75 ? "#33772a" : g.v >= 55 ? "#3079B3" : g.v >= 35 ? "#F7901E" : "#A3A3A3"} />
                     <div className="xs muted">{g.d}</div>
                   </div>
                 ))}
@@ -235,6 +240,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
 
         <section className="section">
           <SectionHead id="market" n={N()} title="Market, rent support and need" sub={breakevenLine(s)} />
+          {hasAbs && <div id="absorption" className="anchor" style={{ marginBottom: 18 }}><Absorption id={s.id} units={u.units} /></div>}
           <div className="grid g3">
             <div className="card card-pad">
               <h3>{s.county} County</h3>
@@ -284,7 +290,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
               <div className="label" style={{ marginBottom: 8 }}>Unit mix</div>
               <div style={{ display: "flex", height: 34, borderRadius: 5, overflow: "hidden", gap: 2, background: "#fff" }}>
                 {mix.map((l, i) => (
-                  <div key={l.care} title={`${l.care}: ${l.units} units`} style={{ flex: l.units, background: ["#403393", "#3D86C6", "#3f8a35", "#d9780c"][i % 4], color: "#fff", display: "grid", placeItems: "center", fontSize: 12, fontWeight: 600 }}>
+                  <div key={l.care} title={`${l.care}: ${l.units} units`} style={{ flex: l.units, background: ["#403393", "#3D86C6", "#33772a", "#d9780c"][i % 4], color: "#fff", display: "grid", placeItems: "center", fontSize: 12, fontWeight: 600 }}>
                     {l.care} {l.units}
                   </div>
                 ))}

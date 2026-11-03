@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import type { Map as MLMap, Marker } from "maplibre-gl";
+import { useNear } from "@/lib/useNear";
 import { baseStyle, setBasemap } from "@/lib/mapstyle";
 import { circle } from "@/lib/geo";
 
@@ -23,7 +24,9 @@ export default function OverviewMap({ sites, legend, yocLabel }: { sites: MapSit
   const [mode, setMode] = useState<"streets" | "satellite">("streets");
   const [rings, setRings] = useState(true);
 
+  const near = useNear(el);
   useEffect(() => {
+    if (!near) return;
     let dead = false;
     (async () => {
       const ml = (await import("maplibre-gl")).default;
@@ -55,7 +58,7 @@ export default function OverviewMap({ sites, legend, yocLabel }: { sites: MapSit
       map.current = m;
     })();
     return () => { dead = true; map.current?.remove(); map.current = null; };
-  }, []);
+  }, [near]);
 
   useEffect(() => { if (ready && map.current) setBasemap(map.current, mode); }, [mode, ready]);
   useEffect(() => {
@@ -87,7 +90,7 @@ export default function OverviewMap({ sites, legend, yocLabel }: { sites: MapSit
 
   return (
     <div className="map-shell">
-      <div ref={el} className="map" aria-label="Map of candidate sites" />
+      <div ref={el} role="region" className="map" aria-label="Map of candidate sites" />
       <div className="map-overlay map-tools">
         <div className="seg" role="group" aria-label="Basemap">
           <button aria-pressed={mode === "streets"} onClick={() => setMode("streets")}>Map</button>

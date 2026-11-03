@@ -4,6 +4,8 @@ import PortfolioDeployment from "@/components/PortfolioDeployment";
 import NewsFeed from "@/components/NewsFeed";
 import news from "@/data/news.json";
 import ops from "@/data/operators.json";
+import icFlags from "@/data/ic-flags.json";
+import { gcFor } from "@/lib/contractors";
 import { capitalPlan } from "@/lib/capital";
 import { playbook } from "@/lib/playbook";
 import { sites, shortlist, funnel, meta, HURDLE, TARGET, trackOf, satThumb, assumptions } from "@/lib/data";
@@ -131,10 +133,30 @@ export default function Home() {
             <div><div className="eyebrow">The Shortlist</div><h2>{["Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"][shortlist.length] ?? shortlist.length} sites that clear the model</h2>
               <p>Ranked by verdict and composite score. Imagery centers on the underwriting pin; open a dossier for parcel lines, what is nearby, the full pro forma and the live what-if.</p></div>
           </div>
+          <div className="card" style={{ marginBottom: 18 }}><div className="table-wrap"><table className="t ic-table">
+            <caption className="label" style={{ textAlign: "left", padding: "14px 16px 4px" }}>Investment committee view · base case, {pct(assumptions.exit_cap)} exit cap</caption>
+            <thead><tr><th>Site</th><th>Recommendation</th><th className="num">Capital needed</th><th className="num">Equity</th><th className="num">YOC</th><th className="num">Levered IRR</th><th className="num">Approval odds</th><th className="hide-sm">Operator, first call</th><th className="hide-sm">General contractor</th></tr></thead>
+            <tbody>{shortlist.map((s) => {
+              const cp = capitalPlan(s, assumptions); const pb = playbook(s, assumptions); const f = (icFlags as Record<string, { tone: string; label: string }>)[s.id];
+              const fit = (ops.fit as Record<string, { first: string }>)[s.id]; const g = gcFor(s);
+              const irr = cp.efCase ? cp.efCase.nonprofit.irrL : cp.irrLevered;
+              return (
+                <tr key={s.id}>
+                  <td style={{ minWidth: 170 }}><a href={`/sites/${s.id}`} className="site-name">{s.municipality}</a><div className="xs muted">{s.id} · {s.uw.units} units</div></td>
+                  <td style={{ minWidth: 150 }}>{f ? <span className={`ic-chip ic-${f.tone}`}>{f.label}</span> : <span className="ic-chip ic-go">Advance to LOI</span>}</td>
+                  <td className="num">{usdM(cp.uses.total, 1)}</td>
+                  <td className="num">{usdM(cp.equityCommit, 1)}</td>
+                  <td className="num" style={{ fontWeight: 700 }}>{cp.efCase ? <span className="muted">n/m</span> : pct(cp.yoc)}</td>
+                  <td className="num">{pct(irr, 1)}{cp.efCase && <div className="xs muted">nonprofit case</div>}</td>
+                  <td className="num">{pb.like}%</td>
+                  <td className="small hide-sm">{fit?.first ?? "—"}</td>
+                  <td className="small hide-sm">{g.primary.name}</td>
+                </tr>); })}</tbody>
+          </table></div></div>
           <div className="grid g3">
             {shortlist.map((s) => (
               <a key={s.id} href={`/sites/${s.id}`} className="card shortcard">
-                <div className="img" style={{ backgroundImage: `url("${satThumb(Number(s.lat), Number(s.lon), 1280, 800)}")` }}>
+                <div className="img" style={{ backgroundImage: `url("${satThumb(Number(s.lat), Number(s.lon), 800, 500)}")` }}>
                   <span className="rank">{s.rank}</span>
                   <VerdictChip v={s.verdict} />
                 </div>
@@ -144,6 +166,7 @@ export default function Home() {
                     <h3 style={{ marginTop: 4, marginBottom: 0 }}>{s.name}</h3>
                   </div>
                   <div className="small muted">{s.verdict_reason}</div>
+                  {(() => { const f = (icFlags as Record<string, { tone: string; label: string }>)[s.id]; return f ? <div className={`ic-chip ic-${f.tone}`}>IC: {f.label}</div> : null; })()}
                   <div className="stats">
                     <div><div className="xs muted">YOC taxed</div><div className="v">{pct(s.uw.yoc)}</div></div>
                     <div><div className="xs muted">{/entrance-fee/.test(s.verdict_reason) ? "Fee coverage" : "PILOT"}</div><div className="v">{/entrance-fee/.test(s.verdict_reason) ? `${Math.round(s.uw.entrance_fee.coverage * 100)}%` : pct(s.uw.yoc_by_tax_structure.pilot)}</div></div>
@@ -151,7 +174,7 @@ export default function Home() {
                   </div>
                   {(() => { const pb = playbook(s, assumptions); const first = pb.contacts.find((c) => c.group === "Municipal staff"); return (
                     <div className="approve-strip">
-                      <div><span className="xs muted">Town approval</span><b style={{ color: pb.like >= 65 ? "#3f8a35" : pb.like < 50 ? "#c46f0a" : "var(--atco-blue)" }}>{pb.like}% · {pb.likeBand}</b></div>
+                      <div><span className="xs muted">Town approval</span><b style={{ color: pb.like >= 65 ? "#33772a" : pb.like < 50 ? "#a85a06" : "#2a6ea3" }}>{pb.like}% · {pb.likeBand}</b></div>
                       <div className="xs muted">{pb.d.pathLabel} · ~{Math.round(pb.totalMonths)} mo · pursuit {usdK(pb.d.budgetTotal)}</div>
                       {first && <div className="xs muted">First call: <b style={{ color: "var(--ink-2)" }}>{first.name}</b>{first.phone ? ` · ${first.phone}` : ""}</div>}
                     </div>); })()}

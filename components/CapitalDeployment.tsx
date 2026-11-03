@@ -120,6 +120,23 @@ export default function CapitalDeployment({ site, a }: { site: any; a: any }) {
         </table></div>
       </div>
 
+      <div className="card card-pad">
+        <div className="label" style={{ marginBottom: 4 }}>Exit cap sensitivity{ef ? " · rental basis" : ""}</div>
+        <p className="xs muted" style={{ marginTop: 0 }}>Base case {pct(a.exit_cap)} matches CBRE&apos;s H1 2026 Class A assisted living cap; Northeast AL/MC has traded 6.75–7.25%. Yield on cost and max land do not depend on the exit cap; value, profit and IRR do.</p>
+        <div className="table-wrap"><table className="t">
+          <thead><tr><th>Exit cap</th><th className="num">Value at stabilization</th><th className="num">Profit on cost</th><th className="num">Unlevered IRR</th><th className="num">Levered IRR</th><th className="num">Equity multiple</th></tr></thead>
+          <tbody>{[0.0625, 0.065, 0.0675, 0.07].map((c) => { const q = capitalPlan(site, { ...a, exit_cap: c }); const base = Math.abs(c - a.exit_cap) < 1e-9; return (
+            <tr key={c} className={base ? "row-base" : undefined}>
+              <td><b>{pct(c)}</b>{base && <span className="xs muted"> · base</span>}</td>
+              <td className="num">{usdM(q.value, 1)}</td>
+              <td className="num" style={{ color: q.profitOnCost < 0 ? "var(--danger)" : undefined }}>{pct(q.profitOnCost, 1)}</td>
+              <td className="num">{Number.isFinite(q.irrUnlevered) ? pct(q.irrUnlevered, 1) : "n/m"}</td>
+              <td className="num" style={{ color: q.irrLevered < 0 ? "var(--danger)" : undefined }}>{Number.isFinite(q.irrLevered) ? pct(q.irrLevered, 1) : "n/m"}</td>
+              <td className="num">{mult(q.equityMultiple)}</td>
+            </tr>); })}</tbody>
+        </table></div>
+      </div>
+
       <div className="grid g3">
         <div className="card card-pad">
           <h3>Returns per dollar</h3>

@@ -1,8 +1,8 @@
 import { dossier, type Item } from "@/lib/entitlement";
 import { usdM, usdK } from "@/lib/format";
 
-const FLAG = { ok: { c: "#3f8a35", t: "Clear" }, watch: { c: "#F7901E", t: "Watch" }, risk: { c: "#BB2034", t: "Issue" } };
-const BAND_C: Record<string, string> = { Low: "#3f8a35", Moderate: "#3079B3", Elevated: "#F7901E", High: "#BB2034" };
+const FLAG = { ok: { c: "#33772a", t: "Clear" }, watch: { c: "#F7901E", t: "Watch" }, risk: { c: "#BB2034", t: "Issue" } };
+const BAND_C: Record<string, string> = { Low: "#33772a", Moderate: "#3079B3", Elevated: "#F7901E", High: "#BB2034" };
 
 function Items({ items }: { items: Item[] }) {
   return (
@@ -11,7 +11,7 @@ function Items({ items }: { items: Item[] }) {
         const f = FLAG[x.flag || "ok"];
         return (
           <li key={x.k}>
-            <span className="flag" style={{ background: f.c }} title={f.t} aria-label={f.t} />
+            <span className="flag" role="img" style={{ background: f.c }} title={f.t} aria-label={f.t} />
             <div><div className="k">{x.k}{x.src && <span className="src">{x.src}</span>}</div><div className="v">{x.v}</div></div>
           </li>
         );

@@ -7,10 +7,10 @@ import { pct, usdM } from "@/lib/format";
 
 type TaxKey = "full_tax" | "pilot" | "nonprofit_exempt";
 const TAX_LABEL: Record<TaxKey, string> = { full_tax: "Fully taxed", pilot: "PILOT", nonprofit_exempt: "Nonprofit" };
-const VERDICT_COLOR: Record<string, string> = { Pursue: "#3f8a35", "Pursue-structured": "#3079B3", Watch: "#F7901E", Pass: "#A3A3A3" };
+const VERDICT_COLOR: Record<string, string> = { Pursue: "#33772a", "Pursue-structured": "#3079B3", Watch: "#F7901E", Pass: "#A3A3A3" };
 const VERDICTS = ["Pursue", "Pursue-structured", "Watch", "Pass"];
 const YOC_BANDS = [
-  { label: "≥ 7.5% target", min: 0.075, color: "#3f8a35" },
+  { label: "≥ 7.5% target", min: 0.075, color: "#33772a" },
   { label: "6.5% – 7.5%", min: 0.065, color: "#3079B3" },
   { label: "6.0% – 6.5% (near miss)", min: 0.06, color: "#F7901E" },
   { label: "< 6.0%", min: -1, color: "#A3A3A3" },
@@ -183,7 +183,7 @@ export default function PipelineExplorer({ rows, hurdle, target }: { rows: Row[]
                     <td className="num" title={`Land basis: ${r.land_basis}`}>{usdM(r.land_cost)}<div className="xs muted">{r.land_basis}</div></td>
                     <td className="num" style={{ color: cushion >= 0 ? "var(--pursue)" : "var(--danger)" }}>{usdM(cushion)}</td>
                     <td className="num">{r.dscr.toFixed(2)}x</td>
-                    <td className="num">{r.approval}</td><td className="num" title={`${r.entPath} · ${r.entBand}`} style={{ color: r.entRisk >= 70 ? "var(--danger)" : r.entRisk >= 55 ? "#c46f0a" : "var(--ink-2)" }}>{r.entRisk}</td><td className="num" title={r.likeBand} style={{ color: r.like >= 65 ? "#3f8a35" : r.like < 50 ? "#c46f0a" : "var(--ink-2)" }}>{r.like}%</td><td className="num">{r.rent}</td><td className="num">{r.need}</td>
+                    <td className="num">{r.approval}</td><td className="num" title={`${r.entPath} · ${r.entBand}`} style={{ color: r.entRisk >= 70 ? "var(--danger)" : r.entRisk >= 55 ? "#c46f0a" : "var(--ink-2)" }}>{r.entRisk}</td><td className="num" title={r.likeBand} style={{ color: r.like >= 65 ? "#33772a" : r.like < 50 ? "#c46f0a" : "var(--ink-2)" }}>{r.like}%</td><td className="num">{r.rent}</td><td className="num">{r.need}</td>
                     <td className="small" style={{ minWidth: 220 }}>{r.next_step}</td>
                   </tr>
                 );

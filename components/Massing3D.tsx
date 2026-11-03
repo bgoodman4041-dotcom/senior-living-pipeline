@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Map as MLMap } from "maplibre-gl";
+import { useNear } from "@/lib/useNear";
 import { baseStyle, setBasemap } from "@/lib/mapstyle";
 import { buildMassing, CARE_STYLE, FACADE, type Line } from "@/lib/massing";
 import { bboxOf } from "@/lib/geo";
@@ -27,7 +28,9 @@ export default function Massing3D(p: Props) {
     mm.fitBounds([[bounds[0], bounds[1]], [bounds[2], bounds[3]]], { padding: pad, pitch: threeD ? 58 : 0, bearing: threeD ? -28 : 0, duration: animate ? 900 : 0, maxZoom: 18.2 });
   };
 
+  const near = useNear(el);
   useEffect(() => {
+    if (!near) return;
     let dead = false;
     (async () => {
       const ml = (await import("maplibre-gl")).default;
@@ -67,7 +70,7 @@ export default function Massing3D(p: Props) {
     })();
     return () => { dead = true; if (spin.current) cancelAnimationFrame(spin.current); map.current?.remove(); map.current = null; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [near]);
 
   useEffect(() => { if (ready && map.current) setBasemap(map.current, mode); }, [mode, ready]);
   useEffect(() => {
@@ -129,7 +132,7 @@ export default function Massing3D(p: Props) {
   return (
     <div className="grid g-side" style={{ alignItems: "start" }}>
       <div className="map-shell">
-        <div ref={el} className="map map-tall" aria-label={`3D concept massing for ${p.name}`} />
+        <div ref={el} role="region" className="map map-tall" aria-label={`3D concept massing for ${p.name}`} />
         <div className="map-overlay map-tools">
           <div className="seg" role="group" aria-label="Basemap">
             <button aria-pressed={mode === "satellite"} onClick={() => setMode("satellite")}>Satellite</button>

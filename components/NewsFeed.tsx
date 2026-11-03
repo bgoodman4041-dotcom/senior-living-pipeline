@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export type NewsItem = { date: string; source: string; kind: string; tag: string; title: string; url: string; take: string; why: string };
 const fmt = (iso: string) => new Date(iso + "T12:00:00Z").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
-const TAG_COLOR: Record<string, string> = { Capital: "#403393", Supply: "#F7901E", Demand: "#76B96A", Costs: "#BB2034", Region: "#3D86C6" };
+const TAG_COLOR: Record<string, string> = { Capital: "#403393", Supply: "#b45f06", Demand: "#3d7a32", Costs: "#BB2034", Region: "#2a6ea3" };
 
 export default function NewsFeed({ items, limit }: { items: NewsItem[]; limit?: number }) {
   const tags = ["All", ...Array.from(new Set(items.map((i) => i.tag)))];

@@ -5,7 +5,7 @@
 | Input | Value | Basis |
 |---|---|---|
 | Hurdle | 6.50% stabilized YOC (floor); 7.5% recommended target for fee-simple rental | Ben, 2026-10-19; CBRE H1 2026 Class A AL core cap 6.5% [V] leaves ~0 spread at 6.5% |
-| Exit cap (value check) | 6.25% in model; plan text uses 6.5% | CBRE H1 2026 AL 6.5%, IL ~6.1% [V] |
+| Exit cap (value check) | 6.50% (raised from 6.25% on 2026-11-03 to match CBRE Class A AL); sensitized 6.25–7.00% on every site page | CBRE H1 2026 AL 6.5%, IL ~6.1% [V]; Northeast AL trades 6.75–7.25% [I] |
 | IL rate | $6,800/mo at Westchester index 1.00 | New Class A IL $6,000–9,000 NY region [I]; RiverWalk from $5,500 [V] |
 | AL rate | $11,000/mo + 10% care fees | Westchester base AL $6,745–11,525 listings, care fees $1,000–3,500 [V caring.com] |
 | MC rate | $15,000/mo + 3% | MC 25–40% over AL base [I]; RiverSpring MC $11,800 base + tiers [V] |

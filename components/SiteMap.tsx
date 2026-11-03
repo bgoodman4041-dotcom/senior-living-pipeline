@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Map as MLMap } from "maplibre-gl";
+import { useNear } from "@/lib/useNear";
 import { baseStyle, setBasemap, usingMapbox } from "@/lib/mapstyle";
 import { circle, pointInGeom, geomAcres, geomCentroid, haversineMi, bboxOf } from "@/lib/geo";
 import { CATS, CAT_COLOR, fetchImageryDate, fetchOverlay, fetchPois, fetchParcels, parcelSourceFor, readField, type Cat, type Poi } from "@/lib/live";
@@ -30,7 +31,9 @@ export default function SiteMap(p: Props) {
   const envelopeMi = Math.sqrt((p.acres * 4046.86) / Math.PI) / 1609.34;
 
   // map init
+  const near = useNear(el);
   useEffect(() => {
+    if (!near) return;
     let dead = false;
     (async () => {
       const ml = (await import("maplibre-gl")).default;
@@ -105,7 +108,7 @@ export default function SiteMap(p: Props) {
     })();
     return () => { dead = true; map.current?.remove(); map.current = null; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [near]);
 
   useEffect(() => { if (ready && map.current) setBasemap(map.current, mode); }, [mode, ready]);
 
@@ -210,7 +213,7 @@ export default function SiteMap(p: Props) {
     <div className="grid g-side" style={{ alignItems: "start" }}>
       <div className="map-sticky">
         <div className="map-shell">
-          <div ref={el} className="map map-tall" aria-label={`Map of ${p.name} and its surroundings`} />
+          <div ref={el} role="region" className="map map-tall" aria-label={`Map of ${p.name} and its surroundings`} />
           <div className="map-overlay map-tools">
             <div className="seg" role="group" aria-label="Basemap">
               <button aria-pressed={mode === "satellite"} onClick={() => setMode("satellite")}>Satellite</button>
