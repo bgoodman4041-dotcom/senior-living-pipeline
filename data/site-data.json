@@ -627,15 +627,15 @@
     "noi": 4519077,
     "noi_margin": 0.2953,
     "hard": 35191800,
-    "site_work": 1080625,
+    "site_work": 1235000,
     "ffe": 2508000,
-    "soft": 7254485,
-    "carry": 2992269,
+    "soft": 7285360,
+    "carry": 3004310,
     "leaseup": 5648846,
-    "contingency": 1813621,
-    "cost_ex_land": 56489647,
+    "contingency": 1821340,
+    "cost_ex_land": 56694657,
     "leaseup_months": 30,
-    "cost_per_unit_ex_land": 495523,
+    "cost_per_unit_ex_land": 497322,
     "lines": [
      {
       "care": "AL",
@@ -654,33 +654,33 @@
     ],
     "land_cost": 5700000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 62189647,
-    "yoc": 0.0727,
-    "max_land": 13034615,
-    "max_land_per_unit": 114339,
-    "land_cushion": 7334615,
+    "total_cost": 62394657,
+    "yoc": 0.0724,
+    "max_land": 12829605,
+    "max_land_per_unit": 112540,
+    "land_cushion": 7129605,
     "value_at_exit_cap": 69524262,
-    "profit_on_cost": 0.118,
-    "breakeven_rent_ratio": 0.914,
+    "profit_on_cost": 0.114,
+    "breakeven_rent_ratio": 0.916,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0727,
-     "pilot": 0.0805,
-     "nonprofit_exempt": 0.0867
+     "full_tax": 0.0724,
+     "pilot": 0.0802,
+     "nonprofit_exempt": 0.0864
     },
     "max_land_by_tax_structure": {
-     "full_tax": 13034615,
-     "pilot": 20488461,
-     "nonprofit_exempt": 26451538
+     "full_tax": 12829605,
+     "pilot": 20283451,
+     "nonprofit_exempt": 26246528
     },
-    "loan": 37313788,
-    "annual_debt_service": 2904198,
-    "dscr": 1.56,
-    "debt_yield": 0.1211,
-    "equity": 24875859,
+    "loan": 37436794,
+    "annual_debt_service": 2913772,
+    "dscr": 1.55,
+    "debt_yield": 0.1207,
+    "equity": 24957863,
     "stress": {
-     "yoc_rent_down_10": 0.0637,
-     "yoc_cost_up_10": 0.0666,
-     "yoc_both": 0.0584
+     "yoc_rent_down_10": 0.0635,
+     "yoc_cost_up_10": 0.0664,
+     "yoc_both": 0.0582
     },
     "entrance_fee": null
    },
@@ -689,7 +689,7 @@
     "rent_support": 84,
     "need": 58,
     "yield": 65,
-    "total": 67.4
+    "total": 67.2
    },
    "kills": [],
    "verdict": "Pursue",
@@ -834,15 +834,15 @@
     "noi": 4076323,
     "noi_margin": 0.2895,
     "hard": 35191800,
-    "site_work": 1080625,
+    "site_work": 1235000,
     "ffe": 2508000,
-    "soft": 7254485,
-    "carry": 2992269,
+    "soft": 7285360,
+    "carry": 3004310,
     "leaseup": 5095403,
-    "contingency": 1813621,
-    "cost_ex_land": 55936204,
+    "contingency": 1821340,
+    "cost_ex_land": 56141214,
     "leaseup_months": 30,
-    "cost_per_unit_ex_land": 490668,
+    "cost_per_unit_ex_land": 492467,
     "lines": [
      {
       "care": "AL",
@@ -861,33 +861,33 @@
     ],
     "land_cost": 5700000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 61636204,
-    "yoc": 0.0661,
-    "max_land": 6776458,
-    "max_land_per_unit": 59443,
-    "land_cushion": 1076458,
+    "total_cost": 61841214,
+    "yoc": 0.0659,
+    "max_land": 6571448,
+    "max_land_per_unit": 57644,
+    "land_cushion": 871448,
     "value_at_exit_cap": 62712662,
-    "profit_on_cost": 0.017,
-    "breakeven_rent_ratio": 0.986,
+    "profit_on_cost": 0.014,
+    "breakeven_rent_ratio": 0.989,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0661,
-     "pilot": 0.074,
-     "nonprofit_exempt": 0.0803
+     "full_tax": 0.0659,
+     "pilot": 0.0738,
+     "nonprofit_exempt": 0.08
     },
     "max_land_by_tax_structure": {
-     "full_tax": 6776458,
-     "pilot": 14230304,
-     "nonprofit_exempt": 20193381
+     "full_tax": 6571448,
+     "pilot": 14025294,
+     "nonprofit_exempt": 19988371
     },
-    "loan": 36981722,
-    "annual_debt_service": 2878353,
-    "dscr": 1.42,
-    "debt_yield": 0.1102,
-    "equity": 24654482,
+    "loan": 37104728,
+    "annual_debt_service": 2887927,
+    "dscr": 1.41,
+    "debt_yield": 0.1099,
+    "equity": 24736486,
     "stress": {
-     "yoc_rent_down_10": 0.0579,
-     "yoc_cost_up_10": 0.0606,
-     "yoc_both": 0.053
+     "yoc_rent_down_10": 0.0577,
+     "yoc_cost_up_10": 0.0604,
+     "yoc_both": 0.0529
     },
     "entrance_fee": null
    },
@@ -896,7 +896,7 @@
     "rent_support": 75,
     "need": 58,
     "yield": 52,
-    "total": 63.2
+    "total": 63.0
    },
    "kills": [],
    "verdict": "Pursue",
@@ -1262,15 +1262,15 @@
     "noi": 3965634,
     "noi_margin": 0.2879,
     "hard": 35191800,
-    "site_work": 1080625,
+    "site_work": 1235000,
     "ffe": 2508000,
-    "soft": 7254485,
-    "carry": 2992269,
+    "soft": 7285360,
+    "carry": 3004310,
     "leaseup": 4957042,
-    "contingency": 1813621,
-    "cost_ex_land": 55797843,
+    "contingency": 1821340,
+    "cost_ex_land": 56002853,
     "leaseup_months": 30,
-    "cost_per_unit_ex_land": 489455,
+    "cost_per_unit_ex_land": 491253,
     "lines": [
      {
       "care": "AL",
@@ -1289,42 +1289,42 @@
     ],
     "land_cost": 5700000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 61497843,
-    "yoc": 0.0645,
-    "max_land": 5211911,
-    "max_land_per_unit": 45719,
-    "land_cushion": -488089,
+    "total_cost": 61702853,
+    "yoc": 0.0643,
+    "max_land": 5006901,
+    "max_land_per_unit": 43920,
+    "land_cushion": -693099,
     "value_at_exit_cap": 61009754,
-    "profit_on_cost": -0.008,
-    "breakeven_rent_ratio": 1.006,
+    "profit_on_cost": -0.011,
+    "breakeven_rent_ratio": 1.009,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0645,
-     "pilot": 0.0724,
-     "nonprofit_exempt": 0.0787
+     "full_tax": 0.0643,
+     "pilot": 0.0721,
+     "nonprofit_exempt": 0.0784
     },
     "max_land_by_tax_structure": {
-     "full_tax": 5211911,
-     "pilot": 12665757,
-     "nonprofit_exempt": 18628834
+     "full_tax": 5006901,
+     "pilot": 12460747,
+     "nonprofit_exempt": 18423824
     },
-    "loan": 36898706,
-    "annual_debt_service": 2871892,
+    "loan": 37021712,
+    "annual_debt_service": 2881465,
     "dscr": 1.38,
-    "debt_yield": 0.1075,
-    "equity": 24599137,
+    "debt_yield": 0.1071,
+    "equity": 24681141,
     "stress": {
-     "yoc_rent_down_10": 0.0564,
-     "yoc_cost_up_10": 0.0591,
-     "yoc_both": 0.0517
+     "yoc_rent_down_10": 0.0562,
+     "yoc_cost_up_10": 0.0589,
+     "yoc_both": 0.0515
     },
     "entrance_fee": null
    },
    "scores": {
     "approval": 60,
-    "rent_support": 73,
+    "rent_support": 72,
     "need": 58,
     "yield": 49,
-    "total": 60.0
+    "total": 59.8
    },
    "kills": [],
    "verdict": "Pursue-structured",
@@ -1887,15 +1887,15 @@
     "noi": 7401751,
     "noi_margin": 0.3281,
     "hard": 64985760,
-    "site_work": 3185000,
+    "site_work": 4777500,
     "ffe": 3872000,
-    "soft": 13634152,
-    "carry": 5568999,
+    "soft": 13952652,
+    "carry": 5693214,
     "leaseup": 9869001,
-    "contingency": 3408538,
-    "cost_ex_land": 104523450,
+    "contingency": 3488163,
+    "cost_ex_land": 106638290,
     "leaseup_months": 32,
-    "cost_per_unit_ex_land": 593883,
+    "cost_per_unit_ex_land": 605899,
     "lines": [
      {
       "care": "IL",
@@ -1921,42 +1921,42 @@
     ],
     "land_cost": 1500000,
     "land_cost_basis": "estimate",
-    "total_cost": 106023450,
-    "yoc": 0.0698,
-    "max_land": 9349642,
-    "max_land_per_unit": 53123,
-    "land_cushion": 7849642,
+    "total_cost": 108138290,
+    "yoc": 0.0684,
+    "max_land": 7234802,
+    "max_land_per_unit": 41107,
+    "land_cushion": 5734802,
     "value_at_exit_cap": 113873092,
-    "profit_on_cost": 0.074,
-    "breakeven_rent_ratio": 0.941,
+    "profit_on_cost": 0.053,
+    "breakeven_rent_ratio": 0.957,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0698,
-     "pilot": 0.0752,
-     "nonprofit_exempt": 0.0795
+     "full_tax": 0.0684,
+     "pilot": 0.0737,
+     "nonprofit_exempt": 0.078
     },
     "max_land_by_tax_structure": {
-     "full_tax": 9349642,
-     "pilot": 18149642,
-     "nonprofit_exempt": 25189642
+     "full_tax": 7234802,
+     "pilot": 16034802,
+     "nonprofit_exempt": 23074802
     },
-    "loan": 63614070,
-    "annual_debt_service": 4951196,
-    "dscr": 1.49,
-    "debt_yield": 0.1164,
-    "equity": 42409380,
+    "loan": 64882974,
+    "annual_debt_service": 5049957,
+    "dscr": 1.47,
+    "debt_yield": 0.1141,
+    "equity": 43255316,
     "stress": {
-     "yoc_rent_down_10": 0.0617,
-     "yoc_cost_up_10": 0.0635,
-     "yoc_both": 0.0561
+     "yoc_rent_down_10": 0.0605,
+     "yoc_cost_up_10": 0.0623,
+     "yoc_both": 0.055
     },
     "entrance_fee": null
    },
    "scores": {
     "approval": 40,
-    "rent_support": 83,
+    "rent_support": 81,
     "need": 62,
-    "yield": 60,
-    "total": 60.2
+    "yield": 57,
+    "total": 59.0
    },
    "kills": [],
    "verdict": "Watch",
@@ -2099,15 +2099,15 @@
     "noi": 4308977,
     "noi_margin": 0.278,
     "hard": 37784880,
-    "site_work": 1160250,
+    "site_work": 1326000,
     "ffe": 2508000,
-    "soft": 7789026,
-    "carry": 3200740,
+    "soft": 7822176,
+    "carry": 3213669,
     "leaseup": 5386222,
-    "contingency": 1947256,
-    "cost_ex_land": 59776374,
+    "contingency": 1955544,
+    "cost_ex_land": 59996490,
     "leaseup_months": 30,
-    "cost_per_unit_ex_land": 524354,
+    "cost_per_unit_ex_land": 526285,
     "lines": [
      {
       "care": "AL",
@@ -2126,42 +2126,42 @@
     ],
     "land_cost": 9690000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 69466374,
-    "yoc": 0.062,
-    "max_land": 6515580,
-    "max_land_per_unit": 57154,
-    "land_cushion": -3174420,
+    "total_cost": 69686490,
+    "yoc": 0.0618,
+    "max_land": 6295464,
+    "max_land_per_unit": 55223,
+    "land_cushion": -3394536,
     "value_at_exit_cap": 66291954,
-    "profit_on_cost": -0.046,
-    "breakeven_rent_ratio": 1.037,
+    "profit_on_cost": -0.049,
+    "breakeven_rent_ratio": 1.039,
     "yoc_by_tax_structure": {
-     "full_tax": 0.062,
-     "pilot": 0.0711,
-     "nonprofit_exempt": 0.0783
+     "full_tax": 0.0618,
+     "pilot": 0.0708,
+     "nonprofit_exempt": 0.078
     },
     "max_land_by_tax_structure": {
-     "full_tax": 6515580,
-     "pilot": 16161734,
-     "nonprofit_exempt": 23878657
+     "full_tax": 6295464,
+     "pilot": 15941618,
+     "nonprofit_exempt": 23658541
     },
-    "loan": 41679824,
-    "annual_debt_service": 3244015,
-    "dscr": 1.33,
-    "debt_yield": 0.1034,
-    "equity": 27786550,
+    "loan": 41811894,
+    "annual_debt_service": 3254294,
+    "dscr": 1.32,
+    "debt_yield": 0.1031,
+    "equity": 27874596,
     "stress": {
-     "yoc_rent_down_10": 0.0539,
-     "yoc_cost_up_10": 0.0571,
-     "yoc_both": 0.0497
+     "yoc_rent_down_10": 0.0538,
+     "yoc_cost_up_10": 0.0569,
+     "yoc_both": 0.0495
     },
     "entrance_fee": null
    },
    "scores": {
     "approval": 45,
-    "rent_support": 72,
+    "rent_support": 71,
     "need": 65,
     "yield": 44,
-    "total": 55.4
+    "total": 55.2
    },
    "kills": [],
    "verdict": "Watch",
@@ -2305,15 +2305,15 @@
     "noi": 7401751,
     "noi_margin": 0.3281,
     "hard": 64985760,
-    "site_work": 3185000,
+    "site_work": 4777500,
     "ffe": 3872000,
-    "soft": 13634152,
-    "carry": 5568999,
+    "soft": 13952652,
+    "carry": 5693214,
     "leaseup": 9869001,
-    "contingency": 3408538,
-    "cost_ex_land": 104523450,
+    "contingency": 3488163,
+    "cost_ex_land": 106638290,
     "leaseup_months": 32,
-    "cost_per_unit_ex_land": 593883,
+    "cost_per_unit_ex_land": 605899,
     "lines": [
      {
       "care": "IL",
@@ -2339,42 +2339,42 @@
     ],
     "land_cost": 11440000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 115963450,
-    "yoc": 0.0638,
-    "max_land": 9349642,
-    "max_land_per_unit": 53123,
-    "land_cushion": -2090358,
+    "total_cost": 118078290,
+    "yoc": 0.0627,
+    "max_land": 7234802,
+    "max_land_per_unit": 41107,
+    "land_cushion": -4205198,
     "value_at_exit_cap": 113873092,
-    "profit_on_cost": -0.018,
-    "breakeven_rent_ratio": 1.016,
+    "profit_on_cost": -0.036,
+    "breakeven_rent_ratio": 1.032,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0638,
-     "pilot": 0.0688,
-     "nonprofit_exempt": 0.0727
+     "full_tax": 0.0627,
+     "pilot": 0.0675,
+     "nonprofit_exempt": 0.0714
     },
     "max_land_by_tax_structure": {
-     "full_tax": 9349642,
-     "pilot": 18149642,
-     "nonprofit_exempt": 25189642
+     "full_tax": 7234802,
+     "pilot": 16034802,
+     "nonprofit_exempt": 23074802
     },
-    "loan": 69578070,
-    "annual_debt_service": 5415384,
-    "dscr": 1.37,
-    "debt_yield": 0.1064,
-    "equity": 46385380,
+    "loan": 70846974,
+    "annual_debt_service": 5514145,
+    "dscr": 1.34,
+    "debt_yield": 0.1045,
+    "equity": 47231316,
     "stress": {
-     "yoc_rent_down_10": 0.0564,
-     "yoc_cost_up_10": 0.0586,
-     "yoc_both": 0.0517
+     "yoc_rent_down_10": 0.0554,
+     "yoc_cost_up_10": 0.0575,
+     "yoc_both": 0.0508
     },
     "entrance_fee": null
    },
    "scores": {
     "approval": 35,
-    "rent_support": 74,
+    "rent_support": 72,
     "need": 62,
-    "yield": 48,
-    "total": 53.4
+    "yield": 45,
+    "total": 52.4
    },
    "kills": [],
    "verdict": "Watch",
@@ -2739,15 +2739,15 @@
     "noi": 2812775,
     "noi_margin": 0.2781,
     "hard": 33339600,
-    "site_work": 1023750,
+    "site_work": 1170000,
     "ffe": 2508000,
-    "soft": 6872670,
-    "carry": 2843361,
+    "soft": 6901920,
+    "carry": 2854769,
     "leaseup": 4101963,
-    "contingency": 1718168,
-    "cost_ex_land": 52407512,
+    "contingency": 1725480,
+    "cost_ex_land": 52601732,
     "leaseup_months": 35,
-    "cost_per_unit_ex_land": 459715,
+    "cost_per_unit_ex_land": 461419,
     "lines": [
      {
       "care": "AL",
@@ -2766,33 +2766,33 @@
     ],
     "land_cost": 2850000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 55257512,
-    "yoc": 0.0509,
-    "max_land": -9134050,
-    "max_land_per_unit": -80123,
-    "land_cushion": -11984050,
+    "total_cost": 55451732,
+    "yoc": 0.0507,
+    "max_land": -9328270,
+    "max_land_per_unit": -81827,
+    "land_cushion": -12178270,
     "value_at_exit_cap": 43273462,
-    "profit_on_cost": -0.217,
-    "breakeven_rent_ratio": 1.212,
+    "profit_on_cost": -0.22,
+    "breakeven_rent_ratio": 1.216,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0509,
-     "pilot": 0.0581,
-     "nonprofit_exempt": 0.0639
+     "full_tax": 0.0507,
+     "pilot": 0.0579,
+     "nonprofit_exempt": 0.0637
     },
     "max_land_by_tax_structure": {
-     "full_tax": -9134050,
-     "pilot": -2995589,
-     "nonprofit_exempt": 1915180
+     "full_tax": -9328270,
+     "pilot": -3189809,
+     "nonprofit_exempt": 1720960
     },
-    "loan": 33154507,
-    "annual_debt_service": 2580474,
+    "loan": 33271039,
+    "annual_debt_service": 2589544,
     "dscr": 1.09,
-    "debt_yield": 0.0848,
-    "equity": 22103005,
+    "debt_yield": 0.0845,
+    "equity": 22180693,
     "stress": {
-     "yoc_rent_down_10": 0.0443,
-     "yoc_cost_up_10": 0.0465,
-     "yoc_both": 0.0404
+     "yoc_rent_down_10": 0.0441,
+     "yoc_cost_up_10": 0.0463,
+     "yoc_both": 0.0403
     },
     "entrance_fee": null
    },
@@ -2800,12 +2800,12 @@
     "approval": 85,
     "rent_support": 38,
     "need": 50,
-    "yield": 22,
-    "total": 50.5
+    "yield": 21,
+    "total": 50.3
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 6.39%)",
+   "verdict_reason": "Below 6.5% under every structure (best 6.37%)",
    "rank": 11,
    "research": {
     "sources": [
@@ -3375,15 +3375,15 @@
     "noi": 5552358,
     "noi_margin": 0.2872,
     "hard": 66312000,
-    "site_work": 3250000,
+    "site_work": 3181750,
     "ffe": 3872000,
-    "soft": 13912400,
-    "carry": 5677516,
+    "soft": 13898750,
+    "carry": 5672192,
     "leaseup": 7403144,
-    "contingency": 3478100,
-    "cost_ex_land": 103905160,
+    "contingency": 3474688,
+    "cost_ex_land": 103814524,
     "leaseup_months": 32,
-    "cost_per_unit_ex_land": 590370,
+    "cost_per_unit_ex_land": 589855,
     "lines": [
      {
       "care": "IL",
@@ -3409,33 +3409,33 @@
     ],
     "land_cost": 13200000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 117105160,
-    "yoc": 0.0474,
-    "max_land": -18484268,
-    "max_land_per_unit": -105024,
-    "land_cushion": -31684268,
+    "total_cost": 117014524,
+    "yoc": 0.0475,
+    "max_land": -18393632,
+    "max_land_per_unit": -104509,
+    "land_cushion": -31593632,
     "value_at_exit_cap": 85420892,
-    "profit_on_cost": -0.271,
-    "breakeven_rent_ratio": 1.278,
+    "profit_on_cost": -0.27,
+    "breakeven_rent_ratio": 1.277,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0474,
-     "pilot": 0.0549,
-     "nonprofit_exempt": 0.0609
+     "full_tax": 0.0475,
+     "pilot": 0.055,
+     "nonprofit_exempt": 0.061
     },
     "max_land_by_tax_structure": {
-     "full_tax": -18484268,
-     "pilot": -4945806,
-     "nonprofit_exempt": 5884963
+     "full_tax": -18393632,
+     "pilot": -4855170,
+     "nonprofit_exempt": 5975599
     },
-    "loan": 70263096,
-    "annual_debt_service": 5468701,
+    "loan": 70208714,
+    "annual_debt_service": 5464469,
     "dscr": 1.02,
-    "debt_yield": 0.079,
-    "equity": 46842064,
+    "debt_yield": 0.0791,
+    "equity": 46805810,
     "stress": {
      "yoc_rent_down_10": 0.0411,
-     "yoc_cost_up_10": 0.0435,
-     "yoc_both": 0.0377
+     "yoc_cost_up_10": 0.0436,
+     "yoc_both": 0.0378
     },
     "entrance_fee": null
    },
@@ -3444,11 +3444,11 @@
     "rent_support": 41,
     "need": 65,
     "yield": 15,
-    "total": 48.5
+    "total": 48.6
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 6.09%)",
+   "verdict_reason": "Below 6.5% under every structure (best 6.10%)",
    "rank": 14,
    "research": {
     "sources": [
@@ -3588,15 +3588,15 @@
     "noi": 8724926,
     "noi_margin": 0.3113,
     "hard": 107136000,
-    "site_work": 8463000,
+    "site_work": 9067500,
     "ffe": 6160000,
-    "soft": 23119800,
-    "carry": 9417122,
+    "soft": 23240700,
+    "carry": 9464273,
     "leaseup": 14541544,
-    "contingency": 5779950,
-    "cost_ex_land": 174617416,
+    "contingency": 5810175,
+    "cost_ex_land": 175420192,
     "leaseup_months": 40,
-    "cost_per_unit_ex_land": 623634,
+    "cost_per_unit_ex_land": 626501,
     "lines": [
      {
       "care": "IL",
@@ -3622,53 +3622,53 @@
     ],
     "land_cost": 11200000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 185817416,
-    "yoc": 0.047,
-    "max_land": -40387785,
-    "max_land_per_unit": -144242,
-    "land_cushion": -51587785,
+    "total_cost": 186620192,
+    "yoc": 0.0468,
+    "max_land": -41190561,
+    "max_land_per_unit": -147109,
+    "land_cushion": -52390561,
     "value_at_exit_cap": 134229631,
-    "profit_on_cost": -0.278,
-    "breakeven_rent_ratio": 1.298,
+    "profit_on_cost": -0.281,
+    "breakeven_rent_ratio": 1.303,
     "yoc_by_tax_structure": {
-     "full_tax": 0.047,
-     "pilot": 0.0534,
-     "nonprofit_exempt": 0.0585
+     "full_tax": 0.0468,
+     "pilot": 0.0531,
+     "nonprofit_exempt": 0.0582
     },
     "max_land_by_tax_structure": {
-     "full_tax": -40387785,
-     "pilot": -22080093,
-     "nonprofit_exempt": -7433939
+     "full_tax": -41190561,
+     "pilot": -22882869,
+     "nonprofit_exempt": -8236715
     },
-    "loan": 111490450,
-    "annual_debt_service": 8677499,
-    "dscr": 1.01,
-    "debt_yield": 0.0783,
-    "equity": 74326966,
+    "loan": 111972115,
+    "annual_debt_service": 8714988,
+    "dscr": 1.0,
+    "debt_yield": 0.0779,
+    "equity": 74648077,
     "stress": {
-     "yoc_rent_down_10": 0.0409,
-     "yoc_cost_up_10": 0.0429,
-     "yoc_both": 0.0374
+     "yoc_rent_down_10": 0.0407,
+     "yoc_cost_up_10": 0.0427,
+     "yoc_both": 0.0372
     },
     "entrance_fee": {
      "avg_fee": 524495,
      "fee_pool": 73167052,
-     "il_cost": 117587584,
+     "il_cost": 118095590,
      "coverage": 0.62,
      "viable": false,
-     "developer_fee": 8361784
+     "developer_fee": 8397909
     }
    },
    "scores": {
     "approval": 72,
-    "rent_support": 38,
+    "rent_support": 37,
     "need": 55,
     "yield": 14,
-    "total": 45.5
+    "total": 45.4
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.85%)",
+   "verdict_reason": "Below 6.5% under every structure (best 5.82%)",
    "rank": 15,
    "research": {
     "sources": [
@@ -3809,15 +3809,15 @@
     "noi": 5333186,
     "noi_margin": 0.2917,
     "hard": 64985760,
-    "site_work": 3185000,
+    "site_work": 3146780,
     "ffe": 3872000,
-    "soft": 13634152,
-    "carry": 5568999,
+    "soft": 13626508,
+    "carry": 5566018,
     "leaseup": 7110914,
-    "contingency": 3408538,
-    "cost_ex_land": 101765363,
+    "contingency": 3406627,
+    "cost_ex_land": 101714607,
     "leaseup_months": 32,
-    "cost_per_unit_ex_land": 578212,
+    "cost_per_unit_ex_land": 577924,
     "lines": [
      {
       "care": "IL",
@@ -3843,29 +3843,29 @@
     ],
     "land_cost": 12000000,
     "land_cost_basis": "estimate",
-    "total_cost": 113765363,
+    "total_cost": 113714607,
     "yoc": 0.0469,
-    "max_land": -19716348,
-    "max_land_per_unit": -112025,
-    "land_cushion": -31716348,
+    "max_land": -19665592,
+    "max_land_per_unit": -111736,
+    "land_cushion": -31665592,
     "value_at_exit_cap": 82049015,
-    "profit_on_cost": -0.279,
+    "profit_on_cost": -0.278,
     "breakeven_rent_ratio": 1.294,
     "yoc_by_tax_structure": {
      "full_tax": 0.0469,
-     "pilot": 0.0538,
+     "pilot": 0.0539,
      "nonprofit_exempt": 0.0594
     },
     "max_land_by_tax_structure": {
-     "full_tax": -19716348,
-     "pilot": -7531732,
-     "nonprofit_exempt": 2215960
+     "full_tax": -19665592,
+     "pilot": -7480976,
+     "nonprofit_exempt": 2266716
     },
-    "loan": 68259218,
-    "annual_debt_service": 5312736,
+    "loan": 68228764,
+    "annual_debt_service": 5310366,
     "dscr": 1.0,
-    "debt_yield": 0.0781,
-    "equity": 45506145,
+    "debt_yield": 0.0782,
+    "equity": 45485843,
     "stress": {
      "yoc_rent_down_10": 0.0407,
      "yoc_cost_up_10": 0.043,
@@ -4021,15 +4021,15 @@
     "noi": 6925305,
     "noi_margin": 0.2857,
     "hard": 103680000,
-    "site_work": 8190000,
+    "site_work": 11115000,
     "ffe": 6160000,
-    "soft": 22374000,
-    "carry": 9126260,
+    "soft": 22959000,
+    "carry": 9354410,
     "leaseup": 11542175,
-    "contingency": 5593500,
-    "cost_ex_land": 166665935,
+    "contingency": 5739750,
+    "cost_ex_land": 170550335,
     "leaseup_months": 40,
-    "cost_per_unit_ex_land": 595235,
+    "cost_per_unit_ex_land": 609108,
     "lines": [
      {
       "care": "IL",
@@ -4055,53 +4055,53 @@
     ],
     "land_cost": 3000000,
     "land_cost_basis": "estimate",
-    "total_cost": 169665935,
-    "yoc": 0.0408,
-    "max_land": -60122781,
-    "max_land_per_unit": -214724,
-    "land_cushion": -63122781,
+    "total_cost": 173550335,
+    "yoc": 0.0399,
+    "max_land": -64007181,
+    "max_land_per_unit": -228597,
+    "land_cushion": -67007181,
     "value_at_exit_cap": 106543154,
-    "profit_on_cost": -0.372,
-    "breakeven_rent_ratio": 1.422,
+    "profit_on_cost": -0.386,
+    "breakeven_rent_ratio": 1.448,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0408,
-     "pilot": 0.0487,
-     "nonprofit_exempt": 0.0549
+     "full_tax": 0.0399,
+     "pilot": 0.0476,
+     "nonprofit_exempt": 0.0537
     },
     "max_land_by_tax_structure": {
-     "full_tax": -60122781,
-     "pilot": -39661243,
-     "nonprofit_exempt": -23292012
+     "full_tax": -64007181,
+     "pilot": -43545643,
+     "nonprofit_exempt": -27176412
     },
-    "loan": 101799561,
-    "annual_debt_service": 7923240,
-    "dscr": 0.87,
-    "debt_yield": 0.068,
-    "equity": 67866374,
+    "loan": 104130201,
+    "annual_debt_service": 8104638,
+    "dscr": 0.85,
+    "debt_yield": 0.0665,
+    "equity": 69420134,
     "stress": {
-     "yoc_rent_down_10": 0.0351,
-     "yoc_cost_up_10": 0.0372,
-     "yoc_both": 0.0319
+     "yoc_rent_down_10": 0.0343,
+     "yoc_cost_up_10": 0.0363,
+     "yoc_both": 0.0312
     },
     "entrance_fee": {
      "avg_fee": 348428,
      "fee_pool": 48605741,
-     "il_cost": 107366724,
-     "coverage": 0.45,
+     "il_cost": 109824821,
+     "coverage": 0.44,
      "viable": false,
-     "developer_fee": 7634967
+     "developer_fee": 7809765
     }
    },
    "scores": {
     "approval": 82,
     "rent_support": 27,
     "need": 50,
-    "yield": 2,
-    "total": 41.8
+    "yield": 0,
+    "total": 41.4
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.49%)",
+   "verdict_reason": "Below 6.5% under every structure (best 5.37%)",
    "rank": 17,
    "research": {
     "sources": [
@@ -4675,15 +4675,15 @@
     "noi": 8724926,
     "noi_margin": 0.3113,
     "hard": 109440000,
-    "site_work": 8645000,
+    "site_work": 7101250,
     "ffe": 6160000,
-    "soft": 23617000,
-    "carry": 9611030,
+    "soft": 23308250,
+    "carry": 9490618,
     "leaseup": 12360312,
-    "contingency": 5904250,
-    "cost_ex_land": 175737592,
+    "contingency": 5827062,
+    "cost_ex_land": 173687492,
     "leaseup_months": 34,
-    "cost_per_unit_ex_land": 627634,
+    "cost_per_unit_ex_land": 620312,
     "lines": [
      {
       "care": "IL",
@@ -4709,53 +4709,53 @@
     ],
     "land_cost": 2500000,
     "land_cost_basis": "estimate",
-    "total_cost": 178237592,
-    "yoc": 0.049,
-    "max_land": -41507961,
-    "max_land_per_unit": -148243,
-    "land_cushion": -44007961,
+    "total_cost": 176187492,
+    "yoc": 0.0495,
+    "max_land": -39457861,
+    "max_land_per_unit": -140921,
+    "land_cushion": -41957861,
     "value_at_exit_cap": 134229631,
-    "profit_on_cost": -0.247,
-    "breakeven_rent_ratio": 1.254,
+    "profit_on_cost": -0.238,
+    "breakeven_rent_ratio": 1.243,
     "yoc_by_tax_structure": {
-     "full_tax": 0.049,
-     "pilot": 0.0556,
-     "nonprofit_exempt": 0.061
+     "full_tax": 0.0495,
+     "pilot": 0.0563,
+     "nonprofit_exempt": 0.0617
     },
     "max_land_by_tax_structure": {
-     "full_tax": -41507961,
-     "pilot": -23200269,
-     "nonprofit_exempt": -8554115
+     "full_tax": -39457861,
+     "pilot": -21150169,
+     "nonprofit_exempt": -6504015
     },
-    "loan": 106942555,
-    "annual_debt_service": 8323529,
-    "dscr": 1.05,
-    "debt_yield": 0.0816,
-    "equity": 71295037,
+    "loan": 105712495,
+    "annual_debt_service": 8227791,
+    "dscr": 1.06,
+    "debt_yield": 0.0825,
+    "equity": 70474997,
     "stress": {
-     "yoc_rent_down_10": 0.0426,
-     "yoc_cost_up_10": 0.0446,
-     "yoc_both": 0.0388
+     "yoc_rent_down_10": 0.0431,
+     "yoc_cost_up_10": 0.0451,
+     "yoc_both": 0.0393
     },
     "entrance_fee": {
      "avg_fee": 524250,
      "fee_pool": 73132875,
-     "il_cost": 112790976,
-     "coverage": 0.65,
+     "il_cost": 111493647,
+     "coverage": 0.66,
      "viable": false,
-     "developer_fee": 8020692
+     "developer_fee": 7928437
     }
    },
    "scores": {
     "approval": 45,
-    "rent_support": 43,
+    "rent_support": 44,
     "need": 58,
-    "yield": 18,
-    "total": 40.3
+    "yield": 19,
+    "total": 40.9
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 6.10%)",
+   "verdict_reason": "Below 6.5% under every structure (best 6.17%)",
    "rank": 20,
    "research": {
     "sources": [
@@ -5107,15 +5107,15 @@
     "noi": 5082096,
     "noi_margin": 0.2957,
     "hard": 69627600,
-    "site_work": 3412500,
+    "site_work": 5118750,
     "ffe": 3872000,
-    "soft": 14608020,
-    "carry": 5948808,
+    "soft": 14949270,
+    "carry": 6081895,
     "leaseup": 7834898,
-    "contingency": 3652005,
-    "cost_ex_land": 108955830,
+    "contingency": 3737318,
+    "cost_ex_land": 111221730,
     "leaseup_months": 37,
-    "cost_per_unit_ex_land": 619067,
+    "cost_per_unit_ex_land": 631942,
     "lines": [
      {
       "care": "IL",
@@ -5141,33 +5141,33 @@
     ],
     "land_cost": 1,
     "land_cost_basis": "estimate",
-    "total_cost": 108955831,
-    "yoc": 0.0466,
-    "max_land": -30769738,
-    "max_land_per_unit": -174828,
-    "land_cushion": -30769739,
+    "total_cost": 111221731,
+    "yoc": 0.0457,
+    "max_land": -33035638,
+    "max_land_per_unit": -187702,
+    "land_cushion": -33035639,
     "value_at_exit_cap": 78186092,
-    "profit_on_cost": -0.282,
-    "breakeven_rent_ratio": 1.304,
+    "profit_on_cost": -0.297,
+    "breakeven_rent_ratio": 1.326,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0466,
-     "pilot": 0.0531,
-     "nonprofit_exempt": 0.0583
+     "full_tax": 0.0457,
+     "pilot": 0.052,
+     "nonprofit_exempt": 0.0571
     },
     "max_land_by_tax_structure": {
-     "full_tax": -30769738,
-     "pilot": -19938968,
-     "nonprofit_exempt": -11274353
+     "full_tax": -33035638,
+     "pilot": -22204868,
+     "nonprofit_exempt": -13540253
     },
-    "loan": 65373499,
-    "annual_debt_service": 5088135,
-    "dscr": 1.0,
-    "debt_yield": 0.0777,
-    "equity": 43582332,
+    "loan": 66733039,
+    "annual_debt_service": 5193951,
+    "dscr": 0.98,
+    "debt_yield": 0.0762,
+    "equity": 44488692,
     "stress": {
-     "yoc_rent_down_10": 0.0406,
-     "yoc_cost_up_10": 0.0424,
-     "yoc_both": 0.0369
+     "yoc_rent_down_10": 0.0398,
+     "yoc_cost_up_10": 0.0415,
+     "yoc_both": 0.0362
     },
     "entrance_fee": null
    },
@@ -5175,12 +5175,12 @@
     "approval": 55,
     "rent_support": 35,
     "need": 55,
-    "yield": 13,
-    "total": 39.6
+    "yield": 11,
+    "total": 39.2
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.83%)",
+   "verdict_reason": "Below 6.5% under every structure (best 5.71%)",
    "rank": 22,
    "research": {
     "sources": [
@@ -5282,216 +5282,6 @@
    "pin_address": "Brielle Ave at Walcott Ave, Staten Island"
   },
   {
-   "id": "NJ-13",
-   "name": "Wilson Farm (township-owned)",
-   "municipality": "South Brunswick Twp",
-   "county": "Middlesex",
-   "state": "NJ",
-   "acres": "18",
-   "drive_min_midtown": "60",
-   "lat": "40.41",
-   "lon": "-74.57",
-   "approval_score": "55",
-   "prototype": "B",
-   "mix_IL": "",
-   "mix_AL": "",
-   "mix_MC": "",
-   "mix_SNF": "",
-   "rent_index_site": "0.8",
-   "cost_factor": "",
-   "asking_price": "",
-   "est_land_value": "2000000",
-   "land_note": "Township-owned",
-   "deal_route": "Township RFP",
-   "entitlement_status": "2021 plan: 212 senior affordable + 180-bed nursing; status unknown",
-   "approval_case": "Town-initiated senior program",
-   "opposition_risk": "Low-Medium",
-   "next_step": "Ask township",
-   "uw": {
-    "prototype": "B",
-    "prototype_name": "Rental IL/AL/MC community",
-    "units": 176,
-    "gsf": 184200,
-    "revenue": 16651840,
-    "opex": 10271611,
-    "taxes": 1584000,
-    "reserves": 88000,
-    "noi": 4708229,
-    "noi_margin": 0.2827,
-    "hard": 61007040,
-    "site_work": 2990000,
-    "ffe": 3872000,
-    "soft": 12799408,
-    "carry": 5243449,
-    "leaseup": 7258520,
-    "contingency": 3199852,
-    "cost_ex_land": 96370269,
-    "leaseup_months": 37,
-    "cost_per_unit_ex_land": 547558,
-    "lines": [
-     {
-      "care": "IL",
-      "units": 56,
-      "monthly_rate": 5440,
-      "revenue": 3501776,
-      "opex": 1890959
-     },
-     {
-      "care": "AL",
-      "units": 84,
-      "monthly_rate": 8270,
-      "revenue": 8344496,
-      "opex": 5257033
-     },
-     {
-      "care": "MC",
-      "units": 36,
-      "monthly_rate": 12000,
-      "revenue": 4805568,
-      "opex": 3123619
-     }
-    ],
-    "land_cost": 2000000,
-    "land_cost_basis": "estimate",
-    "total_cost": 98370269,
-    "yoc": 0.0479,
-    "max_land": -23935977,
-    "max_land_per_unit": -136000,
-    "land_cushion": -25935977,
-    "value_at_exit_cap": 72434292,
-    "profit_on_cost": -0.264,
-    "breakeven_rent_ratio": 1.264,
-    "yoc_by_tax_structure": {
-     "full_tax": 0.0479,
-     "pilot": 0.0559,
-     "nonprofit_exempt": 0.0624
-    },
-    "max_land_by_tax_structure": {
-     "full_tax": -23935977,
-     "pilot": -11751361,
-     "nonprofit_exempt": -2003669
-    },
-    "loan": 59022161,
-    "annual_debt_service": 4593799,
-    "dscr": 1.02,
-    "debt_yield": 0.0798,
-    "equity": 39348108,
-    "stress": {
-     "yoc_rent_down_10": 0.0414,
-     "yoc_cost_up_10": 0.0436,
-     "yoc_both": 0.0377
-    },
-    "entrance_fee": null
-   },
-   "scores": {
-    "approval": 55,
-    "rent_support": 35,
-    "need": 52,
-    "yield": 16,
-    "total": 39.6
-   },
-   "kills": [],
-   "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 6.24%)",
-   "rank": 23,
-   "research": {
-    "sources": [
-     "https://jerseydigs.com/new-senior-housing-complex-and-nursing-home-could-come-to-south-brunswick-township/"
-    ],
-    "zoning": "Township site plan (V); zoning not stated",
-    "senior_use_path": "Proposed 212 senior affordable + 180-bed nursing (V)",
-    "prior_use": "Farm (I)",
-    "sewer_water": "Unknown",
-    "approval_evidence": "Township itself sponsored senior/nursing plan (V)"
-   },
-   "diligence": [
-    {
-     "key": "control",
-     "item": "Site control: LOI / option / JV term sheet",
-     "status": "Not started"
-    },
-    {
-     "key": "title",
-     "item": "Title commitment and survey (ALTA)",
-     "status": "Not started"
-    },
-    {
-     "key": "phase1",
-     "item": "Phase I ESA (Phase II if RECs)",
-     "status": "Not started"
-    },
-    {
-     "key": "wetlands",
-     "item": "Wetlands delineation, FEMA flood zone, NJ Highlands / NYC watershed check",
-     "status": "Not started"
-    },
-    {
-     "key": "geotech",
-     "item": "Geotechnical borings, rock and groundwater",
-     "status": "Not started"
-    },
-    {
-     "key": "utilities",
-     "item": "Sewer capacity and water will-serve letters; power",
-     "status": "Not started"
-    },
-    {
-     "key": "traffic",
-     "item": "Traffic study and DOT access permit",
-     "status": "Not started"
-    },
-    {
-     "key": "zoning",
-     "item": "Zoning opinion: permitted / special permit / rezoning path",
-     "status": "Not started"
-    },
-    {
-     "key": "seqr",
-     "item": "Environmental review (SEQRA / NJ / CEPA) scope",
-     "status": "Not started"
-    },
-    {
-     "key": "license",
-     "item": "State licensure / CN path (NY ALR-EALR, NJ expedited CN, CT ALSA) or Article 46 / CCRC registration",
-     "status": "Not started"
-    },
-    {
-     "key": "market",
-     "item": "Third-party market study: PMA, penetration, capture, rate shop",
-     "status": "Not started"
-    },
-    {
-     "key": "fiscal",
-     "item": "Fiscal impact study for the town",
-     "status": "Not started"
-    },
-    {
-     "key": "tax",
-     "item": "Assessor estimate and PILOT / abatement term sheet",
-     "status": "Not started"
-    },
-    {
-     "key": "operator",
-     "item": "Operator LOI and management agreement terms",
-     "status": "Not started"
-    },
-    {
-     "key": "capital",
-     "item": "Construction lender term sheet; equity commitment",
-     "status": "Not started"
-    }
-   ],
-   "regulatory": {
-    "rental_il": "Local zoning / redevelopment plan",
-    "al_mc": "Expedited CN (~12 months) + 10% Medicaid occupancy within 3 yrs, held permanently",
-    "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
-    "ccrc": "DCA registration and disclosure",
-    "tax_tool": "Redevelopment-area long-term PILOT"
-   },
-   "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "pin_address": ""
-  },
-  {
    "id": "CT-16",
    "name": "Baer property, North Stamford",
    "municipality": "Stamford",
@@ -5529,15 +5319,15 @@
     "noi": 9926808,
     "noi_margin": 0.3344,
     "hard": 112896000,
-    "site_work": 8918000,
+    "site_work": 8599500,
     "ffe": 6160000,
-    "soft": 24362800,
-    "carry": 9901892,
+    "soft": 24299100,
+    "carry": 9877049,
     "leaseup": 14062978,
-    "contingency": 6090700,
-    "cost_ex_land": 182392370,
+    "contingency": 6074775,
+    "cost_ex_land": 181969402,
     "leaseup_months": 34,
-    "cost_per_unit_ex_land": 651401,
+    "cost_per_unit_ex_land": 649891,
     "lines": [
      {
       "care": "IL",
@@ -5563,41 +5353,41 @@
     ],
     "land_cost": 18200000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 200592370,
-    "yoc": 0.0495,
-    "max_land": -29672247,
-    "max_land_per_unit": -105972,
-    "land_cushion": -47872247,
+    "total_cost": 200169402,
+    "yoc": 0.0496,
+    "max_land": -29249279,
+    "max_land_per_unit": -104462,
+    "land_cushion": -47449279,
     "value_at_exit_cap": 152720123,
-    "profit_on_cost": -0.239,
-    "breakeven_rent_ratio": 1.262,
+    "profit_on_cost": -0.237,
+    "breakeven_rent_ratio": 1.259,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0495,
-     "pilot": 0.054,
-     "nonprofit_exempt": 0.0577
+     "full_tax": 0.0496,
+     "pilot": 0.0541,
+     "nonprofit_exempt": 0.0578
     },
     "max_land_by_tax_structure": {
-     "full_tax": -29672247,
-     "pilot": -15672247,
-     "nonprofit_exempt": -4472247
+     "full_tax": -29249279,
+     "pilot": -15249279,
+     "nonprofit_exempt": -4049279
     },
-    "loan": 120355422,
-    "annual_debt_service": 9367476,
+    "loan": 120101641,
+    "annual_debt_service": 9347724,
     "dscr": 1.06,
-    "debt_yield": 0.0825,
-    "equity": 80236948,
+    "debt_yield": 0.0827,
+    "equity": 80067761,
     "stress": {
-     "yoc_rent_down_10": 0.0436,
-     "yoc_cost_up_10": 0.0454,
-     "yoc_both": 0.0399
+     "yoc_rent_down_10": 0.0437,
+     "yoc_cost_up_10": 0.0455,
+     "yoc_both": 0.04
     },
     "entrance_fee": {
      "avg_fee": 575858,
      "fee_pool": 80332163,
-     "il_cost": 126937359,
+     "il_cost": 126669700,
      "coverage": 0.63,
      "viable": false,
-     "developer_fee": 9026657
+     "developer_fee": 9007623
     }
    },
    "scores": {
@@ -5605,12 +5395,12 @@
     "rent_support": 45,
     "need": 62,
     "yield": 19,
-    "total": 38.9
+    "total": 39.0
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.77%)",
-   "rank": 24,
+   "verdict_reason": "Below 6.5% under every structure (best 5.78%)",
+   "rank": 23,
    "research": {
     "sources": [
      "https://www.northstamfordassoc.org/2017/11/17/potential-assisted-living-and-condominiums-for-seniors-development-proposed-for-north-stamford/"
@@ -5704,6 +5494,216 @@
     "snf": "Moratorium, except CCRC beds not used for Medicaid",
     "ccrc": "DSS registration; for-profit precedent (Edgehill)",
     "tax_tool": "CGS 12-65b tax abatement agreement"
+   },
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
+  },
+  {
+   "id": "NJ-13",
+   "name": "Wilson Farm (township-owned)",
+   "municipality": "South Brunswick Twp",
+   "county": "Middlesex",
+   "state": "NJ",
+   "acres": "18",
+   "drive_min_midtown": "60",
+   "lat": "40.41",
+   "lon": "-74.57",
+   "approval_score": "55",
+   "prototype": "B",
+   "mix_IL": "",
+   "mix_AL": "",
+   "mix_MC": "",
+   "mix_SNF": "",
+   "rent_index_site": "0.8",
+   "cost_factor": "",
+   "asking_price": "",
+   "est_land_value": "2000000",
+   "land_note": "Township-owned",
+   "deal_route": "Township RFP",
+   "entitlement_status": "2021 plan: 212 senior affordable + 180-bed nursing; status unknown",
+   "approval_case": "Town-initiated senior program",
+   "opposition_risk": "Low-Medium",
+   "next_step": "Ask township",
+   "uw": {
+    "prototype": "B",
+    "prototype_name": "Rental IL/AL/MC community",
+    "units": 176,
+    "gsf": 184200,
+    "revenue": 16651840,
+    "opex": 10271611,
+    "taxes": 1584000,
+    "reserves": 88000,
+    "noi": 4708229,
+    "noi_margin": 0.2827,
+    "hard": 61007040,
+    "site_work": 4485000,
+    "ffe": 3872000,
+    "soft": 13098408,
+    "carry": 5360059,
+    "leaseup": 7258520,
+    "contingency": 3274602,
+    "cost_ex_land": 98355629,
+    "leaseup_months": 37,
+    "cost_per_unit_ex_land": 558839,
+    "lines": [
+     {
+      "care": "IL",
+      "units": 56,
+      "monthly_rate": 5440,
+      "revenue": 3501776,
+      "opex": 1890959
+     },
+     {
+      "care": "AL",
+      "units": 84,
+      "monthly_rate": 8270,
+      "revenue": 8344496,
+      "opex": 5257033
+     },
+     {
+      "care": "MC",
+      "units": 36,
+      "monthly_rate": 12000,
+      "revenue": 4805568,
+      "opex": 3123619
+     }
+    ],
+    "land_cost": 2000000,
+    "land_cost_basis": "estimate",
+    "total_cost": 100355629,
+    "yoc": 0.0469,
+    "max_land": -25921337,
+    "max_land_per_unit": -147280,
+    "land_cushion": -27921337,
+    "value_at_exit_cap": 72434292,
+    "profit_on_cost": -0.278,
+    "breakeven_rent_ratio": 1.284,
+    "yoc_by_tax_structure": {
+     "full_tax": 0.0469,
+     "pilot": 0.0548,
+     "nonprofit_exempt": 0.0611
+    },
+    "max_land_by_tax_structure": {
+     "full_tax": -25921337,
+     "pilot": -13736721,
+     "nonprofit_exempt": -3989029
+    },
+    "loan": 60213377,
+    "annual_debt_service": 4686514,
+    "dscr": 1.0,
+    "debt_yield": 0.0782,
+    "equity": 40142252,
+    "stress": {
+     "yoc_rent_down_10": 0.0406,
+     "yoc_cost_up_10": 0.0427,
+     "yoc_both": 0.0369
+    },
+    "entrance_fee": null
+   },
+   "scores": {
+    "approval": 55,
+    "rent_support": 32,
+    "need": 52,
+    "yield": 14,
+    "total": 38.5
+   },
+   "kills": [],
+   "verdict": "Pass",
+   "verdict_reason": "Below 6.5% under every structure (best 6.11%)",
+   "rank": 24,
+   "research": {
+    "sources": [
+     "https://jerseydigs.com/new-senior-housing-complex-and-nursing-home-could-come-to-south-brunswick-township/"
+    ],
+    "zoning": "Township site plan (V); zoning not stated",
+    "senior_use_path": "Proposed 212 senior affordable + 180-bed nursing (V)",
+    "prior_use": "Farm (I)",
+    "sewer_water": "Unknown",
+    "approval_evidence": "Township itself sponsored senior/nursing plan (V)"
+   },
+   "diligence": [
+    {
+     "key": "control",
+     "item": "Site control: LOI / option / JV term sheet",
+     "status": "Not started"
+    },
+    {
+     "key": "title",
+     "item": "Title commitment and survey (ALTA)",
+     "status": "Not started"
+    },
+    {
+     "key": "phase1",
+     "item": "Phase I ESA (Phase II if RECs)",
+     "status": "Not started"
+    },
+    {
+     "key": "wetlands",
+     "item": "Wetlands delineation, FEMA flood zone, NJ Highlands / NYC watershed check",
+     "status": "Not started"
+    },
+    {
+     "key": "geotech",
+     "item": "Geotechnical borings, rock and groundwater",
+     "status": "Not started"
+    },
+    {
+     "key": "utilities",
+     "item": "Sewer capacity and water will-serve letters; power",
+     "status": "Not started"
+    },
+    {
+     "key": "traffic",
+     "item": "Traffic study and DOT access permit",
+     "status": "Not started"
+    },
+    {
+     "key": "zoning",
+     "item": "Zoning opinion: permitted / special permit / rezoning path",
+     "status": "Not started"
+    },
+    {
+     "key": "seqr",
+     "item": "Environmental review (SEQRA / NJ / CEPA) scope",
+     "status": "Not started"
+    },
+    {
+     "key": "license",
+     "item": "State licensure / CN path (NY ALR-EALR, NJ expedited CN, CT ALSA) or Article 46 / CCRC registration",
+     "status": "Not started"
+    },
+    {
+     "key": "market",
+     "item": "Third-party market study: PMA, penetration, capture, rate shop",
+     "status": "Not started"
+    },
+    {
+     "key": "fiscal",
+     "item": "Fiscal impact study for the town",
+     "status": "Not started"
+    },
+    {
+     "key": "tax",
+     "item": "Assessor estimate and PILOT / abatement term sheet",
+     "status": "Not started"
+    },
+    {
+     "key": "operator",
+     "item": "Operator LOI and management agreement terms",
+     "status": "Not started"
+    },
+    {
+     "key": "capital",
+     "item": "Construction lender term sheet; equity commitment",
+     "status": "Not started"
+    }
+   ],
+   "regulatory": {
+    "rental_il": "Local zoning / redevelopment plan",
+    "al_mc": "Expedited CN (~12 months) + 10% Medicaid occupancy within 3 yrs, held permanently",
+    "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
+    "ccrc": "DCA registration and disclosure",
+    "tax_tool": "Redevelopment-area long-term PILOT"
    },
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
    "pin_address": ""
@@ -5969,15 +5969,15 @@
     "noi": 4532229,
     "noi_margin": 0.2722,
     "hard": 62996400,
-    "site_work": 3087500,
+    "site_work": 3705000,
     "ffe": 3872000,
-    "soft": 13216780,
-    "carry": 5406224,
+    "soft": 13340280,
+    "carry": 5454389,
     "leaseup": 6987187,
-    "contingency": 3304195,
-    "cost_ex_land": 98870286,
+    "contingency": 3335070,
+    "cost_ex_land": 99690326,
     "leaseup_months": 37,
-    "cost_per_unit_ex_land": 561763,
+    "cost_per_unit_ex_land": 566422,
     "lines": [
      {
       "care": "IL",
@@ -6003,33 +6003,33 @@
     ],
     "land_cost": 7920000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 106790286,
-    "yoc": 0.0424,
-    "max_land": -29143686,
-    "max_land_per_unit": -165589,
-    "land_cushion": -37063686,
+    "total_cost": 107610326,
+    "yoc": 0.0421,
+    "max_land": -29963726,
+    "max_land_per_unit": -170248,
+    "land_cushion": -37883726,
     "value_at_exit_cap": 69726600,
-    "profit_on_cost": -0.347,
-    "breakeven_rent_ratio": 1.378,
+    "profit_on_cost": -0.352,
+    "breakeven_rent_ratio": 1.386,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0424,
-     "pilot": 0.0507,
-     "nonprofit_exempt": 0.0573
+     "full_tax": 0.0421,
+     "pilot": 0.0503,
+     "nonprofit_exempt": 0.0568
     },
     "max_land_by_tax_structure": {
-     "full_tax": -29143686,
-     "pilot": -15605224,
-     "nonprofit_exempt": -4774455
+     "full_tax": -29963726,
+     "pilot": -16425264,
+     "nonprofit_exempt": -5594495
     },
-    "loan": 64074172,
-    "annual_debt_service": 4987006,
-    "dscr": 0.91,
-    "debt_yield": 0.0707,
-    "equity": 42716114,
+    "loan": 64566196,
+    "annual_debt_service": 5025301,
+    "dscr": 0.9,
+    "debt_yield": 0.0702,
+    "equity": 43044130,
     "stress": {
-     "yoc_rent_down_10": 0.0365,
-     "yoc_cost_up_10": 0.0388,
-     "yoc_both": 0.0334
+     "yoc_rent_down_10": 0.0362,
+     "yoc_cost_up_10": 0.0385,
+     "yoc_both": 0.0331
     },
     "entrance_fee": null
    },
@@ -6037,12 +6037,12 @@
     "approval": 58,
     "rent_support": 29,
     "need": 52,
-    "yield": 5,
-    "total": 36.4
+    "yield": 4,
+    "total": 36.2
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.73%)",
+   "verdict_reason": "Below 6.5% under every structure (best 5.68%)",
    "rank": 26,
    "research": {
     "sources": [
@@ -6182,15 +6182,15 @@
     "noi": 7695987,
     "noi_margin": 0.3064,
     "hard": 105984000,
-    "site_work": 8372000,
+    "site_work": 8970000,
     "ffe": 6160000,
-    "soft": 22871200,
-    "carry": 9320168,
+    "soft": 22990800,
+    "carry": 9366812,
     "leaseup": 12826644,
-    "contingency": 5717800,
-    "cost_ex_land": 171251812,
+    "contingency": 5747700,
+    "cost_ex_land": 172045956,
     "leaseup_months": 40,
-    "cost_per_unit_ex_land": 611614,
+    "cost_per_unit_ex_land": 614450,
     "lines": [
      {
       "care": "IL",
@@ -6216,53 +6216,53 @@
     ],
     "land_cost": 12600000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 183851812,
-    "yoc": 0.0419,
-    "max_land": -52852012,
-    "max_land_per_unit": -188757,
-    "land_cushion": -65452012,
+    "total_cost": 184645956,
+    "yoc": 0.0417,
+    "max_land": -53646156,
+    "max_land_per_unit": -191593,
+    "land_cushion": -66246156,
     "value_at_exit_cap": 118399800,
-    "profit_on_cost": -0.356,
-    "breakeven_rent_ratio": 1.422,
+    "profit_on_cost": -0.359,
+    "breakeven_rent_ratio": 1.427,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0419,
-     "pilot": 0.048,
-     "nonprofit_exempt": 0.0528
+     "full_tax": 0.0417,
+     "pilot": 0.0477,
+     "nonprofit_exempt": 0.0526
     },
     "max_land_by_tax_structure": {
-     "full_tax": -52852012,
-     "pilot": -35621243,
-     "nonprofit_exempt": -21836627
+     "full_tax": -53646156,
+     "pilot": -36415387,
+     "nonprofit_exempt": -22630771
     },
-    "loan": 110311087,
-    "annual_debt_service": 8585707,
-    "dscr": 0.9,
-    "debt_yield": 0.0698,
-    "equity": 73540725,
+    "loan": 110787574,
+    "annual_debt_service": 8622793,
+    "dscr": 0.89,
+    "debt_yield": 0.0695,
+    "equity": 73858382,
     "stress": {
-     "yoc_rent_down_10": 0.0364,
-     "yoc_cost_up_10": 0.0383,
-     "yoc_both": 0.0333
+     "yoc_rent_down_10": 0.0362,
+     "yoc_cost_up_10": 0.0381,
+     "yoc_both": 0.0331
     },
     "entrance_fee": {
      "avg_fee": 526894,
      "fee_pool": 73501678,
-     "il_cost": 116343725,
+     "il_cost": 116846269,
      "coverage": 0.63,
      "viable": false,
-     "developer_fee": 8273332
+     "developer_fee": 8309068
     }
    },
    "scores": {
     "approval": 50,
     "rent_support": 37,
     "need": 55,
-    "yield": 4,
-    "total": 36.2
+    "yield": 3,
+    "total": 36.1
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.28%)",
+   "verdict_reason": "Below 6.5% under every structure (best 5.26%)",
    "rank": 27,
    "research": {
     "sources": [
@@ -6399,15 +6399,15 @@
     "noi": 5141227,
     "noi_margin": 0.2815,
     "hard": 64322640,
-    "site_work": 3152500,
+    "site_work": 4728750,
     "ffe": 3872000,
-    "soft": 13495028,
-    "carry": 5514741,
+    "soft": 13810278,
+    "carry": 5637688,
     "leaseup": 7926058,
-    "contingency": 3373757,
-    "cost_ex_land": 101656724,
+    "contingency": 3452570,
+    "cost_ex_land": 103749984,
     "leaseup_months": 37,
-    "cost_per_unit_ex_land": 577595,
+    "cost_per_unit_ex_land": 589489,
     "lines": [
      {
       "care": "IL",
@@ -6433,46 +6433,46 @@
     ],
     "land_cost": 8000000,
     "land_cost_basis": "estimate",
-    "total_cost": 109656724,
-    "yoc": 0.0469,
-    "max_land": -22560924,
-    "max_land_per_unit": -128187,
-    "land_cushion": -30560924,
+    "total_cost": 111749984,
+    "yoc": 0.046,
+    "max_land": -24654184,
+    "max_land_per_unit": -140081,
+    "land_cushion": -32654184,
     "value_at_exit_cap": 79095800,
-    "profit_on_cost": -0.279,
-    "breakeven_rent_ratio": 1.284,
+    "profit_on_cost": -0.292,
+    "breakeven_rent_ratio": 1.304,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0469,
-     "pilot": 0.0549,
-     "nonprofit_exempt": 0.0613
+     "full_tax": 0.046,
+     "pilot": 0.0539,
+     "nonprofit_exempt": 0.0602
     },
     "max_land_by_tax_structure": {
-     "full_tax": -22560924,
-     "pilot": -9022462,
-     "nonprofit_exempt": 1808307
+     "full_tax": -24654184,
+     "pilot": -11115722,
+     "nonprofit_exempt": -284953
     },
-    "loan": 65794034,
-    "annual_debt_service": 5120866,
-    "dscr": 1.0,
-    "debt_yield": 0.0781,
-    "equity": 43862690,
+    "loan": 67049990,
+    "annual_debt_service": 5218620,
+    "dscr": 0.99,
+    "debt_yield": 0.0767,
+    "equity": 44699994,
     "stress": {
-     "yoc_rent_down_10": 0.0405,
-     "yoc_cost_up_10": 0.0429,
-     "yoc_both": 0.0371
+     "yoc_rent_down_10": 0.0398,
+     "yoc_cost_up_10": 0.0421,
+     "yoc_both": 0.0364
     },
     "entrance_fee": null
    },
    "scores": {
     "approval": 38,
-    "rent_support": 39,
+    "rent_support": 37,
     "need": 55,
-    "yield": 14,
-    "total": 35.5
+    "yield": 12,
+    "total": 34.6
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 6.13%)",
+   "verdict_reason": "Below 6.5% under every structure (best 6.02%)",
    "rank": 28,
    "research": {
     "sources": [
@@ -6612,15 +6612,15 @@
     "noi": 8639044,
     "noi_margin": 0.31,
     "hard": 111744000,
-    "site_work": 8827000,
+    "site_work": 13240500,
     "ffe": 6160000,
-    "soft": 24114200,
-    "carry": 9804938,
+    "soft": 24996900,
+    "carry": 10149191,
     "leaseup": 12238646,
-    "contingency": 6028550,
-    "cost_ex_land": 178917334,
+    "contingency": 6249225,
+    "cost_ex_land": 184778462,
     "leaseup_months": 34,
-    "cost_per_unit_ex_land": 638990,
+    "cost_per_unit_ex_land": 659923,
     "lines": [
      {
       "care": "IL",
@@ -6646,53 +6646,53 @@
     ],
     "land_cost": 26370000,
     "land_cost_basis": "ask",
-    "total_cost": 205287334,
-    "yoc": 0.0421,
-    "max_land": -46008965,
-    "max_land_per_unit": -164318,
-    "land_cushion": -72378965,
+    "total_cost": 211148462,
+    "yoc": 0.0409,
+    "max_land": -51870093,
+    "max_land_per_unit": -185250,
+    "land_cushion": -78240093,
     "value_at_exit_cap": 132908369,
-    "profit_on_cost": -0.353,
-    "breakeven_rent_ratio": 1.422,
+    "profit_on_cost": -0.371,
+    "breakeven_rent_ratio": 1.456,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0421,
-     "pilot": 0.0479,
-     "nonprofit_exempt": 0.0525
+     "full_tax": 0.0409,
+     "pilot": 0.0466,
+     "nonprofit_exempt": 0.0511
     },
     "max_land_by_tax_structure": {
-     "full_tax": -46008965,
-     "pilot": -27701272,
-     "nonprofit_exempt": -13055119
+     "full_tax": -51870093,
+     "pilot": -33562400,
+     "nonprofit_exempt": -18916247
     },
-    "loan": 123172400,
-    "annual_debt_service": 9586726,
-    "dscr": 0.9,
-    "debt_yield": 0.0701,
-    "equity": 82114934,
+    "loan": 126689077,
+    "annual_debt_service": 9860435,
+    "dscr": 0.88,
+    "debt_yield": 0.0682,
+    "equity": 84459385,
     "stress": {
-     "yoc_rent_down_10": 0.0366,
-     "yoc_cost_up_10": 0.0387,
-     "yoc_both": 0.0337
+     "yoc_rent_down_10": 0.0356,
+     "yoc_cost_up_10": 0.0376,
+     "yoc_both": 0.0328
     },
     "entrance_fee": {
      "avg_fee": 544222,
      "fee_pool": 75918944,
-     "il_cost": 129908391,
-     "coverage": 0.58,
+     "il_cost": 133617386,
+     "coverage": 0.57,
      "viable": false,
-     "developer_fee": 9237930
+     "developer_fee": 9501681
     }
    },
    "scores": {
     "approval": 40,
     "rent_support": 37,
     "need": 62,
-    "yield": 4,
-    "total": 34.8
+    "yield": 2,
+    "total": 34.2
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.25%)",
+   "verdict_reason": "Below 6.5% under every structure (best 5.11%)",
    "rank": 29,
    "research": {
     "sources": [
@@ -6796,218 +6796,6 @@
    "pin_address": "Flowerfield, St. James"
   },
   {
-   "id": "NY-12",
-   "name": "All Mine of Orange tract",
-   "municipality": "Town of Hamptonburgh",
-   "county": "Orange",
-   "state": "NY",
-   "acres": "88.66",
-   "drive_min_midtown": "82",
-   "lat": "41.46413",
-   "lon": "-74.23811",
-   "approval_score": "50",
-   "prototype": "B",
-   "mix_IL": "",
-   "mix_AL": "",
-   "mix_MC": "",
-   "mix_SNF": "",
-   "rent_index_site": "0.72",
-   "cost_factor": "",
-   "asking_price": "",
-   "est_land_value": "",
-   "land_note": "Price not public",
-   "deal_route": "Approach owner; re-scope to IL/AL",
-   "entitlement_status": "Age-restricted by special permit in R-4A; DEIS stage for 72 active-adult units",
-   "approval_case": "Town allows age-restricted by special permit; septic/well limits density",
-   "opposition_risk": "Medium",
-   "next_step": "Confirm Maybrook water option",
-   "uw": {
-    "prototype": "B",
-    "prototype_name": "Rental IL/AL/MC community",
-    "units": 176,
-    "gsf": 184200,
-    "revenue": 15467953,
-    "opex": 9547667,
-    "taxes": 1320000,
-    "reserves": 88000,
-    "noi": 4512286,
-    "noi_margin": 0.2917,
-    "hard": 59680800,
-    "site_work": 2925000,
-    "ffe": 3872000,
-    "soft": 12521160,
-    "carry": 5134932,
-    "leaseup": 6956441,
-    "contingency": 3130290,
-    "cost_ex_land": 94220624,
-    "leaseup_months": 37,
-    "cost_per_unit_ex_land": 535344,
-    "lines": [
-     {
-      "care": "IL",
-      "units": 56,
-      "monthly_rate": 4896,
-      "revenue": 3151598,
-      "opex": 1701863
-     },
-     {
-      "care": "AL",
-      "units": 84,
-      "monthly_rate": 7920,
-      "revenue": 7991343,
-      "opex": 5034546
-     },
-     {
-      "care": "MC",
-      "units": 36,
-      "monthly_rate": 10800,
-      "revenue": 4325011,
-      "opex": 2811257
-     }
-    ],
-    "land_cost": 4400000,
-    "land_cost_basis": "market comp/unit",
-    "total_cost": 98620624,
-    "yoc": 0.0458,
-    "max_land": -24800839,
-    "max_land_per_unit": -140914,
-    "land_cushion": -29200839,
-    "value_at_exit_cap": 69419785,
-    "profit_on_cost": -0.296,
-    "breakeven_rent_ratio": 1.321,
-    "yoc_by_tax_structure": {
-     "full_tax": 0.0458,
-     "pilot": 0.0524,
-     "nonprofit_exempt": 0.0578
-    },
-    "max_land_by_tax_structure": {
-     "full_tax": -24800839,
-     "pilot": -14646993,
-     "nonprofit_exempt": -6523916
-    },
-    "loan": 59172374,
-    "annual_debt_service": 4605491,
-    "dscr": 0.98,
-    "debt_yield": 0.0763,
-    "equity": 39448250,
-    "stress": {
-     "yoc_rent_down_10": 0.0398,
-     "yoc_cost_up_10": 0.0418,
-     "yoc_both": 0.0363
-    },
-    "entrance_fee": null
-   },
-   "scores": {
-    "approval": 50,
-    "rent_support": 26,
-    "need": 50,
-    "yield": 12,
-    "total": 34.3
-   },
-   "kills": [],
-   "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.78%)",
-   "rank": 30,
-   "research": {
-    "sources": [
-     "https://dec.ny.gov/news/environmental-notice-bulletin/2025-07-09/seqr/town-of-hamptonburgh-all-mine-of-orange-inc-active-adult-community"
-    ],
-    "zoning": "R-4A; age-restricted housing by Town Board special permit + PB site plan [Verified]",
-    "senior_use_path": "Special permit - currently 72 active-adult units (low density); pivot to IL/AL would need new review [Inferred]",
-    "prior_use": "Undeveloped/agricultural (Inferred)",
-    "sewer_water": "On-site septic + wells base case; alt. Village of Maybrook water [Verified]",
-    "approval_evidence": "Town code expressly provides age-restricted special permit path [Verified]"
-   },
-   "diligence": [
-    {
-     "key": "control",
-     "item": "Site control: LOI / option / JV term sheet",
-     "status": "Not started"
-    },
-    {
-     "key": "title",
-     "item": "Title commitment and survey (ALTA)",
-     "status": "Not started"
-    },
-    {
-     "key": "phase1",
-     "item": "Phase I ESA (Phase II if RECs)",
-     "status": "Not started"
-    },
-    {
-     "key": "wetlands",
-     "item": "Wetlands delineation, FEMA flood zone, NJ Highlands / NYC watershed check",
-     "status": "Not started"
-    },
-    {
-     "key": "geotech",
-     "item": "Geotechnical borings, rock and groundwater",
-     "status": "Not started"
-    },
-    {
-     "key": "utilities",
-     "item": "Sewer capacity and water will-serve letters; power",
-     "status": "Not started"
-    },
-    {
-     "key": "traffic",
-     "item": "Traffic study and DOT access permit",
-     "status": "Not started"
-    },
-    {
-     "key": "zoning",
-     "item": "Zoning opinion: permitted / special permit / rezoning path",
-     "status": "Not started"
-    },
-    {
-     "key": "seqr",
-     "item": "Environmental review (SEQRA / NJ / CEPA) scope",
-     "status": "Not started"
-    },
-    {
-     "key": "license",
-     "item": "State licensure / CN path (NY ALR-EALR, NJ expedited CN, CT ALSA) or Article 46 / CCRC registration",
-     "status": "Not started"
-    },
-    {
-     "key": "market",
-     "item": "Third-party market study: PMA, penetration, capture, rate shop",
-     "status": "Not started"
-    },
-    {
-     "key": "fiscal",
-     "item": "Fiscal impact study for the town",
-     "status": "Not started"
-    },
-    {
-     "key": "tax",
-     "item": "Assessor estimate and PILOT / abatement term sheet",
-     "status": "Not started"
-    },
-    {
-     "key": "operator",
-     "item": "Operator LOI and management agreement terms",
-     "status": "Not started"
-    },
-    {
-     "key": "capital",
-     "item": "Construction lender term sheet; equity commitment",
-     "status": "Not started"
-    }
-   ],
-   "regulatory": {
-    "rental_il": "Local zoning (special permit / floating zone typical)",
-    "al_mc": "ALR / EALR / SNALR licence; no bed-need test; ~9-18 months",
-    "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
-    "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
-    "tax_tool": "County IDA PILOT + sales-tax exemption"
-   },
-   "lat_prior": "41.485",
-   "lon_prior": "-74.265",
-   "pin_basis": "Verified address or owner parcel",
-   "pin_address": "Maybrook Rd / CR 4 (All Mine of Orange Inc parcel, 84.8 ac)"
-  },
-  {
    "id": "NY-09",
    "name": "Former IBM/HNA Palisades campus (carve-out)",
    "municipality": "Town of Orangetown",
@@ -7045,15 +6833,15 @@
     "noi": 8219044,
     "noi_margin": 0.2949,
     "hard": 111744000,
-    "site_work": 8827000,
+    "site_work": 7881250,
     "ffe": 6160000,
-    "soft": 24114200,
-    "carry": 9804938,
+    "soft": 23925050,
+    "carry": 9731170,
     "leaseup": 13698407,
-    "contingency": 6028550,
-    "cost_ex_land": 180377095,
+    "contingency": 5981262,
+    "cost_ex_land": 179121139,
     "leaseup_months": 40,
-    "cost_per_unit_ex_land": 644204,
+    "cost_per_unit_ex_land": 639718,
     "lines": [
      {
       "care": "IL",
@@ -7079,41 +6867,41 @@
     ],
     "land_cost": 14000000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 194377095,
-    "yoc": 0.0423,
-    "max_land": -53930264,
-    "max_land_per_unit": -192608,
-    "land_cushion": -67930264,
+    "total_cost": 193121139,
+    "yoc": 0.0426,
+    "max_land": -52674308,
+    "max_land_per_unit": -188123,
+    "land_cushion": -66674308,
     "value_at_exit_cap": 126446831,
-    "profit_on_cost": -0.349,
-    "breakeven_rent_ratio": 1.396,
+    "profit_on_cost": -0.345,
+    "breakeven_rent_ratio": 1.388,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0423,
-     "pilot": 0.0495,
-     "nonprofit_exempt": 0.0552
+     "full_tax": 0.0426,
+     "pilot": 0.0498,
+     "nonprofit_exempt": 0.0556
     },
     "max_land_by_tax_structure": {
-     "full_tax": -53930264,
-     "pilot": -32391803,
-     "nonprofit_exempt": -15161033
+     "full_tax": -52674308,
+     "pilot": -31135847,
+     "nonprofit_exempt": -13905077
     },
-    "loan": 116626257,
-    "annual_debt_service": 9077228,
+    "loan": 115872683,
+    "annual_debt_service": 9018576,
     "dscr": 0.91,
-    "debt_yield": 0.0705,
-    "equity": 77750838,
+    "debt_yield": 0.0709,
+    "equity": 77248456,
     "stress": {
-     "yoc_rent_down_10": 0.0365,
-     "yoc_cost_up_10": 0.0387,
-     "yoc_both": 0.0334
+     "yoc_rent_down_10": 0.0368,
+     "yoc_cost_up_10": 0.0389,
+     "yoc_both": 0.0337
     },
     "entrance_fee": {
      "avg_fee": 581451,
      "fee_pool": 81112390,
-     "il_cost": 123004255,
+     "il_cost": 122209471,
      "coverage": 0.66,
      "viable": false,
-     "developer_fee": 8746969
+     "developer_fee": 8690451
     }
    },
    "scores": {
@@ -7121,12 +6909,12 @@
     "rent_support": 37,
     "need": 55,
     "yield": 5,
-    "total": 34.0
+    "total": 34.1
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.52%)",
-   "rank": 31,
+   "verdict_reason": "Below 6.5% under every structure (best 5.56%)",
+   "rank": 30,
    "research": {
     "sources": [
      "https://www.hgar.com/major-redevelopment-proposal-could-bring-342-housing-units-to-former-ibm-campus-in-rockland-county",
@@ -7228,6 +7016,218 @@
    "pin_address": "334 Route 9W, Palisades"
   },
   {
+   "id": "NY-12",
+   "name": "All Mine of Orange tract",
+   "municipality": "Town of Hamptonburgh",
+   "county": "Orange",
+   "state": "NY",
+   "acres": "88.66",
+   "drive_min_midtown": "82",
+   "lat": "41.46413",
+   "lon": "-74.23811",
+   "approval_score": "50",
+   "prototype": "B",
+   "mix_IL": "",
+   "mix_AL": "",
+   "mix_MC": "",
+   "mix_SNF": "",
+   "rent_index_site": "0.72",
+   "cost_factor": "",
+   "asking_price": "",
+   "est_land_value": "",
+   "land_note": "Price not public",
+   "deal_route": "Approach owner; re-scope to IL/AL",
+   "entitlement_status": "Age-restricted by special permit in R-4A; DEIS stage for 72 active-adult units",
+   "approval_case": "Town allows age-restricted by special permit; septic/well limits density",
+   "opposition_risk": "Medium",
+   "next_step": "Confirm Maybrook water option",
+   "uw": {
+    "prototype": "B",
+    "prototype_name": "Rental IL/AL/MC community",
+    "units": 176,
+    "gsf": 184200,
+    "revenue": 15467953,
+    "opex": 9547667,
+    "taxes": 1320000,
+    "reserves": 88000,
+    "noi": 4512286,
+    "noi_margin": 0.2917,
+    "hard": 59680800,
+    "site_work": 4387500,
+    "ffe": 3872000,
+    "soft": 12813660,
+    "carry": 5249007,
+    "leaseup": 6956441,
+    "contingency": 3203415,
+    "cost_ex_land": 96162824,
+    "leaseup_months": 37,
+    "cost_per_unit_ex_land": 546380,
+    "lines": [
+     {
+      "care": "IL",
+      "units": 56,
+      "monthly_rate": 4896,
+      "revenue": 3151598,
+      "opex": 1701863
+     },
+     {
+      "care": "AL",
+      "units": 84,
+      "monthly_rate": 7920,
+      "revenue": 7991343,
+      "opex": 5034546
+     },
+     {
+      "care": "MC",
+      "units": 36,
+      "monthly_rate": 10800,
+      "revenue": 4325011,
+      "opex": 2811257
+     }
+    ],
+    "land_cost": 4400000,
+    "land_cost_basis": "market comp/unit",
+    "total_cost": 100562824,
+    "yoc": 0.0449,
+    "max_land": -26743039,
+    "max_land_per_unit": -151949,
+    "land_cushion": -31143039,
+    "value_at_exit_cap": 69419785,
+    "profit_on_cost": -0.31,
+    "breakeven_rent_ratio": 1.342,
+    "yoc_by_tax_structure": {
+     "full_tax": 0.0449,
+     "pilot": 0.0514,
+     "nonprofit_exempt": 0.0567
+    },
+    "max_land_by_tax_structure": {
+     "full_tax": -26743039,
+     "pilot": -16589193,
+     "nonprofit_exempt": -8466116
+    },
+    "loan": 60337694,
+    "annual_debt_service": 4696190,
+    "dscr": 0.96,
+    "debt_yield": 0.0748,
+    "equity": 40225130,
+    "stress": {
+     "yoc_rent_down_10": 0.039,
+     "yoc_cost_up_10": 0.041,
+     "yoc_both": 0.0356
+    },
+    "entrance_fee": null
+   },
+   "scores": {
+    "approval": 50,
+    "rent_support": 26,
+    "need": 50,
+    "yield": 10,
+    "total": 33.8
+   },
+   "kills": [],
+   "verdict": "Pass",
+   "verdict_reason": "Below 6.5% under every structure (best 5.67%)",
+   "rank": 31,
+   "research": {
+    "sources": [
+     "https://dec.ny.gov/news/environmental-notice-bulletin/2025-07-09/seqr/town-of-hamptonburgh-all-mine-of-orange-inc-active-adult-community"
+    ],
+    "zoning": "R-4A; age-restricted housing by Town Board special permit + PB site plan [Verified]",
+    "senior_use_path": "Special permit - currently 72 active-adult units (low density); pivot to IL/AL would need new review [Inferred]",
+    "prior_use": "Undeveloped/agricultural (Inferred)",
+    "sewer_water": "On-site septic + wells base case; alt. Village of Maybrook water [Verified]",
+    "approval_evidence": "Town code expressly provides age-restricted special permit path [Verified]"
+   },
+   "diligence": [
+    {
+     "key": "control",
+     "item": "Site control: LOI / option / JV term sheet",
+     "status": "Not started"
+    },
+    {
+     "key": "title",
+     "item": "Title commitment and survey (ALTA)",
+     "status": "Not started"
+    },
+    {
+     "key": "phase1",
+     "item": "Phase I ESA (Phase II if RECs)",
+     "status": "Not started"
+    },
+    {
+     "key": "wetlands",
+     "item": "Wetlands delineation, FEMA flood zone, NJ Highlands / NYC watershed check",
+     "status": "Not started"
+    },
+    {
+     "key": "geotech",
+     "item": "Geotechnical borings, rock and groundwater",
+     "status": "Not started"
+    },
+    {
+     "key": "utilities",
+     "item": "Sewer capacity and water will-serve letters; power",
+     "status": "Not started"
+    },
+    {
+     "key": "traffic",
+     "item": "Traffic study and DOT access permit",
+     "status": "Not started"
+    },
+    {
+     "key": "zoning",
+     "item": "Zoning opinion: permitted / special permit / rezoning path",
+     "status": "Not started"
+    },
+    {
+     "key": "seqr",
+     "item": "Environmental review (SEQRA / NJ / CEPA) scope",
+     "status": "Not started"
+    },
+    {
+     "key": "license",
+     "item": "State licensure / CN path (NY ALR-EALR, NJ expedited CN, CT ALSA) or Article 46 / CCRC registration",
+     "status": "Not started"
+    },
+    {
+     "key": "market",
+     "item": "Third-party market study: PMA, penetration, capture, rate shop",
+     "status": "Not started"
+    },
+    {
+     "key": "fiscal",
+     "item": "Fiscal impact study for the town",
+     "status": "Not started"
+    },
+    {
+     "key": "tax",
+     "item": "Assessor estimate and PILOT / abatement term sheet",
+     "status": "Not started"
+    },
+    {
+     "key": "operator",
+     "item": "Operator LOI and management agreement terms",
+     "status": "Not started"
+    },
+    {
+     "key": "capital",
+     "item": "Construction lender term sheet; equity commitment",
+     "status": "Not started"
+    }
+   ],
+   "regulatory": {
+    "rental_il": "Local zoning (special permit / floating zone typical)",
+    "al_mc": "ALR / EALR / SNALR licence; no bed-need test; ~9-18 months",
+    "snf": "New beds presumed unneeded below 97% county occupancy (10 NYCRR 709.3); buy or contract",
+    "ccrc": "Article 46 Certificate of Authority before 10% deposits; nonprofit norm",
+    "tax_tool": "County IDA PILOT + sales-tax exemption"
+   },
+   "lat_prior": "41.485",
+   "lon_prior": "-74.265",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "Maybrook Rd / CR 4 (All Mine of Orange Inc parcel, 84.8 ac)"
+  },
+  {
    "id": "CT-14",
    "name": "Holy Family Passionist Retreat Center",
    "municipality": "West Hartford",
@@ -7265,15 +7265,15 @@
     "noi": 7789986,
     "noi_margin": 0.3026,
     "hard": 103680000,
-    "site_work": 8190000,
+    "site_work": 12285000,
     "ffe": 6160000,
-    "soft": 22374000,
-    "carry": 9126260,
+    "soft": 23193000,
+    "carry": 9445670,
     "leaseup": 12983311,
-    "contingency": 5593500,
-    "cost_ex_land": 168107071,
+    "contingency": 5798250,
+    "cost_ex_land": 173545231,
     "leaseup_months": 40,
-    "cost_per_unit_ex_land": 600382,
+    "cost_per_unit_ex_land": 619804,
     "lines": [
      {
       "care": "IL",
@@ -7299,53 +7299,53 @@
     ],
     "land_cost": 5600000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 173707071,
-    "yoc": 0.0448,
-    "max_land": -48261133,
-    "max_land_per_unit": -172361,
-    "land_cushion": -53861133,
+    "total_cost": 179145231,
+    "yoc": 0.0435,
+    "max_land": -53699293,
+    "max_land_per_unit": -191783,
+    "land_cushion": -59299293,
     "value_at_exit_cap": 119845938,
-    "profit_on_cost": -0.31,
-    "breakeven_rent_ratio": 1.34,
+    "profit_on_cost": -0.331,
+    "breakeven_rent_ratio": 1.374,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0448,
-     "pilot": 0.0517,
-     "nonprofit_exempt": 0.0572
+     "full_tax": 0.0435,
+     "pilot": 0.0501,
+     "nonprofit_exempt": 0.0554
     },
     "max_land_by_tax_structure": {
-     "full_tax": -48261133,
-     "pilot": -29953440,
-     "nonprofit_exempt": -15307286
+     "full_tax": -53699293,
+     "pilot": -35391600,
+     "nonprofit_exempt": -20745446
     },
-    "loan": 104224243,
-    "annual_debt_service": 8111957,
-    "dscr": 0.96,
-    "debt_yield": 0.0747,
-    "equity": 69482828,
+    "loan": 107487139,
+    "annual_debt_service": 8365914,
+    "dscr": 0.93,
+    "debt_yield": 0.0725,
+    "equity": 71658092,
     "stress": {
-     "yoc_rent_down_10": 0.0389,
-     "yoc_cost_up_10": 0.0409,
-     "yoc_both": 0.0355
+     "yoc_rent_down_10": 0.0377,
+     "yoc_cost_up_10": 0.0396,
+     "yoc_both": 0.0344
     },
     "entrance_fee": {
      "avg_fee": 309538,
      "fee_pool": 43180568,
-     "il_cost": 109924006,
-     "coverage": 0.39,
+     "il_cost": 113365341,
+     "coverage": 0.38,
      "viable": false,
-     "developer_fee": 7816818
+     "developer_fee": 8061535
     }
    },
    "scores": {
     "approval": 50,
     "rent_support": 25,
     "need": 50,
-    "yield": 10,
-    "total": 33.6
+    "yield": 7,
+    "total": 32.9
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.72%)",
+   "verdict_reason": "Below 6.5% under every structure (best 5.54%)",
    "rank": 32,
    "research": {
     "sources": [
@@ -7485,15 +7485,15 @@
     "noi": 7789986,
     "noi_margin": 0.3026,
     "hard": 103680000,
-    "site_work": 8190000,
+    "site_work": 8775000,
     "ffe": 6160000,
-    "soft": 22374000,
-    "carry": 9126260,
+    "soft": 22491000,
+    "carry": 9171890,
     "leaseup": 12983311,
-    "contingency": 5593500,
-    "cost_ex_land": 168107071,
+    "contingency": 5622750,
+    "cost_ex_land": 168883951,
     "leaseup_months": 40,
-    "cost_per_unit_ex_land": 600382,
+    "cost_per_unit_ex_land": 603157,
     "lines": [
      {
       "care": "IL",
@@ -7519,41 +7519,41 @@
     ],
     "land_cost": 3000000,
     "land_cost_basis": "estimate",
-    "total_cost": 171107071,
-    "yoc": 0.0455,
-    "max_land": -48261133,
-    "max_land_per_unit": -172361,
-    "land_cushion": -51261133,
+    "total_cost": 171883951,
+    "yoc": 0.0453,
+    "max_land": -49038013,
+    "max_land_per_unit": -175136,
+    "land_cushion": -52038013,
     "value_at_exit_cap": 119845938,
-    "profit_on_cost": -0.3,
-    "breakeven_rent_ratio": 1.323,
+    "profit_on_cost": -0.303,
+    "breakeven_rent_ratio": 1.328,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0455,
-     "pilot": 0.0525,
-     "nonprofit_exempt": 0.058
+     "full_tax": 0.0453,
+     "pilot": 0.0522,
+     "nonprofit_exempt": 0.0578
     },
     "max_land_by_tax_structure": {
-     "full_tax": -48261133,
-     "pilot": -29953440,
-     "nonprofit_exempt": -15307286
+     "full_tax": -49038013,
+     "pilot": -30730320,
+     "nonprofit_exempt": -16084166
     },
-    "loan": 102664243,
-    "annual_debt_service": 7990540,
+    "loan": 103130371,
+    "annual_debt_service": 8026819,
     "dscr": 0.97,
-    "debt_yield": 0.0759,
-    "equity": 68442828,
+    "debt_yield": 0.0755,
+    "equity": 68753580,
     "stress": {
-     "yoc_rent_down_10": 0.0395,
-     "yoc_cost_up_10": 0.0415,
-     "yoc_both": 0.036
+     "yoc_rent_down_10": 0.0393,
+     "yoc_cost_up_10": 0.0413,
+     "yoc_both": 0.0358
     },
     "entrance_fee": {
      "avg_fee": 309538,
      "fee_pool": 43180568,
-     "il_cost": 108278693,
+     "il_cost": 108770313,
      "coverage": 0.4,
      "viable": false,
-     "developer_fee": 7699818
+     "developer_fee": 7734778
     }
    },
    "scores": {
@@ -7561,11 +7561,11 @@
     "rent_support": 25,
     "need": 50,
     "yield": 11,
-    "total": 32.4
+    "total": 32.3
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.80%)",
+   "verdict_reason": "Below 6.5% under every structure (best 5.78%)",
    "rank": 33,
    "research": {
     "sources": [
@@ -7887,436 +7887,6 @@
    "pin_address": ""
   },
   {
-   "id": "NJ-12",
-   "name": "Hamburg Turnpike tract",
-   "municipality": "Wayne Twp",
-   "county": "Passaic",
-   "state": "NJ",
-   "acres": "16.6",
-   "drive_min_midtown": "40",
-   "lat": "40.97",
-   "lon": "-74.27",
-   "approval_score": "35",
-   "prototype": "B",
-   "mix_IL": "",
-   "mix_AL": "",
-   "mix_MC": "",
-   "mix_SNF": "",
-   "rent_index_site": "0.85",
-   "cost_factor": "",
-   "asking_price": "",
-   "est_land_value": "",
-   "land_note": "Price not public",
-   "deal_route": "Builder's-remedy settlement alternative",
-   "entitlement_status": "ZBA denied 285-unit 55+ 7/2025; 610-unit builder's remedy suit",
-   "approval_case": "Denied; settlement could open a lower-density care campus",
-   "opposition_risk": "High",
-   "next_step": "Monitor litigation",
-   "uw": {
-    "prototype": "B",
-    "prototype_name": "Rental IL/AL/MC community",
-    "units": 176,
-    "gsf": 184200,
-    "revenue": 17670508,
-    "opex": 10899681,
-    "taxes": 1760000,
-    "reserves": 88000,
-    "noi": 4922827,
-    "noi_margin": 0.2786,
-    "hard": 62996400,
-    "site_work": 3087500,
-    "ffe": 3872000,
-    "soft": 13216780,
-    "carry": 5406224,
-    "leaseup": 7589358,
-    "contingency": 3304195,
-    "cost_ex_land": 99472457,
-    "leaseup_months": 37,
-    "cost_per_unit_ex_land": 565184,
-    "lines": [
-     {
-      "care": "IL",
-      "units": 56,
-      "monthly_rate": 5780,
-      "revenue": 3720637,
-      "opex": 2009144
-     },
-     {
-      "care": "AL",
-      "units": 84,
-      "monthly_rate": 8765,
-      "revenue": 8843955,
-      "opex": 5571692
-     },
-     {
-      "care": "MC",
-      "units": 36,
-      "monthly_rate": 12750,
-      "revenue": 5105916,
-      "opex": 3318845
-     }
-    ],
-    "land_cost": 7920000,
-    "land_cost_basis": "market comp/unit",
-    "total_cost": 107392457,
-    "yoc": 0.0458,
-    "max_land": -23736657,
-    "max_land_per_unit": -134867,
-    "land_cushion": -31656657,
-    "value_at_exit_cap": 75735800,
-    "profit_on_cost": -0.295,
-    "breakeven_rent_ratio": 1.304,
-    "yoc_by_tax_structure": {
-     "full_tax": 0.0458,
-     "pilot": 0.054,
-     "nonprofit_exempt": 0.0606
-    },
-    "max_land_by_tax_structure": {
-     "full_tax": -23736657,
-     "pilot": -10198195,
-     "nonprofit_exempt": 632574
-    },
-    "loan": 64435474,
-    "annual_debt_service": 5015127,
-    "dscr": 0.98,
-    "debt_yield": 0.0764,
-    "equity": 42956983,
-    "stress": {
-     "yoc_rent_down_10": 0.0395,
-     "yoc_cost_up_10": 0.042,
-     "yoc_both": 0.0362
-    },
-    "entrance_fee": null
-   },
-   "scores": {
-    "approval": 35,
-    "rent_support": 29,
-    "need": 52,
-    "yield": 12,
-    "total": 31.2
-   },
-   "kills": [],
-   "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 6.06%)",
-   "rank": 35,
-   "research": {
-    "sources": [
-     "https://patch.com/new-jersey/wayne/285-unit-senior-housing-project-proposed-wayne",
-     "https://cgajlaw.com/?p=329350"
-    ],
-    "zoning": "Use variance required (V)",
-    "senior_use_path": "Requires rezoning/settlement (I)",
-    "prior_use": "2 homes + wooded land (V)",
-    "sewer_water": "Unknown",
-    "approval_evidence": "Denial (V); settlement leverage (I)"
-   },
-   "diligence": [
-    {
-     "key": "control",
-     "item": "Site control: LOI / option / JV term sheet",
-     "status": "Not started"
-    },
-    {
-     "key": "title",
-     "item": "Title commitment and survey (ALTA)",
-     "status": "Not started"
-    },
-    {
-     "key": "phase1",
-     "item": "Phase I ESA (Phase II if RECs)",
-     "status": "Not started"
-    },
-    {
-     "key": "wetlands",
-     "item": "Wetlands delineation, FEMA flood zone, NJ Highlands / NYC watershed check",
-     "status": "Not started"
-    },
-    {
-     "key": "geotech",
-     "item": "Geotechnical borings, rock and groundwater",
-     "status": "Not started"
-    },
-    {
-     "key": "utilities",
-     "item": "Sewer capacity and water will-serve letters; power",
-     "status": "Not started"
-    },
-    {
-     "key": "traffic",
-     "item": "Traffic study and DOT access permit",
-     "status": "Not started"
-    },
-    {
-     "key": "zoning",
-     "item": "Zoning opinion: permitted / special permit / rezoning path",
-     "status": "Not started"
-    },
-    {
-     "key": "seqr",
-     "item": "Environmental review (SEQRA / NJ / CEPA) scope",
-     "status": "Not started"
-    },
-    {
-     "key": "license",
-     "item": "State licensure / CN path (NY ALR-EALR, NJ expedited CN, CT ALSA) or Article 46 / CCRC registration",
-     "status": "Not started"
-    },
-    {
-     "key": "market",
-     "item": "Third-party market study: PMA, penetration, capture, rate shop",
-     "status": "Not started"
-    },
-    {
-     "key": "fiscal",
-     "item": "Fiscal impact study for the town",
-     "status": "Not started"
-    },
-    {
-     "key": "tax",
-     "item": "Assessor estimate and PILOT / abatement term sheet",
-     "status": "Not started"
-    },
-    {
-     "key": "operator",
-     "item": "Operator LOI and management agreement terms",
-     "status": "Not started"
-    },
-    {
-     "key": "capital",
-     "item": "Construction lender term sheet; equity commitment",
-     "status": "Not started"
-    }
-   ],
-   "regulatory": {
-    "rental_il": "Local zoning / redevelopment plan",
-    "al_mc": "Expedited CN (~12 months) + 10% Medicaid occupancy within 3 yrs, held permanently",
-    "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
-    "ccrc": "DCA registration and disclosure",
-    "tax_tool": "Redevelopment-area long-term PILOT"
-   },
-   "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "pin_address": ""
-  },
-  {
-   "id": "CT-07",
-   "name": "584 Derby-Milford Rd office campus",
-   "municipality": "Orange",
-   "county": "New Haven",
-   "state": "CT",
-   "acres": "46.9",
-   "drive_min_midtown": "90",
-   "lat": "41.27369",
-   "lon": "-73.05749",
-   "approval_score": "40",
-   "prototype": "A",
-   "mix_IL": "",
-   "mix_AL": "",
-   "mix_MC": "",
-   "mix_SNF": "",
-   "rent_index_site": "0.85",
-   "cost_factor": "",
-   "asking_price": "",
-   "est_land_value": "",
-   "land_note": "CBRE marketing for lease/redevelopment; price not stated",
-   "deal_route": "Bid via CBRE",
-   "entitlement_status": "OPD zoning; septic; text amendment needed",
-   "approval_case": "No senior use in zone",
-   "opposition_risk": "Medium",
-   "next_step": "Request CBRE pricing",
-   "uw": {
-    "prototype": "A",
-    "prototype_name": "Continuum campus (RiverSpring-style)",
-    "units": 280,
-    "gsf": 320000,
-    "revenue": 25747330,
-    "opex": 15437343,
-    "taxes": 2240000,
-    "reserves": 140000,
-    "noi": 7929986,
-    "noi_margin": 0.308,
-    "hard": 105984000,
-    "site_work": 8372000,
-    "ffe": 6160000,
-    "soft": 22871200,
-    "carry": 9320168,
-    "leaseup": 13216644,
-    "contingency": 5717800,
-    "cost_ex_land": 171641812,
-    "leaseup_months": 40,
-    "cost_per_unit_ex_land": 613006,
-    "lines": [
-     {
-      "care": "IL",
-      "units": 150,
-      "monthly_rate": 5780,
-      "revenue": 9965992,
-      "opex": 5381635
-     },
-     {
-      "care": "AL",
-      "units": 90,
-      "monthly_rate": 9350,
-      "revenue": 10108098,
-      "opex": 6368102
-     },
-     {
-      "care": "MC",
-      "units": 40,
-      "monthly_rate": 12750,
-      "revenue": 5673240,
-      "opex": 3687606
-     }
-    ],
-    "land_cost": 7000000,
-    "land_cost_basis": "market comp/unit",
-    "total_cost": 178641812,
-    "yoc": 0.0444,
-    "max_land": -49642027,
-    "max_land_per_unit": -177293,
-    "land_cushion": -56642027,
-    "value_at_exit_cap": 121999785,
-    "profit_on_cost": -0.317,
-    "breakeven_rent_ratio": 1.357,
-    "yoc_by_tax_structure": {
-     "full_tax": 0.0444,
-     "pilot": 0.0507,
-     "nonprofit_exempt": 0.0557
-    },
-    "max_land_by_tax_structure": {
-     "full_tax": -49642027,
-     "pilot": -32411258,
-     "nonprofit_exempt": -18626643
-    },
-    "loan": 107185087,
-    "annual_debt_service": 8342405,
-    "dscr": 0.95,
-    "debt_yield": 0.074,
-    "equity": 71456725,
-    "stress": {
-     "yoc_rent_down_10": 0.0386,
-     "yoc_cost_up_10": 0.0405,
-     "yoc_both": 0.0352
-    },
-    "entrance_fee": {
-     "avg_fee": 321573,
-     "fee_pool": 44859463,
-     "il_cost": 113046772,
-     "coverage": 0.4,
-     "viable": false,
-     "developer_fee": 8038882
-    }
-   },
-   "scores": {
-    "approval": 40,
-    "rent_support": 26,
-    "need": 52,
-    "yield": 9,
-    "total": 31.1
-   },
-   "kills": [],
-   "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.57%)",
-   "rank": 36,
-   "research": {
-    "sources": [
-     "https://images1.showcase.com/d2/OXpj48pQxUvpB0xpVmTGrQM0pBhCptmXUanpimPYTx4/document.pdf"
-    ],
-    "zoning": "Office Park District (OPD)",
-    "senior_use_path": "Senior housing NOT listed among marketed uses -> text amendment / zone change needed (Verified listing; path Inferred)",
-    "prior_use": "Corporate office campus (Verified)",
-    "sewer_water": "City water; septic (no sewer) (Verified)",
-    "approval_evidence": "No site-specific evidence found"
-   },
-   "diligence": [
-    {
-     "key": "control",
-     "item": "Site control: LOI / option / JV term sheet",
-     "status": "Not started"
-    },
-    {
-     "key": "title",
-     "item": "Title commitment and survey (ALTA)",
-     "status": "Not started"
-    },
-    {
-     "key": "phase1",
-     "item": "Phase I ESA (Phase II if RECs)",
-     "status": "Not started"
-    },
-    {
-     "key": "wetlands",
-     "item": "Wetlands delineation, FEMA flood zone, NJ Highlands / NYC watershed check",
-     "status": "Not started"
-    },
-    {
-     "key": "geotech",
-     "item": "Geotechnical borings, rock and groundwater",
-     "status": "Not started"
-    },
-    {
-     "key": "utilities",
-     "item": "Sewer capacity and water will-serve letters; power",
-     "status": "Not started"
-    },
-    {
-     "key": "traffic",
-     "item": "Traffic study and DOT access permit",
-     "status": "Not started"
-    },
-    {
-     "key": "zoning",
-     "item": "Zoning opinion: permitted / special permit / rezoning path",
-     "status": "Not started"
-    },
-    {
-     "key": "seqr",
-     "item": "Environmental review (SEQRA / NJ / CEPA) scope",
-     "status": "Not started"
-    },
-    {
-     "key": "license",
-     "item": "State licensure / CN path (NY ALR-EALR, NJ expedited CN, CT ALSA) or Article 46 / CCRC registration",
-     "status": "Not started"
-    },
-    {
-     "key": "market",
-     "item": "Third-party market study: PMA, penetration, capture, rate shop",
-     "status": "Not started"
-    },
-    {
-     "key": "fiscal",
-     "item": "Fiscal impact study for the town",
-     "status": "Not started"
-    },
-    {
-     "key": "tax",
-     "item": "Assessor estimate and PILOT / abatement term sheet",
-     "status": "Not started"
-    },
-    {
-     "key": "operator",
-     "item": "Operator LOI and management agreement terms",
-     "status": "Not started"
-    },
-    {
-     "key": "capital",
-     "item": "Construction lender term sheet; equity commitment",
-     "status": "Not started"
-    }
-   ],
-   "regulatory": {
-    "rental_il": "Local zoning (P&Z special permit / text amendment)",
-    "al_mc": "No CON (CGS 19a-638(b)(5)); ALSA licence + managed residential community",
-    "snf": "Moratorium, except CCRC beds not used for Medicaid",
-    "ccrc": "DSS registration; for-profit precedent (Edgehill)",
-    "tax_tool": "CGS 12-65b tax abatement agreement"
-   },
-   "lat_prior": "41.3",
-   "lon_prior": "-73.045",
-   "pin_basis": "Verified address or owner parcel",
-   "pin_address": "584 Derby Milford Rd, Orange"
-  },
-  {
    "id": "CT-04",
    "name": "Campus at Greenhill excess land",
    "municipality": "Wallingford",
@@ -8435,7 +8005,7 @@
    "kills": [],
    "verdict": "Pass",
    "verdict_reason": "Below 6.5% under every structure (best 5.27%)",
-   "rank": 37,
+   "rank": 35,
    "research": {
     "sources": [
      "https://hartfordbusiness.com/article/mass-real-estate-firm-aims-to-revive-struggling-wallingford-office-campus-after-9-13m-purchase/"
@@ -8534,134 +8104,128 @@
    "pin_address": ""
   },
   {
-   "id": "CT-13",
-   "name": "Candlewood Valley Country Club",
-   "municipality": "New Milford",
-   "county": "Litchfield",
-   "state": "CT",
-   "acres": "157.5",
-   "drive_min_midtown": "110",
-   "lat": "41.52855",
-   "lon": "-73.42136",
-   "approval_score": "40",
-   "prototype": "A",
+   "id": "NJ-12",
+   "name": "Hamburg Turnpike tract",
+   "municipality": "Wayne Twp",
+   "county": "Passaic",
+   "state": "NJ",
+   "acres": "16.6",
+   "drive_min_midtown": "40",
+   "lat": "40.97",
+   "lon": "-74.27",
+   "approval_score": "35",
+   "prototype": "B",
    "mix_IL": "",
    "mix_AL": "",
    "mix_MC": "",
    "mix_SNF": "",
-   "rent_index_site": "0.8",
+   "rent_index_site": "0.85",
    "cost_factor": "",
    "asking_price": "",
    "est_land_value": "",
-   "land_note": "Price not stated",
-   "deal_route": "Listing (verify)",
-   "entitlement_status": "Golf; none",
-   "approval_case": "No evidence",
-   "opposition_risk": "Unknown",
-   "next_step": "Verify listing",
+   "land_note": "Price not public",
+   "deal_route": "Builder's-remedy settlement alternative",
+   "entitlement_status": "ZBA denied 285-unit 55+ 7/2025; 610-unit builder's remedy suit",
+   "approval_case": "Denied; settlement could open a lower-density care campus",
+   "opposition_risk": "High",
+   "next_step": "Monitor litigation",
    "uw": {
-    "prototype": "A",
-    "prototype_name": "Continuum campus (RiverSpring-style)",
-    "units": 280,
-    "gsf": 320000,
-    "revenue": 24232781,
-    "opex": 14529264,
-    "taxes": 1680000,
-    "reserves": 140000,
-    "noi": 7883517,
-    "noi_margin": 0.3253,
-    "hard": 103680000,
-    "site_work": 8190000,
-    "ffe": 6160000,
-    "soft": 22374000,
-    "carry": 9126260,
-    "leaseup": 15767033,
-    "contingency": 5593500,
-    "cost_ex_land": 170890793,
-    "leaseup_months": 48,
-    "cost_per_unit_ex_land": 610324,
+    "prototype": "B",
+    "prototype_name": "Rental IL/AL/MC community",
+    "units": 176,
+    "gsf": 184200,
+    "revenue": 17670508,
+    "opex": 10899681,
+    "taxes": 1760000,
+    "reserves": 88000,
+    "noi": 4922827,
+    "noi_margin": 0.2786,
+    "hard": 62996400,
+    "site_work": 4631250,
+    "ffe": 3872000,
+    "soft": 13525530,
+    "carry": 5526637,
+    "leaseup": 7589358,
+    "contingency": 3381382,
+    "cost_ex_land": 101522557,
+    "leaseup_months": 37,
+    "cost_per_unit_ex_land": 576833,
     "lines": [
      {
       "care": "IL",
-      "units": 150,
-      "monthly_rate": 5440,
-      "revenue": 9379757,
-      "opex": 5065069
+      "units": 56,
+      "monthly_rate": 5780,
+      "revenue": 3720637,
+      "opex": 2009144
      },
      {
       "care": "AL",
-      "units": 90,
-      "monthly_rate": 8800,
-      "revenue": 9513504,
-      "opex": 5993508
+      "units": 84,
+      "monthly_rate": 8765,
+      "revenue": 8843955,
+      "opex": 5571692
      },
      {
       "care": "MC",
-      "units": 40,
-      "monthly_rate": 12000,
-      "revenue": 5339520,
-      "opex": 3470688
+      "units": 36,
+      "monthly_rate": 12750,
+      "revenue": 5105916,
+      "opex": 3318845
      }
     ],
-    "land_cost": 4200000,
+    "land_cost": 7920000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 175090793,
+    "total_cost": 109442557,
     "yoc": 0.045,
-    "max_land": -49605916,
-    "max_land_per_unit": -177164,
-    "land_cushion": -53805916,
-    "value_at_exit_cap": 121284877,
-    "profit_on_cost": -0.307,
-    "breakeven_rent_ratio": 1.36,
+    "max_land": -25786757,
+    "max_land_per_unit": -146516,
+    "land_cushion": -33706757,
+    "value_at_exit_cap": 75735800,
+    "profit_on_cost": -0.308,
+    "breakeven_rent_ratio": 1.324,
     "yoc_by_tax_structure": {
      "full_tax": 0.045,
-     "pilot": 0.0498,
-     "nonprofit_exempt": 0.0537
+     "pilot": 0.053,
+     "nonprofit_exempt": 0.0595
     },
     "max_land_by_tax_structure": {
-     "full_tax": -49605916,
-     "pilot": -36682839,
-     "nonprofit_exempt": -26344378
+     "full_tax": -25786757,
+     "pilot": -12248295,
+     "nonprofit_exempt": -1417526
     },
-    "loan": 105054476,
-    "annual_debt_service": 8176576,
+    "loan": 65665534,
+    "annual_debt_service": 5110865,
     "dscr": 0.96,
     "debt_yield": 0.075,
-    "equity": 70036317,
+    "equity": 43777023,
     "stress": {
-     "yoc_rent_down_10": 0.0395,
-     "yoc_cost_up_10": 0.041,
-     "yoc_both": 0.036
+     "yoc_rent_down_10": 0.0388,
+     "yoc_cost_up_10": 0.0412,
+     "yoc_both": 0.0355
     },
-    "entrance_fee": {
-     "avg_fee": 317937,
-     "fee_pool": 44352189,
-     "il_cost": 110799642,
-     "coverage": 0.4,
-     "viable": false,
-     "developer_fee": 7879086
-    }
+    "entrance_fee": null
    },
    "scores": {
-    "approval": 40,
-    "rent_support": 27,
-    "need": 48,
+    "approval": 35,
+    "rent_support": 29,
+    "need": 52,
     "yield": 10,
-    "total": 30.7
+    "total": 30.8
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.37%)",
-   "rank": 38,
+   "verdict_reason": "Below 6.5% under every structure (best 5.95%)",
+   "rank": 36,
    "research": {
     "sources": [
-     "https://hartfordbusiness.com/article/as-3-ct-golf-courses-go-up-for-sale-advocates-say-slide-in-course-numbers-is-slowing/"
+     "https://patch.com/new-jersey/wayne/285-unit-senior-housing-project-proposed-wayne",
+     "https://cgajlaw.com/?p=329350"
     ],
-    "zoning": "Unknown",
-    "senior_use_path": "Unknown",
-    "prior_use": "18-hole golf course (Verified)",
+    "zoning": "Use variance required (V)",
+    "senior_use_path": "Requires rezoning/settlement (I)",
+    "prior_use": "2 homes + wooded land (V)",
     "sewer_water": "Unknown",
-    "approval_evidence": "None found"
+    "approval_evidence": "Denial (V); settlement leverage (I)"
    },
    "diligence": [
     {
@@ -8741,16 +8305,14 @@
     }
    ],
    "regulatory": {
-    "rental_il": "Local zoning (P&Z special permit / text amendment)",
-    "al_mc": "No CON (CGS 19a-638(b)(5)); ALSA licence + managed residential community",
-    "snf": "Moratorium, except CCRC beds not used for Medicaid",
-    "ccrc": "DSS registration; for-profit precedent (Edgehill)",
-    "tax_tool": "CGS 12-65b tax abatement agreement"
+    "rental_il": "Local zoning / redevelopment plan",
+    "al_mc": "Expedited CN (~12 months) + 10% Medicaid occupancy within 3 yrs, held permanently",
+    "snf": "General bed call cancelled (86.6% vs 90% target); buy existing beds",
+    "ccrc": "DCA registration and disclosure",
+    "tax_tool": "Redevelopment-area long-term PILOT"
    },
-   "lat_prior": "41.55",
-   "lon_prior": "-73.41",
-   "pin_basis": "Verified address or owner parcel",
-   "pin_address": "401 Danbury Rd, New Milford"
+   "pin_basis": "Approximate: research coordinate, parcel to confirm",
+   "pin_address": ""
   },
   {
    "id": "NY-16",
@@ -8790,15 +8352,15 @@
     "noi": 6997047,
     "noi_margin": 0.308,
     "hard": 103680000,
-    "site_work": 8190000,
+    "site_work": 8775000,
     "ffe": 6160000,
-    "soft": 22374000,
-    "carry": 9126260,
+    "soft": 22491000,
+    "carry": 9171890,
     "leaseup": 11661745,
-    "contingency": 5593500,
-    "cost_ex_land": 166785505,
+    "contingency": 5622750,
+    "cost_ex_land": 167562385,
     "leaseup_months": 40,
-    "cost_per_unit_ex_land": 595663,
+    "cost_per_unit_ex_land": 598437,
     "lines": [
      {
       "care": "IL",
@@ -8824,54 +8386,54 @@
     ],
     "land_cost": 7000000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 173785505,
-    "yoc": 0.0403,
-    "max_land": -59138628,
-    "max_land_per_unit": -211209,
-    "land_cushion": -66138628,
+    "total_cost": 174562385,
+    "yoc": 0.0401,
+    "max_land": -59915508,
+    "max_land_per_unit": -213984,
+    "land_cushion": -66915508,
     "value_at_exit_cap": 107646877,
-    "profit_on_cost": -0.381,
-    "breakeven_rent_ratio": 1.473,
+    "profit_on_cost": -0.383,
+    "breakeven_rent_ratio": 1.478,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0403,
-     "pilot": 0.0459,
-     "nonprofit_exempt": 0.0504
+     "full_tax": 0.0401,
+     "pilot": 0.0457,
+     "nonprofit_exempt": 0.0502
     },
     "max_land_by_tax_structure": {
-     "full_tax": -59138628,
-     "pilot": -44061705,
-     "nonprofit_exempt": -32000167
+     "full_tax": -59915508,
+     "pilot": -44838585,
+     "nonprofit_exempt": -32777047
     },
-    "loan": 104271303,
-    "annual_debt_service": 8115620,
+    "loan": 104737431,
+    "annual_debt_service": 8151900,
     "dscr": 0.86,
-    "debt_yield": 0.0671,
-    "equity": 69514202,
+    "debt_yield": 0.0668,
+    "equity": 69824954,
     "stress": {
-     "yoc_rent_down_10": 0.035,
-     "yoc_cost_up_10": 0.0367,
-     "yoc_both": 0.032
+     "yoc_rent_down_10": 0.0349,
+     "yoc_cost_up_10": 0.0366,
+     "yoc_both": 0.0318
     },
     "entrance_fee": {
      "avg_fee": 365412,
      "fee_pool": 50974997,
-     "il_cost": 109973640,
+     "il_cost": 110465259,
      "coverage": 0.46,
      "viable": false,
-     "developer_fee": 7820348
+     "developer_fee": 7855307
     }
    },
    "scores": {
     "approval": 45,
     "rent_support": 28,
     "need": 50,
-    "yield": 1,
-    "total": 30.6
+    "yield": 0,
+    "total": 30.5
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.04%)",
-   "rank": 39,
+   "verdict_reason": "Below 6.5% under every structure (best 5.02%)",
+   "rank": 37,
    "research": {
     "sources": [
      "https://westfaironline.com/?p=31334"
@@ -8972,6 +8534,225 @@
    "pin_address": "6511 Springbrook Ave, Rhinebeck"
   },
   {
+   "id": "CT-07",
+   "name": "584 Derby-Milford Rd office campus",
+   "municipality": "Orange",
+   "county": "New Haven",
+   "state": "CT",
+   "acres": "46.9",
+   "drive_min_midtown": "90",
+   "lat": "41.27369",
+   "lon": "-73.05749",
+   "approval_score": "40",
+   "prototype": "A",
+   "mix_IL": "",
+   "mix_AL": "",
+   "mix_MC": "",
+   "mix_SNF": "",
+   "rent_index_site": "0.85",
+   "cost_factor": "",
+   "asking_price": "",
+   "est_land_value": "",
+   "land_note": "CBRE marketing for lease/redevelopment; price not stated",
+   "deal_route": "Bid via CBRE",
+   "entitlement_status": "OPD zoning; septic; text amendment needed",
+   "approval_case": "No senior use in zone",
+   "opposition_risk": "Medium",
+   "next_step": "Request CBRE pricing",
+   "uw": {
+    "prototype": "A",
+    "prototype_name": "Continuum campus (RiverSpring-style)",
+    "units": 280,
+    "gsf": 320000,
+    "revenue": 25747330,
+    "opex": 15437343,
+    "taxes": 2240000,
+    "reserves": 140000,
+    "noi": 7929986,
+    "noi_margin": 0.308,
+    "hard": 105984000,
+    "site_work": 12558000,
+    "ffe": 6160000,
+    "soft": 23708400,
+    "carry": 9646676,
+    "leaseup": 13216644,
+    "contingency": 5927100,
+    "cost_ex_land": 177200820,
+    "leaseup_months": 40,
+    "cost_per_unit_ex_land": 632860,
+    "lines": [
+     {
+      "care": "IL",
+      "units": 150,
+      "monthly_rate": 5780,
+      "revenue": 9965992,
+      "opex": 5381635
+     },
+     {
+      "care": "AL",
+      "units": 90,
+      "monthly_rate": 9350,
+      "revenue": 10108098,
+      "opex": 6368102
+     },
+     {
+      "care": "MC",
+      "units": 40,
+      "monthly_rate": 12750,
+      "revenue": 5673240,
+      "opex": 3687606
+     }
+    ],
+    "land_cost": 7000000,
+    "land_cost_basis": "market comp/unit",
+    "total_cost": 184200820,
+    "yoc": 0.0431,
+    "max_land": -55201035,
+    "max_land_per_unit": -197147,
+    "land_cushion": -62201035,
+    "value_at_exit_cap": 121999785,
+    "profit_on_cost": -0.338,
+    "breakeven_rent_ratio": 1.392,
+    "yoc_by_tax_structure": {
+     "full_tax": 0.0431,
+     "pilot": 0.0491,
+     "nonprofit_exempt": 0.054
+    },
+    "max_land_by_tax_structure": {
+     "full_tax": -55201035,
+     "pilot": -37970266,
+     "nonprofit_exempt": -24185651
+    },
+    "loan": 110520492,
+    "annual_debt_service": 8602006,
+    "dscr": 0.92,
+    "debt_yield": 0.0718,
+    "equity": 73680328,
+    "stress": {
+     "yoc_rent_down_10": 0.0375,
+     "yoc_cost_up_10": 0.0393,
+     "yoc_both": 0.0342
+    },
+    "entrance_fee": {
+     "avg_fee": 321573,
+     "fee_pool": 44859463,
+     "il_cost": 116564581,
+     "coverage": 0.38,
+     "viable": false,
+     "developer_fee": 8289037
+    }
+   },
+   "scores": {
+    "approval": 40,
+    "rent_support": 26,
+    "need": 52,
+    "yield": 6,
+    "total": 30.5
+   },
+   "kills": [],
+   "verdict": "Pass",
+   "verdict_reason": "Below 6.5% under every structure (best 5.40%)",
+   "rank": 38,
+   "research": {
+    "sources": [
+     "https://images1.showcase.com/d2/OXpj48pQxUvpB0xpVmTGrQM0pBhCptmXUanpimPYTx4/document.pdf"
+    ],
+    "zoning": "Office Park District (OPD)",
+    "senior_use_path": "Senior housing NOT listed among marketed uses -> text amendment / zone change needed (Verified listing; path Inferred)",
+    "prior_use": "Corporate office campus (Verified)",
+    "sewer_water": "City water; septic (no sewer) (Verified)",
+    "approval_evidence": "No site-specific evidence found"
+   },
+   "diligence": [
+    {
+     "key": "control",
+     "item": "Site control: LOI / option / JV term sheet",
+     "status": "Not started"
+    },
+    {
+     "key": "title",
+     "item": "Title commitment and survey (ALTA)",
+     "status": "Not started"
+    },
+    {
+     "key": "phase1",
+     "item": "Phase I ESA (Phase II if RECs)",
+     "status": "Not started"
+    },
+    {
+     "key": "wetlands",
+     "item": "Wetlands delineation, FEMA flood zone, NJ Highlands / NYC watershed check",
+     "status": "Not started"
+    },
+    {
+     "key": "geotech",
+     "item": "Geotechnical borings, rock and groundwater",
+     "status": "Not started"
+    },
+    {
+     "key": "utilities",
+     "item": "Sewer capacity and water will-serve letters; power",
+     "status": "Not started"
+    },
+    {
+     "key": "traffic",
+     "item": "Traffic study and DOT access permit",
+     "status": "Not started"
+    },
+    {
+     "key": "zoning",
+     "item": "Zoning opinion: permitted / special permit / rezoning path",
+     "status": "Not started"
+    },
+    {
+     "key": "seqr",
+     "item": "Environmental review (SEQRA / NJ / CEPA) scope",
+     "status": "Not started"
+    },
+    {
+     "key": "license",
+     "item": "State licensure / CN path (NY ALR-EALR, NJ expedited CN, CT ALSA) or Article 46 / CCRC registration",
+     "status": "Not started"
+    },
+    {
+     "key": "market",
+     "item": "Third-party market study: PMA, penetration, capture, rate shop",
+     "status": "Not started"
+    },
+    {
+     "key": "fiscal",
+     "item": "Fiscal impact study for the town",
+     "status": "Not started"
+    },
+    {
+     "key": "tax",
+     "item": "Assessor estimate and PILOT / abatement term sheet",
+     "status": "Not started"
+    },
+    {
+     "key": "operator",
+     "item": "Operator LOI and management agreement terms",
+     "status": "Not started"
+    },
+    {
+     "key": "capital",
+     "item": "Construction lender term sheet; equity commitment",
+     "status": "Not started"
+    }
+   ],
+   "regulatory": {
+    "rental_il": "Local zoning (P&Z special permit / text amendment)",
+    "al_mc": "No CON (CGS 19a-638(b)(5)); ALSA licence + managed residential community",
+    "snf": "Moratorium, except CCRC beds not used for Medicaid",
+    "ccrc": "DSS registration; for-profit precedent (Edgehill)",
+    "tax_tool": "CGS 12-65b tax abatement agreement"
+   },
+   "lat_prior": "41.3",
+   "lon_prior": "-73.045",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "584 Derby Milford Rd, Orange"
+  },
+  {
    "id": "NJ-08",
    "name": "Former Middlesex Science Center (carve-out)",
    "municipality": "Piscataway",
@@ -9009,15 +8790,15 @@
     "noi": 6597729,
     "noi_margin": 0.2859,
     "hard": 105984000,
-    "site_work": 8372000,
+    "site_work": 5980000,
     "ffe": 6160000,
-    "soft": 22871200,
-    "carry": 9320168,
+    "soft": 22392800,
+    "carry": 9133592,
     "leaseup": 10996215,
-    "contingency": 5717800,
-    "cost_ex_land": 169421383,
+    "contingency": 5598200,
+    "cost_ex_land": 166244807,
     "leaseup_months": 40,
-    "cost_per_unit_ex_land": 605076,
+    "cost_per_unit_ex_land": 593731,
     "lines": [
      {
       "care": "IL",
@@ -9043,41 +8824,41 @@
     ],
     "land_cost": 9800000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 179221383,
-    "yoc": 0.0368,
-    "max_land": -67917860,
-    "max_land_per_unit": -242564,
-    "land_cushion": -77717860,
+    "total_cost": 176044807,
+    "yoc": 0.0375,
+    "max_land": -64741284,
+    "max_land_per_unit": -231219,
+    "land_cushion": -74541284,
     "value_at_exit_cap": 101503523,
-    "profit_on_cost": -0.434,
-    "breakeven_rent_ratio": 1.546,
+    "profit_on_cost": -0.423,
+    "breakeven_rent_ratio": 1.523,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0368,
-     "pilot": 0.0438,
-     "nonprofit_exempt": 0.0495
+     "full_tax": 0.0375,
+     "pilot": 0.0446,
+     "nonprofit_exempt": 0.0504
     },
     "max_land_by_tax_structure": {
-     "full_tax": -67917860,
-     "pilot": -48533245,
-     "nonprofit_exempt": -33025552
+     "full_tax": -64741284,
+     "pilot": -45356669,
+     "nonprofit_exempt": -29848976
     },
-    "loan": 107532830,
-    "annual_debt_service": 8369471,
-    "dscr": 0.79,
-    "debt_yield": 0.0614,
-    "equity": 71688553,
+    "loan": 105626884,
+    "annual_debt_service": 8221128,
+    "dscr": 0.8,
+    "debt_yield": 0.0625,
+    "equity": 70417923,
     "stress": {
-     "yoc_rent_down_10": 0.0316,
-     "yoc_cost_up_10": 0.0336,
-     "yoc_both": 0.0289
+     "yoc_rent_down_10": 0.0322,
+     "yoc_cost_up_10": 0.0342,
+     "yoc_both": 0.0294
     },
     "entrance_fee": {
      "avg_fee": 406195,
      "fee_pool": 56664168,
-     "il_cost": 113413531,
-     "coverage": 0.5,
+     "il_cost": 111403354,
+     "coverage": 0.51,
      "viable": false,
-     "developer_fee": 8064962
+     "developer_fee": 7922016
     }
    },
    "scores": {
@@ -9089,8 +8870,8 @@
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 4.95%)",
-   "rank": 40,
+   "verdict_reason": "Below 6.5% under every structure (best 5.04%)",
+   "rank": 39,
    "research": {
     "sources": [
      "https://hoodline.com/2026/06/saadia-group-snaps-up-piscataway-office-campus-in-57m-play/"
@@ -9189,6 +8970,225 @@
    "pin_address": ""
   },
   {
+   "id": "CT-13",
+   "name": "Candlewood Valley Country Club",
+   "municipality": "New Milford",
+   "county": "Litchfield",
+   "state": "CT",
+   "acres": "157.5",
+   "drive_min_midtown": "110",
+   "lat": "41.52855",
+   "lon": "-73.42136",
+   "approval_score": "40",
+   "prototype": "A",
+   "mix_IL": "",
+   "mix_AL": "",
+   "mix_MC": "",
+   "mix_SNF": "",
+   "rent_index_site": "0.8",
+   "cost_factor": "",
+   "asking_price": "",
+   "est_land_value": "",
+   "land_note": "Price not stated",
+   "deal_route": "Listing (verify)",
+   "entitlement_status": "Golf; none",
+   "approval_case": "No evidence",
+   "opposition_risk": "Unknown",
+   "next_step": "Verify listing",
+   "uw": {
+    "prototype": "A",
+    "prototype_name": "Continuum campus (RiverSpring-style)",
+    "units": 280,
+    "gsf": 320000,
+    "revenue": 24232781,
+    "opex": 14529264,
+    "taxes": 1680000,
+    "reserves": 140000,
+    "noi": 7883517,
+    "noi_margin": 0.3253,
+    "hard": 103680000,
+    "site_work": 12285000,
+    "ffe": 6160000,
+    "soft": 23193000,
+    "carry": 9445670,
+    "leaseup": 15767033,
+    "contingency": 5798250,
+    "cost_ex_land": 176328953,
+    "leaseup_months": 48,
+    "cost_per_unit_ex_land": 629746,
+    "lines": [
+     {
+      "care": "IL",
+      "units": 150,
+      "monthly_rate": 5440,
+      "revenue": 9379757,
+      "opex": 5065069
+     },
+     {
+      "care": "AL",
+      "units": 90,
+      "monthly_rate": 8800,
+      "revenue": 9513504,
+      "opex": 5993508
+     },
+     {
+      "care": "MC",
+      "units": 40,
+      "monthly_rate": 12000,
+      "revenue": 5339520,
+      "opex": 3470688
+     }
+    ],
+    "land_cost": 4200000,
+    "land_cost_basis": "market comp/unit",
+    "total_cost": 180528953,
+    "yoc": 0.0437,
+    "max_land": -55044076,
+    "max_land_per_unit": -196586,
+    "land_cushion": -59244076,
+    "value_at_exit_cap": 121284877,
+    "profit_on_cost": -0.328,
+    "breakeven_rent_ratio": 1.397,
+    "yoc_by_tax_structure": {
+     "full_tax": 0.0437,
+     "pilot": 0.0483,
+     "nonprofit_exempt": 0.052
+    },
+    "max_land_by_tax_structure": {
+     "full_tax": -55044076,
+     "pilot": -42120999,
+     "nonprofit_exempt": -31782538
+    },
+    "loan": 108317372,
+    "annual_debt_service": 8430533,
+    "dscr": 0.94,
+    "debt_yield": 0.0728,
+    "equity": 72211581,
+    "stress": {
+     "yoc_rent_down_10": 0.0383,
+     "yoc_cost_up_10": 0.0398,
+     "yoc_both": 0.0349
+    },
+    "entrance_fee": {
+     "avg_fee": 317937,
+     "fee_pool": 44352189,
+     "il_cost": 114240978,
+     "coverage": 0.39,
+     "viable": false,
+     "developer_fee": 8123803
+    }
+   },
+   "scores": {
+    "approval": 40,
+    "rent_support": 27,
+    "need": 48,
+    "yield": 7,
+    "total": 30.0
+   },
+   "kills": [],
+   "verdict": "Pass",
+   "verdict_reason": "Below 6.5% under every structure (best 5.20%)",
+   "rank": 40,
+   "research": {
+    "sources": [
+     "https://hartfordbusiness.com/article/as-3-ct-golf-courses-go-up-for-sale-advocates-say-slide-in-course-numbers-is-slowing/"
+    ],
+    "zoning": "Unknown",
+    "senior_use_path": "Unknown",
+    "prior_use": "18-hole golf course (Verified)",
+    "sewer_water": "Unknown",
+    "approval_evidence": "None found"
+   },
+   "diligence": [
+    {
+     "key": "control",
+     "item": "Site control: LOI / option / JV term sheet",
+     "status": "Not started"
+    },
+    {
+     "key": "title",
+     "item": "Title commitment and survey (ALTA)",
+     "status": "Not started"
+    },
+    {
+     "key": "phase1",
+     "item": "Phase I ESA (Phase II if RECs)",
+     "status": "Not started"
+    },
+    {
+     "key": "wetlands",
+     "item": "Wetlands delineation, FEMA flood zone, NJ Highlands / NYC watershed check",
+     "status": "Not started"
+    },
+    {
+     "key": "geotech",
+     "item": "Geotechnical borings, rock and groundwater",
+     "status": "Not started"
+    },
+    {
+     "key": "utilities",
+     "item": "Sewer capacity and water will-serve letters; power",
+     "status": "Not started"
+    },
+    {
+     "key": "traffic",
+     "item": "Traffic study and DOT access permit",
+     "status": "Not started"
+    },
+    {
+     "key": "zoning",
+     "item": "Zoning opinion: permitted / special permit / rezoning path",
+     "status": "Not started"
+    },
+    {
+     "key": "seqr",
+     "item": "Environmental review (SEQRA / NJ / CEPA) scope",
+     "status": "Not started"
+    },
+    {
+     "key": "license",
+     "item": "State licensure / CN path (NY ALR-EALR, NJ expedited CN, CT ALSA) or Article 46 / CCRC registration",
+     "status": "Not started"
+    },
+    {
+     "key": "market",
+     "item": "Third-party market study: PMA, penetration, capture, rate shop",
+     "status": "Not started"
+    },
+    {
+     "key": "fiscal",
+     "item": "Fiscal impact study for the town",
+     "status": "Not started"
+    },
+    {
+     "key": "tax",
+     "item": "Assessor estimate and PILOT / abatement term sheet",
+     "status": "Not started"
+    },
+    {
+     "key": "operator",
+     "item": "Operator LOI and management agreement terms",
+     "status": "Not started"
+    },
+    {
+     "key": "capital",
+     "item": "Construction lender term sheet; equity commitment",
+     "status": "Not started"
+    }
+   ],
+   "regulatory": {
+    "rental_il": "Local zoning (P&Z special permit / text amendment)",
+    "al_mc": "No CON (CGS 19a-638(b)(5)); ALSA licence + managed residential community",
+    "snf": "Moratorium, except CCRC beds not used for Medicaid",
+    "ccrc": "DSS registration; for-profit precedent (Edgehill)",
+    "tax_tool": "CGS 12-65b tax abatement agreement"
+   },
+   "lat_prior": "41.55",
+   "lon_prior": "-73.41",
+   "pin_basis": "Verified address or owner parcel",
+   "pin_address": "401 Danbury Rd, New Milford"
+  },
+  {
    "id": "CT-06",
    "name": "Former Briarwood College campus",
    "municipality": "Southington",
@@ -9226,15 +9226,15 @@
     "noi": 6940929,
     "noi_margin": 0.2938,
     "hard": 95385600,
-    "site_work": 7534800,
+    "site_work": 8813025,
     "ffe": 6160000,
-    "soft": 20584080,
-    "carry": 8428191,
+    "soft": 20839725,
+    "carry": 8527893,
     "leaseup": 11568214,
-    "contingency": 5146020,
-    "cost_ex_land": 154806906,
+    "contingency": 5209931,
+    "cost_ex_land": 156504388,
     "leaseup_months": 40,
-    "cost_per_unit_ex_land": 552882,
+    "cost_per_unit_ex_land": 558944,
     "lines": [
      {
       "care": "IL",
@@ -9260,53 +9260,53 @@
     ],
     "land_cost": 5000000,
     "land_cost_basis": "estimate",
-    "total_cost": 159806906,
-    "yoc": 0.0434,
-    "max_land": -48023383,
-    "max_land_per_unit": -171512,
-    "land_cushion": -53023383,
+    "total_cost": 161504388,
+    "yoc": 0.043,
+    "max_land": -49720865,
+    "max_land_per_unit": -177575,
+    "land_cushion": -54720865,
     "value_at_exit_cap": 106783523,
-    "profit_on_cost": -0.332,
-    "breakeven_rent_ratio": 1.364,
+    "profit_on_cost": -0.339,
+    "breakeven_rent_ratio": 1.376,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0434,
-     "pilot": 0.0509,
-     "nonprofit_exempt": 0.0568
+     "full_tax": 0.043,
+     "pilot": 0.0503,
+     "nonprofit_exempt": 0.0562
     },
     "max_land_by_tax_structure": {
-     "full_tax": -48023383,
-     "pilot": -29715691,
-     "nonprofit_exempt": -15069537
+     "full_tax": -49720865,
+     "pilot": -31413173,
+     "nonprofit_exempt": -16767019
     },
-    "loan": 95884144,
-    "annual_debt_service": 7462833,
-    "dscr": 0.93,
-    "debt_yield": 0.0724,
-    "equity": 63922762,
+    "loan": 96902633,
+    "annual_debt_service": 7542104,
+    "dscr": 0.92,
+    "debt_yield": 0.0716,
+    "equity": 64601755,
     "stress": {
-     "yoc_rent_down_10": 0.0375,
-     "yoc_cost_up_10": 0.0396,
-     "yoc_both": 0.0342
+     "yoc_rent_down_10": 0.0371,
+     "yoc_cost_up_10": 0.0392,
+     "yoc_both": 0.0338
     },
     "entrance_fee": {
      "avg_fee": 284047,
      "fee_pool": 39624522,
-     "il_cost": 101127808,
+     "il_cost": 102201996,
      "coverage": 0.39,
      "viable": false,
-     "developer_fee": 7191311
+     "developer_fee": 7267697
     }
    },
    "scores": {
     "approval": 40,
     "rent_support": 25,
     "need": 50,
-    "yield": 7,
-    "total": 29.9
+    "yield": 6,
+    "total": 29.7
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 5.68%)",
+   "verdict_reason": "Below 6.5% under every structure (best 5.62%)",
    "rank": 41,
    "research": {
     "sources": [
@@ -9448,15 +9448,15 @@
     "noi": 6670577,
     "noi_margin": 0.3146,
     "hard": 103680000,
-    "site_work": 8190000,
+    "site_work": 12285000,
     "ffe": 6160000,
-    "soft": 22374000,
-    "carry": 9126260,
+    "soft": 23193000,
+    "carry": 9445670,
     "leaseup": 13341154,
-    "contingency": 5593500,
-    "cost_ex_land": 168464914,
+    "contingency": 5798250,
+    "cost_ex_land": 173903074,
     "leaseup_months": 48,
-    "cost_per_unit_ex_land": 601660,
+    "cost_per_unit_ex_land": 621082,
     "lines": [
      {
       "care": "IL",
@@ -9482,41 +9482,41 @@
     ],
     "land_cost": 4300000,
     "land_cost_basis": "ask",
-    "total_cost": 172764914,
-    "yoc": 0.0386,
-    "max_land": -65840652,
-    "max_land_per_unit": -235145,
-    "land_cushion": -70140652,
+    "total_cost": 178203074,
+    "yoc": 0.0374,
+    "max_land": -71278812,
+    "max_land_per_unit": -254567,
+    "land_cushion": -75578812,
     "value_at_exit_cap": 102624262,
-    "profit_on_cost": -0.406,
-    "breakeven_rent_ratio": 1.537,
+    "profit_on_cost": -0.424,
+    "breakeven_rent_ratio": 1.579,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0386,
-     "pilot": 0.0435,
-     "nonprofit_exempt": 0.0474
+     "full_tax": 0.0374,
+     "pilot": 0.0421,
+     "nonprofit_exempt": 0.0459
     },
     "max_land_by_tax_structure": {
-     "full_tax": -65840652,
-     "pilot": -52917576,
-     "nonprofit_exempt": -42579114
+     "full_tax": -71278812,
+     "pilot": -58355736,
+     "nonprofit_exempt": -48017274
     },
-    "loan": 103658948,
-    "annual_debt_service": 8067960,
-    "dscr": 0.83,
-    "debt_yield": 0.0644,
-    "equity": 69105966,
+    "loan": 106921844,
+    "annual_debt_service": 8321917,
+    "dscr": 0.8,
+    "debt_yield": 0.0624,
+    "equity": 71281230,
     "stress": {
-     "yoc_rent_down_10": 0.0337,
-     "yoc_cost_up_10": 0.0352,
-     "yoc_both": 0.0307
+     "yoc_rent_down_10": 0.0327,
+     "yoc_cost_up_10": 0.0341,
+     "yoc_both": 0.0298
     },
     "entrance_fee": {
      "avg_fee": 278195,
      "fee_pool": 38808166,
-     "il_cost": 109327797,
-     "coverage": 0.35,
+     "il_cost": 112769133,
+     "coverage": 0.34,
      "viable": false,
-     "developer_fee": 7774421
+     "developer_fee": 8019138
     }
    },
    "scores": {
@@ -9528,7 +9528,7 @@
    },
    "kills": [],
    "verdict": "Pass",
-   "verdict_reason": "Below 6.5% under every structure (best 4.74%)",
+   "verdict_reason": "Below 6.5% under every structure (best 4.59%)",
    "rank": 42,
    "research": {
     "sources": [
@@ -9667,15 +9667,15 @@
     "noi": 6287989,
     "noi_margin": 0.3053,
     "hard": 103680000,
-    "site_work": 8190000,
+    "site_work": 12285000,
     "ffe": 6160000,
-    "soft": 22374000,
-    "carry": 9126260,
+    "soft": 23193000,
+    "carry": 9445670,
     "leaseup": 12575978,
-    "contingency": 5593500,
-    "cost_ex_land": 167699738,
+    "contingency": 5798250,
+    "cost_ex_land": 173137898,
     "leaseup_months": 48,
-    "cost_per_unit_ex_land": 598928,
+    "cost_per_unit_ex_land": 618350,
     "lines": [
      {
       "care": "IL",
@@ -9701,41 +9701,41 @@
     ],
     "land_cost": 13000000,
     "land_cost_basis": "ask",
-    "total_cost": 180699738,
-    "yoc": 0.0348,
-    "max_land": -70961446,
-    "max_land_per_unit": -253434,
-    "land_cushion": -83961446,
+    "total_cost": 186137898,
+    "yoc": 0.0338,
+    "max_land": -76399606,
+    "max_land_per_unit": -272856,
+    "land_cushion": -89399606,
     "value_at_exit_cap": 96738292,
-    "profit_on_cost": -0.465,
-    "breakeven_rent_ratio": 1.662,
+    "profit_on_cost": -0.48,
+    "breakeven_rent_ratio": 1.705,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0348,
-     "pilot": 0.0398,
-     "nonprofit_exempt": 0.0439
+     "full_tax": 0.0338,
+     "pilot": 0.0387,
+     "nonprofit_exempt": 0.0426
     },
     "max_land_by_tax_structure": {
-     "full_tax": -70961446,
-     "pilot": -56961446,
-     "nonprofit_exempt": -45761446
+     "full_tax": -76399606,
+     "pilot": -62399606,
+     "nonprofit_exempt": -51199606
     },
-    "loan": 108419843,
-    "annual_debt_service": 8438508,
-    "dscr": 0.75,
-    "debt_yield": 0.058,
-    "equity": 72279895,
+    "loan": 111682739,
+    "annual_debt_service": 8692465,
+    "dscr": 0.72,
+    "debt_yield": 0.0563,
+    "equity": 74455159,
     "stress": {
-     "yoc_rent_down_10": 0.0302,
-     "yoc_cost_up_10": 0.0318,
-     "yoc_both": 0.0277
+     "yoc_rent_down_10": 0.0294,
+     "yoc_cost_up_10": 0.0309,
+     "yoc_both": 0.0269
     },
     "entrance_fee": {
      "avg_fee": 308186,
      "fee_pool": 42991907,
-     "il_cost": 114349053,
-     "coverage": 0.38,
+     "il_cost": 117790389,
+     "coverage": 0.36,
      "viable": false,
-     "developer_fee": 8131488
+     "developer_fee": 8376205
     }
    },
    "scores": {
@@ -9888,15 +9888,15 @@
     "noi": 6763517,
     "noi_margin": 0.2791,
     "hard": 111744000,
-    "site_work": 8827000,
+    "site_work": 6935500,
     "ffe": 6160000,
-    "soft": 24114200,
-    "carry": 9804938,
+    "soft": 23735900,
+    "carry": 9657401,
     "leaseup": 11272528,
-    "contingency": 6028550,
-    "cost_ex_land": 177951216,
+    "contingency": 5933975,
+    "cost_ex_land": 175439304,
     "leaseup_months": 40,
-    "cost_per_unit_ex_land": 635540,
+    "cost_per_unit_ex_land": 626569,
     "lines": [
      {
       "care": "IL",
@@ -9922,41 +9922,41 @@
     ],
     "land_cost": 14000000,
     "land_cost_basis": "market comp/unit",
-    "total_cost": 191951216,
-    "yoc": 0.0352,
-    "max_land": -73897108,
-    "max_land_per_unit": -263918,
-    "land_cushion": -87897108,
+    "total_cost": 189439304,
+    "yoc": 0.0357,
+    "max_land": -71385196,
+    "max_land_per_unit": -254947,
+    "land_cushion": -85385196,
     "value_at_exit_cap": 104054108,
-    "profit_on_cost": -0.458,
-    "breakeven_rent_ratio": 1.589,
+    "profit_on_cost": -0.451,
+    "breakeven_rent_ratio": 1.572,
     "yoc_by_tax_structure": {
-     "full_tax": 0.0352,
-     "pilot": 0.0425,
-     "nonprofit_exempt": 0.0484
+     "full_tax": 0.0357,
+     "pilot": 0.0431,
+     "nonprofit_exempt": 0.049
     },
     "max_land_by_tax_structure": {
-     "full_tax": -73897108,
-     "pilot": -52358647,
-     "nonprofit_exempt": -35127878
+     "full_tax": -71385196,
+     "pilot": -49846735,
+     "nonprofit_exempt": -32615966
     },
-    "loan": 115170730,
-    "annual_debt_service": 8963942,
-    "dscr": 0.75,
-    "debt_yield": 0.0587,
-    "equity": 76780486,
+    "loan": 113663582,
+    "annual_debt_service": 8846638,
+    "dscr": 0.76,
+    "debt_yield": 0.0595,
+    "equity": 75775722,
     "stress": {
-     "yoc_rent_down_10": 0.0302,
-     "yoc_cost_up_10": 0.0322,
-     "yoc_both": 0.0276
+     "yoc_rent_down_10": 0.0306,
+     "yoc_cost_up_10": 0.0327,
+     "yoc_both": 0.028
     },
     "entrance_fee": {
      "avg_fee": 505609,
      "fee_pool": 70532513,
-     "il_cost": 121469129,
-     "coverage": 0.58,
+     "il_cost": 119879560,
+     "coverage": 0.59,
      "viable": false,
-     "developer_fee": 8637805
+     "developer_fee": 8524769
     }
    },
    "scores": {

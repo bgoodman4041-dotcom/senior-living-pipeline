@@ -5,11 +5,11 @@ import { useState } from "react";
 
 const NAV = [
   { href: "/", label: "Pipeline" },
-  { href: "/#shortlist", label: "Shortlist" },
   { href: "/anchor", label: "Anchor deal" },
   { href: "/markets", label: "Markets" },
   { href: "/operators", label: "Operators" },
   { href: "/news", label: "News" },
+  { href: "/investors", label: "Investor FAQ" },
   { href: "/diligence", label: "Diligence" },
   { href: "/data-room", label: "Data room" },
   { href: "/model", label: "The Model" },

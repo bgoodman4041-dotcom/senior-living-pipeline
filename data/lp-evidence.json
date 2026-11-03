@@ -65,7 +65,7 @@
    "verdict": "Supported. The model's $10,780 private-pay rate sits 8% above the Class A median and below The Delaney, inside the 15-20% premium CBRE says new development needs. No change.",
    "src": [
     [
-     "Caring.com Florham Park listings",
+     "Caring.com Florham Park listings (listed monthly prices, Nov 2026; not a rate shop)",
      "https://caring.com/senior-living/assisted-living/new-jersey/florham-park"
     ]
    ]
@@ -141,7 +141,7 @@
    "verdict": "Recalibrated from $9,900 to $9,680 to sit at the Class A median. Cortlandt itself has no Class A product; the rate assumes Benchmark prices it like Mount Pleasant.",
    "src": [
     [
-     "Caring.com Yorktown Heights listings",
+     "Caring.com Yorktown Heights listings (listed monthly prices, Nov 2026; not a rate shop)",
      "https://www.caring.com/senior-living/assisted-living/new-york/yorktown-heights"
     ],
     [
@@ -149,7 +149,7 @@
      "https://www.aplaceformom.com/assisted-living/new-york/westchester-county"
     ],
     [
-     "Caring.com Mohegan Lake / Cortlandt Manor",
+     "Caring.com Mohegan Lake / Cortlandt Manor (listed monthly prices, Nov 2026; not a rate shop)",
      "https://www.caring.com/senior-living/assisted-living/new-york/mohegan-lake"
     ]
    ]
@@ -196,7 +196,7 @@
    "verdict": "Not supported at the old $7,920: no Dutchess listing is above $6,000. Recalibrated to $6,820 (30% over the area average, generous for a first Class A building). At that rate Poughkeepsie falls below 6.5% under every structure and drops to Pass.",
    "src": [
     [
-     "Caring.com Poughkeepsie",
+     "Caring.com Poughkeepsie (listed monthly prices, Nov 2026; not a rate shop)",
      "https://www.caring.com/senior-living/assisted-living/new-york/poughkeepsie"
     ],
     [
@@ -256,7 +256,7 @@
    "verdict": "Recalibrated from $10,120 to $9,680, 8% over the Class A median. The campus now works only as an entrance-fee life plan, not as a rental.",
    "src": [
     [
-     "Caring.com Trumbull",
+     "Caring.com Trumbull (listed monthly prices, Nov 2026; not a rate shop)",
      "https://www.caring.com/senior-living/connecticut/trumbull"
     ]
    ]
@@ -312,7 +312,7 @@
    ],
    [
     "Arbor Terrace Florham Park, NJ",
-    "100 beds (about 80 units)",
+    "100 AL beds (units not stated in the CN)",
     "CN total project cost $22.12M",
     null,
     null,
@@ -338,7 +338,7 @@
    ]
   ],
   "psf_src": "https://seniorhousingnews.com/2026/02/03/assisted-living-construction-costs-rise-in-2026-independent-living-costs-remain-flat/",
-  "verdict": "Two independent comps (Benchmark East Brunswick and the Cortlandt site plan itself) show about 969 SF a unit for AL/MC, against the 828 we used. Building size was raised to AL 950 and MC 800 SF a unit (about 900 on the 114-unit mix, still about 7% under the comps), lifting all-in cost on a 114-unit pad from about $505K to $540K a unit. That now sits between the Benchmark loan-implied figure and the Peapack CN budget. Our $342-360/SF hard cost is at the low end of Weitz's national high-level AL range before any New York premium, so a GC estimate is the remaining test (Ben to commission)."
+  "verdict": "Two independent comps (Benchmark East Brunswick and the Cortlandt site plan itself) show about 969 SF a unit for AL/MC, against the 828 we used. Building size was raised to AL 950 and MC 800 SF a unit (about 900 on the 114-unit mix, still about 7% under the comps), lifting all-in cost on a 114-unit pad from about $505K to about $547K a unit. That now sits between the Benchmark loan-implied figure and the Peapack CN budget. Our $342-360/SF hard cost sits in the upper part of Weitz's national mid-level AL range ($280-356) and below its high-level range ($363-452), before any New York-area premium; the +10% downside case takes it to about $376-396, the bottom of the high-level range, so a GC estimate is the remaining test (Ben to commission)."
  },
  "control": {
   "NJ-04": {
@@ -424,11 +424,15 @@
  "redevelopment": {
   "NJ-04": {
    "status": "Designated",
-   "text": "The Borough declared the ASCO site an Area in Need of Redevelopment (Resolution 20-94) and a draft ASCO/50 Hanover Road Redevelopment Plan is pending adoption; the amended Fair Share Plan proposes 49 affordable age-restricted units there. A long-term tax exemption (PILOT) under N.J.S.A. 40A:20 is legally available once the plan is adopted.",
+   "text": "The Borough declared the ASCO site an Area in Need of Redevelopment (Resolution 20-94) and a draft ASCO/50 Hanover Road Redevelopment Plan is pending adoption; the amended Fair Share Plan lists both in its appendix. Garden Homes' plan is 305 age-restricted homes, 61 of them affordable (NJBIZ). A long-term tax exemption (PILOT) under N.J.S.A. 40A:20 is legally available once the plan is adopted.",
    "src": [
     [
      "Florham Park Amended Housing Element and Fair Share Plan, Jan 2026",
      "https://www.florhamparknj.gov/media/Public Notices/2026/2026-01-25 - Florham Park - Amended Housing Element and Fair Share Plan.pdf"
+    ],
+    [
+     "NJBIZ, Oct 29 2025",
+     "https://njbiz.com/garden-homes-florham-park-55-acre-305-units"
     ]
    ]
   },
@@ -509,7 +513,7 @@
     "place": "Peapack-Gladstone, Somerset County, NJ",
     "program": "96 units / 115 AL beds, 32 of them secured dementia; $57.2M project cost",
     "status": "Expedited CN granted July 10, 2026, valid to July 2031. Applicant is a local entity (Peapack Senior Living, Inc.).",
-    "fit": "Good fit: a high-income Somerset Hills market and a CN already in hand. About $596K a unit, close to ATCO's $540K pad.",
+    "fit": "Good fit: a high-income Somerset Hills market and a CN already in hand. About $596K a unit, close to ATCO's $547K pad.",
     "route": "Offer construction (GMP) and preferred or co-GP equity. A local sponsor with a fresh CN is the likeliest to need both.",
     "tone": "go",
     "src": [

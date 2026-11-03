@@ -24,7 +24,7 @@ check(d.sites.length === 44, "44 sites");
 const short = d.sites.filter((s: any) => s.verdict === "Pursue" || s.verdict === "Pursue-structured");
 check(short.length === d.funnel.shortlist, `shortlist count ${short.length} vs funnel ${d.funnel.shortlist}`);
 const fp = d.sites.find((s: any) => s.id === "NJ-04");
-check(fp.uw.yoc === 0.0727 && fp.uw.yoc_by_tax_structure.pilot === 0.0805 && Math.round(fp.uw.max_land / 1e5) === 130, "Florham Park acceptance figures (norm lease-up, comp-based GSF, 2026-11-03)");
+check(fp.uw.yoc === 0.0724 && fp.uw.yoc_by_tax_structure.pilot === 0.0802 && Math.round(fp.uw.max_land / 1e5) === 128, "Florham Park acceptance figures (norm lease-up, comp-based GSF, site work on site acreage, 2026-11-03)");
 const ids = new Set(d.sites.map((s: any) => s.id));
 check(ids.size === d.sites.length, "unique ids");
 for (const s of d.sites) {
@@ -51,6 +51,20 @@ for (const s of d.sites) {
     if (!r) continue;
     check(sj[s.id]?.rec === r.rec.key, `${s.id} structuring.json rec current (run scripts/export_structuring.ts)`);
     check(Math.abs(sj[s.id]?.opts.find((o: any) => o.key === r.rec.key).down.profit - r.rec.down.profit) < 1, `${s.id} structuring.json downside profit current`);
+  }
+}
+// hand-written figures in data text must match the live model (they went stale once; this keeps them honest)
+{
+  const { structuring } = await import("../lib/structuring.ts");
+  const { capitalPlan: cpl } = await import("../lib/capital.ts");
+  const flags = JSON.parse(readFileSync(new URL("../data/ic-flags.json", import.meta.url), "utf8"));
+  const ops = readFileSync(new URL("../data/operators.json", import.meta.url), "utf8");
+  const m1 = (v: number) => `$${(Math.abs(v) / 1e6).toFixed(1)}M`;
+  const fpS = structuring(fp, d.markets, d.assumptions)!;
+  check(flags["NJ-04"].text.includes(`about ${m1(fpS.rec.down.profit)} of cushion`), `ic-flags NJ-04 cushion text vs model ${m1(fpS.rec.down.profit)}`);
+  const rb = d.sites.find((s: any) => s.id === "NY-01"), ef = cpl(rb, d.assumptions).efCase!;
+  for (const v of [ef.taxable.profit, ef.nonprofit.profit, rb.uw.total_cost * d.assumptions.entrance_fee.developer_fee_pct]) {
+    check(flags["NY-01"].text.includes(m1(v)) && ops.includes(m1(v)), `Rye Brook figure ${m1(v)} in ic-flags and operators text`);
   }
 }
 console.log(`${n - fail}/${n} checks passed`);

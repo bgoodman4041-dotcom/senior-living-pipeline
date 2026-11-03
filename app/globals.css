@@ -495,3 +495,5 @@ button.chip[aria-pressed="true"]{background:var(--atco-purple);border-color:var(
 .memo-keep{break-inside:avoid}
 /* contrast: links on tinted callouts and in caption lines */
 .callout a, .verdict-bar .cap a, .need-bar .cap a, .cap a { color: #23608f; }
+/* no sideways page scroll on phones; clip (not hidden) keeps sticky headers working */
+html, body { overflow-x: clip; }

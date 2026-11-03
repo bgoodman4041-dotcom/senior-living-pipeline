@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <div className="links" style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "flex-start" }}>
               <a href="/">Pipeline</a><a href="/#shortlist">Shortlist</a><a href="/markets">Markets</a>
-              <a href="/operators">Operators</a><a href="/news">News</a><a href="/diligence">LP diligence</a><a href="/data-room">Data room</a><a href="/model">The Model</a><a href="/method">Methodology</a><a href="/method#assumptions">Assumptions</a>
+              <a href="/operators">Operators</a><a href="/news">News</a><a href="/investors">Investor FAQ</a><a href="/anchor">Anchor deal</a><a href="/diligence">LP diligence</a><a href="/data-room">Data room</a><a href="/model">The Model</a><a href="/method">Methodology</a><a href="/method#assumptions">Assumptions</a>
             </div>
             <div className="xs" style={{ width: "100%", borderTop: "1px solid rgba(255,255,255,.14)", paddingTop: 14 }}>
               © {new Date().getFullYear()} ATCO Properties &amp; Management, LLC. Confidential deal flow. Basemaps and imagery © Esri, HERE, Garmin, Maxar, Earthstar Geographics and the GIS user community; © OpenStreetMap contributors. Parcels: NJGIN, NYS ITS GIS, CT OPM.

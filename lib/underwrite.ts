@@ -82,6 +82,9 @@ export function underwrite(site: Dict, markets: Dict[], a: Dict, w: WhatIf = {})
       mix: custom,
     };
     protoKey = protoKey + "*";
+  } else if (num(site.acres, 0)) {
+    // site work is priced on the site's own acreage (capped at 1.5x the prototype's typical site), not the typical site
+    proto = { ...proto, site_acres_typ: Math.min(num(site.acres, 0) as number, proto.site_acres_typ * 1.5) };
   }
   const taxPerUnit = w.taxPerUnit ?? (num(site.tax_per_unit, market.tax_per_unit) as number);
   const costFactor = num(site.cost_factor, 1.0) as number;

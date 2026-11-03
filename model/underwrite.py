@@ -262,6 +262,9 @@ def underwrite_site(site: dict, markets: dict, a: dict) -> dict:
                  "site_acres_typ": min(num(site.get("acres"), proto["site_acres_typ"]), proto["site_acres_typ"] * 1.5),
                  "mix": custom}
         proto_key = proto_key + "*"
+    elif num(site.get("acres"), 0):
+        # site work is priced on the site's own acreage (capped at 1.5x the prototype's typical site), not the typical site
+        proto = dict(proto, site_acres_typ=min(num(site.get("acres"), 0), proto["site_acres_typ"] * 1.5))
     tax_per_unit = num(site.get("tax_per_unit"), market["tax_per_unit"])
     pf = prototype_proforma(proto, a, market, tax_per_unit, num(site.get("cost_factor"), 1.0))
 
