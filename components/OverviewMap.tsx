@@ -35,6 +35,10 @@ export default function OverviewMap({ sites, legend, yocLabel }: { sites: MapSit
       });
       m.addControl(new ml.NavigationControl({ showCompass: false }), "bottom-right");
       m.addControl(new ml.FullscreenControl(), "bottom-right");
+      if (el.current.clientWidth < 560 && sites.length) {
+        const xs = sites.map((s) => s.lon), ys = sites.map((s) => s.lat);
+        m.fitBounds([[Math.min(...xs), Math.min(...ys)], [Math.max(...xs), Math.max(...ys)]], { padding: { top: 60, bottom: 24, left: 14, right: 14 }, duration: 0 });
+      }
       m.on("load", () => {
         m.addSource("rings", { type: "geojson", data: { type: "FeatureCollection", features: RINGS.map((r) => circle(MIDTOWN, r.mi)) } });
         m.addLayer({ id: "rings-line", type: "line", source: "rings", paint: { "line-color": "#403393", "line-width": 1.2, "line-dasharray": [3, 3], "line-opacity": 0.55 } });

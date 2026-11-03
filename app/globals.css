@@ -361,3 +361,4 @@ button.chip[aria-pressed="true"]{background:var(--atco-purple);border-color:var(
 @media (max-width: 720px) { .map-status { top: auto; bottom: 8px; left: auto; right: 56px; transform: none; font-size: 11px; padding: 4px 8px; white-space: normal; max-width: 55%; } .map-legend { max-width: 58%; line-height: 1.25; } .map-legend .row { margin: 2px 0; gap: 6px; } .map-tools .seg button { padding: 5px 8px; font-size: 11px; } }
 @media (max-width:640px){.tl-legend{display:none !important}}
 @media (max-width: 720px) { .map-date { top: auto; bottom: 30px; left: auto; right: 52px; font-size: 10px; padding: 3px 6px; } }
+@media (max-width: 720px) { .maplibregl-ctrl-attrib-inner { font-size: 9px; max-width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } }
