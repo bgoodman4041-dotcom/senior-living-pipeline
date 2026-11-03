@@ -60,7 +60,27 @@ export default function CapitalDeployment({ site, a }: { site: any; a: any }) {
   ];
   return (
     <div className="grid" style={{ gap: 18, gridTemplateColumns: "minmax(0, 1fr)" }}>
-      {ef && <div className="callout">Entrance-fee campus: rental returns below are shown for completeness only. This site is judged on fee coverage and presales (see Entrance fees); first-generation fees retire the temporary debt.</div>}
+      {ef && p.efCase && (
+        <div className="card card-pad">
+          <h3>Entrance-fee returns: the case this site is judged on</h3>
+          <p className="small" style={{ marginTop: 0 }}>First-generation IL fees ({usdM(p.efCase.taxable.feePool)} at {pct(a.entrance_fee.presale_occupancy, 0)} presale) arrive as units fill during lease-up and retire the construction loan first. IL monthly service fees are modeled at {pct(CAP.efMonthlyPct, 0)} of the rental rate. The rental returns further down are shown for reference only.</p>
+          <div className="table-wrap"><table className="t"><thead><tr><th></th><th className="num">For-profit<br />owner</th><th className="num">Nonprofit<br />sponsor</th></tr></thead><tbody>
+            {([
+              ["Stabilized NOI (today)", usdM(p.efCase.taxable.noi, 1), usdM(p.efCase.nonprofit.noi, 1)],
+              ["Construction loan retired by fees", pct(p.efCase.taxable.loanRetiredPct, 0), pct(p.efCase.nonprofit.loanRetiredPct, 0)],
+              ["Fees plus sale value, less total cost", usdM(p.efCase.taxable.profit, 1), usdM(p.efCase.nonprofit.profit, 1)],
+              ["Unlevered IRR", pct(p.efCase.taxable.irrU, 1), pct(p.efCase.nonprofit.irrU, 1)],
+              ["Levered IRR", pct(p.efCase.taxable.irrL, 1), pct(p.efCase.nonprofit.irrL, 1)],
+              ["Equity multiple", mult(p.efCase.taxable.em), mult(p.efCase.nonprofit.em)],
+            ] as [string, string, string][]).map(([k, x, y]) => <tr key={k}><td>{k}</td><td className="num">{x}</td><td className="num">{y}</td></tr>)}
+          </tbody></table></div>
+          <div className={`callout${p.efCase.taxable.profit < 0 ? " warn" : ""}`} style={{ marginTop: 12 }}>
+            {p.efCase.taxable.profit < 0
+              ? <>As a for-profit owner this campus does not return its cost even with entrance fees. It works the way River&apos;s Edge and Broadview did: a nonprofit sponsor owns it tax-exempt, and ATCO earns the {usdM(u.entrance_fee.developer_fee, 1)} development fee ({pct(a.entrance_fee.developer_fee_pct, 1)} of cost) with limited capital at risk.</>
+              : <>Entrance fees retire most of the construction loan, so the equity is back early. A nonprofit sponsor structure adds about {pct(p.efCase.nonprofit.irrL - p.efCase.taxable.irrL, 1)} of levered IRR; ATCO&apos;s development fee would be {usdM(u.entrance_fee.developer_fee, 1)}.</>}
+          </div>
+        </div>
+      )}
       <div className="grid g4">
         <div className="card kpi"><div className="label">Total capitalization</div><div className="v">{usdM(p.uses.total)}</div><div className="s">{usdK(p.uses.total / u.units)} per unit</div></div>
         <div className="card kpi"><div className="label">Equity commitment</div><div className="v">{usdM(p.equityCommit)}</div><div className="s">LP {usdM(p.lp)} · GP / ATCO {usdM(p.gp)}</div></div>

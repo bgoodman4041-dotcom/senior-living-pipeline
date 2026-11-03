@@ -67,7 +67,7 @@ export default function ApprovalPlaybook({ site, a }: { site: any; a: any }) {
         <h3>Path to approval</h3>
         {p.pathNote && <p className="small" style={{ marginTop: 0 }}>{p.pathNote}</p>}
         <Timeline steps={p.steps} total={Math.ceil(p.totalMonths)} />
-        <div className="xs muted" style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 4 }}>
+        <div className="xs muted tl-legend" style={{ display: "flex", gap: 14, flexWrap: "wrap", marginTop: 4 }}>
           <span><span className="sw-i" style={{ background: "#403393" }} />Gate: go / no-go</span>
           <span><span className="sw-i" style={{ background: "#3D86C6" }} />Step</span>
           <span><span className="sw-i" style={{ background: "#76B96A" }} />Runs in parallel</span>

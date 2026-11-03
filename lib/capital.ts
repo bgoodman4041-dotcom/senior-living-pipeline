@@ -15,6 +15,7 @@ export const CAP = {
   permDebtYield: 0.1, permMaxLtv: 0.75, permRate: 0.06, permAmortYears: 35, // HUD 232 style take-out
   retainagePct: 0.1,
   coRepThreshold: 250000,          // change orders above this need investment-committee sign-off
+  efMonthlyPct: 0.7,               // entrance-fee contracts: IL monthly service fee as a share of the rental IL rate
 };
 
 export type Struct = "Fully taxed" | "PILOT" | "Nonprofit exempt" | "Entrance fee";
@@ -111,8 +112,33 @@ export function capitalPlan(s: any, a: any, structOverride?: Struct) {
   const permDs = (permLoan * mr / (1 - Math.pow(1 + mr, -np))) * 12;
   const cashOut = permLoan - cL;
   const equityLeft = equityCommit - cashOut;
+  // entrance-fee case (life-plan campuses): first-generation IL fees arrive as units fill during lease-up and
+  // retire the construction loan first; IL monthly service fees run at efMonthlyPct of the rental rate.
+  type EfCase = { noi: number; noiTrended: number; feePool: number; value: number; irrU: number; irrL: number; em: number; loanRetiredPct: number; yoc: number; profit: number };
+  const efRun = (exempt: boolean): EfCase => {
+    const ilRev = (u.lines || []).filter((l: any) => l.care === "IL").reduce((x: number, l: any) => x + l.revenue, 0);
+    const noiE = noi - ilRev * (1 - CAP.efMonthlyPct) + (exempt ? u.taxes * (1 - a.tax_structures.nonprofit_exempt) : 0);
+    const noiET = noiE * Math.pow(1 + CAP.trend, N / 12);
+    const pool = u.entrance_fee.fee_pool;
+    const fees = months.map((x) => (x.m >= P + B && x.m < N ? pool / (N - P - B) : 0));
+    const valE = noiET / a.exit_cap, saleE = valE * (1 - CAP.saleCostPct);
+    const unlevE = months.map((x, k) => -x.total + fees[k]); unlevE[N] += saleE;
+    let bal = 0, retired = 0; const levE: number[] = [];
+    for (let k = 0; k < months.length; k++) {
+      bal += months[k].loan;
+      const pay = Math.min(bal, fees[k]); bal -= pay; retired += pay;
+      levE.push(-months[k].equity + (fees[k] - pay));
+    }
+    levE[N] += saleE - bal;
+    const back = levE.filter((v) => v > 0).reduce((x, y) => x + y, 0);
+    return { noi: noiE, noiTrended: noiET, feePool: pool, value: valE, irrU: annualize(irr(unlevE)), irrL: annualize(irr(levE)), em: back / equityCommit, loanRetiredPct: retired / (cL || 1), yoc: noiE / total, profit: pool + saleE - total };
+  };
+  // entrance-fee case (life-plan campuses): first-generation IL fees arrive as units fill during lease-up and retire the
+  // construction loan first; IL monthly service fees run at efMonthlyPct of the rental rate. Shown taxable and with a
+  // nonprofit sponsor (RiverSpring / LCS model: tax-exempt operations).
+  const efCase = struct === "Entrance fee" && u.entrance_fee ? { taxable: efRun(false), nonprofit: efRun(true) } : null;
   return {
-    struct, noi, P, B, L, N, months, uses, loanCommit, equityCommit, lp: equityCommit * CAP.lpShare, gp: equityCommit * (1 - CAP.lpShare),
+    struct, noi, P, B, L, N, months, uses, efCase, loanCommit, equityCommit, lp: equityCommit * CAP.lpShare, gp: equityCommit * (1 - CAP.lpShare),
     gates, atRiskPreEntitlement, value, netSale, profit: netSale - total, profitOnCost: (netSale - total) / total,
     yoc: noi / total, irrUnlevered: irrU, irrLevered: irrL, equityMultiple,
     noiPerEquityDollar: noiTrended / equityCommit, valuePerDollar: value / total,

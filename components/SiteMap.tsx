@@ -243,7 +243,7 @@ export default function SiteMap(p: Props) {
           </div>
         </div>
         <div className="xs muted" style={{ marginTop: 8 }}>
-          Pin: {p.pinAddress ? <b>{p.pinAddress}</b> : "research coordinate"} ({p.pinBasis || "approximate"}). The parcel shown is the one under the pin; on campuses and carve-outs the pad may sit on an adjacent lot. Click any parcel line to inspect it, and confirm block/lot against the tax map before LOI. The envelope circle shows the {p.acres}-acre program footprint for scale only. Nearby places{pois.data ? `: ${pois.data.source}, as of ${pois.data.fetchedAt.slice(0, 10)}` : " load from Mapbox Search when configured, otherwise OpenStreetMap"}.
+          Pin: {p.pinAddress ? <b>{p.pinAddress}</b> : "research coordinate"} ({p.pinBasis || "approximate"}). The parcel shown is the one under the pin; on campuses and carve-outs the pad may sit on an adjacent lot. Click any parcel line to inspect it, and confirm block/lot against the tax map before LOI. The envelope circle shows the {p.acres}-acre program footprint for scale only. Nearby places{pois.data ? `: ${pois.data.source}, as of ${pois.data.fetchedAt.slice(0, 10)}` : " load from Mapbox Search when configured, otherwise Esri and OpenStreetMap"}.
         </div>
       </div>
 

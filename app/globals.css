@@ -355,3 +355,8 @@ button.chip[aria-pressed="true"]{background:var(--atco-purple);border-color:var(
 @media (max-width:640px){.timeline{display:none}}
 .approve-strip{border-top:1px solid var(--rule);padding-top:10px;display:grid;gap:3px}.approve-strip>div:first-child{display:flex;justify-content:space-between;align-items:baseline;gap:8px}.approve-strip b{font-size:14px}
 .btn.btn-sm{padding:6px 12px;font-size:10px}
+.callout.warn{border-left-color:#BB2034;background:#fbf1f2}
+.grid > * { min-width: 0; }
+@media (max-width: 640px) { .t td, .t th { padding: 8px 6px; } .card-pad { padding-left: 14px; padding-right: 14px; } }
+@media (max-width: 720px) { .map-status { top: auto; bottom: 8px; left: auto; right: 56px; transform: none; font-size: 11px; padding: 4px 8px; white-space: normal; max-width: 55%; } .map-legend { max-width: 58%; line-height: 1.25; } .map-legend .row { margin: 2px 0; gap: 6px; } .map-tools .seg button { padding: 5px 8px; font-size: 11px; } }
+@media (max-width:640px){.tl-legend{display:none !important}}
