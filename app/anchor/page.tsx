@@ -3,9 +3,12 @@ import ev from "@/data/lp-evidence.json";
 import icFlags from "@/data/ic-flags.json";
 import { siteById, markets, assumptions, HURDLE } from "@/lib/data";
 import { capitalPlan, CAP } from "@/lib/capital";
+import { underwrite } from "@/lib/underwrite";
 import { structuring } from "@/lib/structuring";
 import { waterfall } from "@/lib/waterfall";
 import { buildMassing } from "@/lib/massing";
+import { absorptionFor } from "@/components/Absorption";
+import abData from "@/data/absorption.json";
 import { pct, usdM, int, mult } from "@/lib/format";
 
 export const metadata: Metadata = { title: "Anchor deal · Florham Park", description: "The Florham Park AL/MC pad as an investable deal: test fit, sources and uses, schedule, PILOT path and risk register." };
@@ -51,6 +54,13 @@ export default function Anchor() {
   const ms = mass.stats;
   const P = ft.P, B = ft.B, L = ft.L, N = ft.N;
   const taxSave = u.taxes * (1 - a.tax_structures.pilot);
+  const ab = absorptionFor(ID)!;
+  const abBase = ab.run(abData.assumptions.needRate, u.units), abWood = ab.run(abData.assumptions.needRate, u.units, ab.contingent);
+  const none = st.opts.find((o) => o.key === "none")!;
+  // hard-cost overrun (with contingency, soft cost and carry that scale with it) that takes YOC to the floor
+  let lo = 0, hi = 0.6;
+  for (let k = 0; k < 40; k++) { const mid = (lo + hi) / 2; if (underwrite(s, markets, a, { hardCostPsf: a.hard_cost_psf * (1 + mid) }).yoc >= HURDLE) lo = mid; else hi = mid; }
+  const hcRoom = lo;
 
   const uses: [string, number][] = [["Land (pad carve-out)", ft.uses.land], ["Hard cost", ft.uses.hard], ["Site work", ft.uses.siteWork], ["Contingency", ft.uses.contingency], ["FF&E", ft.uses.ffe], ["Soft cost", ft.uses.soft], ["Construction interest", ft.uses.interest], ["Lease-up reserve", ft.uses.leaseup]];
   const src: [string, number, number][] = [["Senior construction loan", ft.loanCommit, pl.loanCommit], [`LP equity (${pct(CAP.lpShare, 0)})`, ft.lp, pl.lp], [`GP equity, ATCO and operator (${pct(1 - CAP.lpShare, 0)})`, ft.gp, pl.gp]];
@@ -65,7 +75,7 @@ export default function Anchor() {
     ["Design development, GC pricing to GMP", 2, P, "cap"],
     ["Financial close: GMP, construction loan, LP equity", P - 1, P, "cap"],
     ["Construction", P, P + B, "bld"],
-    ["Pre-leasing (target 30% of AL deposits at opening)", P + B - 9, P + B, "lse"],
+    ["Pre-leasing (target 30% of AL deposits at opening; not credited)", P + B - 9, P + B, "lse"],
     ["Lease-up to stabilization", P + B, N, "lse"],
     ["Sale or HUD 232 take-out", N - 1, N + 1, "cap"],
   ];
@@ -81,13 +91,13 @@ export default function Anchor() {
   ];
 
   const risks: [string, "High" | "Med" | "Low", "High" | "Med" | "Low", string, string][] = [
-    ["Absorption: Arbor Terrace's 100 AL beds open in the same borough", "Med", "High", `${flag.text.split(".").slice(0, 1)}. Woodmont's approved, unbuilt 80 AL/MC units in Parsippany sit inside the same market, so the plan is to partner on that approval rather than compete with it. Mitigants: NIC MAP pull before LOI, 9 months of pre-leasing, MC-heavy mix, and the lease-up reserve sized to ${u.leaseup_months} months.`, "Ben / operator"],
+    ["Absorption: Arbor Terrace's 100 AL beds open in the same borough", "High", "High", `The project needs about ${pct(abBase.capture, 0)} of unmet demand in the 7-mile market (lenders like 10–15%), or ${pct(abWood.capture, 0)} if Woodmont's approved, unbuilt 80 AL/MC units in Parsippany are built. This is the weakest point in the deal. Mitigants: NIC MAP pull before LOI, partner on Woodmont rather than compete with it, 9 months of pre-leasing (not credited in the model), and a lease-up reserve sized to ${u.leaseup_months} months.`, "Ben / operator"],
     ["Rents below the Class A comp range", "Low", "High", `Model AL rent $${int((ev.rents as any)[ID].model)} a month sits inside the public comp range (The Delaney, Sunrise, Brookdale). Breakeven at ${pct(u.breakeven_rent_ratio, 0)} of modeled rent. Operator rate shop before LOI.`, "Operator"],
-    ["Hard-cost overrun", "Med", "Med", `GMP at financial close. Combined downside with a GMP still returns ${usdM(gmp.down.profit, 1)}. CSI budget outline is ready for KBE or IMC to price.`, "ATCO construction"],
+    ["Hard-cost overrun", "Med", "High", `Model hard cost is $${int(Math.round(u.hard / u.gsf))}/SF, at the low end of national AL benchmarks before a New York-area premium. Hard cost can rise about ${pct(hcRoom, 0)} before YOC falls to ${pct(HURDLE, 1)}. GMP at financial close; combined downside with a GMP still returns ${usdM(gmp.down.profit, 1)}. CSI budget outline is ready for KBE or IMC to price.`, "ATCO construction"],
     ["Redevelopment plan adopted without the AL/MC pad", "Med", "High", "Make the pad a condition of the Garden Homes LOI; brief the Borough planner before the draft plan goes to the Planning Board. Arbor Terrace shows the Borough has approved AL.", "Ben / land-use counsel"],
     ["PILOT not granted", "Med", "Low", `The deal clears ${pct(HURDLE, 1)} fully taxed; a PILOT is upside (YOC ${pct(u.yoc_by_tax_structure.pilot)}), not a condition.`, "Land-use counsel"],
     ["CN delay or Medicaid condition", "Low", "Med", "Expedited CN track for AL; the 10% Medicaid occupancy within 3 years is already in the underwriting.", "ATCO / operator"],
-    ["Land price above max land", "Low", "High", `Land is underwritten at ${usdM(u.land_cost, 1)} against a max land of ${usdM(u.max_land, 1)}, a ${usdM(u.land_cushion, 1)} cushion. Fix the price in the LOI.`, "Ben"],
+    ["Land price above max land", "Low", "High", `Land is underwritten at ${usdM(u.land_cost, 1)} (county comp per unit) against a max land of ${usdM(u.max_land, 1)}. Garden Homes' recorded basis is about $${int(Math.round(33.43e6 / 55 / 1000))}K–$${int(Math.round(45.81e6 / 55 / 1000))}K an acre, or ${usdM(33.43e6 / 55 * Number(s.acres), 1)}–${usdM(45.81e6 / 55 * Number(s.acres), 1)} for ${s.acres} acres pro rata, so the model's land price leaves room for Garden Homes' profit. Fix the price in the LOI.`, "Ben"],
     ["Rates and exit cap", "Med", "Med", `Exit at ${pct(a.exit_cap, 1)}; the +50 bps case is in the downside. Buy a rate cap at close; HUD 232 take-out at DSCR ${ft.perm.dscr.toFixed(2)}x.`, "ATCO capital markets"],
   ];
   const rc = { High: "bad", Med: "warn", Low: "go" } as const;
@@ -107,6 +117,8 @@ export default function Anchor() {
           <div className="kpi"><div className="label">Downside profit, GMP · + PILOT</div><div className="v">{usdM(gmp.down.profit, 1)} · {usdM(gp.down.profit, 1)}</div></div>
         </div>
         <p className="small" style={{ marginBottom: 24 }}><a className="btn" href={`/memo/${ID}`}>IC memo</a> <a className="btn" href={`/sites/${ID}`}>Full dossier and 3D</a> <a className="btn" href="/models/ATCO-NJ-04-GC-budget.xlsx" download>GC budget (.xlsx)</a> <a className="btn" href={`/models/ATCO-${ID}-proforma.xlsx`} download>Pro forma (.xlsx)</a></p>
+
+        <div className="callout" style={{ marginBottom: 24 }}><b>Where an LP will push.</b> (1) Absorption: about {pct(abBase.capture, 0)} capture of unmet demand, {pct(abWood.capture, 0)} if Woodmont builds, against a 10–15% lender norm; a NIC MAP pull decides it. (2) Rents and hard cost are public-comp checks, not a rate shop or a GC number. (3) No site control yet. (4) The thin {usdM(gmp.down.profit, 1)} GMP-only downside cushion widens to {usdM(gp.down.profit, 1)} only once the PILOT ordinance passes. Each has a gate below; nothing past pursuit cost is spent until they clear.</div>
 
         <h3 className="anchor" id="test-fit">1 · Test fit</h3>
         <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", gap: 18, marginBottom: 24 }}>
@@ -141,6 +153,7 @@ export default function Anchor() {
               <tr><td>Stabilized NOI</td><td className="num">{usdM(ft.noi, 2)}</td><td className="num">{usdM(pl.noi, 2)}</td></tr>
               <tr><td>Project levered IRR · multiple</td><td className="num">{pct(ft.irrLevered, 1)} · {mult(ft.equityMultiple)}</td><td className="num">{pct(pl.irrLevered, 1)} · {mult(pl.equityMultiple)}</td></tr>
               <tr><td>LP net IRR · multiple</td><td className="num">{pct(wft.lpIrr, 1)} · {mult(wft.lpMultiple)}</td><td className="num">{pct(wpl.lpIrr, 1)} · {mult(wpl.lpMultiple)}</td></tr>
+              <tr><td>Project levered IRR at 50% LTC</td><td className="num">{pct(none.base.irrL50, 1)}</td><td className="num">{pct(gp.base.irrL50, 1)}</td></tr>
               <tr><td>At risk before approvals</td><td className="num">{usdM(ft.atRiskPreEntitlement, 2)}</td><td className="num">{usdM(pl.atRiskPreEntitlement, 2)}</td></tr></tbody>
           </table></div></div>
         </div>

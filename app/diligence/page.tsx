@@ -126,6 +126,8 @@ export default function Diligence() {
               <td className="small">{c.program}. {c.status}<div className="xs muted"><Src s={c.src} /></div></td><td className="small">{c.fit}</td><td className="small">{c.route}</td></tr>))}</tbody>
         </table></div></div>
 
+        <p className="small" style={{ marginTop: -12, marginBottom: 24 }}>{ev.candidates.screened_out} <span className="xs muted"><Src s={ev.candidates.screened_src as [string, string][]} /></span></p>
+
         <h3 id="gaps" className="anchor">9 · Still open, and who closes it</h3>
         <div className="card card-pad"><ul className="list-clean small">
           <li><b>NIC MAP pull or third-party market study</b> for Florham Park, Montville and Cortlandt: confirms rents, occupancy and pipeline. <i>Ben: buy or commission.</i></li>

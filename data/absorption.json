@@ -1,27 +1,138 @@
 {
-  "updated": "2026-11-03",
-  "method": "research/market-demand.md section 5: qualified 75+ households x share needing AL/MC care / PMA share, less existing and pipeline competitive units. 7-mile primary market area.",
-  "assumptions": { "hhPerPerson75": 0.67, "needRate": 0.10, "needRateHigh": 0.12, "pmaShare": 0.75, "incomeFloor": 75000 },
-  "sources": [
-    ["ACS 2024 5-year, tracts within 7 miles (B01001 age 75+, B19037 income of 65+ householders), via Census Reporter", "https://censusreporter.org/tables/B19037/"],
-    ["Morris County Housing Options 2024: licensed assisted living residences and unit counts", "https://www.morriscountynj.gov//files/sharedassets/public/v/1/departments/human-services/morris-county-housing-options-2024.pdf"],
-    ["Arbor Terrace Florham Park, 80 AL/MC units, construction from Oct 13 2026", "https://www.newswire.com/news/construction-set-to-begin-on-arbor-terrace-florham-park-senior-living-community"],
-    ["The Delaney at The Green, 220 IL/AL/MC units (AL/MC share estimated)", "https://www.whiting-turner.com/projects/senior-living/the-delaney-at-the-green/"],
-    ["Sunrise of Livingston, AL/MC for 120+ residents (units estimated)", "https://rebusinessonline.com/?p=364793"]
+ "updated": "2026-11-03",
+ "method": "research/market-demand.md section 5: qualified 75+ households x share needing AL/MC care / PMA share, less existing and pipeline competitive units. 7-mile primary market area.",
+ "assumptions": {
+  "hhPerPerson75": 0.67,
+  "needRate": 0.1,
+  "needRateHigh": 0.12,
+  "pmaShare": 0.75,
+  "incomeFloor": 75000
+ },
+ "sources": [
+  [
+   "ACS 2024 5-year, tracts within 7 miles (B01001 age 75+, B19037 income of 65+ householders), via Census Reporter",
+   "https://censusreporter.org/tables/B19037/"
   ],
-  "supply": [
-    ["Brighton Gardens, Florham Park", 116, "v"], ["Brookdale Florham Park", 68, "v"], ["Arden Courts, Whippany", 60, "v"], ["Weston Assisted Living, Whippany", 60, "v"],
-    ["Lester Senior Housing, Whippany", 55, "v"], ["CareOne at Morris, Parsippany", 61, "v"], ["Juniper Village at Chatham", 95, "v"], ["Spring Hills Morristown", 104, "v"],
-    ["Sunrise of Madison", 80, "v"], ["Sunrise of Morris Plains", 90, "v"],
-    ["The Delaney at The Green, AL/MC share", 70, "i"], ["Sunrise of Livingston", 100, "i"], ["CareOne at Livingston AL", 80, "i"], ["Spring Hills Livingston", 90, "i"]
+  [
+   "Morris County Housing Options 2024: licensed assisted living residences and unit counts",
+   "https://www.morriscountynj.gov//files/sharedassets/public/v/1/departments/human-services/morris-county-housing-options-2024.pdf"
   ],
-  "pipeline": [["Arbor Terrace Florham Park (opens late 2027)", 80]],
-  "sites": {
-    "NJ-04": { "pop75": 28680, "share75k": 0.619 },
-    "NJ-06": { "pop75": 23934, "share75k": 0.625 }
+  [
+   "Arbor Terrace Florham Park, 80 AL/MC units, construction from Oct 13 2026",
+   "https://www.newswire.com/news/construction-set-to-begin-on-arbor-terrace-florham-park-senior-living-community"
+  ],
+  [
+   "The Delaney at The Green, 220 IL/AL/MC units (AL/MC share estimated)",
+   "https://www.whiting-turner.com/projects/senior-living/the-delaney-at-the-green/"
+  ],
+  [
+   "Sunrise of Livingston, AL/MC for 120+ residents (units estimated)",
+   "https://rebusinessonline.com/?p=364793"
+  ]
+ ],
+ "supply": [
+  [
+   "Brighton Gardens, Florham Park",
+   116,
+   "v"
+  ],
+  [
+   "Brookdale Florham Park",
+   68,
+   "v"
+  ],
+  [
+   "Arden Courts, Whippany",
+   60,
+   "v"
+  ],
+  [
+   "Weston Assisted Living, Whippany",
+   60,
+   "v"
+  ],
+  [
+   "Lester Senior Housing, Whippany",
+   55,
+   "v"
+  ],
+  [
+   "CareOne at Morris, Parsippany",
+   61,
+   "v"
+  ],
+  [
+   "Juniper Village at Chatham",
+   95,
+   "v"
+  ],
+  [
+   "Spring Hills Morristown",
+   104,
+   "v"
+  ],
+  [
+   "Sunrise of Madison",
+   80,
+   "v"
+  ],
+  [
+   "Sunrise of Morris Plains",
+   90,
+   "v"
+  ],
+  [
+   "The Delaney at The Green, AL/MC share",
+   70,
+   "i"
+  ],
+  [
+   "Sunrise of Livingston",
+   100,
+   "i"
+  ],
+  [
+   "CareOne at Livingston AL",
+   80,
+   "i"
+  ],
+  [
+   "Spring Hills Livingston",
+   90,
+   "i"
+  ]
+ ],
+ "pipeline": [
+  [
+   "Arbor Terrace Florham Park (opens late 2027)",
+   80
+  ]
+ ],
+ "sites": {
+  "NJ-04": {
+   "pop75": 28680,
+   "share75k": 0.619
   },
-  "verdict": {
-    "NJ-04": { "status": "Survives, thin", "text": "Florham Park has the deeper and wealthier 75+ base. With Arbor Terrace in the supply set the project still needs about 30% of unmet demand at a 10% need rate (16% at 12%): above the lender comfort band of 10–15%, so it needs a NIC MAP pull and a pre-leasing plan before LOI." },
-    "NJ-06": { "status": "Hold", "text": "Whippany sits closer to the existing Whippany and Parsippany cluster and has a smaller 75+ base. With Arbor Terrace counted, unmet demand nearly disappears at a 10% need rate, so the pad does not support 114 units on its own. Hold it behind Florham Park; only one of the two should go forward." }
+  "NJ-06": {
+   "pop75": 23934,
+   "share75k": 0.625
   }
+ },
+ "verdict": {
+  "NJ-04": {
+   "status": "Survives, thin",
+   "text": "With Arbor Terrace counted the project needs about 30% of unmet demand at a 10% need rate (16% at 12%), above the 10–15% lender band; about 38% if Woodmont's approved Parsippany building goes ahead. NIC MAP pull and pre-leasing plan before LOI."
+  },
+  "NJ-06": {
+   "status": "Hold",
+   "text": "Whippany sits closer to the existing Whippany and Parsippany cluster and has a smaller 75+ base. With Arbor Terrace counted, unmet demand nearly disappears at a 10% need rate, so the pad does not support 114 units on its own. Hold it behind Florham Park; only one of the two should go forward."
+  }
+ },
+ "contingent": [
+  [
+   "Woodmont Senior Living, Parsippany (52 AL + 28 MC; approved Oct 2022, not built)",
+   80,
+   "https://parsippanyfocus.com/?p=108979"
+  ]
+ ]
 }

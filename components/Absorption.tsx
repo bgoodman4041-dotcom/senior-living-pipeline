@@ -8,14 +8,16 @@ export function absorptionFor(id: string) {
   const hh = s.pop75 * A.hhPerPerson75, q = hh * s.share75k;
   const existing = ab.supply.reduce((x, r) => x + (r[1] as number), 0);
   const pipe = ab.pipeline.reduce((x, r) => x + (r[1] as number), 0);
-  const run = (need: number, units: number) => { const demand = (q * need) / A.pmaShare; const unmet = demand - existing - pipe; return { demand, unmet, capture: unmet > 0 ? units / unmet : Infinity }; };
-  return { s, hh, q, existing, pipe, run, v: (ab.verdict as Record<string, { status: string; text: string }>)[id] };
+  const contingent = (ab.contingent || []).reduce((x, r) => x + (r[1] as number), 0);
+  const run = (need: number, units: number, extra = 0) => { const demand = (q * need) / A.pmaShare; const unmet = demand - existing - pipe - extra; return { demand, unmet, capture: unmet > 0 ? units / unmet : Infinity }; };
+  return { s, hh, q, existing, pipe, contingent, run, v: (ab.verdict as Record<string, { status: string; text: string }>)[id] };
 }
 
 export default function Absorption({ id, units }: { id: string; units: number }) {
   const r = absorptionFor(id);
   if (!r) return null;
   const base = r.run(ab.assumptions.needRate, units), hi = r.run(ab.assumptions.needRateHigh, units);
+  const cb = r.run(ab.assumptions.needRate, units, r.contingent), ch = r.run(ab.assumptions.needRateHigh, units, r.contingent);
   const pen = (r.existing + r.pipe + units) / r.q;
   const cap = (c: number) => (Number.isFinite(c) ? pct(c, 0) : "no unmet demand");
   const rows: [string, string, string][] = [
@@ -27,6 +29,7 @@ export default function Absorption({ id, units }: { id: string; units: number })
     ["AL/MC demand at 10% need (12%)", `${int(base.demand)} (${int(hi.demand)})`, "÷ 75% PMA share"],
     ["Unmet demand after supply and pipeline", `${int(base.unmet)} (${int(hi.unmet)})`, ""],
     [`Capture needed for ${units} units`, `${cap(base.capture)} (${cap(hi.capture)})`, "Lenders want < 10–15%; > 25% is a red flag"],
+    ...(r.contingent ? [[`Capture if approved, unbuilt supply is built (+${r.contingent} units)`, `${cap(cb.capture)} (${cap(ch.capture)})`, ab.contingent.map((x) => x[0]).join("; ")] as [string, string, string]] : []),
     ["Penetration with this project", pct(pen, 1), "AL typical 6–10% of qualified households"],
   ];
   const bad = r.v?.status === "Hold";
