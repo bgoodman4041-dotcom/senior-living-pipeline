@@ -108,6 +108,7 @@ export default function Anchor() {
         <div className="section-head"><div>
           <div className="eyebrow">Anchor deal · {s.id}</div><h2>Florham Park: 114-unit AL/MC pad at the former ASCO HQ</h2>
           <p>{ctl.owner.split(" (")[0]} owns the 55-acre site. ATCO takes a {s.acres}-acre pad by JV or carve-out. This is the only site that clears {pct(HURDLE, 1)} fully taxed, and its redevelopment designation makes a PILOT available on top.</p>
+          <p><b>Who it serves.</b> {lines.map((l) => `${l.units} ${l.care === "AL" ? "assisted living" : l.care === "MC" ? "memory care" : l.care} apartments`).join(" and ")}, about {Math.round((lines.find((l) => l.care === "AL")?.units || 0) * 0.1)} of the assisted living apartments held for Medicaid residents under New Jersey&apos;s certificate-of-need condition, next door to Garden Homes&apos; 305 age-restricted homes, so residents there can add care without leaving the community.</p>
         </div></div>
 
         <div className="card grid g4" style={{ marginBottom: 14 }}>

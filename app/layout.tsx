@@ -7,7 +7,7 @@ import { longDate } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: { default: "Senior Living Site Selection | ATCO", template: "%s | ATCO Senior Living" },
-  description: "ATCO's RiverSpring-model senior living site pipeline: 44 underwritten sites across NY, NJ and CT, screened against a 6.5% yield-on-cost floor.",
+  description: "ATCO senior living site pipeline, inspired by the RiverSpring model: 44 underwritten sites across NY, NJ and CT, screened against a 6.5% yield-on-cost floor.",
   openGraph: { title: "Senior Living Site Selection | ATCO", description: `44 underwritten sites, ${shortlist.length} shortlisted, underwritten to a 6.5% yield on cost.`, type: "website" },
 };
 export const viewport: Viewport = { themeColor: "#ffffff", width: "device-width", initialScale: 1 };
@@ -38,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div>
               <img src="/brand/atco-logo.png" alt="ATCO, a family of real estate companies" className="footer-logo" width="94" height="46" />
               <div style={{ marginTop: 8, maxWidth: 520 }}>
-                Senior living site selection for RiverSpring-model communities in New York, New Jersey and Connecticut.
+                Senior living site selection in New York, New Jersey and Connecticut, inspired by the RiverSpring model. ATCO is not affiliated with RiverSpring Living.
                 Underwriting figures are model outputs for screening, not appraisals or offers. Indices marked
                 <span className="badge-i">I</span> are calibrated estimates to be replaced with NIC MAP and assessor data before LOI. Not an offer or investment advice; see the <a href="/method#disclaimer" style={{ color: "inherit", textDecoration: "underline" }}>important notice</a>.
               </div>

@@ -213,7 +213,7 @@ export default function PipelineExplorer({ rows, hurdle, target }: { rows: Row[]
 
       <div className="section-head" style={{ marginTop: 40 }}>
         <div><h2 className="rule-title">Yield on cost by tax structure</h2>
-          <p>Each row is a site that survived the gates or is entitled but short. The swing from fully taxed to nonprofit-exempt is the RiverSpring advantage, measured site by site.</p></div>
+          <p>Each row is a site that survived the gates or is entitled but short. The swing from fully taxed to nonprofit-exempt shows, site by site, what nonprofit ownership is worth.</p></div>
       </div>
       <div className="card card-pad">
         <YocDotPlot rows={rows.filter((r) => r.verdict !== "Pass" || r.yoc.nonprofit_exempt >= hurdle - 0.005)} hurdle={hurdle} target={target} highlight={tax} />

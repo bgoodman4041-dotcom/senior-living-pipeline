@@ -1,4 +1,5 @@
 import PipelineExplorer, { type Row } from "@/components/PipelineExplorer";
+import HomeStory from "@/components/HomeStory";
 import { VerdictChip } from "@/components/ui";
 import PortfolioDeployment from "@/components/PortfolioDeployment";
 import NewsFeed from "@/components/NewsFeed";
@@ -37,20 +38,22 @@ export default function Home() {
 
   return (
     <>
-      <section className="hero">
+      <HomeStory />
+
+      <section className="section anchor" id="screen">
         <div className="wrap">
-          <div className="eyebrow">ATCO Senior Living · Site Selection Pipeline</div>
-          <h1>RiverSpring-model communities, underwritten site by site across the New York region.</h1>
-          <p className="lede">
-            Every site answers the three questions an owner asks before an LOI: will the town approve it, are the rents and the need already proven, and does it clear {pct(HURDLE, 1)} yield on cost at a land price we can actually pay.
-          </p>
-          <div className="funnel">
+          <div className="section-head"><div>
+            <div className="eyebrow">How the pipeline was built</div>
+            <h2>{funnel.sourced} sites sourced, {funnel.shortlist} worth pursuing</h2>
+            <p>Every site within two hours of Midtown in New York and New Jersey, and two and a half hours in Connecticut, was underwritten with a full pro forma under three tax structures. Most did not survive: the reasons are shown for each one.</p>
+          </div></div>
+          <div className="funnel funnel-light">
             <div><div className="n">{funnel.sourced}</div><div className="t">Sourced</div><div className="d">NY ≤2 hr · NJ ≤2 hr · CT ≤2.5 hr</div></div>
             <div><div className="n">{funnel.underwritten}</div><div className="t">Underwritten</div><div className="d">Full pro forma, 3 tax structures</div></div>
             <div><div className="n">{funnel.survive}</div><div className="t">Survive</div><div className="d">Pass gates, viable structure</div></div>
             <div><div className="n" style={{ color: "var(--atco-orange)" }}>{funnel.shortlist}</div><div className="t">Shortlist</div><div className="d">Pursue / Pursue-structured</div></div>
           </div>
-          <div className="hero-meta">
+          <div className="hero-meta meta-light">
             <span>Hurdle <b>{pct(HURDLE, 1)} YOC floor · {pct(TARGET, 1)} target</b></span>
             <span>Drive bands <b>NY {meta.drive_bands_min.NY} · NJ {meta.drive_bands_min.NJ} · CT {meta.drive_bands_min.CT} min</b></span>
             <span>Data as of <b>{longDate(meta.as_of)}</b></span>
@@ -58,11 +61,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <div className="grid g4">
             <div className="card kpi"><div className="label">Shortlist</div><div className="v">{shortlist.length} sites</div><div className="s">{shortlist.filter((s) => s.verdict === "Pursue").length} Pursue ({shortlist.filter(onHold).length} on hold) · {shortlist.filter((s) => s.verdict === "Pursue-structured").length} Pursue-structured</div></div>
-            <div className="card kpi"><div className="label">Shortlisted units</div><div className="v">{int(shortUnits)}</div><div className="s">{usdM(shortCost, 0)} all-in development cost</div></div>
+            <div className="card kpi"><div className="label">Shortlisted units</div><div className="v">{int(shortUnits)}</div><div className="s">{usdM(shortCost, 0)} all-in cost, including Whippany on hold</div></div>
             <div className="card kpi"><div className="label">Weighted YOC · active Pursue</div><div className="v">{pct(wYoc)}</div><div className="s">Fully taxed, cost-weighted; {Math.round((wYoc - HURDLE) * 10000)} bps over floor</div></div>
             <div className="card kpi"><div className="label">Land headroom · active Pursue</div><div className="v">{usdM(headroom)}</div><div className="s">Sum of max land at {pct(HURDLE, 1)} less land basis</div></div>
           </div>
