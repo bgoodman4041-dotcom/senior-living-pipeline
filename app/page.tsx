@@ -82,7 +82,7 @@ export default function Home() {
         <div className="wrap">
           <div className="section-head">
             <div><div className="eyebrow">Capital summary</div><h2>The shortlist as a portfolio</h2>
-              <p>Stabilized, fully taxed unless the verdict depends on a PILOT, in which case NOI, value and DSCR reflect it. Debt at {pct(assumptions.debt.ltc, 0)} LTC; value at a {pct(assumptions.exit_cap)} exit cap. Entrance-fee campuses are judged on fee coverage and presales, not on rental metrics (n/m), and sit outside the portfolio total.</p></div>
+              <p>Stabilized, fully taxed unless the verdict depends on a PILOT, in which case NOI, value and DSCR reflect it. Debt at {pct(assumptions.debt.ltc, 0)} LTC; value at a {pct(assumptions.exit_cap)} exit cap. Entrance-fee campuses are judged on fee coverage and presales, not on rental metrics (n/m), and sit outside the portfolio total, as does Whippany while it is on hold.</p></div>
           </div>
           <div className="card"><div className="table-wrap"><table className="t">
             <thead><tr><th>#</th><th>Site</th><th>Structure</th><th className="num">Units</th><th className="num">Total cost</th><th className="num">Cost / unit</th><th className="num">NOI</th><th className="num">YOC</th><th className="num">Value @ exit</th><th className="num">Profit on cost</th><th className="num">Equity</th><th className="num">DSCR</th></tr></thead>
@@ -91,7 +91,7 @@ export default function Home() {
                 <tr key={s.id}>
                   <td className="num">{s.rank}</td>
                   <td style={{ minWidth: 200 }}><a href={`/sites/${s.id}`} className="site-name">{s.name}</a><div className="xs muted">{s.municipality}, {s.state}</div></td>
-                  <td>{ef ? <span className="tag">Entrance fee · {Math.round(s.uw.entrance_fee.coverage * 100)}% coverage</span> : struct}</td>
+                  <td>{ef ? <span className="tag">Entrance fee · {Math.round(s.uw.entrance_fee.coverage * 100)}% coverage</span> : struct}{onHold(s) && <div className="xs" style={{ color: "#8a1a2a", fontWeight: 600 }}>On hold: absorption</div>}</td>
                   <td className="num">{s.uw.units}</td><td className="num">{usdM(s.uw.total_cost)}</td><td className="num">${Math.round(s.uw.total_cost / s.uw.units / 1000)}k</td>
                   <td className="num">{ef ? <span className="muted">n/m</span> : usdM(noi, 2)}</td>
                   <td className="num" style={{ fontWeight: 700, color: !ef && y >= HURDLE ? "var(--pursue)" : "var(--ink-2)" }}>{ef ? <span className="muted">n/m</span> : pct(y)}</td>
@@ -102,12 +102,12 @@ export default function Home() {
                 </tr>
               ))}
               {(() => {
-                const R = capRows.filter((r) => !r.ef);
+                const R = capRows.filter((r) => !r.ef && !onHold(r.s));
                 const units = R.reduce((a, r) => a + r.s.uw.units, 0), cost = R.reduce((a, r) => a + r.s.uw.total_cost, 0);
                 const noi = R.reduce((a, r) => a + r.noi, 0), val = R.reduce((a, r) => a + r.val, 0), eq = R.reduce((a, r) => a + r.s.uw.equity, 0);
                 return (
                   <tr style={{ background: "var(--surface-2)" }}>
-                    <td /><td><b>Rental portfolio ({R.length} sites)</b></td><td className="small muted">As structured</td><td className="num"><b>{int(units)}</b></td>
+                    <td /><td><b>Active rental portfolio ({R.length} sites)</b><div className="xs muted">Excludes the on-hold site</div></td><td className="small muted">As structured</td><td className="num"><b>{int(units)}</b></td>
                     <td className="num"><b>{usdM(cost)}</b></td><td className="num"><b>${Math.round(cost / units / 1000)}k</b></td><td className="num"><b>{usdM(noi, 2)}</b></td>
                     <td className="num"><b>{pct(noi / cost)}</b></td><td className="num"><b>{usdM(val)}</b></td><td className="num"><b>{pct(val / cost - 1, 1)}</b></td>
                     <td className="num"><b>{usdM(eq)}</b></td><td />

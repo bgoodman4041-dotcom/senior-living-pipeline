@@ -1,11 +1,12 @@
 // Landing-page story for a first-time visitor (an operator, a nonprofit partner or an LP):
 // mission first, the lead opportunity above the fold, where a partner fits, then the evidence.
-import { siteById, shortlist, markets, assumptions, onHold, satThumb, HURDLE } from "@/lib/data";
+import { siteById, shortlist, markets, assumptions, onHold, HURDLE } from "@/lib/data";
 import { capitalPlan } from "@/lib/capital";
 import { structuring } from "@/lib/structuring";
 import { absorptionFor } from "@/components/Absorption";
 import ab from "@/data/absorption.json";
 import { pct, usdM, int } from "@/lib/format";
+import AxonRender from "@/components/AxonRender";
 
 const CARE: Record<string, string> = { IL: "independent living", AL: "assisted living", MC: "memory care" };
 
@@ -38,11 +39,15 @@ export default function HomeStory() {
               <a className="btn btn-ghost" href="#partner">Where a partner fits</a>
               <a className="btn btn-ghost" href="/investors">Investor questions</a>
             </div>
-            <p className="hero-note">ATCO is not affiliated with RiverSpring Living. We refer to its public record with respect, as the model we learn from.</p>
+            <p className="hero-note"><a href="/briefs/ATCO-senior-living-partnership-brief.pdf" className="hero-link">Download the one-page partnership brief (PDF)</a><br />ATCO is not affiliated with RiverSpring Living. We refer to its public record with respect, as the model we learn from.</p>
           </div>
           <a className="feature-card" href="/anchor" aria-label="Lead opportunity: Florham Park, New Jersey">
-            <div className="feature-img" style={{ backgroundImage: `url("${satThumb(Number(fp.lat), Number(fp.lon), 900, 460, 0.009)}")` }}>
+            <div className="feature-img feature-render">
+              <AxonRender lat={Number(fp.lat)} lon={Number(fp.lon)} acres={Number(fp.acres)} title="the Florham Park building" parking={Math.round(fp.uw.units * 0.25 + Math.round(fp.uw.units * 0.35) * 0.5)}
+                lines={(fp.uw.lines as { care: string; units: number }[]).map((l) => ({ care: l.care, units: l.units }))}
+                gsfPerUnit={Object.fromEntries(Object.entries<any>(a.care_levels).map(([k, v]) => [k, v.gsf_per_unit]))} />
               <span className="feature-tag">Lead opportunity</span>
+              <span className="feature-cap">Concept massing from the unit mix · not a design</span>
             </div>
             <div className="feature-body">
               <div className="xs feature-place">Florham Park · Morris County, NJ · {fp.drive_min_midtown} min to Midtown</div>
@@ -141,7 +146,26 @@ export default function HomeStory() {
               <a href="/operators" className="role-link">Operator partners →</a>
             </div>
           </div>
-          <p className="small" style={{ marginTop: 14 }}>Every figure comes from the live underwriting model and updates with it. Floor for owned rentals: {pct(HURDLE, 1)} yield on cost. Entrance-fee campuses are judged on fee coverage and presales, not rental yield.</p>
+          <p className="small" style={{ marginTop: 14 }}><a href="/brief">One-page partnership brief</a> (PDF to leave behind). Every figure comes from the live underwriting model and updates with it. Floor for owned rentals: {pct(HURDLE, 1)} yield on cost. Entrance-fee campuses are judged on fee coverage and presales, not rental yield.</p>
+        </div>
+      </section>
+
+      <section className="section anchor" id="track-record" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="section-head"><div>
+            <div className="eyebrow">About ATCO</div>
+            <h2>The team behind the pipeline</h2>
+            <p>ATCO Properties &amp; Management is a New York family of real estate companies spanning development, construction and investment. <span className="ph">Placeholder: the items below are for Ben to complete before the site is shared.</span></p>
+          </div></div>
+          <div className="grid g4" style={{ marginBottom: 14 }}>
+            {[["Years in business", "[year founded]"], ["Projects delivered", "[number]"], ["Square feet built", "[SF]"], ["Capital deployed", "[$]"]].map(([k, v]) => (
+              <div key={k} className="card kpi"><div className="label">{k}</div><div className="v"><span className="ph">{v}</span></div></div>))}
+          </div>
+          <div className="grid g3">
+            {["Comparable ground-up project 1", "Comparable ground-up project 2", "Comparable ground-up project 3"].map((k) => (
+              <div key={k} className="card card-pad"><div className="label">{k}</div><p className="small" style={{ marginBottom: 0 }}><span className="ph">[Name, location, units or SF, cost, delivered on time and budget, ATCO role, outcome]</span></p></div>))}
+          </div>
+          <p className="small" style={{ marginTop: 12 }}><span className="ph">[Senior housing or healthcare experience, key people and their roles, lender and partner references]</span></p>
         </div>
       </section>
     </>

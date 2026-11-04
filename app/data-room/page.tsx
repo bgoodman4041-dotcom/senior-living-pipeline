@@ -47,6 +47,7 @@ export default function DataRoom() {
           <thead><tr><th>#</th><th>Document</th><th>What it covers</th><th></th></tr></thead>
           <tbody>
             {([
+              ["Partnership brief (one page)", "Leave-behind for operators and nonprofit partners: the Florham Park lead, where a partner fits, the pipeline", "/briefs/ATCO-senior-living-partnership-brief.pdf"],
               ["Investor FAQ", "The questions LPs and lenders ask first, each linked to its evidence, with the items only ATCO can answer", "/investors"],
               ["Anchor deal: Florham Park", "Test fit, sources and uses, schedule, PILOT path, risk register and capital gates for the lead site", "/anchor"],
               ["LP diligence", "Rent comps, cost comps, site control, NJ redevelopment status, downside cushion and LP net returns, with sources", "/diligence"],

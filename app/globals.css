@@ -559,3 +559,16 @@ html, body { overflow-x: clip; }
 }
 @media print { .hero-story { background: #fff !important; color: var(--ink) !important; } .hero-story::after { display: none; } .hero-story h1, .hero-story .lede { color: var(--ink) !important; } .hero-ctas { display: none; } .feature-card { box-shadow: none; border: 1px solid var(--rule); } }
 @media print { .hero-story .eyebrow, .hero .eyebrow { color: var(--ink) !important; } .hero-note { color: var(--ink-3) !important; } }
+.feature-render { background: linear-gradient(#dfe9f2, #f4f1ea); height: 250px; }
+.feature-cap { position: absolute; right: 10px; bottom: 10px; font-size: 10.5px; color: #4a5054; background: rgba(255,255,255,.82); padding: 2px 7px; border-radius: 2px; }
+/* partnership brief (one page) */
+.brief-top{display:grid;grid-template-columns:1fr 1.15fr;gap:20px;align-items:start;margin-top:8px}
+.brief-render{position:relative;height:215px;background:linear-gradient(#dfe9f2,#f4f1ea);border:1px solid #e3e3e3}
+.brief-render span{position:absolute;right:6px;bottom:4px;font-size:9.5px;color:#4a5054;background:rgba(255,255,255,.8);padding:1px 5px}
+.ph{background:#fff3cd;color:#6b4e00;padding:0 4px;border-radius:2px}
+@media (max-width:640px){.brief-top{grid-template-columns:1fr}}
+@media print{.brief .memo-page{font-size:10.8px;line-height:1.36}.brief h1{font-size:21px}.brief .memo h2,.brief h2{margin:9px 0 4px}.brief .memo-kpis b{font-size:13.5px}}
+.callout.brand { display: block; gap: 0; }
+.hero-link { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-size: 13px; display: inline-block; margin-bottom: 8px; }
+.hero-link:hover { color: var(--atco-orange); }
+.memo-bar a:not(.btn){color:#23608f}

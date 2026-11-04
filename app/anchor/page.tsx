@@ -7,6 +7,7 @@ import { underwrite } from "@/lib/underwrite";
 import { structuring } from "@/lib/structuring";
 import { waterfall } from "@/lib/waterfall";
 import { buildMassing } from "@/lib/massing";
+import AxonRender from "@/components/AxonRender";
 import { absorptionFor } from "@/components/Absorption";
 import abData from "@/data/absorption.json";
 import { pct, usdM, int, mult } from "@/lib/format";
@@ -122,6 +123,11 @@ export default function Anchor() {
         <div className="callout" style={{ marginBottom: 24 }}><b>Where an LP will push.</b> (1) Absorption: about {pct(abBase.capture, 0)} capture of unmet demand, {pct(abWood.capture, 0)} if Woodmont builds, against a 10–15% lender norm; a NIC MAP pull decides it. (2) Rents and hard cost are public-comp checks, not a rate shop or a GC number. (3) No site control yet. (4) The thin {usdM(gmp.down.profit, 1)} GMP-only downside cushion widens to {usdM(gp.down.profit, 1)} only once the PILOT ordinance passes. Each has a gate below; nothing past pursuit cost is spent until they clear.</div>
 
         <h3 className="anchor" id="test-fit">1 · Test fit</h3>
+        <div className="card" style={{ marginBottom: 18, position: "relative", height: 340, background: "linear-gradient(#dfe9f2, #f4f1ea)", overflow: "hidden" }}>
+          <AxonRender lat={Number(s.lat)} lon={Number(s.lon)} acres={Number(s.acres)} title="the Florham Park building" parking={parking} lines={lines}
+            gsfPerUnit={Object.fromEntries(Object.entries<any>(a.care_levels).map(([k, v]) => [k, v.gsf_per_unit]))} />
+          <span className="feature-cap">Concept massing from the unit mix (AL 3 stories, MC 2, courtyard, surface parking) · not a design</span>
+        </div>
         <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", gap: 18, marginBottom: 24 }}>
           <div className="card card-pad"><PlanSvg m={mass} acres={Number(s.acres)} />
             <div className="xs muted" style={{ marginTop: 8 }}><span style={{ color: "#F7901E" }}>■</span> AL, 3 stories · <span style={{ color: "#403393" }}>■</span> MC, 2 stories · <span style={{ color: "#76B96A" }}>■</span> courtyard · <span style={{ color: "#9aa0a6" }}>■</span> parking. Illustrative massing from the unit mix, not a site plan.</div></div>
