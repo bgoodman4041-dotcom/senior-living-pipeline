@@ -150,24 +150,6 @@ export default function HomeStory() {
         </div>
       </section>
 
-      <section className="section anchor" id="track-record" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <div className="section-head"><div>
-            <div className="eyebrow">About ATCO</div>
-            <h2>The team behind the pipeline</h2>
-            <p>ATCO Properties &amp; Management is a New York family of real estate companies spanning development, construction and investment. <span className="ph">Placeholder: the items below are for Ben to complete before the site is shared.</span></p>
-          </div></div>
-          <div className="grid g4" style={{ marginBottom: 14 }}>
-            {[["Years in business", "[year founded]"], ["Projects delivered", "[number]"], ["Square feet built", "[SF]"], ["Capital deployed", "[$]"]].map(([k, v]) => (
-              <div key={k} className="card kpi"><div className="label">{k}</div><div className="v"><span className="ph">{v}</span></div></div>))}
-          </div>
-          <div className="grid g3">
-            {["Comparable ground-up project 1", "Comparable ground-up project 2", "Comparable ground-up project 3"].map((k) => (
-              <div key={k} className="card card-pad"><div className="label">{k}</div><p className="small" style={{ marginBottom: 0 }}><span className="ph">[Name, location, units or SF, cost, delivered on time and budget, ATCO role, outcome]</span></p></div>))}
-          </div>
-          <p className="small" style={{ marginTop: 12 }}><span className="ph">[Senior housing or healthcare experience, key people and their roles, lender and partner references]</span></p>
-        </div>
-      </section>
     </>
   );
 }
