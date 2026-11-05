@@ -49,6 +49,7 @@ export default function DataRoom() {
             {([
               ["Partnership brief (one page)", "Leave-behind for operators and nonprofit partners: the Florham Park lead, where a partner fits, the pipeline", "/briefs/ATCO-senior-living-partnership-brief.pdf"],
               ["Anchor deal: Florham Park", "Test fit, sources and uses, schedule, PILOT path, risk register and capital gates for the lead site", "/anchor"],
+              ...((["NJ-04", "NJ-10", "NY-03", "CT-02", "NY-01"]).map((id) => [`Market study · ${sites.find((x) => x.id === id)?.municipality}`, "ATCO internal market study (not third-party): PMA, 75+ demand, supply and pipeline, capture, rents, absorption", `/studies/ATCO-${id}-market-study.pdf`] as [string, string, string])),
               ["LP diligence", "Rent comps, cost comps, site control, NJ redevelopment status, downside cushion and LP net returns, with sources", "/diligence"],
               ["Florham Park GC budget outline", "CSI-division budget from the model, ready for a GC to price (.xlsx)", "/models/ATCO-NJ-04-GC-budget.xlsx"],
               ["Methodology", "Screens, scoring, verdict rules and the tax structures", "/method"],

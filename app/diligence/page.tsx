@@ -7,6 +7,7 @@ import { capitalPlan } from "@/lib/capital";
 import { structuring, recLabel } from "@/lib/structuring";
 import { waterfall, WF } from "@/lib/waterfall";
 import { pct, usdM, mult, int } from "@/lib/format";
+import studies from "@/data/market-studies.json";
 
 export const metadata: Metadata = { title: "LP diligence", description: "The questions an institutional LP will ask, the public evidence behind each answer, and what still needs ATCO's action." };
 
@@ -29,7 +30,7 @@ export default function Diligence() {
     return { s, r, p, w, best };
   });
   const score: [string, "Closed" | "Partly closed" | "Needs ATCO", string, string][] = [
-    ["Are the rents real?", "Partly closed", "Public comp set for every shortlist market. Florham Park, Whippany and Montville are inside the Class A range; Cortlandt and Trumbull were cut to the Class A median; Poughkeepsie was cut 14% and dropped to Pass.", "#rents"],
+    ["Are the rents real?", "Partly closed", "Public comp set for every shortlist market. Florham Park and Whippany are inside the Class A range; Montville matches the Morris set but its own market lists far lower (see its market study); Cortlandt and Trumbull were cut to the Class A median; Poughkeepsie was cut 14% and dropped to Pass.", "#rents"],
     ["Is the cost realistic?", "Partly closed", "Six public NJ/NY cost comps. Comps show about 969 SF a unit (Benchmark East Brunswick, the Cortlandt site plan); the model was raised from 828 to about 900 SF a unit on the AL/MC mix (AL 950, MC 800), adding about 7% to all-in cost. A Florham Park GC budget is ready to price.", "#costs"],
     ["Do you control the land?", "Partly closed", "ATCO develops the land and plans to buy and own it fee simple, outright: acquisitions, not ground leases or JVs. Owner of record, deal status and an acquisition path for each site. No site is under contract, LOI or option yet.", "#control"],
     ["Is the NJ PILOT real?", "Partly closed", "Florham Park is designated (Res. 20-94). Whippany's approval is for a non-senior plan. Nothing found for Montville.", "#redevelopment"],
@@ -37,7 +38,7 @@ export default function Diligence() {
     ["What do LPs actually net?", "Partly closed", `Illustrative waterfall: ${pct(WF.pref, 0)} preferred return, then ${Math.round(WF.lpSplit * 100)}/${Math.round((1 - WF.lpSplit) * 100)}. ATCO to set final terms.`, "#waterfall"],
     ["Who operates it?", "Needs ATCO", "Lead operator per site, with draft outreach letters and term-sheet outlines (internal). None signed.", "#operators"],
     ["Is there a pipeline behind Florham Park?", "Partly closed", "Every other site re-run on the tougher assumptions: none clears with acceptable approval odds. Two new Morris and Somerset pads with approvals in hand (Woodmont Parsippany, Peapack) are partner targets.", "#pipeline"],
-    ["Is there a market study?", "Needs ATCO", "Absorption is modeled from ACS data and state licensing lists. A NIC MAP pull or third-party study is the remaining gap.", "#gaps"],
+    ["Is there a market study?", "Partly closed", "ATCO internal market studies for all five shortlist sites (PMA, 75+ demand, supply and pipeline, capture, rents, absorption), as PDFs below. They are internal, not third-party: a NIC MAP pull or a commissioned study confirms them before LOI.", "#market-studies"],
   ];
   const tone = { "Closed": "go", "Partly closed": "warn", "Needs ATCO": "bad" } as const;
   return (
@@ -129,9 +130,18 @@ export default function Diligence() {
 
         <p className="small" style={{ marginTop: -12, marginBottom: 24 }}>{ev.candidates.screened_out} <span className="xs muted"><Src s={ev.candidates.screened_src as [string, string][]} /></span></p>
 
-        <h3 id="gaps" className="anchor">9 · Still open, and who closes it</h3>
+        <h3 id="market-studies" className="anchor">9 · Market studies</h3>
+        <p className="small">ATCO&apos;s own market study for each shortlist site, prepared {studies.as_of}: primary market area, age 75+ demographics and income-qualified demand, existing and pipeline supply (Woodmont Parsippany as contingent supply; Peapack and Benchmark Cedar Grove tracked), penetration and capture, rent comps and absorption. <b>Internal studies, not third-party studies.</b> NIC MAP data is not available to ATCO, so New York occupancy comes from state DOH filings and several Connecticut and New Jersey capacities are estimates. Whippany is on hold and has no study.</p>
+        <div className="card" style={{ marginBottom: 24 }}><div className="table-wrap"><table className="t">
+          <thead><tr><th>Site</th><th className="num">75+ qualified households</th><th className="num">AL/MC capture, 10% need</th><th className="num hide-sm">Penetration with project</th><th></th></tr></thead>
+          <tbody>{(studies.order as string[]).map((id) => { const m = (studies.studies as Record<string, { q75: number; base: { capture: number | null }; penetration: number }>)[id]; const s = sites.find((x) => x.id === id)!; return (
+            <tr key={id}><td><a href={`/study/${id}`} className="site-name">{s.municipality}</a><div className="xs muted">{id}</div></td><td className="num">{int(m.q75)}</td><td className="num">{m.base.capture === null ? "none unmet" : pct(m.base.capture, 0)}</td><td className="num hide-sm">{pct(m.penetration, 1)}</td>
+              <td className="small"><a href={`/studies/ATCO-${id}-market-study.pdf`} download>PDF</a> · <a href={`/study/${id}`}>View</a></td></tr>); })}</tbody>
+        </table></div></div>
+
+        <h3 id="gaps" className="anchor">10 · Still open, and who closes it</h3>
         <div className="card card-pad"><ul className="list-clean small">
-          <li><b>NIC MAP pull or third-party market study</b> for Florham Park, Montville and Cortlandt: confirms rents, occupancy and pipeline. <i>ATCO: buy or commission.</i></li>
+          <li><b>NIC MAP pull or third-party market study</b> to confirm ATCO&apos;s internal studies, starting with Florham Park: property-level occupancy, rents and pipeline. <i>ATCO: buy or commission.</i></li>
           <li><b>GC pricing</b> of the Florham Park budget by KBE or IMC: replaces the model hard cost. <i>ATCO: send the budget outline.</i></li>
           <li><b>Site control:</b> LOI, then a fee-simple purchase contract or option, with Garden Homes (Florham Park) and Diversified (Montville). <i>ATCO.</i></li>
           <li><b>PILOT conversations:</b> Florham Park redevelopment counsel, Montville administrator. <i>ATCO or land-use counsel.</i></li>

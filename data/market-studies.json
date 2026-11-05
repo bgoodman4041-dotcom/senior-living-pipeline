@@ -1,0 +1,2056 @@
+{
+ "as_of": "2026-11-05",
+ "order": [
+  "NJ-04",
+  "NJ-10",
+  "NY-03",
+  "CT-02",
+  "NY-01"
+ ],
+ "method": {
+  "hh_per_75": 0.67,
+  "need": 0.1,
+  "need_hi": 0.12,
+  "pma_share": 0.75,
+  "il_propensity": 0.1,
+  "il_propensity_hi": 0.125,
+  "il_pma_share": 0.65,
+  "sigma": 1.1,
+  "cal": 1.493,
+  "county75": {
+   "Morris NJ": 0.0781,
+   "Essex NJ": 0.0567,
+   "Passaic NJ": 0.0639,
+   "Union NJ": 0.0609,
+   "Westchester NY": 0.0779,
+   "Putnam NY": 0.0751,
+   "Fairfield CT": 0.0687,
+   "New Haven CT": 0.0733
+  }
+ },
+ "studies": {
+  "NJ-04": {
+   "id": "NJ-04",
+   "pma_label": "7-mile radius (about 15-20 minutes), the Morris 'golden triangle' plus West Essex and the Summit corridor",
+   "pma_why": "Matches the 7-mile, tract-level market already used in the site dossier. Route 24 and I-287 tie Florham Park to Madison, Chatham, Morristown and Summit; Route 10 to Livingston and East Hanover. Adult children in these towns are the main referral source.",
+   "towns": [
+    {
+     "name": "Florham Park",
+     "county": "Morris NJ",
+     "pop": 12585,
+     "pop75": 983,
+     "med65": 114471,
+     "zips": [
+      "07932"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Madison",
+     "county": "Morris NJ",
+     "pop": 16937,
+     "pop75": 1323,
+     "med65": 95556,
+     "zips": [
+      "07940"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Chatham Borough",
+     "county": "Morris NJ",
+     "pop": 9212,
+     "pop75": 719,
+     "med65": 108081,
+     "zips": [
+      "07928"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Chatham Township",
+     "county": "Morris NJ",
+     "pop": 10983,
+     "pop75": 858,
+     "med65": 108081,
+     "zips": [
+      "07928"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "East Hanover",
+     "county": "Morris NJ",
+     "pop": 11157,
+     "pop75": 871,
+     "med65": 95375,
+     "zips": [
+      "07936"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Hanover Township (Whippany, Cedar Knolls)",
+     "county": "Morris NJ",
+     "pop": 14677,
+     "pop75": 1146,
+     "med65": 88889,
+     "zips": [
+      "07981"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Morris Plains",
+     "county": "Morris NJ",
+     "pop": 6153,
+     "pop75": 480,
+     "med65": 87852,
+     "zips": [
+      "07950"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Morris Township",
+     "county": "Morris NJ",
+     "pop": 22974,
+     "pop75": 1794,
+     "med65": 123869,
+     "zips": [
+      "07960"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Morristown",
+     "county": "Morris NJ",
+     "pop": 20180,
+     "pop75": 1576,
+     "med65": 123869,
+     "zips": [
+      "07960"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Harding",
+     "county": "Morris NJ",
+     "pop": 3871,
+     "pop75": 302,
+     "med65": null,
+     "zips": [],
+     "frac": 1
+    },
+    {
+     "name": "Parsippany-Troy Hills (south half)",
+     "county": "Morris NJ",
+     "pop": 28081,
+     "pop75": 2193,
+     "med65": 67847,
+     "zips": [
+      "07054"
+     ],
+     "frac": 0.5
+    },
+    {
+     "name": "Livingston",
+     "county": "Essex NJ",
+     "pop": 31330,
+     "pop75": 1778,
+     "med65": 132875,
+     "zips": [
+      "07039"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Roseland",
+     "county": "Essex NJ",
+     "pop": 6299,
+     "pop75": 357,
+     "med65": 92162,
+     "zips": [
+      "07068"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Millburn / Short Hills",
+     "county": "Essex NJ",
+     "pop": 21710,
+     "pop75": 1232,
+     "med65": null,
+     "zips": [],
+     "frac": 1
+    },
+    {
+     "name": "West Orange (west half)",
+     "county": "Essex NJ",
+     "pop": 24422,
+     "pop75": 1386,
+     "med65": null,
+     "zips": [],
+     "frac": 0.5
+    },
+    {
+     "name": "Summit",
+     "county": "Union NJ",
+     "pop": 22719,
+     "pop75": 1384,
+     "med65": 88429,
+     "zips": [
+      "07901"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "New Providence",
+     "county": "Union NJ",
+     "pop": 13650,
+     "pop75": 832,
+     "med65": null,
+     "zips": [],
+     "frac": 1
+    }
+   ],
+   "pma_pop": 276940,
+   "pma_pop75_town": 19214,
+   "med65_weighted": 103107,
+   "tract": {
+    "pop75": 28680,
+    "share75k": 0.619,
+    "src": "ACS 2024 5-year, census tracts within 7 miles (B01001, B19037), data/absorption.json"
+   },
+   "pop75": 28680,
+   "share75k": 0.619,
+   "share75k_town": 0.614,
+   "share100k": 0.511,
+   "share150k": 0.367,
+   "hh75": 19216,
+   "q75": 11894,
+   "q100": 9821,
+   "almc_units": 114,
+   "il_units": 0,
+   "supply": [
+    {
+     "name": "Brighton Gardens of Florham Park",
+     "town": "Florham Park",
+     "type": "AL/MC",
+     "units": 116,
+     "basis": "V",
+     "opened": 1997
+    },
+    {
+     "name": "Brookdale Florham Park",
+     "town": "Florham Park",
+     "type": "AL",
+     "units": 68,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "The Delaney at The Green (AL/MC share of 220)",
+     "town": "Florham Park",
+     "type": "AL/MC",
+     "units": 70,
+     "basis": "I",
+     "opened": 2021
+    },
+    {
+     "name": "Arden Courts of Whippany",
+     "town": "Hanover Twp",
+     "type": "MC",
+     "units": 60,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "Weston Assisted Living",
+     "town": "Hanover Twp",
+     "type": "AL",
+     "units": 60,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "Lester Senior Housing (AL)",
+     "town": "Hanover Twp",
+     "type": "AL",
+     "units": 55,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "CareOne at Morris (AL)",
+     "town": "Parsippany",
+     "type": "AL",
+     "units": 61,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "Juniper Village at Chatham",
+     "town": "Chatham",
+     "type": "AL/MC",
+     "units": 95,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "Spring Hills Morristown",
+     "town": "Morristown",
+     "type": "AL/MC",
+     "units": 104,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "Sunrise of Madison",
+     "town": "Madison",
+     "type": "AL/MC",
+     "units": 80,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "Sunrise of Morris Plains",
+     "town": "Morris Plains",
+     "type": "AL/MC",
+     "units": 90,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "Sunrise of Livingston",
+     "town": "Livingston",
+     "type": "AL/MC",
+     "units": 100,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "CareOne at Livingston (AL)",
+     "town": "Livingston",
+     "type": "AL",
+     "units": 80,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Spring Hills Livingston",
+     "town": "Livingston",
+     "type": "AL/MC",
+     "units": 90,
+     "basis": "I",
+     "opened": null
+    }
+   ],
+   "supply_src": "Morris County Housing Options 2024 (licensed AL residences and units); operator and press releases for Essex and Union",
+   "supply_src_url": null,
+   "excluded": [],
+   "il_supply": [],
+   "existing": 1129,
+   "pipeline_counted": 80,
+   "contingent": 80,
+   "pipeline": [
+    {
+     "name": "Arbor Terrace Florham Park",
+     "type": "AL/MC",
+     "units": 80,
+     "status": "100-bed ERCN May 2024; construction from Oct 2026",
+     "treat": "counted",
+     "miles": 1.2,
+     "src": "https://www.newswire.com/news/construction-set-to-begin-on-arbor-terrace-florham-park-senior-living-community"
+    },
+    {
+     "name": "Woodmont Senior Living, 79 Interpace Pkwy, Parsippany",
+     "type": "AL/MC (of 150 total)",
+     "units": 80,
+     "status": "Site plan approved Oct 2022 (52 AL + 28 MC + 70 IL); nothing built or financed since",
+     "treat": "contingent",
+     "miles": 5.1,
+     "src": "https://parsippanyfocus.com/?p=108979"
+    },
+    {
+     "name": "Benchmark at Cedar Grove",
+     "type": "IL/AL/MC",
+     "units": 138,
+     "status": "Under construction since June 2025; opens 2027",
+     "treat": "secondary",
+     "miles": 8.7,
+     "src": "https://www.benchmarkseniorliving.com/news-article/benchmark-senior-living-to-open-retirement-community-in-cedar-grove-nj/"
+    },
+    {
+     "name": "Peapack Senior Living, 400 Essex Blvd",
+     "type": "AL/MC",
+     "units": 96,
+     "status": "Expedited CN July 10, 2026 (115 beds, 32 dementia); $57.2M",
+     "treat": "secondary",
+     "miles": 15.6,
+     "src": "https://www.nj.gov/health/healthfacilities/documents/CN/2026/ercn-peapack-senior-living.pdf"
+    }
+   ],
+   "base": {
+    "demand": 1586,
+    "unmet": 377,
+    "capture": 0.30244541443935946
+   },
+   "hi": {
+    "demand": 1903,
+    "unmet": 694,
+    "capture": 0.16423838201889143
+   },
+   "low": {
+    "demand": 1054,
+    "unmet": -155,
+    "capture": null
+   },
+   "low_hi": {
+    "demand": 1264,
+    "unmet": 55,
+    "capture": 2.0597179665371765
+   },
+   "q75_low": 7902,
+   "with_contingent": {
+    "demand": 1586,
+    "unmet": 297,
+    "capture": 0.38393207877801266
+   },
+   "grid": {
+    "0.08": {
+     "base": {
+      "demand": 1269,
+      "unmet": 60,
+      "capture": 1.9082047716635426
+     },
+     "contingent": {
+      "demand": 1269,
+      "unmet": -20,
+      "capture": null
+     }
+    },
+    "0.10": {
+     "base": {
+      "demand": 1586,
+      "unmet": 377,
+      "capture": 0.30244541443935946
+     },
+     "contingent": {
+      "demand": 1586,
+      "unmet": 297,
+      "capture": 0.38393207877801266
+     }
+    },
+    "0.12": {
+     "base": {
+      "demand": 1903,
+      "unmet": 694,
+      "capture": 0.16423838201889143
+     },
+     "contingent": {
+      "demand": 1903,
+      "unmet": 614,
+      "capture": 0.1856335813519564
+     }
+    },
+    "0.14": {
+     "base": {
+      "demand": 2220,
+      "unmet": 1011,
+      "capture": 0.11272635808681804
+     },
+     "contingent": {
+      "demand": 2220,
+      "unmet": 931,
+      "capture": 0.12240972853765744
+     }
+    }
+   },
+   "penetration": 0.11122828614513228,
+   "penetration_now": 0.10164398937979208,
+   "occupancy_doh": null,
+   "il": null,
+   "local_comps": null,
+   "local_comps_src": null,
+   "rent_model": 10780,
+   "product": "almc"
+  },
+  "NJ-10": {
+   "id": "NJ-10",
+   "pma_label": "7-mile radius (about 15 minutes): Montville, the Route 23 / Route 202 corridor, Wayne and the Caldwells",
+   "pma_why": "Route 287, Route 46 and Route 23 converge near the site. The market runs north to Kinnelon and Butler, east into Wayne and the Caldwells, and south to Parsippany and East Hanover. The Morris 'golden triangle' (Morristown, Madison, Florham Park) is outside it, and that matters for rents.",
+   "towns": [
+    {
+     "name": "Montville (Towaco, Pine Brook)",
+     "county": "Morris NJ",
+     "pop": 22450,
+     "pop75": 1753,
+     "med65": 107388,
+     "zips": [
+      "07045",
+      "07082",
+      "07058"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Lincoln Park",
+     "county": "Morris NJ",
+     "pop": 10915,
+     "pop75": 852,
+     "med65": 74868,
+     "zips": [
+      "07035"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Pequannock (Pompton Plains)",
+     "county": "Morris NJ",
+     "pop": 15571,
+     "pop75": 1216,
+     "med65": 73534,
+     "zips": [
+      "07444"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Boonton",
+     "county": "Morris NJ",
+     "pop": 8815,
+     "pop75": 688,
+     "med65": 88529,
+     "zips": [
+      "07005"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Boonton Township",
+     "county": "Morris NJ",
+     "pop": 4263,
+     "pop75": 333,
+     "med65": 88529,
+     "zips": [
+      "07005"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Kinnelon",
+     "county": "Morris NJ",
+     "pop": 10248,
+     "pop75": 800,
+     "med65": 81964,
+     "zips": [
+      "07405"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Butler",
+     "county": "Morris NJ",
+     "pop": 8307,
+     "pop75": 649,
+     "med65": 81964,
+     "zips": [
+      "07405"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Mountain Lakes",
+     "county": "Morris NJ",
+     "pop": 4472,
+     "pop75": 349,
+     "med65": 194904,
+     "zips": [
+      "07046"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Denville",
+     "county": "Morris NJ",
+     "pop": 17107,
+     "pop75": 1336,
+     "med65": 98068,
+     "zips": [
+      "07834"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Parsippany-Troy Hills",
+     "county": "Morris NJ",
+     "pop": 56162,
+     "pop75": 4386,
+     "med65": 67847,
+     "zips": [
+      "07054"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "East Hanover",
+     "county": "Morris NJ",
+     "pop": 11157,
+     "pop75": 871,
+     "med65": 95375,
+     "zips": [
+      "07936"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Hanover Township (Whippany)",
+     "county": "Morris NJ",
+     "pop": 7338,
+     "pop75": 573,
+     "med65": 88889,
+     "zips": [
+      "07981"
+     ],
+     "frac": 0.5
+    },
+    {
+     "name": "Fairfield",
+     "county": "Essex NJ",
+     "pop": 7872,
+     "pop75": 447,
+     "med65": 84490,
+     "zips": [
+      "07004"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "West Caldwell / Caldwell / North Caldwell",
+     "county": "Essex NJ",
+     "pop": 26667,
+     "pop75": 1513,
+     "med65": 85954,
+     "zips": [
+      "07006"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Wayne",
+     "county": "Passaic NJ",
+     "pop": 54838,
+     "pop75": 3502,
+     "med65": 106889,
+     "zips": [
+      "07470"
+     ],
+     "frac": 1
+    }
+   ],
+   "pma_pop": 266182,
+   "pma_pop75_town": 19269,
+   "med65_weighted": 89444,
+   "tract": null,
+   "pop75": 28761,
+   "share75k": 0.564,
+   "share75k_town": 0.564,
+   "share100k": 0.46,
+   "share150k": 0.319,
+   "hh75": 19270,
+   "q75": 10861,
+   "q100": 8857,
+   "almc_units": 114,
+   "il_units": 0,
+   "supply": [
+    {
+     "name": "Chelsea / Mira Vie at Montville",
+     "town": "Montville",
+     "type": "AL/MC",
+     "units": 152,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "Fox Trail Memory Care at Montville",
+     "town": "Montville",
+     "type": "MC",
+     "units": 15,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Victoria Mews Assisted Living",
+     "town": "Boonton Twp",
+     "type": "AL/MC",
+     "units": 97,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "CareOne at Morris (AL)",
+     "town": "Parsippany",
+     "type": "AL",
+     "units": 61,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "Sunrise of Mountain Lakes",
+     "town": "Mountain Lakes",
+     "type": "AL/MC",
+     "units": 80,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Carriage House of Lincoln Park",
+     "town": "Lincoln Park",
+     "type": "AL",
+     "units": 30,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Sunrise of Wayne",
+     "town": "Wayne",
+     "type": "AL/MC",
+     "units": 85,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Brookdale Wayne",
+     "town": "Wayne",
+     "type": "AL/MC",
+     "units": 80,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "The Bristal at Wayne",
+     "town": "Wayne",
+     "type": "AL/MC",
+     "units": 130,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "CareOne at Wayne (AL)",
+     "town": "Wayne",
+     "type": "AL",
+     "units": 80,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Sunrise of West Essex",
+     "town": "Fairfield",
+     "type": "AL/MC",
+     "units": 80,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Arden Courts of Whippany",
+     "town": "Hanover Twp",
+     "type": "MC",
+     "units": 60,
+     "basis": "V",
+     "opened": null
+    },
+    {
+     "name": "Weston Assisted Living",
+     "town": "Hanover Twp",
+     "type": "AL",
+     "units": 60,
+     "basis": "V",
+     "opened": null
+    }
+   ],
+   "supply_src": "Morris County Housing Options 2024 (licensed AL units); Caring.com listings for Passaic and Essex communities (capacity estimated where not published)",
+   "supply_src_url": null,
+   "excluded": [],
+   "il_supply": [],
+   "existing": 1010,
+   "pipeline_counted": 90,
+   "contingent": 80,
+   "pipeline": [
+    {
+     "name": "Woodmont Senior Living, 79 Interpace Pkwy, Parsippany",
+     "type": "AL/MC (of 150 total)",
+     "units": 80,
+     "status": "Site plan approved Oct 2022; nothing built or financed since",
+     "treat": "contingent",
+     "miles": 4.4,
+     "src": "https://parsippanyfocus.com/?p=108979"
+    },
+    {
+     "name": "Benchmark at Cedar Grove",
+     "type": "IL/AL/MC",
+     "units": 138,
+     "status": "Under construction since June 2025; opens 2027. Counted at its estimated AL/MC share",
+     "treat": "counted_part",
+     "miles": 7.9,
+     "src": "https://www.benchmarkseniorliving.com/news-article/benchmark-senior-living-to-open-retirement-community-in-cedar-grove-nj/"
+    },
+    {
+     "name": "Arbor Terrace Florham Park",
+     "type": "AL/MC",
+     "units": 80,
+     "status": "ERCN 2024; construction from Oct 2026",
+     "treat": "secondary",
+     "miles": 8.8,
+     "src": "https://www.newswire.com/news/construction-set-to-begin-on-arbor-terrace-florham-park-senior-living-community"
+    },
+    {
+     "name": "Peapack Senior Living",
+     "type": "AL/MC",
+     "units": 96,
+     "status": "Expedited CN July 2026",
+     "treat": "secondary",
+     "miles": 20.6,
+     "src": "https://www.nj.gov/health/healthfacilities/documents/CN/2026/ercn-peapack-senior-living.pdf"
+    }
+   ],
+   "base": {
+    "demand": 1448,
+    "unmet": 348,
+    "capture": 0.3274920565108097
+   },
+   "hi": {
+    "demand": 1738,
+    "unmet": 638,
+    "capture": 0.17876182351260292
+   },
+   "low": {
+    "demand": 970,
+    "unmet": -130,
+    "capture": null
+   },
+   "low_hi": {
+    "demand": 1164,
+    "unmet": 64,
+    "capture": 1.7763790242498867
+   },
+   "q75_low": 7276,
+   "with_contingent": {
+    "demand": 1448,
+    "unmet": 268,
+    "capture": 0.4252143989448039
+   },
+   "grid": {
+    "0.08": {
+     "base": {
+      "demand": 1158,
+      "unmet": 58,
+      "capture": 1.949383173019146
+     },
+     "contingent": {
+      "demand": 1158,
+      "unmet": -22,
+      "capture": null
+     }
+    },
+    "0.10": {
+     "base": {
+      "demand": 1448,
+      "unmet": 348,
+      "capture": 0.3274920565108097
+     },
+     "contingent": {
+      "demand": 1448,
+      "unmet": 268,
+      "capture": 0.4252143989448039
+     }
+    },
+    "0.12": {
+     "base": {
+      "demand": 1738,
+      "unmet": 638,
+      "capture": 0.17876182351260292
+     },
+     "contingent": {
+      "demand": 1738,
+      "unmet": 558,
+      "capture": 0.20440362308868432
+     }
+    },
+    "0.14": {
+     "base": {
+      "demand": 2027,
+      "unmet": 927,
+      "capture": 0.12293224928241478
+     },
+     "contingent": {
+      "demand": 2027,
+      "unmet": 847,
+      "capture": 0.1345386636992569
+     }
+    }
+   },
+   "penetration": 0.11177864892135954,
+   "penetration_now": 0.10128213658442792,
+   "occupancy_doh": null,
+   "il": null,
+   "local_comps": [
+    [
+     "Sunrise of Mountain Lakes",
+     "Mountain Lakes",
+     9971,
+     "Class A; another Caring page shows $5,533"
+    ],
+    [
+     "Sunrise of West Essex",
+     "Fairfield",
+     8238,
+     "Class A"
+    ],
+    [
+     "Fox Trail Memory Care",
+     "Montville",
+     7500,
+     "Small MC home"
+    ],
+    [
+     "Brookdale Wayne",
+     "Wayne",
+     5975,
+     "Older"
+    ],
+    [
+     "Sunrise of Wayne",
+     "Wayne",
+     5654,
+     "Older"
+    ],
+    [
+     "The Bristal at Wayne",
+     "Wayne",
+     5400,
+     "Starting price"
+    ],
+    [
+     "Mira Vie at Montville",
+     "Montville",
+     4825,
+     "Older; 152 units"
+    ],
+    [
+     "CareOne at Wayne",
+     "Wayne",
+     4562,
+     "Older"
+    ],
+    [
+     "CareOne at Parsippany",
+     "Parsippany",
+     4200,
+     "Older"
+    ]
+   ],
+   "local_comps_src": [
+    [
+     "Caring.com Wayne, Montville, Parsippany listings (listed prices, Nov 2026; not a rate shop)",
+     "https://www.caring.com/senior-living/assisted-living/new-jersey/wayne"
+    ]
+   ],
+   "rent_model": 9680,
+   "product": "almc"
+  },
+  "NY-03": {
+   "id": "NY-03",
+   "pma_label": "About 8 miles east of the Hudson (15-20 minutes): Cortlandt, Peekskill, Yorktown, Putnam Valley, Ossining and Briarcliff, Somers and New Castle",
+   "pma_why": "The Hudson is a hard edge: Rockland across the Bear Mountain Bridge is excluded. The site sits on Route 202/35 across from NYP Hudson Valley Hospital, the medical anchor for northern Westchester, and the Taconic and Route 9 pull in Ossining, Briarcliff and New Castle. A strict 7-mile ring would be about 120,000 people and too thin to judge.",
+   "towns": [
+    {
+     "name": "Cortlandt (incl. Croton-on-Hudson, Buchanan)",
+     "county": "Westchester NY",
+     "pop": 43470,
+     "pop75": 3387,
+     "med65": 88260,
+     "zips": [
+      "10567",
+      "10520"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Peekskill",
+     "county": "Westchester NY",
+     "pop": 25431,
+     "pop75": 1981,
+     "med65": 64015,
+     "zips": [
+      "10566"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Yorktown (incl. Mohegan Lake)",
+     "county": "Westchester NY",
+     "pop": 36569,
+     "pop75": 2849,
+     "med65": 112842,
+     "zips": [
+      "10598",
+      "10547"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Putnam Valley",
+     "county": "Putnam NY",
+     "pop": 11617,
+     "pop75": 873,
+     "med65": 81630,
+     "zips": [
+      "10579"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Ossining (town)",
+     "county": "Westchester NY",
+     "pop": 40061,
+     "pop75": 3121,
+     "med65": 84030,
+     "zips": [
+      "10562"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Briarcliff Manor / Mount Pleasant (north)",
+     "county": "Westchester NY",
+     "pop": 7569,
+     "pop75": 590,
+     "med65": 126103,
+     "zips": [
+      "10510"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Somers",
+     "county": "Westchester NY",
+     "pop": 21939,
+     "pop75": 1709,
+     "med65": 101029,
+     "zips": [
+      "10589"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "New Castle (Chappaqua)",
+     "county": "Westchester NY",
+     "pop": 18180,
+     "pop75": 1416,
+     "med65": 156852,
+     "zips": [
+      "10514"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Philipstown (Cold Spring, Garrison)",
+     "county": "Putnam NY",
+     "pop": 4990,
+     "pop75": 375,
+     "med65": null,
+     "zips": [],
+     "frac": 0.5
+    }
+   ],
+   "pma_pop": 209826,
+   "pma_pop75_town": 16301,
+   "med65_weighted": 97321,
+   "tract": null,
+   "pop75": 24332,
+   "share75k": 0.594,
+   "share75k_town": 0.594,
+   "share100k": 0.49,
+   "share150k": 0.347,
+   "hh75": 16303,
+   "q75": 9677,
+   "q100": 7991,
+   "almc_units": 110,
+   "il_units": 0,
+   "supply": [
+    {
+     "name": "Yorktown ALR (private ALR beds)",
+     "town": "Cortlandt Manor",
+     "type": "ALR",
+     "units": 40,
+     "basis": "V",
+     "opened": 2003,
+     "census": 74,
+     "beds": 85
+    },
+    {
+     "name": "Atria on the Hudson",
+     "town": "Ossining",
+     "type": "EHP/ALR",
+     "units": 185,
+     "basis": "V",
+     "opened": 2011,
+     "census": 133,
+     "beds": 185
+    },
+    {
+     "name": "Atria Briarcliff Manor",
+     "town": "Briarcliff Manor",
+     "type": "AL/IL",
+     "units": 200,
+     "basis": "V",
+     "opened": 1997,
+     "census": 97,
+     "beds": 200
+    },
+    {
+     "name": "Artis Senior Living of Briarcliff",
+     "town": "Briarcliff Manor",
+     "type": "MC (SNALR)",
+     "units": 64,
+     "basis": "V",
+     "opened": 2021,
+     "census": 63,
+     "beds": 64
+    },
+    {
+     "name": "The Club at Briarcliff Manor",
+     "town": "Briarcliff Manor",
+     "type": "EHP/ALR",
+     "units": 145,
+     "basis": "V",
+     "opened": 2019,
+     "census": 118,
+     "beds": 145
+    },
+    {
+     "name": "The Country House in Westchester",
+     "town": "Yorktown Heights",
+     "type": "ALR",
+     "units": 100,
+     "basis": "V",
+     "opened": 1976,
+     "census": 87,
+     "beds": 100
+    },
+    {
+     "name": "Artis Senior Living of Somers",
+     "town": "Somers",
+     "type": "MC (ALR)",
+     "units": 72,
+     "basis": "V",
+     "opened": 2022,
+     "census": 66,
+     "beds": 72
+    },
+    {
+     "name": "The Springvale Inn",
+     "town": "Croton-on-Hudson",
+     "type": "EHP/ALR",
+     "units": 125,
+     "basis": "V",
+     "opened": 2003,
+     "census": 66,
+     "beds": 125
+    }
+   ],
+   "supply_src": "NYS DOH Adult Care Facility quarterly statistical report, 2026 Q2 (certified beds and resident census), health.data.ny.gov h5s5-hcxg; facility file vn5v-hh5r",
+   "supply_src_url": "https://health.data.ny.gov/resource/h5s5-hcxg.json?county=Westchester&reporting_year=2026&reporting_quarter=2",
+   "excluded": [
+    [
+     "The Sentinel of Mohegan Lake",
+     "188 ALP (Medicaid) beds, 180 residents: a Medicaid product, not competitive with private pay"
+    ],
+    [
+     "Yorktown ALR, ALP beds",
+     "45 Medicaid ALP beds of its 85"
+    ]
+   ],
+   "il_supply": [],
+   "existing": 931,
+   "pipeline_counted": 0,
+   "contingent": 0,
+   "pipeline": [
+    {
+     "name": "Benchmark at Mount Pleasant (Thornwood)",
+     "type": "ALR/MC",
+     "units": 114,
+     "status": "Opened Nov 20, 2025; 46 residents at 2026 Q2",
+     "treat": "secondary",
+     "miles": 13.3,
+     "src": "https://westfaironline.com/apartments/benchmark-senior-facility-opens-in-thornwood"
+    }
+   ],
+   "base": {
+    "demand": 1290,
+    "unmet": 359,
+    "capture": 0.3061411059848941
+   },
+   "hi": {
+    "demand": 1548,
+    "unmet": 617,
+    "capture": 0.17817408832405285
+   },
+   "low": {
+    "demand": 864,
+    "unmet": -67,
+    "capture": null
+   },
+   "low_hi": {
+    "demand": 1037,
+    "unmet": 106,
+    "capture": 1.0345734431803264
+   },
+   "q75_low": 6483,
+   "with_contingent": null,
+   "grid": {
+    "0.08": {
+     "base": {
+      "demand": 1032,
+      "unmet": 101,
+      "capture": 1.0864288980982821
+     },
+     "contingent": null
+    },
+    "0.10": {
+     "base": {
+      "demand": 1290,
+      "unmet": 359,
+      "capture": 0.3061411059848941
+     },
+     "contingent": null
+    },
+    "0.12": {
+     "base": {
+      "demand": 1548,
+      "unmet": 617,
+      "capture": 0.17817408832405285
+     },
+     "contingent": null
+    },
+    "0.14": {
+     "base": {
+      "demand": 1806,
+      "unmet": 875,
+      "capture": 0.12565167405595412
+     },
+     "contingent": null
+    }
+   },
+   "penetration": 0.1075709292125392,
+   "penetration_now": 0.09620416435818828,
+   "occupancy_doh": 0.7213114754098361,
+   "il": null,
+   "local_comps": null,
+   "local_comps_src": null,
+   "rent_model": 9680,
+   "product": "almc"
+  },
+  "CT-02": {
+   "id": "CT-02",
+   "pma_label": "About 7-8 miles (15-20 minutes) along Route 8, Route 25 and the Merritt: Trumbull, Monroe, Easton, Shelton, Fairfield, Stratford, north Bridgeport and south Newtown",
+   "pma_why": "Route 25 and Route 111 run straight through the site; Route 8 ties in Shelton and north Bridgeport; the Merritt Parkway brings in Fairfield. Only the north end of Bridgeport and the south end of Newtown are counted.",
+   "towns": [
+    {
+     "name": "Trumbull",
+     "county": "Fairfield CT",
+     "pop": 36827,
+     "pop75": 2528,
+     "med65": 91476,
+     "zips": [
+      "06611"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Monroe",
+     "county": "Fairfield CT",
+     "pop": 18825,
+     "pop75": 1292,
+     "med65": 97386,
+     "zips": [
+      "06468"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Easton",
+     "county": "Fairfield CT",
+     "pop": 7605,
+     "pop75": 522,
+     "med65": 201923,
+     "zips": [
+      "06612"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Shelton",
+     "county": "Fairfield CT",
+     "pop": 40869,
+     "pop75": 2806,
+     "med65": 74353,
+     "zips": [
+      "06484"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Fairfield (incl. Southport)",
+     "county": "Fairfield CT",
+     "pop": 61512,
+     "pop75": 4223,
+     "med65": 108260,
+     "zips": [
+      "06824",
+      "06825",
+      "06890"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Stratford",
+     "county": "Fairfield CT",
+     "pop": 52355,
+     "pop75": 3594,
+     "med65": 63362,
+     "zips": [
+      "06614",
+      "06615"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Bridgeport (north end)",
+     "county": "Fairfield CT",
+     "pop": 52029,
+     "pop75": 3572,
+     "med65": 59723,
+     "zips": [
+      "06606"
+     ],
+     "frac": 0.35
+    },
+    {
+     "name": "Newtown (south half)",
+     "county": "Fairfield CT",
+     "pop": 13586,
+     "pop75": 933,
+     "med65": 104083,
+     "zips": [
+      "06470"
+     ],
+     "frac": 0.5
+    }
+   ],
+   "pma_pop": 283608,
+   "pma_pop75_town": 19470,
+   "med65_weighted": 85592,
+   "tract": null,
+   "pop75": 29063,
+   "share75k": 0.548,
+   "share75k_town": 0.548,
+   "share100k": 0.444,
+   "share150k": 0.305,
+   "hh75": 19472,
+   "q75": 10667,
+   "q100": 8641,
+   "almc_units": 90,
+   "il_units": 103,
+   "supply": [
+    {
+     "name": "Middlebrook Farms at Trumbull",
+     "town": "Trumbull",
+     "type": "AL/MC",
+     "units": 90,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Monarch Spring Meadows (AL share)",
+     "town": "Trumbull",
+     "type": "AL",
+     "units": 60,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Benchmark Senior Living at Split Rock",
+     "town": "Shelton",
+     "type": "AL/MC",
+     "units": 90,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Brightview Shelton (AL/MC share)",
+     "town": "Shelton",
+     "type": "AL/MC",
+     "units": 70,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Wesley Heights at Wesley Village (AL)",
+     "town": "Shelton",
+     "type": "AL",
+     "units": 40,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Just Like Home (two residential homes)",
+     "town": "Shelton",
+     "type": "AL/MC",
+     "units": 20,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Sunrise of Fairfield",
+     "town": "Fairfield",
+     "type": "AL/MC",
+     "units": 80,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Sturges Ridge of Fairfield",
+     "town": "Fairfield",
+     "type": "AL/MC",
+     "units": 90,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Maplewood at Southport (AL/MC share)",
+     "town": "Southport",
+     "type": "AL/MC",
+     "units": 70,
+     "basis": "I",
+     "opened": 2019
+    },
+    {
+     "name": "Spring Village at Stratford",
+     "town": "Stratford",
+     "type": "AL/MC",
+     "units": 80,
+     "basis": "I",
+     "opened": null
+    },
+    {
+     "name": "Benchmark at Newtown",
+     "town": "Newtown",
+     "type": "AL/MC",
+     "units": 80,
+     "basis": "I",
+     "opened": null
+    }
+   ],
+   "supply_src": "Caring.com and operator listings (Connecticut does not publish unit counts in a machine-readable list; capacities estimated)",
+   "supply_src_url": null,
+   "excluded": [],
+   "il_supply": [
+    {
+     "name": "The Watermark at 3030 Park (CCRC)",
+     "town": "Bridgeport",
+     "units": 250,
+     "basis": "I"
+    },
+    {
+     "name": "Wesley Village (IL)",
+     "town": "Shelton",
+     "units": 120,
+     "basis": "I"
+    },
+    {
+     "name": "Maplewood at Southport (IL)",
+     "town": "Southport",
+     "units": 40,
+     "basis": "I"
+    },
+    {
+     "name": "Brightview Shelton (IL)",
+     "town": "Shelton",
+     "units": 40,
+     "basis": "I"
+    },
+    {
+     "name": "Monarch Spring Meadows (IL)",
+     "town": "Trumbull",
+     "units": 60,
+     "basis": "I"
+    }
+   ],
+   "existing": 770,
+   "pipeline_counted": 0,
+   "contingent": 0,
+   "pipeline": [
+    {
+     "name": "Rivers Edge, 48 Monroe Tpke (this site)",
+     "type": "IL/AL/MC + 147 active adult",
+     "units": 193,
+     "status": "Zone change and site plan approved 4-1; validity to confirm",
+     "treat": "subject",
+     "miles": 0.0,
+     "src": "https://beta.nerej.com/340-unit-senior-housing-campus-approved-in-trumbull"
+    }
+   ],
+   "base": {
+    "demand": 1422,
+    "unmet": 652,
+    "capture": 0.13799064891581728
+   },
+   "hi": {
+    "demand": 1707,
+    "unmet": 937,
+    "capture": 0.09608591567307616
+   },
+   "low": {
+    "demand": 953,
+    "unmet": 183,
+    "capture": 0.4923230700114907
+   },
+   "low_hi": {
+    "demand": 1143,
+    "unmet": 373,
+    "capture": 0.24104895000886234
+   },
+   "q75_low": 7146,
+   "with_contingent": null,
+   "grid": {
+    "0.08": {
+     "base": {
+      "demand": 1138,
+      "unmet": 368,
+      "capture": 0.24471518081847637
+     },
+     "contingent": null
+    },
+    "0.10": {
+     "base": {
+      "demand": 1422,
+      "unmet": 652,
+      "capture": 0.13799064891581728
+     },
+     "contingent": null
+    },
+    "0.12": {
+     "base": {
+      "demand": 1707,
+      "unmet": 937,
+      "capture": 0.09608591567307616
+     },
+     "contingent": null
+    },
+    "0.14": {
+     "base": {
+      "demand": 1991,
+      "unmet": 1221,
+      "capture": 0.07370371432720785
+     },
+     "contingent": null
+    }
+   },
+   "penetration": 0.08062523321624988,
+   "penetration_now": 0.07218770880989815,
+   "occupancy_doh": null,
+   "il": {
+    "units": 103,
+    "q100": 8641,
+    "supply": 510,
+    "pipeline": 0,
+    "base": {
+     "demand": 1329,
+     "unmet": 819,
+     "capture": 0.12570609247560371
+    },
+    "hi": {
+     "demand": 1662,
+     "unmet": 1152,
+     "capture": 0.08943188775223858
+    },
+    "with_pipeline": null
+   },
+   "local_comps": null,
+   "local_comps_src": null,
+   "rent_model": 9680,
+   "product": "campus"
+  },
+  "NY-01": {
+   "id": "NY-01",
+   "pma_label": "About 7 miles (15 minutes) on I-287 and I-95: Rye Brook, Port Chester, Rye, Harrison and Purchase, Mamaroneck, White Plains, North Castle, Scarsdale, Greenwich and west Stamford",
+   "pma_why": "The site sits at the I-287 / Hutchinson / King Street junction on the Connecticut line. Greenwich is part of the same market (backcountry Greenwich is minutes away); Long Island Sound is the south edge. Only the western half of Stamford is counted.",
+   "towns": [
+    {
+     "name": "Rye Brook",
+     "county": "Westchester NY",
+     "pop": 9856,
+     "pop75": 768,
+     "med65": 73478,
+     "zips": [
+      "10573"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Port Chester",
+     "county": "Westchester NY",
+     "pop": 31693,
+     "pop75": 2469,
+     "med65": 73478,
+     "zips": [
+      "10573"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Rye (city)",
+     "county": "Westchester NY",
+     "pop": 16592,
+     "pop75": 1293,
+     "med65": 76500,
+     "zips": [
+      "10580"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Harrison (incl. Purchase)",
+     "county": "Westchester NY",
+     "pop": 28943,
+     "pop75": 2255,
+     "med65": 172020,
+     "zips": [
+      "10528",
+      "10577"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Mamaroneck (town, incl. Larchmont)",
+     "county": "Westchester NY",
+     "pop": 31758,
+     "pop75": 2474,
+     "med65": 95341,
+     "zips": [
+      "10543",
+      "10538"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "White Plains",
+     "county": "Westchester NY",
+     "pop": 59559,
+     "pop75": 4640,
+     "med65": 92087,
+     "zips": [
+      "10605",
+      "10604",
+      "10606"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "North Castle (Armonk)",
+     "county": "Westchester NY",
+     "pop": 12408,
+     "pop75": 967,
+     "med65": 152448,
+     "zips": [
+      "10504"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Scarsdale",
+     "county": "Westchester NY",
+     "pop": 18253,
+     "pop75": 1422,
+     "med65": 131205,
+     "zips": [
+      "10583"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Greenwich",
+     "county": "Fairfield CT",
+     "pop": 63518,
+     "pop75": 4361,
+     "med65": 158969,
+     "zips": [
+      "06830",
+      "06831",
+      "06878",
+      "06807"
+     ],
+     "frac": 1
+    },
+    {
+     "name": "Stamford (west half)",
+     "county": "Fairfield CT",
+     "pop": 67735,
+     "pop75": 4650,
+     "med65": 108315,
+     "zips": [
+      "06902",
+      "06903",
+      "06905"
+     ],
+     "frac": 0.5
+    }
+   ],
+   "pma_pop": 340315,
+   "pma_pop75_town": 25298,
+   "med65_weighted": 115369,
+   "tract": null,
+   "pop75": 37762,
+   "share75k": 0.652,
+   "share75k_town": 0.652,
+   "share100k": 0.552,
+   "share150k": 0.406,
+   "hh75": 25300,
+   "q75": 16503,
+   "q100": 13958,
+   "almc_units": 85,
+   "il_units": 126,
+   "supply": [
+    {
+     "name": "High Point at Broadview (LCS campus)",
+     "town": "Purchase",
+     "type": "ALR/MC",
+     "units": 68,
+     "basis": "V",
+     "opened": 2025,
+     "census": 20,
+     "beds": 68
+    },
+    {
+     "name": "The Osborn (CCRC AL)",
+     "town": "Rye",
+     "type": "EHP/ALR",
+     "units": 103,
+     "basis": "V",
+     "opened": 2012,
+     "census": 101,
+     "beds": 103
+    },
+    {
+     "name": "Brightview Harrison",
+     "town": "Harrison",
+     "type": "EHP/ALR",
+     "units": 99,
+     "basis": "V",
+     "opened": 2024,
+     "census": 71,
+     "beds": 99
+    },
+    {
+     "name": "The Bristal at White Plains",
+     "town": "White Plains",
+     "type": "EHP/ALR",
+     "units": 190,
+     "basis": "V",
+     "opened": 2012,
+     "census": 151,
+     "beds": 190
+    },
+    {
+     "name": "The Ambassador at Scarsdale",
+     "town": "Scarsdale",
+     "type": "EHP/ALR",
+     "units": 144,
+     "basis": "V",
+     "opened": 2015,
+     "census": 117,
+     "beds": 144
+    },
+    {
+     "name": "The Kensington",
+     "town": "White Plains",
+     "type": "ALR/MC",
+     "units": 130,
+     "basis": "V",
+     "opened": 2011,
+     "census": 91,
+     "beds": 130
+    },
+    {
+     "name": "The Bristal at Armonk",
+     "town": "North Castle",
+     "type": "EHP/ALR",
+     "units": 171,
+     "basis": "V",
+     "opened": 2014,
+     "census": 126,
+     "beds": 171
+    },
+    {
+     "name": "Benchmark at Stamford",
+     "town": "Stamford",
+     "type": "AL/MC",
+     "units": 80,
+     "basis": "I",
+     "opened": null,
+     "census": null,
+     "beds": null
+    },
+    {
+     "name": "Brighton Gardens of Stamford",
+     "town": "Stamford",
+     "type": "AL/MC",
+     "units": 90,
+     "basis": "I",
+     "opened": null,
+     "census": null,
+     "beds": null
+    },
+    {
+     "name": "Atria Stamford (AL share)",
+     "town": "Stamford",
+     "type": "AL",
+     "units": 60,
+     "basis": "I",
+     "opened": null,
+     "census": null,
+     "beds": null
+    },
+    {
+     "name": "Waterstone at High Ridge (AL share)",
+     "town": "Stamford",
+     "type": "AL",
+     "units": 40,
+     "basis": "I",
+     "opened": null,
+     "census": null,
+     "beds": null
+    }
+   ],
+   "supply_src": "NYS DOH Adult Care Facility quarterly statistical report, 2026 Q2 (certified beds and census); Caring.com for Greenwich and Stamford (capacities estimated)",
+   "supply_src_url": "https://health.data.ny.gov/resource/h5s5-hcxg.json?county=Westchester&reporting_year=2026&reporting_quarter=2",
+   "excluded": [],
+   "il_supply": [
+    {
+     "name": "The Osborn (IL, CCRC)",
+     "town": "Rye",
+     "units": 300,
+     "basis": "I"
+    },
+    {
+     "name": "Broadview at Purchase College (LCS, CCRC)",
+     "town": "Purchase",
+     "units": 220,
+     "basis": "V"
+    },
+    {
+     "name": "Waterstone at High Ridge (IL)",
+     "town": "Stamford",
+     "units": 80,
+     "basis": "I"
+    },
+    {
+     "name": "Edgehill (CCRC)",
+     "town": "Stamford",
+     "units": 150,
+     "basis": "I"
+    },
+    {
+     "name": "Atria Stamford (IL)",
+     "town": "Stamford",
+     "units": 80,
+     "basis": "I"
+    }
+   ],
+   "existing": 1175,
+   "pipeline_counted": 170,
+   "contingent": 0,
+   "pipeline": [
+    {
+     "name": "Erickson senior PUD, Rye Brook",
+     "type": "CCRC (IL-led)",
+     "units": 834,
+     "status": "Application under review; positive declaration under SEQRA Aug 2026",
+     "treat": "contingent",
+     "miles": null,
+     "src": "https://ryebrookny.gov/900-king-street"
+    },
+    {
+     "name": "Greenwich Woods (8-30g)",
+     "type": "Assisted housing",
+     "units": 170,
+     "status": "Approved Nov 2025 (replaces a nursing home)",
+     "treat": "counted",
+     "miles": 2.4,
+     "src": "https://patch.com/connecticut/greenwich/plan-demolish-nursing-home-170-unit-assisted-housing-development-okd-greenwich"
+    },
+    {
+     "name": "900 King Street (this site)",
+     "type": "IL/AL + townhomes",
+     "units": 211,
+     "status": "Rezoned and site plan approved: 126 IL / 85 AL / 20 townhomes; Sunrise is contract vendee",
+     "treat": "subject",
+     "miles": 0.0,
+     "src": "https://ryebrookny.gov/900-king-street"
+    }
+   ],
+   "base": {
+    "demand": 2200,
+    "unmet": 855,
+    "capture": 0.09936677331610036
+   },
+   "hi": {
+    "demand": 2641,
+    "unmet": 1296,
+    "capture": 0.06561172925648669
+   },
+   "low": {
+    "demand": 1474,
+    "unmet": 129,
+    "capture": 0.6581165699477972
+   },
+   "low_hi": {
+    "demand": 1769,
+    "unmet": 424,
+    "capture": 0.20047749481873023
+   },
+   "q75_low": 11056,
+   "with_contingent": null,
+   "grid": {
+    "0.08": {
+     "base": {
+      "demand": 1760,
+      "unmet": 415,
+      "capture": 0.20465487189315706
+     },
+     "contingent": null
+    },
+    "0.10": {
+     "base": {
+      "demand": 2200,
+      "unmet": 855,
+      "capture": 0.09936677331610036
+     },
+     "contingent": null
+    },
+    "0.12": {
+     "base": {
+      "demand": 2641,
+      "unmet": 1296,
+      "capture": 0.06561172925648669
+     },
+     "contingent": null
+    },
+    "0.14": {
+     "base": {
+      "demand": 3081,
+      "unmet": 1736,
+      "capture": 0.04897488598361085
+     },
+     "contingent": null
+    }
+   },
+   "penetration": 0.08665025325856936,
+   "penetration_now": 0.08149971372921383,
+   "occupancy_doh": 0.7480662983425415,
+   "il": {
+    "units": 126,
+    "q100": 13958,
+    "supply": 830,
+    "pipeline": 834,
+    "base": {
+     "demand": 2147,
+     "unmet": 1317,
+     "capture": 0.09563982031799644
+    },
+    "hi": {
+     "demand": 2684,
+     "unmet": 1854,
+     "capture": 0.06795003810937104
+    },
+    "with_pipeline": {
+     "demand": 2684,
+     "unmet": 1020,
+     "capture": 0.12349265504934269
+    }
+   },
+   "local_comps": [
+    [
+     "The Ambassador at Scarsdale",
+     "Scarsdale",
+     9800,
+     "Class A; another listing shows $11,525"
+    ],
+    [
+     "Waterstone at High Ridge",
+     "Stamford",
+     9950,
+     "Class A, IL/AL"
+    ],
+    [
+     "Benchmark at Mount Pleasant",
+     "Thornwood",
+     9810,
+     "Class A, opened Nov 2025"
+    ],
+    [
+     "Monarch Coopers Corner",
+     "New Rochelle",
+     8900,
+     "Class A, opened 2023"
+    ],
+    [
+     "Brightview Harrison",
+     "Harrison",
+     7590,
+     "Class A, opened Nov 2024"
+    ],
+    [
+     "Benchmark at Stamford",
+     "Stamford",
+     7225,
+     ""
+    ],
+    [
+     "High Point at Broadview",
+     "Purchase",
+     6847,
+     "On an LCS CCRC campus"
+    ],
+    [
+     "The Bristal at White Plains",
+     "White Plains",
+     6200,
+     "Starting price"
+    ],
+    [
+     "The Bristal at Armonk",
+     "Armonk",
+     5800,
+     "Starting price"
+    ],
+    [
+     "The Kensington",
+     "White Plains",
+     4400,
+     "Starting price"
+    ]
+   ],
+   "local_comps_src": [
+    [
+     "Caring.com Rye Brook, White Plains, Stamford and Greenwich listings (listed prices, Nov 2026; not a rate shop)",
+     "https://www.caring.com/senior-living/assisted-living/new-york/rye-brook"
+    ]
+   ],
+   "rent_model": null,
+   "product": "campus"
+  }
+ }
+}

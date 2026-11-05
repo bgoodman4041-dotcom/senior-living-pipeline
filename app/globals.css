@@ -572,3 +572,7 @@ html, body { overflow-x: clip; }
 .hero-link { color: #fff; text-decoration: underline; text-underline-offset: 3px; font-size: 13px; display: inline-block; margin-bottom: 8px; }
 .hero-link:hover { color: var(--atco-orange); }
 .memo-bar a:not(.btn){color:#23608f}
+/* internal market studies */
+.study-flag{border:1px solid #e3e3e3;border-top:4px solid transparent;border-image:var(--atco-stripe) 1;border-image-slice:1;background:#fafafa;padding:7px 10px;margin:0 0 12px;font-size:11px;color:#3b4245}
+.study h1{font-family:"Open Sans",sans-serif;text-transform:uppercase;letter-spacing:.02em}
+.study .memo-kpis b{font-size:14px}
