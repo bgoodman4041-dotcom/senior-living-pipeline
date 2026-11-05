@@ -84,3 +84,25 @@ import { capitalPlan } from "../lib/capital.ts";
   console.log(`capital deployment: ${cn - cf}/${cn} checks passed`);
   if (cf) process.exitCode = 1;
 }
+
+// 4. Internal market studies: one per active shortlist site, PDFs present, headline figures quoted in the study text tie to the data
+{
+  const ms = JSON.parse(readFileSync(new URL("../data/market-studies.json", import.meta.url), "utf8"));
+  const txt = readFileSync(new URL("../app/study/[id]/page.tsx", import.meta.url), "utf8");
+  const { existsSync } = await import("node:fs");
+  let mf = 0, mn = 0;
+  const ck = (ok: boolean, msg: string) => { mn++; if (!ok) { mf++; console.error("FAIL market study", msg); } };
+  ck(JSON.stringify(ms.order) === JSON.stringify(["NJ-04", "NJ-10", "NY-03", "CT-02", "NY-01"]), "study order (Whippany excluded)");
+  const r = (x: number | null) => (x === null ? null : Math.round(x * 100));
+  const S = ms.studies;
+  for (const id of ms.order) ck(existsSync(new URL(`../public/studies/ATCO-${id}-market-study.pdf`, import.meta.url)), `${id} PDF`);
+  ck(S["NJ-04"].pop75 === 28680 && r(S["NJ-04"].base.capture) === 30 && r(S["NJ-04"].hi.capture) === 16 && r(S["NJ-04"].with_contingent.capture) === 38, "Florham Park ties to absorption.json (30% / 16% / 38%)");
+  ck(r(S["NJ-10"].base.capture) === 33 && r(S["NJ-10"].with_contingent.capture) === 43 && S["NJ-10"].low.capture === null, "Montville 33% / 43% / none");
+  ck(r(S["NY-03"].base.capture) === 31 && r(S["NY-03"].hi.capture) === 18 && Math.round(S["NY-03"].occupancy_doh * 100) === 72, "Cortlandt 31% / 18% / 72% occ");
+  ck(r(S["CT-02"].base.capture) === 14 && r(S["CT-02"].hi.capture) === 10 && r(S["CT-02"].il.base.capture) === 13 && r(S["CT-02"].low.capture) === 49, "Trumbull 14% / 10% / IL 13% / low 49%");
+  ck(r(S["NY-01"].base.capture) === 10 && r(S["NY-01"].il.base.capture) === 10 && r(S["NY-01"].il.hi.capture) === 7 && r(S["NY-01"].il.with_pipeline.capture) === 12 && Math.round(S["NY-01"].occupancy_doh * 100) === 75, "Rye Brook 10% / IL 10%, 7%->12% / 75% occ");
+  ck(/not a third-party market study/.test(txt) && /not affiliated with RiverSpring/.test(txt), "internal-study and non-affiliation statements");
+  ck(!/Hebrew Home|FCA|settlement/i.test(txt), "no Hebrew Home financials on public study pages");
+  console.log(`market studies: ${mn - mf}/${mn} checks passed`);
+  if (mf) process.exitCode = 1;
+}
