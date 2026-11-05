@@ -20,7 +20,7 @@ const govTitle = (s: any) => {
 function roleContacts(s: any, path: Path, owner: string | null): Contact[] {
   const town = s.municipality;
   const out: Contact[] = [];
-  if (owner) out.push({ group: "Counterparty", name: owner, role: "Owner / current applicant: site control, existing approvals and JV terms" });
+  if (owner) out.push({ group: "Counterparty", name: owner, role: "Owner / current applicant: site control, existing approvals and purchase terms" });
   out.push({ group: "Municipal staff", name: s.state === "CT" ? `${town} Town Planner / Land Use Office` : s.state === "NY" ? `${town} Planning Department` : `${town} Land Use Administrator / Board Secretary`, role: "First call: path, submission checklist, escrow, consultants and calendar" });
   out.push({ group: "Municipal staff", name: s.state === "NJ" ? "Zoning Officer" : s.state === "NY" ? "Building Inspector / Code Enforcement" : "Zoning Enforcement Officer", role: "Written zoning determination on the use" });
   out.push({ group: "Elected", name: `${town} ${govTitle(s)}`, role: path === "rezone" || path === "redev" || path === "disposition" || path === "amend" ? "Legislative sponsor: brief before any filing" : "Courtesy briefing before the public hearing" });
@@ -36,7 +36,7 @@ function steps(s: any, d: ReturnType<typeof dossier>): Step[] {
   const out: Step[] = [];
   let t = 0;
   const add = (x: Omit<Step, "start" | "end">, months: number, overlap = 0) => { const start = Math.max(0, t - overlap); const end = start + months; out.push({ ...x, start, end }); t = Math.max(t, end); };
-  add({ t: "Site control with an entitlement contingency", d: `LOI and option or JV with ${d.schedule.hi + 3}+ months of approval period, extension rights, seller cooperation on applications and a pursuit-cost cap of ${Math.round(d.budgetTotal / 1000)}k.`, who: "ATCO, owner, counsel", gate: true }, 1.5);
+  add({ t: "Site control with an entitlement contingency", d: `LOI, then a fee-simple purchase contract or option with ${d.schedule.hi + 3}+ months of approval period, extension rights, seller cooperation on applications and a pursuit-cost cap of ${Math.round(d.budgetTotal / 1000)}k.`, who: "ATCO, owner, counsel", gate: true }, 1.5);
   add({ t: "Zoning opinion and concept", d: "Counsel's written zoning opinion; bulk check of the massing against the district; Phase I, wetlands flagging and survey ordered.", who: "Counsel, civil engineer, architect" }, 1.5);
   add({ t: "Staff pre-application meeting", d: st === "NJ" ? "Meet the land use administrator, planner and engineer; optional informal concept review before the board (N.J.S.A. 40:55D-10.1, non-binding)." : st === "NY" ? "Meet the planning director; ask how lead agency and SEQRA classification will be handled and which consultants review." : "Meet the town planner; for wetlands, the IWWA agent; optional informal pre-application review by the commission (CGS 8-7d(e)).", who: "Planning staff" }, 1);
   if (legislative) add({ t: "Brief elected leadership", d: `Private briefing of the ${govTitle(s).toLowerCase()} and the board majority before anything is public. Bring the fiscal summary and the operator.`, who: "Elected officials" }, 0.5);
@@ -125,7 +125,7 @@ function loiTerms(s: any, d: ReturnType<typeof dossier>, plan: Step[], owner: st
   const months = Math.ceil(Math.max(...plan.map((x) => x.end)));
   const cap = Math.round(d.budgetTotal / 1000);
   return [
-    { k: "Structure", v: owner ? `JV or option with ${owner}; land contributed or priced at the residual, closing on approvals` : "Contract of sale or option, closing on final unappealed approvals" },
+    { k: "Structure", v: owner ? `Fee-simple purchase from ${owner} by contract or option, priced at or below the residual, closing on approvals` : "Contract of sale or option, closing on final unappealed approvals" },
     { k: "Approval period", v: `${months} months from contract, plus two 90-day extensions for a fee credited to price; tolled during any appeal or litigation` },
     { k: "Deposits", v: "Small initial deposit, refundable through feasibility; further deposits released only at the zoning and approval gates" },
     { k: "Seller cooperation", v: "Owner signs applications, joins in the petition and does not oppose or object; access for borings, survey and wetlands flagging" },

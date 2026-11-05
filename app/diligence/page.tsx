@@ -28,24 +28,24 @@ export default function Diligence() {
     const best = r.opts.filter((o) => o.available && o.key !== "fee").sort((a, b) => b.down.profit - a.down.profit)[0];
     return { s, r, p, w, best };
   });
-  const score: [string, "Closed" | "Partly closed" | "Needs Ben", string, string][] = [
+  const score: [string, "Closed" | "Partly closed" | "Needs ATCO", string, string][] = [
     ["Are the rents real?", "Partly closed", "Public comp set for every shortlist market. Florham Park, Whippany and Montville are inside the Class A range; Cortlandt and Trumbull were cut to the Class A median; Poughkeepsie was cut 14% and dropped to Pass.", "#rents"],
     ["Is the cost realistic?", "Partly closed", "Six public NJ/NY cost comps. Comps show about 969 SF a unit (Benchmark East Brunswick, the Cortlandt site plan); the model was raised from 828 to about 900 SF a unit on the AL/MC mix (AL 950, MC 800), adding about 7% to all-in cost. A Florham Park GC budget is ready to price.", "#costs"],
-    ["Do you control the land?", "Needs Ben", "Owner of record, deal status and a control path for each site. No site is under LOI or option yet.", "#control"],
+    ["Do you control the land?", "Partly closed", "ATCO develops the land and plans to buy and own it fee simple, outright: acquisitions, not ground leases or JVs. Owner of record, deal status and an acquisition path for each site. No site is under contract, LOI or option yet.", "#control"],
     ["Is the NJ PILOT real?", "Partly closed", "Florham Park is designated (Res. 20-94). Whippany's approval is for a non-senior plan. Nothing found for Montville.", "#redevelopment"],
     ["What if it goes wrong?", "Closed", "Every site carries each shock alone and combined, plus the structure that keeps it at breakeven and how much cushion is left.", "#cushion"],
-    ["What do LPs actually net?", "Partly closed", `Illustrative waterfall: ${pct(WF.pref, 0)} preferred return, then ${Math.round(WF.lpSplit * 100)}/${Math.round((1 - WF.lpSplit) * 100)}. Ben to set final terms.`, "#waterfall"],
-    ["Who operates it?", "Needs Ben", "Lead operator per site, with draft outreach letters and term-sheet outlines (internal). None signed.", "#operators"],
+    ["What do LPs actually net?", "Partly closed", `Illustrative waterfall: ${pct(WF.pref, 0)} preferred return, then ${Math.round(WF.lpSplit * 100)}/${Math.round((1 - WF.lpSplit) * 100)}. ATCO to set final terms.`, "#waterfall"],
+    ["Who operates it?", "Needs ATCO", "Lead operator per site, with draft outreach letters and term-sheet outlines (internal). None signed.", "#operators"],
     ["Is there a pipeline behind Florham Park?", "Partly closed", "Every other site re-run on the tougher assumptions: none clears with acceptable approval odds. Two new Morris and Somerset pads with approvals in hand (Woodmont Parsippany, Peapack) are partner targets.", "#pipeline"],
-    ["Is there a market study?", "Needs Ben", "Absorption is modeled from ACS data and state licensing lists. A NIC MAP pull or third-party study is the remaining gap.", "#gaps"],
+    ["Is there a market study?", "Needs ATCO", "Absorption is modeled from ACS data and state licensing lists. A NIC MAP pull or third-party study is the remaining gap.", "#gaps"],
   ];
-  const tone = { "Closed": "go", "Partly closed": "warn", "Needs Ben": "bad" } as const;
+  const tone = { "Closed": "go", "Partly closed": "warn", "Needs ATCO": "bad" } as const;
   return (
     <section className="section">
       <div className="wrap">
         <div className="section-head"><div>
           <div className="eyebrow">LP diligence</div><h2>The questions an LP will ask, answered with evidence</h2>
-          <p>Each answer cites public sources pulled {ev.as_of}. Where the evidence disagreed with the model, the model changed. The items marked for Ben need ATCO action rather than more research.</p>
+          <p>Each answer cites public sources pulled {ev.as_of}. Where the evidence disagreed with the model, the model changed. The items marked Needs ATCO need ATCO action rather than more research.</p>
         </div></div>
 
         <div className="card" style={{ marginBottom: 18 }}><div className="table-wrap"><table className="t">
@@ -73,8 +73,9 @@ export default function Diligence() {
         <p className="small" style={{ marginBottom: 24 }}><a className="btn" href="/models/ATCO-NJ-04-GC-budget.xlsx" download>Florham Park GC budget outline (.xlsx)</a> CSI-division budget from the model, with blank columns for a GC to price.</p>
 
         <h3 id="control" className="anchor">3 · Site control</h3>
+        <p className="small" style={{ marginTop: 0 }}>ATCO develops the land and plans to buy and own it fee simple, outright: acquisitions, not ground leases or JVs. The model carries land as a purchase price at closing, and max land is the most ATCO can pay and still clear the floor. No site is under contract, LOI or option yet.</p>
         <div className="card" style={{ marginBottom: 24 }}><div className="table-wrap"><table className="t">
-          <thead><tr><th>Site</th><th>Owner of record</th><th>Status</th><th>Recommended control path</th></tr></thead>
+          <thead><tr><th>Site</th><th>Owner of record</th><th>Status</th><th>Acquisition path</th></tr></thead>
           <tbody>{Object.entries(control).map(([id, c]) => { const s = sites.find((x) => x.id === id)!; return (
             <tr key={id}><td style={{ minWidth: 130 }}><a href={`/sites/${id}`} className="site-name">{s.municipality}</a><div className="xs muted">{id}{flags[id] ? ` · ${flags[id].label}` : ""}</div></td><td className="small">{c.owner}</td><td className="small">{c.status}<div className="xs muted"><Src s={c.src} /></div></td><td className="small">{c.path}</td></tr>); })}</tbody>
         </table></div></div>
@@ -106,10 +107,10 @@ export default function Diligence() {
               {w ? <><td className="num">{pct(p.irrLevered, 1)}</td><td className="num"><b>{pct(w.lpIrr, 1)}</b></td><td className="num">{mult(w.lpMultiple)}</td><td className="num">{pct(w.gpIrr, 1)}</td><td className="num">{usdM(w.promote, 2)}</td></>
                 : <td colSpan={5} className="small muted">Entrance-fee campus: returns depend on sponsor structure (see dossier)</td>}</tr>))}</tbody>
         </table></div></div>
-        <p className="small" style={{ marginBottom: 24 }}>Illustrative terms: LP {pct(WF.lpShare, 0)} / GP {pct(1 - WF.lpShare, 0)} of equity, pari passu; {pct(WF.pref, 0)} compounding preferred return; then {Math.round(WF.lpSplit * 100)}% LP / {Math.round((1 - WF.lpSplit) * 100)}% GP. Base case, sale at stabilization. Ben sets the final terms.</p>
+        <p className="small" style={{ marginBottom: 24 }}>Illustrative terms: LP {pct(WF.lpShare, 0)} / GP {pct(1 - WF.lpShare, 0)} of equity, pari passu; {pct(WF.pref, 0)} compounding preferred return; then {Math.round(WF.lpSplit * 100)}% LP / {Math.round((1 - WF.lpSplit) * 100)}% GP. Base case, sale at stabilization. ATCO sets the final terms.</p>
 
         <h3 id="operators" className="anchor">7 · Operators</h3>
-        <p className="small" style={{ marginBottom: 24 }}>Lead operator per site is on the <a href="/operators">Operators</a> page. Draft outreach letters and term-sheet outlines for Engel Burman, Benchmark / National Development, Sunrise and LCS are prepared for Ben (internal, not published). None is signed.</p>
+        <p className="small" style={{ marginBottom: 24 }}>Lead operator per site is on the <a href="/operators">Operators</a> page. Draft outreach letters and term-sheet outlines for Engel Burman, Benchmark / National Development, Sunrise and LCS are prepared for ATCO (internal, not published). None is signed.</p>
 
         <h3 id="pipeline" className="anchor">8 · What sits behind the anchor deal</h3>
         <p className="small">{ev.rescreen._note}</p>
@@ -130,14 +131,14 @@ export default function Diligence() {
 
         <h3 id="gaps" className="anchor">9 · Still open, and who closes it</h3>
         <div className="card card-pad"><ul className="list-clean small">
-          <li><b>NIC MAP pull or third-party market study</b> for Florham Park, Montville and Cortlandt: confirms rents, occupancy and pipeline. <i>Ben: buy or commission.</i></li>
-          <li><b>GC pricing</b> of the Florham Park budget by KBE or IMC: replaces the model hard cost. <i>Ben: send the budget outline.</i></li>
-          <li><b>Site control:</b> LOI or option with Garden Homes (Florham Park) and Diversified (Montville). <i>Ben.</i></li>
-          <li><b>PILOT conversations:</b> Florham Park redevelopment counsel, Montville administrator. <i>Ben or land-use counsel.</i></li>
-          <li><b>Operator LOIs:</b> letters are drafted. <i>Ben: send.</i></li>
-          <li><b>Fund terms:</b> pref, promote, fees and GP commitment. <i>Ben.</i></li>
-          <li><b>Partner calls:</b> Woodmont (Parsippany approval) and Peapack Senior Living (CN in hand) as JV, equity or GC targets. <i>Ben.</i></li>
-          <li><b>Track record:</b> ATCO&apos;s senior-housing or comparable ground-up history for the LP deck. <i>Ben.</i></li>
+          <li><b>NIC MAP pull or third-party market study</b> for Florham Park, Montville and Cortlandt: confirms rents, occupancy and pipeline. <i>ATCO: buy or commission.</i></li>
+          <li><b>GC pricing</b> of the Florham Park budget by KBE or IMC: replaces the model hard cost. <i>ATCO: send the budget outline.</i></li>
+          <li><b>Site control:</b> LOI, then a fee-simple purchase contract or option, with Garden Homes (Florham Park) and Diversified (Montville). <i>ATCO.</i></li>
+          <li><b>PILOT conversations:</b> Florham Park redevelopment counsel, Montville administrator. <i>ATCO or land-use counsel.</i></li>
+          <li><b>Operator LOIs:</b> letters are drafted. <i>ATCO: send.</i></li>
+          <li><b>Fund terms:</b> pref, promote, fees and GP commitment. <i>ATCO.</i></li>
+          <li><b>Partner calls:</b> Woodmont (Parsippany approval) and Peapack Senior Living (CN in hand) as JV, equity or GC targets. <i>ATCO.</i></li>
+          <li><b>Track record:</b> ATCO&apos;s senior-housing or comparable ground-up history for the LP deck. <i>ATCO.</i></li>
         </ul></div>
       </div>
     </section>

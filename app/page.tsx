@@ -190,7 +190,7 @@ export default function Home() {
                 <div className="eyebrow" style={{ color: "var(--atco-orange)" }}>Next 90 days</div>
                 <h3 style={{ color: "#fff" }}>From shortlist to LOI</h3>
                 <ul style={{ paddingLeft: 18, color: "#d6d6d6", fontSize: 13.5, margin: "10px 0 0" }}>
-                  <li>Owner outreach on every shortlisted site; JV terms with master-plan developers on the pads</li>
+                  <li>Owner outreach on every shortlisted site; fee-simple pad purchases from master-plan developers</li>
                   <li>NIC MAP and rate shops for each primary market area</li>
                   <li>Assessor estimate and PILOT term sheet where the spread is thin</li>
                   <li>Zoning opinion and licensure path (NJ CN, NY ALR, CT ALSA)</li>

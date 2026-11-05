@@ -22,6 +22,9 @@ from openpyxl.utils import get_column_letter
 from openpyxl.workbook.defined_name import DefinedName
 from openpyxl.worksheet.datavalidation import DataValidation
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from atco_xlsx import brand  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "public" / "models"
 D = json.loads((ROOT / "data" / "site-data.json").read_text())
@@ -33,17 +36,17 @@ CAP = dict(predev=9, build={"A": 30, "B": 24, "C": 20}, leaseup={"A": 24, "B": 2
            perm_rate=0.06, perm_amort=35, trend=0.03, retainage=0.10, co_threshold=250000)
 MAXM = 96  # months 0..96 cover the longest schedule (9 + 30 + 48-month lease-up)
 
-# ---------- styles (106 Court: Aptos Narrow 11, slate headers, blue inputs, yellow key output) ----------
-FONT = "Aptos Narrow"
-HDR_FILL = PatternFill("solid", fgColor="FF304152")
-SUB_FILL = PatternFill("solid", fgColor="FFE7EAF0")
+# ---------- styles (106 Court layout in ATCO dress: Arial, purple headers, blue inputs, yellow key output) ----------
+FONT = "Arial"
+HDR_FILL = PatternFill("solid", fgColor="FF403393")
+SUB_FILL = PatternFill("solid", fgColor="FFEFEEF6")
 KEY_FILL = PatternFill("solid", fgColor="FFFFFF00")
 BAND = {"Predevelopment": "FFF3F2F9", "Construction": "FFEEF4FA", "Lease-up": "FFEDF6EB"}
 F_BASE = Font(name=FONT, size=11)
 F_BOLD = Font(name=FONT, size=11, bold=True)
 F_HDR = Font(name=FONT, size=11, bold=True, color="FFFFFFFF")
 F_IN = Font(name=FONT, size=11, bold=True, color="FF0070C0")
-F_TITLE = Font(name=FONT, size=16, bold=True)
+F_TITLE = Font(name=FONT, size=16, bold=True, color="FF292929")
 F_NOTE = Font(name=FONT, size=10, italic=True, color="FF555F61")
 MED = Side(style="medium"); THIN = Side(style="thin")
 USD = '"$"\\ #,##0'; USD2 = '"$"#,##0.00'; PCT = "0.00%"; PCT1 = "0.0%"; NUM = "#,##0"; X = '0.00"x"'; SF = '#,##0\\ "sf"'
@@ -97,7 +100,7 @@ class Sheet:
 
     def put(self, ref, value, fmt=None, font=None, fill=None, bold=False, align=None, wrap=False):
         c = self.ws[ref]
-        c.value = value
+        c.value = value.upper() if font is F_TITLE and isinstance(value, str) else value
         c.font = font or (F_BOLD if bold else F_BASE)
         if fmt:
             c.number_format = fmt
@@ -128,7 +131,7 @@ class Sheet:
         for row in self.ws[f"{ref_from}:{ref_to}"]:
             for c in row:
                 c.fill = HDR_FILL; c.font = F_HDR
-        r1.value = text
+        r1.value = text.upper() if isinstance(text, str) else text
 
     def sub(self, ref_from, ref_to, labels):
         cells = [c for row in self.ws[f"{ref_from}:{ref_to}"] for c in row]
@@ -796,9 +799,9 @@ def main():
     for s in D["sites"]:
         if only and s["id"] not in only:
             continue
-        build_site(s).save(OUT / f"ATCO-{s['id']}-proforma.xlsx")
+        brand(build_site(s)).save(OUT / f"ATCO-{s['id']}-proforma.xlsx")
     if not only:
-        build_portfolio().save(OUT / "ATCO-senior-living-portfolio.xlsx")
+        brand(build_portfolio()).save(OUT / "ATCO-senior-living-portfolio.xlsx")
     print("wrote", len(list(OUT.glob("*.xlsx"))), "workbooks to", OUT)
 
 

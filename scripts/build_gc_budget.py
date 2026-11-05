@@ -7,6 +7,9 @@ import json
 from pathlib import Path
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from atco_xlsx import brand  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 D = json.loads((ROOT / "data" / "site-data.json").read_text())
@@ -38,8 +41,8 @@ assert abs(sum(d[3] for d in DIVS) - 1) < 1e-9
 
 wb = Workbook(); ws = wb.active; ws.title = "GC Budget"
 B = Font(name="Arial", bold=True); N = Font(name="Arial"); H = Font(name="Arial", bold=True, color="FFFFFFFF"); IN = Font(name="Arial", bold=True, color="FF0070C0")
-HF = PatternFill("solid", fgColor="FF403393"); SF = PatternFill("solid", fgColor="FFE7EAF0")
-ws["B2"] = f"Florham Park AL/MC pad: GC budget outline ({s['name']})"; ws["B2"].font = Font(name="Arial", size=14, bold=True)
+HF = PatternFill("solid", fgColor="FF403393"); SF = PatternFill("solid", fgColor="FFEFEEF6")
+ws["B2"] = f"Florham Park AL/MC pad: GC budget outline ({s['name']})".upper(); ws["B2"].font = Font(name="Arial", size=14, bold=True, color="FF292929")
 ws["B3"] = (f"{u['units']} units ({', '.join(str(l['units']) + ' ' + l['care'] for l in u['lines'])}), {u['gsf']:,.0f} GSF. Model building hard cost ${u['hard']:,.0f} "
             f"(${u['hard'] / u['gsf']:,.0f}/GSF). Division shares are ATCO planning allocations; GC enters its price in column G.")
 ws["B3"].font = Font(name="Arial", italic=True, size=9)
@@ -86,4 +89,4 @@ for col, w in {"A": 2, "B": 7, "C": 34, "D": 52, "E": 8, "F": 14, "G": 9, "H": 1
 ws.freeze_panes = "B6"
 wb.calculation.fullCalcOnLoad = True
 out = ROOT / "public" / "models" / "ATCO-NJ-04-GC-budget.xlsx"
-wb.save(out); print("wrote", out)
+brand(wb, "ATCO Properties & Management · Confidential · Planning allocations for GC pricing").save(out); print("wrote", out)

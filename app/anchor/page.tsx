@@ -63,7 +63,7 @@ export default function Anchor() {
   for (let k = 0; k < 40; k++) { const mid = (lo + hi) / 2; if (underwrite(s, markets, a, { hardCostPsf: a.hard_cost_psf * (1 + mid) }).yoc >= HURDLE) lo = mid; else hi = mid; }
   const hcRoom = lo;
 
-  const uses: [string, number][] = [["Land (pad carve-out)", ft.uses.land], ["Hard cost", ft.uses.hard], ["Site work", ft.uses.siteWork], ["Contingency", ft.uses.contingency], ["FF&E", ft.uses.ffe], ["Soft cost", ft.uses.soft], ["Construction interest", ft.uses.interest], ["Lease-up reserve", ft.uses.leaseup]];
+  const uses: [string, number][] = [["Land (fee-simple pad purchase)", ft.uses.land], ["Hard cost", ft.uses.hard], ["Site work", ft.uses.siteWork], ["Contingency", ft.uses.contingency], ["FF&E", ft.uses.ffe], ["Soft cost", ft.uses.soft], ["Construction interest", ft.uses.interest], ["Lease-up reserve", ft.uses.leaseup]];
   const src: [string, number, number][] = [["Senior construction loan", ft.loanCommit, pl.loanCommit], [`LP equity (${pct(CAP.lpShare, 0)})`, ft.lp, pl.lp], [`GP equity, ATCO and operator (${pct(1 - CAP.lpShare, 0)})`, ft.gp, pl.gp]];
 
   const gantt: [string, number, number, string][] = [
@@ -86,19 +86,19 @@ export default function Anchor() {
   const pilot: [string, string, string][] = [
     ["1", "Area in need of redevelopment", "Done. Borough Resolution 20-94 covers the ASCO site."],
     ["2", "Redevelopment plan", "The ASCO / 50 Hanover Road plan is in draft. Ask the Borough to permit AL/MC on a 4–5 acre pad inside it before adoption; the Planning Board reviews for consistency with the master plan, then Council adopts by ordinance."],
-    ["3", "Designated redeveloper", "Council names ATCO (or the ATCO / Garden Homes JV) redeveloper for the pad and signs a redevelopment agreement: program, schedule, design standards and the 10% Medicaid AL commitment."],
+    ["3", "Designated redeveloper", "Council names ATCO redeveloper for the pad and signs a redevelopment agreement: program, schedule, design standards and the 10% Medicaid AL commitment."],
     ["4", "Financial agreement (N.J.S.A. 40A:20)", "The project entity applies for a long-term tax exemption. Council approves the financial agreement by ordinance. The annual service charge is a percentage of gross revenue or of project cost, stepping up over a term of up to 30 years from completion; 5% goes to Morris County."],
     ["5", "Underwriting rule", `Model the PILOT at ${pct(a.tax_structures.pilot, 0)} of full taxes (about $${int(Math.round(taxSave / 1000))}K a year saved). Close fully taxed (${pct(u.yoc)} YOC, which already clears) and treat the PILOT as upside until the ordinance passes.`],
   ];
 
   const risks: [string, "High" | "Med" | "Low", "High" | "Med" | "Low", string, string][] = [
-    ["Absorption: Arbor Terrace's 100 AL beds approved in the same borough", "High", "High", `The project needs about ${pct(abBase.capture, 0)} of unmet demand in the 7-mile market (lenders like 10–15%), or ${pct(abWood.capture, 0)} if Woodmont's approved, unbuilt 80 AL/MC units in Parsippany are built. This is the weakest point in the deal. Mitigants: NIC MAP pull before LOI, partner on Woodmont rather than compete with it, 9 months of pre-leasing (not credited in the model), and a lease-up reserve sized to ${u.leaseup_months} months.`, "Ben / operator"],
+    ["Absorption: Arbor Terrace's 100 AL beds approved in the same borough", "High", "High", `The project needs about ${pct(abBase.capture, 0)} of unmet demand in the 7-mile market (lenders like 10–15%), or ${pct(abWood.capture, 0)} if Woodmont's approved, unbuilt 80 AL/MC units in Parsippany are built. This is the weakest point in the deal. Mitigants: NIC MAP pull before LOI, partner on Woodmont rather than compete with it, 9 months of pre-leasing (not credited in the model), and a lease-up reserve sized to ${u.leaseup_months} months.`, "ATCO / operator"],
     ["Rents below the Class A comp range", "Low", "High", `Model AL rent $${int((ev.rents as any)[ID].model)} a month sits inside the public comp range (The Delaney, Sunrise, Brookdale). Breakeven at ${pct(u.breakeven_rent_ratio, 0)} of modeled rent. Operator rate shop before LOI.`, "Operator"],
     ["Hard-cost overrun", "Med", "High", `Model hard cost is $${int(Math.round(u.hard / u.gsf))}/SF, in Weitz's national mid-level AL range ($280–356) and below its high-level range ($363–452), before any New York-area premium. For a Class A building that is the most aggressive input after rents. Hard cost can rise about ${pct(hcRoom, 0)} before YOC falls to ${pct(HURDLE, 1)}. GMP at financial close; combined downside with a GMP still returns ${usdM(gmp.down.profit, 1)}. CSI budget outline is ready for KBE or IMC to price.`, "ATCO construction"],
-    ["Redevelopment plan adopted without the AL/MC pad", "Med", "High", "Make the pad a condition of the Garden Homes LOI; brief the Borough planner before the draft plan goes to the Planning Board. Arbor Terrace shows the Borough has approved AL.", "Ben / land-use counsel"],
+    ["Redevelopment plan adopted without the AL/MC pad", "Med", "High", "Make the pad a condition of the Garden Homes LOI; brief the Borough planner before the draft plan goes to the Planning Board. Arbor Terrace shows the Borough has approved AL.", "ATCO / land-use counsel"],
     ["PILOT not granted", "Med", "Low", `The deal clears ${pct(HURDLE, 1)} fully taxed; a PILOT is upside (YOC ${pct(u.yoc_by_tax_structure.pilot)}), not a condition.`, "Land-use counsel"],
     ["CN delay or Medicaid condition", "Low", "Med", "Expedited CN track for AL; the 10% Medicaid occupancy within 3 years is already in the underwriting.", "ATCO / operator"],
-    ["Land price above max land", "Low", "High", `Land is underwritten at ${usdM(u.land_cost, 1)} (county comp per unit) against a max land of ${usdM(u.max_land, 1)}. Garden Homes' recorded basis is about $${int(Math.round(33.43e6 / 55 / 1000))}K–$${int(Math.round(45.81e6 / 55 / 1000))}K an acre, or ${usdM(33.43e6 / 55 * Number(s.acres), 1)}–${usdM(45.81e6 / 55 * Number(s.acres), 1)} for ${s.acres} acres pro rata, so the model's land price leaves room for Garden Homes' profit. Fix the price in the LOI.`, "Ben"],
+    ["Land price above max land", "Low", "High", `Land is underwritten at ${usdM(u.land_cost, 1)} (county comp per unit) against a max land of ${usdM(u.max_land, 1)}. Garden Homes' recorded basis is about $${int(Math.round(33.43e6 / 55 / 1000))}K–$${int(Math.round(45.81e6 / 55 / 1000))}K an acre, or ${usdM(33.43e6 / 55 * Number(s.acres), 1)}–${usdM(45.81e6 / 55 * Number(s.acres), 1)} for ${s.acres} acres pro rata, so the model's land price leaves room for Garden Homes' profit. Fix the price in the LOI.`, "ATCO"],
     ["Rates and exit cap", "Med", "Med", `Exit at ${pct(a.exit_cap, 1)}; the +50 bps case is in the downside. Buy a rate cap at close; HUD 232 take-out at DSCR ${ft.perm.dscr.toFixed(2)}x.`, "ATCO capital markets"],
   ];
   const rc = { High: "bad", Med: "warn", Low: "go" } as const;
@@ -108,7 +108,7 @@ export default function Anchor() {
       <div className="wrap">
         <div className="section-head"><div>
           <div className="eyebrow">Anchor deal · {s.id}</div><h2>Florham Park: 114-unit AL/MC pad at the former ASCO HQ</h2>
-          <p>{ctl.owner.split(" (")[0]} owns the 55-acre site. ATCO takes a {s.acres}-acre pad by JV or carve-out. This is the only site that clears {pct(HURDLE, 1)} fully taxed, and its redevelopment designation makes a PILOT available on top.</p>
+          <p>{ctl.owner.split(" (")[0]} owns the 55-acre site. ATCO plans to buy a {s.acres}-acre pad fee simple, subdivided from the site, and own it outright; no contract or LOI yet. This is the only site that clears {pct(HURDLE, 1)} fully taxed, and its redevelopment designation makes a PILOT available on top.</p>
           <p><b>Who it serves.</b> {lines.map((l) => `${l.units} ${l.care === "AL" ? "assisted living" : l.care === "MC" ? "memory care" : l.care} apartments`).join(" and ")}, about {Math.round((lines.find((l) => l.care === "AL")?.units || 0) * 0.1)} of the assisted living apartments held for Medicaid residents under New Jersey&apos;s certificate-of-need condition, next door to Garden Homes&apos; 305 age-restricted homes, so residents there can add care without leaving the community.</p>
         </div></div>
 

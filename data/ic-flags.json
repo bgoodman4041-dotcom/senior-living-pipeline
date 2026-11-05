@@ -19,7 +19,7 @@
  },
  "NY-01": {
   "tone": "info",
-  "label": "Fee development only (pending Ben)",
+  "label": "Fee development only (pending ATCO)",
   "text": "Entrance-fee coverage is 70%, right at the screen, so the verdict flips with small input changes. A for-profit owner loses about $14.6M even with entrance fees; a nonprofit sponsor makes about $18.3M, and ATCO earns about a $6.9M development fee plus the GC contract. Sunrise is the contract vendee.",
   "href": "#capital"
  },

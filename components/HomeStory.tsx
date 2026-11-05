@@ -37,7 +37,6 @@ export default function HomeStory() {
             <div className="hero-ctas">
               <a className="btn btn-xl" href="/anchor">The Florham Park plan</a>
               <a className="btn btn-ghost" href="#partner">Where a partner fits</a>
-              <a className="btn btn-ghost" href="/investors">Investor questions</a>
             </div>
             <p className="hero-note"><a href="/briefs/ATCO-senior-living-partnership-brief.pdf" className="hero-link">Download the one-page partnership brief (PDF)</a><br />ATCO is not affiliated with RiverSpring Living. We refer to its public record with respect, as the model we learn from.</p>
           </div>
@@ -84,7 +83,7 @@ export default function HomeStory() {
           <div className="grid g4">
             {[
               ["Care in one place", "Residents move between levels of care without leaving their community.", "The lead pads sit inside approved age-restricted communities (305 homes in Florham Park, 266 in Montville), so assisted living and memory care complete a continuum next door."],
-              ["Land held for the long term", "Long-owned land makes the economics work. River's Edge sits on about 3 acres ground-leased within the campus.", "Pads inside approved master plans, and ground leases from landowners who want to keep the fee."],
+              ["Land held for the long term", "Long-owned land makes the economics work. River's Edge sits on about 3 acres ground-leased within the campus.", "ATCO buys and owns its pads fee simple, inside approved master plans, and holds them for the long term."],
               ["Mission ownership for life plan communities", "River's Edge, New York City's first life plan community, was financed with about $633M of tax-exempt bonds and more than 85% of its 260 apartments were reserved before construction.", "On the two entrance-fee campuses, a nonprofit sponsor owns and ATCO develops and builds for a fee."],
               ["Clinical partnership", "The 79-bed Hauser Rehabilitation Center opened in 2025 with NewYork-Presbyterian clinicians on campus.", "Each operator agreement would name a clinical and referral partner, as Hauser does with NewYork-Presbyterian."],
             ].map(([t, rs, us]) => (

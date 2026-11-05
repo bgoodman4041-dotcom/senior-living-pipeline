@@ -76,7 +76,7 @@ export default function Brief() {
           <div>
             <h2>What ATCO brings</h2>
             <ul>
-              <li>Land and approvals: pads inside approved master plans, with a playbook for each town</li>
+              <li>Land and approvals: ATCO buys and owns the land fee simple, on pads inside approved master plans, with a playbook for each town</li>
               <li>Construction at a guaranteed maximum price, with open books</li>
               <li>Capital: equity and construction debt, released in gates</li>
               <li>Underwriting a partner can check: every input sourced, Excel models for each site</li>

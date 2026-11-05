@@ -23,7 +23,7 @@ const RS: [string, string, [string, string][]][] = [
 ];
 const LEVERS: string[][] = [
   ["Continuum of care", "Every level of care on one campus", "AL and memory care pads inside approved age-restricted communities (Florham Park, Montville)", "ATCO builds; operator runs care"],
-  ["Land", "Long-owned land, ground-leased for new housing", "Pads inside approved master plans; ground leases where the landowner wants to keep the fee", "ATCO, with landowners"],
+  ["Land", "Long-owned land, ground-leased for new housing", "Pads inside approved master plans, bought and owned fee simple for the long term", "ATCO, with landowners"],
   ["Ownership and tax status", "Nonprofit ownership and tax-exempt bonds", "Entrance-fee campuses (Rye Brook, Trumbull) owned by a nonprofit sponsor; ATCO as fee developer", "Nonprofit partner"],
   ["Entrance fees", "Refundable entrance fees fund River's Edge", "Modeled on both campuses; fees must cover at least 70% of IL cost", "Nonprofit sponsor and manager"],
   ["Nursing care", "Existing licensed beds back the life-care promise", "New nursing beds are effectively unavailable in all three states; care by contract with an existing provider", "Operator or partner"],
