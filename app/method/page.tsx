@@ -30,7 +30,7 @@ export default function Method() {
         <p className="lede">One model, applied identically to every site: hard gates, a pro forma off the local rent index, the maximum land price at the hurdle, then a verdict.</p>
       </div></section>
       <div className="wrap">
-        <section className="section"><div className="grid g2">
+        <section className="section"><h2 className="sr-only">The screening model, step by step</h2><div className="grid g2">
           <div className="card card-pad prose">
             <h3>1. Gates (hard kills)</h3>
             <ul>

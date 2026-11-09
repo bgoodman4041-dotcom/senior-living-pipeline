@@ -64,7 +64,7 @@ export default function CapitalDeployment({ site, a }: { site: any; a: any }) {
         <div className="card card-pad">
           <h3>Entrance-fee returns: the case this site is judged on</h3>
           <p className="small" style={{ marginTop: 0 }}>First-generation IL fees ({usdM(p.efCase.taxable.feePool)} at {pct(a.entrance_fee.presale_occupancy, 0)} presale) arrive as units fill during lease-up and retire the construction loan first. IL monthly service fees are modeled at {pct(CAP.efMonthlyPct, 0)} of the rental rate. The rental returns further down are shown for reference only.</p>
-          <div className="table-wrap"><table className="t"><thead><tr><th></th><th className="num">For-profit<br />owner</th><th className="num">Nonprofit<br />sponsor</th></tr></thead><tbody>
+          <div className="table-wrap"><table className="t"><thead><tr><th><span className="sr-only">Line item</span></th><th className="num">For-profit<br />owner</th><th className="num">Nonprofit<br />sponsor</th></tr></thead><tbody>
             {([
               ["Stabilized NOI (today)", usdM(p.efCase.taxable.noi, 1), usdM(p.efCase.nonprofit.noi, 1)],
               ["Construction loan retired by fees", pct(p.efCase.taxable.loanRetiredPct, 0), pct(p.efCase.nonprofit.loanRetiredPct, 0)],

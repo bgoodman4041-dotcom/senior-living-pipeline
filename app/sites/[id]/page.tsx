@@ -3,6 +3,7 @@ import path from "node:path";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import SiteMap from "@/components/SiteMap";
+import SubNav from "@/components/SubNav";
 import WhatIf from "@/components/WhatIf";
 import Massing3D from "@/components/Massing3D";
 import PrintButton from "@/components/PrintButton";
@@ -131,7 +132,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 10 }}>
             <VerdictChip v={s.verdict} hold={onHold(s)} />
             <span className="small meta">Rank #{s.rank} of {sites.length}{isShortlist(s) ? " · Shortlist" : ""} · {trackOf(s)}</span>
-            <span style={{ marginLeft: "auto", display: "flex", gap: 8 }}><a className="btn btn-xl no-print" href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Download Excel model</a>{isShortlist(s) && <a className="btn no-print" href={`/memos/ATCO-${s.id}-IC-memo.pdf`} download>IC memo PDF</a>}{s.id === "NJ-04" && <a className="btn no-print" href="/anchor">Anchor-deal package</a>}<a className="btn no-print hide-sm" href="#model">What is in it</a><PrintButton /></span>
+            <span className="hero-actions"><a className="btn btn-xl no-print" href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Download Excel model</a>{isShortlist(s) && <a className="btn no-print" href={`/memos/ATCO-${s.id}-IC-memo.pdf`} download>IC memo PDF</a>}{s.id === "NJ-04" && <a className="btn no-print" href="/anchor">Anchor-deal package</a>}<a className="btn no-print hide-sm" href="#model">What is in it</a><PrintButton /></span>
           </div>
           <h1>{s.name}</h1>
           <div className="sub">{s.municipality} · {s.county} County, {STATE_NAME[s.state]} · {s.acres} acres · {s.drive_min_midtown} min to Midtown</div>
@@ -164,9 +165,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           </div>
         </div>
       </section>
-      <nav className="subnav" aria-label="Sections">
-        <div className="wrap">{sub.map(([h, l]) => <a key={h} href={`#${h}`}>{l}</a>)}</div>
-      </nav>
+      <SubNav items={sub as [string, string][]} />
 
       <div className="wrap">
         {/* 1 Verdict detail + 2 Snapshot */}

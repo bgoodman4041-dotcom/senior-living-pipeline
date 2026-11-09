@@ -45,7 +45,7 @@ export default function Diligence() {
     <section className="section">
       <div className="wrap">
         <div className="section-head"><div>
-          <div className="eyebrow">LP diligence</div><h2>The questions an LP will ask, answered with evidence</h2>
+          <div className="eyebrow">LP diligence</div><h1 className="page-h1">The questions an LP will ask, answered with evidence</h1>
           <p>Each answer cites public sources pulled {ev.as_of}. Where the evidence disagreed with the model, the model changed. The items marked Needs ATCO need ATCO action rather than more research.</p>
         </div></div>
 
@@ -55,13 +55,13 @@ export default function Diligence() {
             <tr key={q}><td style={{ minWidth: 170 }}><a href={h}><b>{q}</b></a></td><td><span className={`ic-chip ic-${tone[st]}`}>{st}</span></td><td className="small">{t}</td></tr>))}</tbody>
         </table></div></div>
 
-        <h3 id="rents" className="anchor">1 · Rents</h3>
+        <h2 id="rents" className="anchor as-h3">1 · Rents</h2>
         <div className="grid" style={{ gap: 18, gridTemplateColumns: "minmax(0, 1fr)", marginBottom: 24 }}>
           {rentIds.filter((k) => !(ev.rents as Record<string, { same_as?: string }>)[k].same_as).map((k) => (
             <div key={k}><div className="small" style={{ marginBottom: 6 }}><b>{sites.find((x) => x.id === k)?.municipality}</b> ({k}){k === "NJ-04" ? ", also the comp set for Whippany and Montville" : ""}</div><RentComps id={k} /></div>))}
         </div>
 
-        <h3 id="costs" className="anchor">2 · Construction cost</h3>
+        <h2 id="costs" className="anchor as-h3">2 · Construction cost</h2>
         <div className="card" style={{ marginBottom: 12 }}><div className="table-wrap"><table className="t">
           <thead><tr><th>Project</th><th>Program</th><th>Public figure</th><th className="num">$ / unit</th><th className="num">SF / unit</th><th>Source</th></tr></thead>
           <tbody>{(ev.costs.comps as (string | number | null)[][]).map((c) => (
@@ -73,7 +73,7 @@ export default function Diligence() {
         <p className="small">{ev.costs.verdict} Hard-cost benchmarks: {ev.costs.psf.map((p) => `${p[0]} ${p[1]} (${p[2]})`).join("; ")} (<a href={ev.costs.psf_src} target="_blank" rel="noopener">Senior Housing News</a>).</p>
         <p className="small" style={{ marginBottom: 24 }}><a className="btn" href="/models/ATCO-NJ-04-GC-budget.xlsx" download>Florham Park GC budget outline (.xlsx)</a> CSI-division budget from the model, with blank columns for a GC to price.</p>
 
-        <h3 id="control" className="anchor">3 · Site control</h3>
+        <h2 id="control" className="anchor as-h3">3 · Site control</h2>
         <p className="small" style={{ marginTop: 0 }}>ATCO develops the land and plans to buy and own it fee simple, outright: acquisitions, not ground leases or JVs. The model carries land as a purchase price at closing, and max land is the most ATCO can pay and still clear the floor. No site is under contract, LOI or option yet.</p>
         <div className="card" style={{ marginBottom: 24 }}><div className="table-wrap"><table className="t">
           <thead><tr><th>Site</th><th>Owner of record</th><th>Status</th><th>Acquisition path</th></tr></thead>
@@ -81,14 +81,14 @@ export default function Diligence() {
             <tr key={id}><td style={{ minWidth: 130 }}><a href={`/sites/${id}`} className="site-name">{s.municipality}</a><div className="xs muted">{id}{flags[id] ? ` · ${flags[id].label}` : ""}</div></td><td className="small">{c.owner}</td><td className="small">{c.status}<div className="xs muted"><Src s={c.src} /></div></td><td className="small">{c.path}</td></tr>); })}</tbody>
         </table></div></div>
 
-        <h3 id="redevelopment" className="anchor">4 · NJ redevelopment and PILOT status</h3>
+        <h2 id="redevelopment" className="anchor as-h3">4 · NJ redevelopment and PILOT status</h2>
         <div className="card" style={{ marginBottom: 24 }}><div className="table-wrap"><table className="t">
           <thead><tr><th>Site</th><th>Status</th><th>Evidence</th></tr></thead>
           <tbody>{Object.entries(rdv).map(([id, r]) => (
             <tr key={id}><td><a href={`/sites/${id}`} className="site-name">{sites.find((x) => x.id === id)?.municipality}</a></td><td><span className={`ic-chip ic-${r.status === "Designated" ? "go" : r.status === "Not found" ? "bad" : "warn"}`}>{r.status}</span></td><td className="small">{r.text}<div className="xs muted"><Src s={r.src} /></div></td></tr>))}</tbody>
         </table></div></div>
 
-        <h3 id="cushion" className="anchor">5 · Downside cushion</h3>
+        <h2 id="cushion" className="anchor as-h3">5 · Downside cushion</h2>
         <div className="card" style={{ marginBottom: 12 }}><div className="table-wrap"><table className="t">
           <thead><tr><th>Site</th><th>Structure</th><th className="num">Downside profit</th><th className="num">Cushion, % of cost</th><th>What would raise it</th></tr></thead>
           <tbody>{cush.map(({ s, r, best, p }) => (
@@ -100,7 +100,7 @@ export default function Diligence() {
         </table></div></div>
         <p className="small" style={{ marginBottom: 24 }}>Florham Park&apos;s cushion with a GMP alone is thin. Its redevelopment designation makes a PILOT available, which is the cheapest way to widen it.</p>
 
-        <h3 id="waterfall" className="anchor">6 · What LPs net</h3>
+        <h2 id="waterfall" className="anchor as-h3">6 · What LPs net</h2>
         <div className="card" style={{ marginBottom: 12 }}><div className="table-wrap"><table className="t">
           <thead><tr><th>Site</th><th className="num">Project levered IRR</th><th className="num">LP net IRR</th><th className="num">LP multiple</th><th className="num">GP IRR</th><th className="num">GP promote</th></tr></thead>
           <tbody>{cush.map(({ s, p, w }) => (
@@ -110,10 +110,10 @@ export default function Diligence() {
         </table></div></div>
         <p className="small" style={{ marginBottom: 24 }}>Illustrative terms: LP {pct(WF.lpShare, 0)} / GP {pct(1 - WF.lpShare, 0)} of equity, pari passu; {pct(WF.pref, 0)} compounding preferred return; then {Math.round(WF.lpSplit * 100)}% LP / {Math.round((1 - WF.lpSplit) * 100)}% GP. Base case, sale at stabilization. ATCO sets the final terms.</p>
 
-        <h3 id="operators" className="anchor">7 · Operators</h3>
+        <h2 id="operators" className="anchor as-h3">7 · Operators</h2>
         <p className="small" style={{ marginBottom: 24 }}>Lead operator per site is on the <a href="/operators">Operators</a> page. Draft outreach letters and term-sheet outlines for Engel Burman, Benchmark / National Development, Sunrise and LCS are prepared for ATCO (internal, not published). None is signed.</p>
 
-        <h3 id="pipeline" className="anchor">8 · What sits behind the anchor deal</h3>
+        <h2 id="pipeline" className="anchor as-h3">8 · What sits behind the anchor deal</h2>
         <p className="small">{ev.rescreen._note}</p>
         <div className="card" style={{ marginBottom: 12 }}><div className="table-wrap"><table className="t">
           <thead><tr><th>Watch site</th><th className="num">YOC fully taxed</th><th className="num hide-sm">With PILOT</th><th className="num hide-sm">Approval</th><th>Why it stays on Watch</th></tr></thead>
@@ -130,16 +130,16 @@ export default function Diligence() {
 
         <p className="small" style={{ marginTop: -12, marginBottom: 24 }}>{ev.candidates.screened_out} <span className="xs muted"><Src s={ev.candidates.screened_src as [string, string][]} /></span></p>
 
-        <h3 id="market-studies" className="anchor">9 · Market studies</h3>
+        <h2 id="market-studies" className="anchor as-h3">9 · Market studies</h2>
         <p className="small">ATCO&apos;s own market study for each shortlist site, prepared {studies.as_of}: primary market area, age 75+ demographics and income-qualified demand, existing and pipeline supply (Woodmont Parsippany as contingent supply; Peapack and Benchmark Cedar Grove tracked), penetration and capture, rent comps and absorption. <b>Internal studies, not third-party studies.</b> NIC MAP data is not available to ATCO, so New York occupancy comes from state DOH filings and several Connecticut and New Jersey capacities are estimates. Whippany is on hold and has no study.</p>
         <div className="card" style={{ marginBottom: 24 }}><div className="table-wrap"><table className="t">
-          <thead><tr><th>Site</th><th className="num">75+ qualified households</th><th className="num">AL/MC capture, 10% need</th><th className="num hide-sm">Penetration with project</th><th></th></tr></thead>
+          <thead><tr><th>Site</th><th className="num">75+ qualified households</th><th className="num">AL/MC capture, 10% need</th><th className="num hide-sm">Penetration with project</th><th><span className="sr-only">Study</span></th></tr></thead>
           <tbody>{(studies.order as string[]).map((id) => { const m = (studies.studies as Record<string, { q75: number; base: { capture: number | null }; penetration: number }>)[id]; const s = sites.find((x) => x.id === id)!; return (
             <tr key={id}><td><a href={`/study/${id}`} className="site-name">{s.municipality}</a><div className="xs muted">{id}</div></td><td className="num">{int(m.q75)}</td><td className="num">{m.base.capture === null ? "none unmet" : pct(m.base.capture, 0)}</td><td className="num hide-sm">{pct(m.penetration, 1)}</td>
               <td className="small"><a href={`/studies/ATCO-${id}-market-study.pdf`} download>PDF</a> · <a href={`/study/${id}`}>View</a></td></tr>); })}</tbody>
         </table></div></div>
 
-        <h3 id="gaps" className="anchor">10 · Still open, and who closes it</h3>
+        <h2 id="gaps" className="anchor as-h3">10 · Still open, and who closes it</h2>
         <div className="card card-pad"><ul className="list-clean small">
           <li><b>NIC MAP pull or third-party market study</b> to confirm ATCO&apos;s internal studies, starting with Florham Park: property-level occupancy, rents and pipeline. <i>ATCO: buy or commission.</i></li>
           <li><b>GC pricing</b> of the Florham Park budget by KBE or IMC: replaces the model hard cost. <i>ATCO: send the budget outline.</i></li>

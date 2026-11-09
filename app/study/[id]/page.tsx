@@ -143,17 +143,17 @@ export default async function MarketStudy({ params }: { params: Promise<{ id: st
           <tbody>{m.supply.map((x: any) => <tr key={x.name}><td>{x.name}</td><td>{x.town}</td><td>{x.type}</td><td className="num">{int(x.units)}{x.basis === "I" ? <span className="xs muted"> est.</span> : null}</td>{doh && <td className="num">{x.census ? `${x.census} (${pct(x.census / x.beds, 0)})` : "—"}</td>}<td className="num">{x.opened ?? "—"}</td></tr>)}
             <tr className="tot"><td colSpan={3}>Existing competitive AL/MC</td><td className="num">{int(m.existing)}</td>{doh && <td className="num">{m.occupancy_doh ? pct(m.occupancy_doh, 0) : ""}</td>}<td></td></tr>
           </tbody></table>
-        <p className="memo-note xs">Source: {m.supply_src_url ? <a href={m.supply_src_url}>{m.supply_src}</a> : m.supply_src}. &quot;est.&quot; marks ATCO estimates where capacity is not published.{m.excluded.length ? ` Excluded: ${m.excluded.map((e: any) => `${e[0]} (${e[1]})`).join("; ")}.` : ""}{doh ? " Census is residents reported to DOH against certified beds; certified beds exceed operating units, so this understates unit occupancy." : ""}</p>
+        <p className="memo-note xs">Source: {m.supply_src_url ? <a href={m.supply_src_url} target="_blank" rel="noreferrer">{m.supply_src}</a> : m.supply_src}. &quot;est.&quot; marks ATCO estimates where capacity is not published.{m.excluded.length ? ` Excluded: ${m.excluded.map((e: any) => `${e[0]} (${e[1]})`).join("; ")}.` : ""}{doh ? " Census is residents reported to DOH against certified beds; certified beds exceed operating units, so this understates unit occupancy." : ""}</p>
         </div>
 
         <h2>4 · Pipeline</h2>
         <table className="memo-t full"><thead><tr><th>Project</th><th>Program</th><th className="num">Units</th><th className="num">Miles</th><th>Status</th><th>Treatment</th></tr></thead>
-          <tbody>{m.pipeline.map((p: any) => <tr key={p.name}><td><a href={p.src}>{p.name}</a></td><td>{p.type}</td><td className="num">{int(p.units)}</td><td className="num">{p.treat === "subject" ? "—" : p.miles === null ? "in village" : p.miles.toFixed(1)}</td><td className="xs">{p.status}</td><td className="xs"><b>{treat[p.treat]}</b></td></tr>)}</tbody></table>
+          <tbody>{m.pipeline.map((p: any) => <tr key={p.name}><td>{p.src ? <a href={p.src} target="_blank" rel="noreferrer">{p.name}</a> : p.name}</td><td>{p.type}</td><td className="num">{int(p.units)}</td><td className="num">{p.treat === "subject" ? "—" : p.miles === null ? "in village" : p.miles.toFixed(1)}</td><td className="xs">{p.status}</td><td className="xs"><b>{treat[p.treat]}</b></td></tr>)}</tbody></table>
         {id === "NJ-04" || id === "NJ-10" ? <p className="memo-note xs">Woodmont Parsippany&apos;s 80 AL/MC units are approved but unbuilt, so they are treated as contingent supply. Peapack Senior Living (CN July 2026) and Benchmark Cedar Grove are tracked for both Morris County studies.</p> : null}
 
         <div className="memo-keep">
         <h2>5 · Demand, penetration and capture</h2>
-        <table className="memo-t full"><thead><tr><th></th><th className="num">Base</th>{lo && <th className="num">Conservative</th>}</tr></thead><tbody>
+        <table className="memo-t full"><thead><tr><th><span className="sr-only">Measure</span></th><th className="num">Base</th>{lo && <th className="num">Conservative</th>}</tr></thead><tbody>
           <tr><td>AL/MC demand at a {pct(A.need, 0)} need rate ÷ {pct(A.pma_share, 0)} PMA share</td><td className="num">{int(m.base.demand)}</td>{lo && <td className="num">{int(m.low.demand)}</td>}</tr>
           <tr><td>Less existing and counted pipeline</td><td className="num">−{int(m.existing + m.pipeline_counted)}</td>{lo && <td className="num">−{int(m.existing + m.pipeline_counted)}</td>}</tr>
           <tr className="tot"><td>Unmet AL/MC demand</td><td className="num">{int(m.base.unmet)}</td>{lo && <td className="num">{int(m.low.unmet)}</td>}</tr>
@@ -186,7 +186,7 @@ export default async function MarketStudy({ params }: { params: Promise<{ id: st
         <table className="memo-t full"><thead><tr><th>Community</th><th>Town</th><th className="num">Listed AL from</th><th>Note</th></tr></thead>
           <tbody><tr className="tot"><td>This site (model, private-pay AL)</td><td>—</td><td className="num">${int(rentModel)}</td><td className="xs">{classAMed ? `${pct(rentModel / classAMed - 1, 0)} vs Class A median` : ""}</td></tr>
             {comps.map((c) => <tr key={c[0]}><td>{c[0]}</td><td>{c[1]}</td><td className="num">{c[2] ? `$${int(c[2])}` : "n/p"}</td><td className="xs">{c[3]}</td></tr>)}</tbody></table>
-        <p className="memo-note xs">Listed starting prices from public directories, before level-of-care fees ($1,000–3,500 a month); not a rate shop. Sources: {(m.local_comps_src ?? re?.base.src ?? []).map((x: any, i: number) => <span key={x[1]}>{i ? "; " : ""}<a href={x[1]}>{x[0]}</a></span>)}.{id === "NJ-10" ? " The Morris County Class A set used by the model (median $9,971) is in the Florham Park study." : ""}</p>
+        <p className="memo-note xs">Listed starting prices from public directories, before level-of-care fees ($1,000–3,500 a month); not a rate shop. Sources: {(m.local_comps_src ?? re?.base.src ?? []).map((x: any, i: number) => <span key={x[1]}>{i ? "; " : ""}<a href={x[1]} target="_blank" rel="noreferrer">{x[0]}</a></span>)}.{id === "NJ-10" ? " The Morris County Class A set used by the model (median $9,971) is in the Florham Park study." : ""}</p>
         </div>
 
         <h2>{m.il ? "8" : "7"} · Absorption</h2>

@@ -4,6 +4,8 @@ import type { Map as MLMap } from "maplibre-gl";
 import { useNear } from "@/lib/useNear";
 import { baseStyle, setBasemap, usingMapbox } from "@/lib/mapstyle";
 import { circle, pointInGeom, geomAcres, geomCentroid, haversineMi, bboxOf } from "@/lib/geo";
+import { quietMapErrors, staticMapUrl } from "@/lib/mapkit";
+import MapState from "@/components/MapState";
 import { CATS, CAT_COLOR, fetchImageryDate, fetchOverlay, fetchPois, fetchParcels, parcelSourceFor, readField, type Cat, type Poi } from "@/lib/live";
 
 interface Props { id: string; name: string; lat: number; lon: number; state: string; county: string; acres: number; verdictColor: string; pinBasis?: string; pinAddress?: string; hasSnapshot?: boolean }
@@ -18,6 +20,7 @@ export default function SiteMap(p: Props) {
   const lib = useRef<any>(null);
   const parcelsRef = useRef<any[]>([]);
   const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [mode, setMode] = useState<"streets" | "satellite">("satellite");
   const [parcels, setParcels] = useState<Load<any[]>>({ status: "idle" });
   const [sel, setSel] = useState<any | null>(null);
@@ -36,10 +39,14 @@ export default function SiteMap(p: Props) {
     if (!near) return;
     let dead = false;
     (async () => {
-      const ml = (await import("maplibre-gl")).default;
-      if (dead || !el.current) return;
+      let ml: any, m: MLMap;
+      try {
+        ml = (await import("maplibre-gl")).default;
+        if (dead || !el.current) return;
+        m = new ml.Map({ container: el.current, style: baseStyle(), center, zoom: 15.6, attributionControl: { compact: true }, dragRotate: false, locale: { "Map.Title": `Map of ${p.name} and its surroundings` } });
+      } catch { if (!dead) setFailed(true); return; }
       lib.current = ml;
-      const m = new ml.Map({ container: el.current, style: baseStyle(), center, zoom: 15.6, attributionControl: { compact: true }, dragRotate: false });
+      quietMapErrors(m);
       m.addControl(new ml.NavigationControl({ showCompass: false }), "bottom-right");
       m.addControl(new ml.FullscreenControl(), "bottom-right");
       m.addControl(new ml.ScaleControl({ unit: "imperial" }), "bottom-left");
@@ -72,10 +79,10 @@ export default function SiteMap(p: Props) {
           },
         });
         const pin = document.createElement("div");
-        pin.className = "site-pin big"; pin.style.background = p.verdictColor;
+        pin.className = "site-pin big"; pin.style.background = p.verdictColor; pin.setAttribute("role", "img"); pin.setAttribute("aria-label", `${p.name} (underwriting pin)`);
         new ml.Marker({ element: pin }).setLngLat(center).addTo(m);
         const lab = document.createElement("div");
-        lab.className = "pin-label"; lab.textContent = p.name.length > 34 ? p.name.slice(0, 32) + "…" : p.name;
+        lab.className = "pin-label"; lab.textContent = p.name.length > 34 ? p.name.slice(0, 32) + "…" : p.name; lab.setAttribute("aria-hidden", "true");
         new ml.Marker({ element: lab, anchor: "bottom" }).setLngLat(center).addTo(m);
 
         m.on("click", "pois", (e: any) => {
@@ -213,7 +220,8 @@ export default function SiteMap(p: Props) {
     <div className="grid g-side" style={{ alignItems: "start" }}>
       <div className="map-sticky">
         <div className="map-shell">
-          <div ref={el} role="region" className="map map-tall" aria-label={`Map of ${p.name} and its surroundings`} />
+          <div ref={el} className="map map-tall" />
+          <MapState state={failed ? "failed" : ready ? "ready" : "loading"} still={staticMapUrl(p.lat, p.lon, 0.03, 900, 640)} alt={`Satellite image of ${p.name}`} />
           <div className="map-overlay map-tools">
             <div className="seg" role="group" aria-label="Basemap">
               <button aria-pressed={mode === "satellite"} onClick={() => setMode("satellite")}>Satellite</button>
@@ -308,7 +316,7 @@ export default function SiteMap(p: Props) {
                 {isOpen && (
                   <div className="amen-list" style={{ padding: "4px 0 8px 26px" }}>
                     {items.slice(0, 40).map((x) => (
-                      <div key={x.id} className="amen-item" onClick={() => flyTo(x)} role="button" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && flyTo(x)}>
+                      <div key={x.id} className="amen-item" onClick={() => flyTo(x)} role="button" tabIndex={0} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flyTo(x); } }}>
                         <span>{x.name}<span className="muted"> · {x.kind}</span></span><span className="tnum muted">{fmtMi(x.mi)}</span>
                       </div>
                     ))}

@@ -1,8 +1,8 @@
 import { dossier, type Item } from "@/lib/entitlement";
 import { usdM, usdK } from "@/lib/format";
 
-const FLAG = { ok: { c: "#33772a", t: "Clear" }, watch: { c: "#F7901E", t: "Watch" }, risk: { c: "#BB2034", t: "Issue" } };
-const BAND_C: Record<string, string> = { Low: "#33772a", Moderate: "#3079B3", Elevated: "#F7901E", High: "#BB2034" };
+const FLAG = { ok: { c: "#33772a", t: "Clear" }, watch: { c: "#d9780c", t: "Watch" }, risk: { c: "#BB2034", t: "Issue" } };
+const BAND_C: Record<string, string> = { Low: "#33772a", Moderate: "#3079B3", Elevated: "#a85a06", High: "#BB2034" };
 
 function Items({ items }: { items: Item[] }) {
   return (
