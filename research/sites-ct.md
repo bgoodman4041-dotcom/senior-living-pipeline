@@ -20,7 +20,7 @@ Companion CSV: `/mnt/project-files/senior-living/research/sites-ct.csv`
 ## Tier 1: strongest candidates
 
 ### CT-02 Trumbull, 48 Monroe Turnpike (former Oxford Health HQ), 17.6 ac. ENTITLED.
-- **Zoning:** The zone change and site plan are approved (4-1 vote) after a three-year process that included an appeal and wetlands approval. Approved program is 340 units: 193 IL/AL/MC in the converted office building plus 147 active-adult units. (Verified: [NEREJ](https://beta.nerej.com/340-unit-senior-housing-campus-approved-in-trumbull), [SHN 2023](https://seniorhousingnews.com/2023/04/19/former-united-healthcare-offices-slated-for-senior-living-redevelopment/))
+- **Zoning:** The zone change and site plan are approved (4-1 vote) after a three-year process that included an appeal and wetlands approval. Approved program is 340 units: 193 IL/AL/MC in the converted office building plus 147 active-adult units. (Verified: [NEREJ](https://nerej.com/340-unit-senior-housing-campus-approved-in-trumbull), [SHN 2023](https://seniorhousingnews.com/2023/04/19/former-united-healthcare-offices-slated-for-senior-living-redevelopment/))
 - **Owner:** Senior Living Development LLC (Mark De Pecol). Bought in 2018 for about $3.3-3.4M. The owner said it would either sell or JV with an operator. (Verified: [Westfair](https://westfaironline.com/?p=140739), [Patch 2018](https://patch.com/connecticut/trumbull/senior-living-complex-expected-trumbull))
 - **Why it fits:** It is the cleanest match to the 150-220-unit IL/AL/MC prototype, and the town has already decided the use question. Reusing an existing building cuts hard cost, which helps reach the 6.5% yield.
 - **To verify:** Whether the approvals are still valid or have expired, whether any operator JV has closed, the asking price, and sewer capacity (Inferred to be public).
@@ -91,7 +91,7 @@ Companion CSV: `/mnt/project-files/senior-living/research/sites-ct.csv`
 
 | Town | Zoning tool / approval | Project, units, developer | Source |
 |---|---|---|---|
-| Trumbull | Zone change + site plan for senior campus | 48 Monroe Tpke, 340 units, Senior Living Development | [NEREJ](https://beta.nerej.com/340-unit-senior-housing-campus-approved-in-trumbull) |
+| Trumbull | Zone change + site plan for senior campus | 48 Monroe Tpke, 340 units, Senior Living Development | [NEREJ](https://nerej.com/340-unit-senior-housing-campus-approved-in-trumbull) |
 | Greenwich | GB-MRCO (Managed Residential Community Overlay) exists; special permit approvals | 0 Old Track Rd, 127-134 AL/MC units, Renamba (2022 application; outcome not verified); Greenwich Woods 170 units under 8-30g (approved Nov 2025) | [Staff report](https://www.greenwichct.gov/DocumentCenter/View/32709/11-0-Old-Track-Road---FSP-C-SP), [Patch](https://patch.com/connecticut/greenwich/plan-demolish-nursing-home-170-unit-assisted-housing-development-okd-greenwich) |
 | Simsbury | Text amendment + special exception for CCRC expansion (ZC 26-06/07, July 2026, under appeal) | McLean, 40 IL "Meadow Homes" on ~22 of 110 ac | [HBJ](https://hartfordbusiness.com/article/simsbury-approves-mcleans-scaled-back-retirement-community-expansion/), [Patch](https://patch.com/connecticut/simsbury/controversial-decision-senior-living-expansion-simsbury-being-challenged-court) |
 | Monroe | Raised the age-restricted housing cap from 6% to 10% of dwelling units (Feb 2025), allowing about 220 more units | Ridge at Monroe expanded to 25 units (2024) | [Monroe Sun](https://themonroesun.com/?p=158980), [tag page](https://themonroesun.com/tag/1271-monroe-turnpike) |

@@ -39,7 +39,7 @@
     "Floyd": { "name": "C.E. Floyd Company", "hq": "Bedford, MA (CT operations)", "role": "General contractor",
       "projects": [
         { "p": "Bridges by Epoch at Trumbull", "where": "Trumbull, Fairfield County, CT", "what": "64-unit memory care for National Development and Epoch", "url": "https://thebluebook.com/iProView/11664/c-e-floyd-co/general-contractors/construction-projects/bridges-at-trumbull-memory-care-assisted-living-community-468583" },
-        { "p": "Bridges by Epoch at Norwalk", "where": "Norwalk, Fairfield County, CT", "what": "64 memory care suites for Epoch and National Development", "url": "https://beta.nerej.com/bridges-by-epoch-breaks-ground-on-64-unit-memory-care-community" }
+        { "p": "Bridges by Epoch at Norwalk", "where": "Norwalk, Fairfield County, CT", "what": "64 memory care suites for Epoch and National Development", "url": "https://nerej.com/bridges-by-epoch-breaks-ground-on-64-unit-memory-care-community" }
       ] }
   },
   "byCounty": {

@@ -63,7 +63,7 @@ Ranked by fit with the prototype and by approval likelihood. Status types:
 - **Why it matters:** This is the closest thing in NJ to a ready-made RiverSpring-style life-plan site: hospital-adjacent, ground lease, and town-endorsed through an affordable-housing settlement.
 - **Drive:** about 85 min to Midtown [I].
 - **Next step:** Call Capital Health real estate and Hopewell Twp's redevelopment counsel.
-- Sources: https://cj.gmnews.com/2018/12/28/continuing-care-retirement-community-planned-for-hopewell-township-site ; https://dev.communitynews.org/papers/hopewell-express/a-look-ahead-to-2024-in-hopewell-township/
+- Sources: https://cj.gmnews.com/2018/12/28/continuing-care-retirement-community-planned-for-hopewell-township-site ; https://communitynews.org/towns/hopewell-express/a-look-ahead-to-2024-in-hopewell-township/
 
 **NJ-02. Thrive at Montgomery: Route 206 and Scarborough Rd, Belle Mead (Montgomery Twp, Somerset)**
 - **Site:** The redevelopment area is the 11.9-ac northern part of a 23.7-ac lot (Block 4020 Lot 1). Owner is Country Club Meadows LLC [V]. The town designated it an area in need of redevelopment on 2024-06-20 [V].
