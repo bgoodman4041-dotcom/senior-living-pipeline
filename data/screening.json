@@ -1,5 +1,5 @@
 {
- "screened_at": "2026-11-09T16:45:25.840Z",
+ "screened_at": "2026-11-09T20:51:28.354Z",
  "sources": {
   "fema": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28",
   "nwi": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0",
@@ -82,9 +82,9 @@
   "CT-03": {
    "radius_m": 183,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
+   "flood_pin": [
+    "X"
+   ],
    "flood_site": [
     "X"
    ],
@@ -496,10 +496,10 @@
    "flood_pin": [
     "X"
    ],
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Riverine"
    ],
@@ -736,7 +736,9 @@
   "NJ-06": {
    "radius_m": 72,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [],
+   "flood_pin": {
+    "err": "fetch failed"
+   },
    "flood_site": [],
    "sfha_site": false,
    "nwi_site": [
@@ -824,8 +826,8 @@
     "X"
    ],
    "flood_site": [
-    "A",
-    "X"
+    "X",
+    "A"
    ],
    "sfha_site": true,
    "nwi_site": [
@@ -1412,9 +1414,9 @@
   "NY-08": {
    "radius_m": 190,
    "pin_basis": "Street or landmark level",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
+   "flood_pin": [
+    "X"
+   ],
    "flood_site": [
     "AE",
     "X (0.2%)",
@@ -1529,9 +1531,9 @@
     "X"
    ],
    "flood_site": [
+    "X",
     "AE",
-    "X (0.2%)",
-    "X"
+    "X (0.2%)"
    ],
    "sfha_site": true,
    "nwi_site": [
@@ -1569,8 +1571,8 @@
    ],
    "flood_site": [
     "AE",
-    "X (0.2%)",
-    "X"
+    "X",
+    "X (0.2%)"
    ],
    "sfha_site": true,
    "nwi_site": [
