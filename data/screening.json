@@ -1,5 +1,5 @@
 {
- "screened_at": "2026-11-02T20:44:08.405Z",
+ "screened_at": "2026-11-09T16:45:25.840Z",
  "sources": {
   "fema": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28",
   "nwi": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0",
@@ -82,9 +82,9 @@
   "CT-03": {
    "radius_m": 183,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
+   "flood_pin": {
+    "err": "fetch failed"
+   },
    "flood_site": [
     "X"
    ],
@@ -496,10 +496,10 @@
    "flood_pin": [
     "X"
    ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Riverine"
    ],
@@ -1412,9 +1412,9 @@
   "NY-08": {
    "radius_m": 190,
    "pin_basis": "Street or landmark level",
-   "flood_pin": [
-    "X"
-   ],
+   "flood_pin": {
+    "err": "fetch failed"
+   },
    "flood_site": [
     "AE",
     "X (0.2%)",
