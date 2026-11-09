@@ -6,6 +6,7 @@ import { Open_Sans, Roboto } from "next/font/google";
 import Header from "@/components/Header";
 import BackToTop from "@/components/BackToTop";
 import FastLinks from "@/components/FastLinks";
+import ScrollRegions from "@/components/ScrollRegions";
 import { meta, sites } from "@/lib/data";
 import { longDate } from "@/lib/format";
 
@@ -69,6 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </footer>
         <BackToTop />
         <FastLinks />
+        <ScrollRegions />
       </body>
     </html>
   );

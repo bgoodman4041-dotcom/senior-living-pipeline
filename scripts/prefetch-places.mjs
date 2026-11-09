@@ -1,6 +1,8 @@
 // Snapshot of nearby places for every site (public/places/<id>.json), so the site maps load instantly.
-// Run weekly by .github/workflows/refresh-places.yml (which commits the files) and at each Vercel build.
-// Best effort: a site whose lookup fails keeps its committed file, and network trouble never fails the build.
+// Run weekly (and on demand) by .github/workflows/refresh-places.yml, which commits the files. Vercel builds skip it:
+// they deploy the committed snapshots, so a slow public Overpass server can't hold up a deploy, and a site without a
+// snapshot still gets its places live in the browser (Esri, then OpenStreetMap).
+// Best effort: a site whose lookup fails keeps its committed file, and network trouble never fails the run.
 // PREFETCH_STRICT=1 (the workflow) does fail when lib/live.ts cannot load, so a code problem can't go unnoticed again.
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 
@@ -9,8 +11,8 @@ const OUT = new URL("public/places/", ROOT);
 const BUDGET_MS = Number(process.env.PREFETCH_BUDGET_MIN || 6) * 60 * 1000, started = Date.now();
 const MAX_AGE_MS = Number(process.env.PREFETCH_MAX_AGE_DAYS ?? 10) * 864e5;
 const STRICT = process.env.PREFETCH_STRICT === "1";
-if (!process.env.VERCEL && !process.env.PREFETCH_PLACES) {
-  console.log("prefetch-places: skipped (set PREFETCH_PLACES=1 to run outside Vercel)");
+if (!process.env.PREFETCH_PLACES) {
+  console.log("prefetch-places: skipped; deploying the committed snapshots (set PREFETCH_PLACES=1 to refresh them)");
   process.exit(0);
 }
 mkdirSync(OUT, { recursive: true });

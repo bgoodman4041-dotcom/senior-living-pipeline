@@ -11,7 +11,7 @@ Institutional site-selection website for ATCO's RiverSpring-model senior living 
 
 ## Data
 - `data/site-data.json` is the only data file. Every number renders from it. Refresh with `model/underwrite.py` then `model/export_site_data.py` and copy the JSON here.
-- Live layers load in the viewer's browser: parcels from NJGIN (NJ), NYS ITS public tax parcels (NY, participating counties), CT State Parcel Layer + CAMA (CT); places from OpenStreetMap via Overpass. Basemaps: CARTO / OSM and Esri World Imagery.
+- Live layers load in the viewer's browser: parcels from NJGIN (NJ), NYS ITS public tax parcels (NY, participating counties), CT State Parcel Layer + CAMA (CT); places from OpenStreetMap via Overpass, snapshotted weekly to public/places by the "Refresh live data" GitHub Action (Esri places fill in live for a site without a snapshot). Basemaps: Esri World Street Map and World Imagery (keyless).
 
 ## Commands
 ```
