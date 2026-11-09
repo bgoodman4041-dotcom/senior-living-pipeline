@@ -6,7 +6,7 @@ import { baseStyle, setBasemap, usingMapbox } from "@/lib/mapstyle";
 import { circle, pointInGeom, geomAcres, geomCentroid, haversineMi, bboxOf } from "@/lib/geo";
 import { CATS, CAT_COLOR, fetchImageryDate, fetchOverlay, fetchPois, fetchParcels, parcelSourceFor, readField, type Cat, type Poi } from "@/lib/live";
 
-interface Props { id: string; name: string; lat: number; lon: number; state: string; county: string; acres: number; verdictColor: string; pinBasis?: string; pinAddress?: string }
+interface Props { id: string; name: string; lat: number; lon: number; state: string; county: string; acres: number; verdictColor: string; pinBasis?: string; pinAddress?: string; hasSnapshot?: boolean }
 type Load<T> = { status: "idle" | "loading" | "ok" | "error" | "na"; data?: T; msg?: string };
 
 const esc = (t: any) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" } as any)[c]);
@@ -159,7 +159,7 @@ export default function SiteMap(p: Props) {
   useEffect(() => {
     if (!ready) return;
     setPois({ status: "loading" });
-    fetchPois(p.id, p.lat, p.lon)
+    fetchPois(p.id, p.lat, p.lon, { snapshot: p.hasSnapshot })
       .then((d) => setPois({ status: "ok", data: d }))
       .catch((e) => setPois({ status: "error", msg: String(e?.message || e) }));
     // eslint-disable-next-line react-hooks/exhaustive-deps

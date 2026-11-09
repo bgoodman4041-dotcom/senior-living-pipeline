@@ -1,8 +1,9 @@
-import { esriPois } from "./esriPlaces";
 // Live public-data lookups run in the viewer's browser (no keys):
 //  - tax parcels from each state's public ArcGIS service
-//  - points of interest around the site from OpenStreetMap (Overpass API)
-// self-contained (no imports) so scripts/prefetch-places.mjs can load it in plain Node at build time
+//  - points of interest around the site from OpenStreetMap (Overpass API), with Esri geocoding as the keyless fallback
+// scripts/prefetch-places.mjs loads this file in plain Node (--experimental-strip-types), so local imports must
+// carry their .ts extension and type-only imports must use `import type`.
+import { esriPois } from "./esriPlaces.ts";
 function haversineMi(a: [number, number], b: [number, number]) {
   const toR = Math.PI / 180, R = 3958.8;
   const dLat = (b[1] - a[1]) * toR, dLon = (b[0] - a[0]) * toR;
@@ -112,29 +113,32 @@ const OVERPASS = [
   "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ];
 
-export function overpassQuery(lat: number, lon: number) {
+// Each line belongs to a group (0 = wide 10-mile search, 1 = 3 to 5 miles, 2 = within 1.5 miles) so the query can be
+// split into three smaller ones when the public servers time out on the full search in dense suburbs.
+const QUERY_LINES: [number, string, number][] = [
+  [0, 'nwr["amenity"="hospital"]', 10],
+  [0, 'nwr["healthcare"="hospital"]', 10],
+  [0, 'nwr["railway"~"^(station|halt)$"]', 10],
+  [0, 'nwr["public_transport"="station"]', 10],
+  [2, 'node["highway"="bus_stop"]', 0.6],
+  [1, 'nwr["shop"~"^(supermarket|greengrocer|wholesale)$"]', 3],
+  [1, 'nwr["amenity"~"^(clinic|doctors|pharmacy|dentist)$"]', 3],
+  [1, 'nwr["healthcare"~"^(clinic|doctor|centre|urgent_care|rehabilitation|physiotherapist)$"]', 3],
+  [1, 'nwr["shop"="chemist"]', 3],
+  [1, 'nwr["social_facility"~"^(assisted_living|nursing_home)$"]', 5],
+  [1, 'nwr["amenity"="nursing_home"]', 5],
+  [1, 'nwr["healthcare"="nursing_home"]', 5],
+  [1, 'nwr["social_facility:for"~"senior"]', 5],
+  [1, 'nwr["shop"~"^(mall|department_store)$"]', 3],
+  [2, 'nwr["amenity"~"^(restaurant|cafe|bank)$"]', 1],
+  [2, 'nwr["leisure"~"^(park|golf_course|nature_reserve)$"]["name"]', 1.5],
+  [2, 'nwr["amenity"~"^(place_of_worship|community_centre|library|theatre|social_centre)$"]', 1.5],
+];
+
+export function overpassQuery(lat: number, lon: number, groups: number[] = [0, 1, 2]) {
   const a = (m: number) => `(around:${Math.round(m * 1609.34)},${lat},${lon})`;
-  return `[out:json][timeout:40];
-(
-  nwr["amenity"="hospital"]${a(10)};
-  nwr["healthcare"="hospital"]${a(10)};
-  nwr["railway"~"^(station|halt)$"]${a(10)};
-  nwr["public_transport"="station"]${a(10)};
-  node["highway"="bus_stop"]${a(0.6)};
-  nwr["shop"~"^(supermarket|greengrocer|wholesale)$"]${a(3)};
-  nwr["amenity"~"^(clinic|doctors|pharmacy|dentist)$"]${a(3)};
-  nwr["healthcare"~"^(clinic|doctor|centre|urgent_care|rehabilitation|physiotherapist)$"]${a(3)};
-  nwr["shop"="chemist"]${a(3)};
-  nwr["social_facility"~"^(assisted_living|nursing_home)$"]${a(5)};
-  nwr["amenity"="nursing_home"]${a(5)};
-  nwr["healthcare"="nursing_home"]${a(5)};
-  nwr["social_facility:for"~"senior"]${a(5)};
-  nwr["shop"~"^(mall|department_store)$"]${a(3)};
-  nwr["amenity"~"^(restaurant|cafe|bank)$"]${a(1)};
-  nwr["leisure"~"^(park|golf_course|nature_reserve)$"]["name"]${a(1.5)};
-  nwr["amenity"~"^(place_of_worship|community_centre|library|theatre|social_centre)$"]${a(1.5)};
-);
-out tags center 3000;`;
+  const lines = QUERY_LINES.filter(([g]) => groups.includes(g)).map(([, q, mi]) => `  ${q}${a(mi)};`).join("\n");
+  return `[out:json][timeout:40];\n(\n${lines}\n);\nout tags center 3000;`;
 }
 
 function classify(t: Record<string, string>): { cat: Cat; kind: string; bus?: boolean } | null {
@@ -183,22 +187,41 @@ export function parseOverpass(json: any, lat: number, lon: number): Poi[] {
   return out;
 }
 
-/** Server side: query the Overpass mirrors in turn. Used by /api/places, which caches at the CDN. */
-/** Query every Overpass mirror at once and take the first good answer. */
-export async function overpassPois(lat: number, lon: number, timeoutMs = 25000): Promise<{ pois: Poi[]; fetchedAt: string; source: string }> {
-  const body = new URLSearchParams({ data: overpassQuery(lat, lon) }).toString();
+/** Query every Overpass mirror at once and take the first good answer (raw elements). */
+async function overpassRaw(query: string, timeoutMs: number, allowEmpty = false): Promise<{ elements: any[]; host: string }> {
+  const body = new URLSearchParams({ data: query }).toString();
   const ctl = new AbortController();
   const timer = setTimeout(() => ctl.abort(), timeoutMs);
   const one = async (url: string) => {
     const r = await fetch(url, { method: "POST", body, signal: ctl.signal, headers: { "Content-Type": "application/x-www-form-urlencoded", Accept: "application/json" } });
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     const json = await r.json();
-    if (!(json?.elements || []).length) throw new Error(json?.remark || "empty");
-    return { pois: parseOverpass(json, lat, lon), fetchedAt: new Date().toISOString(), source: `OpenStreetMap via ${new URL(url).host}` };
+    // a runtime remark (timeout, out of memory) means the answer is partial, whatever it holds
+    if (json?.remark && /error|timed out|out of memory/i.test(json.remark)) throw new Error(json.remark);
+    if (!Array.isArray(json?.elements) || (!allowEmpty && !json.elements.length)) throw new Error(json?.remark || "empty");
+    return { elements: json.elements as any[], host: new URL(url).host };
   };
   try {
     return await anyOf(OVERPASS.map(one));
   } finally { clearTimeout(timer); ctl.abort(); }
+}
+
+/** Server side (and last-resort browser fallback): one full Overpass query. Used by /api/places, which caches at the CDN. */
+export async function overpassPois(lat: number, lon: number, timeoutMs = 25000): Promise<{ pois: Poi[]; fetchedAt: string; source: string }> {
+  const { elements, host } = await overpassRaw(overpassQuery(lat, lon), timeoutMs);
+  return { pois: parseOverpass({ elements }, lat, lon), fetchedAt: new Date().toISOString(), source: `OpenStreetMap via ${host}` };
+}
+
+/** The same search as three smaller queries, for sites where the full query times out (dense Westchester and Morris suburbs). */
+export async function overpassPoisSplit(lat: number, lon: number, timeoutMs = 60000): Promise<{ pois: Poi[]; fetchedAt: string; source: string }> {
+  const elements: any[] = [];
+  const hosts = new Set<string>();
+  for (const g of [0, 1, 2]) {
+    const r = await overpassRaw(overpassQuery(lat, lon, [g]), timeoutMs, g === 2);
+    elements.push(...r.elements);
+    hosts.add(r.host);
+  }
+  return { pois: parseOverpass({ elements }, lat, lon), fetchedAt: new Date().toISOString(), source: `OpenStreetMap via ${[...hosts].join(", ")}` };
 }
 
 function anyOf<T>(ps: Promise<T>[]): Promise<T> {
@@ -210,8 +233,9 @@ function anyOf<T>(ps: Promise<T>[]): Promise<T> {
 
 type PoiResult = { pois: Poi[]; fetchedAt: string; source: string };
 const CACHE_V = "atco-poi-v6";
-/** Browser side: browser cache, then the deploy-time snapshot and our cached API route, then the public mirrors directly. */
-export async function fetchPois(id: string, lat: number, lon: number): Promise<PoiResult> {
+/** Browser side: browser cache, the committed snapshot (when the page says one exists), Esri places, then our cached API route
+ *  with the public Overpass mirrors queried directly if the route fails or is slow. */
+export async function fetchPois(id: string, lat: number, lon: number, opts: { snapshot?: boolean } = {}): Promise<PoiResult> {
   try {
     const c = localStorage.getItem(`${CACHE_V}:${id}`);
     if (c) {
@@ -230,14 +254,19 @@ export async function fetchPois(id: string, lat: number, lon: number): Promise<P
     if (!Array.isArray(j?.pois) || !j.pois.length) throw new Error("empty");
     return j as PoiResult;
   }, ms);
-  // 1. snapshot baked at deploy (instant), 2. cached API route, 3. mirrors direct (started after a short head start)
   // with a Mapbox token configured the API route serves Mapbox results, so go there first
   const keyed = !!(process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "").trim();
   if (keyed) { try { return save(await getJson(`/api/places/${encodeURIComponent(id)}`, 25000)); } catch { /* fall through */ } }
-  try { return save(await getJson(`/places/${encodeURIComponent(id)}.json`, 6000)); } catch { /* none baked */ }
+  if (opts.snapshot !== false) { try { return save(await getJson(`/places/${encodeURIComponent(id)}.json`, 6000)); } catch { /* none committed */ } }
   try { return save(await esriPois(lat, lon, 15000)); } catch { /* fall through to OpenStreetMap */ }
   const api = getJson(`/api/places/${encodeURIComponent(id)}`, 30000);
-  const direct = new Promise<PoiResult>((res, rej) => setTimeout(() => overpassPois(lat, lon, 40000).then(res, rej), 4000));
+  // the public mirrors start when the route fails, or after a 4-second head start if it is slow; never when it answers
+  const direct = new Promise<PoiResult>((res, rej) => {
+    let started = false;
+    const start = () => { if (!started) { started = true; overpassPois(lat, lon, 40000).then(res, rej); } };
+    const t = setTimeout(start, 4000);
+    api.then(() => { clearTimeout(t); if (!started) rej(new Error("not needed")); }, start);
+  });
   return save(await anyOf([api, direct]));
 }
 
