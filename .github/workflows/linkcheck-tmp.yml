@@ -21,4 +21,4 @@ jobs:
             echo "RESULT ${out%% *} $u -> ${out#* }"
           }
           export -f check; export UA
-          xargs -a .github/linkcheck-urls.txt -P 8 -I{} bash -c 'check "$@"' _ {} | sort
+          xargs -d '\n' -a .github/linkcheck-urls.txt -P 8 -I{} bash -c 'check "$@"' _ {} | sort
