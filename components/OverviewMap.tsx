@@ -4,6 +4,8 @@ import type { Map as MLMap, Marker } from "maplibre-gl";
 import { useNear } from "@/lib/useNear";
 import { baseStyle, setBasemap } from "@/lib/mapstyle";
 import { circle } from "@/lib/geo";
+import { quietMapErrors, staticMapUrl } from "@/lib/mapkit";
+import MapState from "@/components/MapState";
 
 export interface MapSite {
   id: string; name: string; municipality: string; state: string; lat: number; lon: number;
@@ -21,6 +23,7 @@ export default function OverviewMap({ sites, legend, yocLabel }: { sites: MapSit
   const markers = useRef<Marker[]>([]);
   const lib = useRef<any>(null);
   const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [mode, setMode] = useState<"streets" | "satellite">("streets");
   const [rings, setRings] = useState(true);
 
@@ -29,13 +32,18 @@ export default function OverviewMap({ sites, legend, yocLabel }: { sites: MapSit
     if (!near) return;
     let dead = false;
     (async () => {
-      const ml = (await import("maplibre-gl")).default;
-      if (dead || !el.current) return;
+      let ml: any, m: MLMap;
+      try {
+        ml = (await import("maplibre-gl")).default;
+        if (dead || !el.current) return;
+        m = new ml.Map({
+          container: el.current, style: baseStyle(), center: [-73.95, 41.0], zoom: 7.2,
+          attributionControl: { compact: true }, cooperativeGestures: false, dragRotate: false,
+          locale: { "Map.Title": "Map of candidate sites" },
+        });
+      } catch { if (!dead) setFailed(true); return; }
       lib.current = ml;
-      const m = new ml.Map({
-        container: el.current, style: baseStyle(), center: [-73.95, 41.0], zoom: 7.2,
-        attributionControl: { compact: true }, cooperativeGestures: false, dragRotate: false,
-      });
+      quietMapErrors(m);
       m.addControl(new ml.NavigationControl({ showCompass: false }), "bottom-right");
       m.addControl(new ml.FullscreenControl(), "bottom-right");
       if (el.current.clientWidth < 560 && sites.length) {
@@ -47,11 +55,11 @@ export default function OverviewMap({ sites, legend, yocLabel }: { sites: MapSit
         m.addLayer({ id: "rings-line", type: "line", source: "rings", paint: { "line-color": "#403393", "line-width": 1.2, "line-dasharray": [3, 3], "line-opacity": 0.55 } });
         RINGS.forEach((r) => {
           const d = document.createElement("div");
-          d.className = "ring-label"; d.textContent = `≈${r.min} min`;
+          d.className = "ring-label"; d.textContent = `≈${r.min} min`; d.setAttribute("aria-hidden", "true");
           new ml.Marker({ element: d }).setLngLat([MIDTOWN[0] + (r.mi / 69.172 / Math.cos((MIDTOWN[1] * Math.PI) / 180)) * 0.7071, MIDTOWN[1] - (r.mi / 69) * 0.7071]).addTo(m);
         });
         const mt = document.createElement("div");
-        mt.className = "ring-label"; mt.textContent = "Midtown"; mt.style.background = "#403393"; mt.style.color = "#fff";
+        mt.className = "ring-label"; mt.textContent = "Midtown"; mt.style.background = "#403393"; mt.style.color = "#fff"; mt.setAttribute("aria-hidden", "true");
         new ml.Marker({ element: mt }).setLngLat(MIDTOWN).addTo(m);
         setReady(true);
       });
@@ -77,7 +85,7 @@ export default function OverviewMap({ sites, legend, yocLabel }: { sites: MapSit
       d.className = `site-pin${s.short ? " big" : ""}`;
       d.style.background = s.color;
       d.setAttribute("role", "button");
-      d.setAttribute("aria-label", `${s.name}, ${s.municipality}`);
+      d.setAttribute("aria-label", `${s.name}, ${s.municipality}: ${s.verdict}. Press Enter for details`);
       const html = `<div class="label" style="margin-bottom:2px">#${s.rank} · ${s.state}</div>
         <h4>${esc(s.name)}</h4><div class="small muted">${esc(s.municipality)}</div>
         <div class="pop-grid"><span>Verdict</span><b>${s.verdict}</b><span>${yocLabel}</span><b>${(s.yoc * 100).toFixed(2)}%</b><span>Units</span><b>${s.units}</b></div>
@@ -90,7 +98,8 @@ export default function OverviewMap({ sites, legend, yocLabel }: { sites: MapSit
 
   return (
     <div className="map-shell">
-      <div ref={el} role="region" className="map" aria-label="Map of candidate sites" />
+      <div ref={el} className="map" />
+      <MapState state={failed ? "failed" : ready ? "ready" : "loading"} still={staticMapUrl(41.05, -73.9, 3.4, 1000, 560, "World_Street_Map")} alt="Street map of the New York, New Jersey and Connecticut search area" />
       <div className="map-overlay map-tools">
         <div className="seg" role="group" aria-label="Basemap">
           <button aria-pressed={mode === "streets"} onClick={() => setMode("streets")}>Map</button>

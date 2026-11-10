@@ -51,7 +51,7 @@ export default function Home() {
             <div><div className="n">{funnel.sourced}</div><div className="t">Sourced</div><div className="d">NY ≤2 hr · NJ ≤2 hr · CT ≤2.5 hr</div></div>
             <div><div className="n">{funnel.underwritten}</div><div className="t">Underwritten</div><div className="d">Full pro forma, 3 tax structures</div></div>
             <div><div className="n">{funnel.survive}</div><div className="t">Survive</div><div className="d">Pass gates, viable structure</div></div>
-            <div><div className="n" style={{ color: "var(--atco-orange)" }}>{funnel.shortlist}</div><div className="t">Shortlist</div><div className="d">Pursue / Pursue-structured</div></div>
+            <div><div className="n" style={{ color: "#c46f0a" }}>{funnel.shortlist}</div><div className="t">Shortlist</div><div className="d">Pursue / Pursue-structured</div></div>
           </div>
           <div className="hero-meta meta-light">
             <span>Hurdle <b>{pct(HURDLE, 1)} YOC floor · {pct(TARGET, 1)} target</b></span>
@@ -160,7 +160,8 @@ export default function Home() {
           <div className="grid g3">
             {shortlist.map((s) => (
               <a key={s.id} href={`/sites/${s.id}`} className="card shortcard">
-                <div className="img" style={{ backgroundImage: `url("${satThumb(Number(s.lat), Number(s.lon), 800, 500)}")` }}>
+                <div className="img">
+                  <img className="thumb" src={satThumb(Number(s.lat), Number(s.lon), 800, 500)} alt="" loading="lazy" decoding="async" width={800} height={500} />
                   <span className="rank">{s.rank}</span>
                   <VerdictChip v={s.verdict} hold={onHold(s)} />
                 </div>
@@ -185,18 +186,18 @@ export default function Home() {
                 </div>
               </a>
             ))}
-            <div className="card card-pad" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#2D2D2D", color: "#fff", borderColor: "#2D2D2D", position: "relative" }}>
+            <div className="card card-pad next90">
               <div>
-                <div className="eyebrow" style={{ color: "var(--atco-orange)" }}>Next 90 days</div>
-                <h3 style={{ color: "#fff" }}>From shortlist to LOI</h3>
-                <ul style={{ paddingLeft: 18, color: "#d6d6d6", fontSize: 13.5, margin: "10px 0 0" }}>
-                  <li>Owner outreach on every shortlisted site; fee-simple pad purchases from master-plan developers</li>
-                  <li>NIC MAP and rate shops for each primary market area</li>
-                  <li>Assessor estimate and PILOT term sheet where the spread is thin</li>
-                  <li>Zoning opinion and licensure path (NJ CN, NY ALR, CT ALSA)</li>
-                </ul>
+                <div className="eyebrow">Next 90 days</div>
+                <h3>From shortlist to LOI</h3>
+                <a href="/method" className="btn">How we underwrite →</a>
               </div>
-              <a href="/method" className="btn" style={{ marginTop: 16, alignSelf: "flex-start" }}>How we underwrite →</a>
+              <ul>
+                <li>Owner outreach on every shortlisted site; fee-simple pad purchases from master-plan developers</li>
+                <li>NIC MAP and rate shops for each primary market area</li>
+                <li>Assessor estimate and PILOT term sheet where the spread is thin</li>
+                <li>Zoning opinion and licensure path (NJ CN, NY ALR, CT ALSA)</li>
+              </ul>
             </div>
           </div>
         </div>

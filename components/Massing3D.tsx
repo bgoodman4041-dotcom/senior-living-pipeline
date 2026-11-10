@@ -5,6 +5,8 @@ import { useNear } from "@/lib/useNear";
 import { baseStyle, setBasemap } from "@/lib/mapstyle";
 import { buildMassing, CARE_STYLE, FACADE, type Line } from "@/lib/massing";
 import { bboxOf } from "@/lib/geo";
+import { quietMapErrors, staticMapUrl } from "@/lib/mapkit";
+import MapState from "@/components/MapState";
 
 interface Props { lat: number; lon: number; acres: number; lines: Line[]; gsfPerUnit: Record<string, number>; parking: number; units: number; name: string }
 
@@ -13,6 +15,7 @@ export default function Massing3D(p: Props) {
   const map = useRef<MLMap | null>(null);
   const spin = useRef<number | null>(null);
   const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [mode, setMode] = useState<"satellite" | "streets">("satellite");
   const [rotating, setRotating] = useState(false);
   const [is3d, setIs3d] = useState(true);
@@ -33,9 +36,13 @@ export default function Massing3D(p: Props) {
     if (!near) return;
     let dead = false;
     (async () => {
-      const ml = (await import("maplibre-gl")).default;
-      if (dead || !el.current) return;
-      const mm = new ml.Map({ container: el.current, style: baseStyle(), center: [p.lon, p.lat], zoom: 16.5, pitch: 58, bearing: -28, maxPitch: 75, attributionControl: { compact: true } });
+      let ml: any, mm: MLMap;
+      try {
+        ml = (await import("maplibre-gl")).default;
+        if (dead || !el.current) return;
+        mm = new ml.Map({ container: el.current, style: baseStyle(), center: [p.lon, p.lat], zoom: 16.5, pitch: 58, bearing: -28, maxPitch: 75, attributionControl: { compact: true }, locale: { "Map.Title": `3D concept massing for ${p.name}` } });
+      } catch { if (!dead) setFailed(true); return; }
+      quietMapErrors(mm);
       mm.addControl(new ml.NavigationControl({ visualizePitch: true }), "bottom-right");
       mm.addControl(new ml.FullscreenControl(), "bottom-right");
       mm.on("load", () => {
@@ -132,7 +139,8 @@ export default function Massing3D(p: Props) {
   return (
     <div className="grid g-side" style={{ alignItems: "start" }}>
       <div className="map-shell">
-        <div ref={el} role="region" className="map map-tall" aria-label={`3D concept massing for ${p.name}`} />
+        <div ref={el} className="map map-tall" />
+        <MapState state={failed ? "failed" : ready ? "ready" : "loading"} still={staticMapUrl(p.lat, p.lon, 0.012, 900, 640)} alt={`Satellite image of the ${p.name} site`} />
         <div className="map-overlay map-tools">
           <div className="seg" role="group" aria-label="Basemap">
             <button aria-pressed={mode === "satellite"} onClick={() => setMode("satellite")}>Satellite</button>

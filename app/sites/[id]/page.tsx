@@ -1,6 +1,9 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import SiteMap from "@/components/SiteMap";
+import SubNav from "@/components/SubNav";
 import WhatIf from "@/components/WhatIf";
 import Massing3D from "@/components/Massing3D";
 import PrintButton from "@/components/PrintButton";
@@ -129,7 +132,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", marginBottom: 10 }}>
             <VerdictChip v={s.verdict} hold={onHold(s)} />
             <span className="small meta">Rank #{s.rank} of {sites.length}{isShortlist(s) ? " · Shortlist" : ""} · {trackOf(s)}</span>
-            <span style={{ marginLeft: "auto", display: "flex", gap: 8 }}><a className="btn btn-xl no-print" href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Download Excel model</a>{isShortlist(s) && <a className="btn no-print" href={`/memos/ATCO-${s.id}-IC-memo.pdf`} download>IC memo PDF</a>}{s.id === "NJ-04" && <a className="btn no-print" href="/anchor">Anchor-deal package</a>}<a className="btn no-print hide-sm" href="#model">What is in it</a><PrintButton /></span>
+            <span className="hero-actions"><a className="btn btn-xl no-print" href={`/models/ATCO-${s.id}-proforma.xlsx`} download>Download Excel model</a>{isShortlist(s) && <a className="btn no-print" href={`/memos/ATCO-${s.id}-IC-memo.pdf`} download>IC memo PDF</a>}{s.id === "NJ-04" && <a className="btn no-print" href="/anchor">Anchor-deal package</a>}<a className="btn no-print hide-sm" href="#model">What is in it</a><PrintButton /></span>
           </div>
           <h1>{s.name}</h1>
           <div className="sub">{s.municipality} · {s.county} County, {STATE_NAME[s.state]} · {s.acres} acres · {s.drive_min_midtown} min to Midtown</div>
@@ -162,9 +165,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
           </div>
         </div>
       </section>
-      <nav className="subnav" aria-label="Sections">
-        <div className="wrap">{sub.map(([h, l]) => <a key={h} href={`#${h}`}>{l}</a>)}</div>
-      </nav>
+      <SubNav items={sub as [string, string][]} />
 
       <div className="wrap">
         {/* 1 Verdict detail + 2 Snapshot */}
@@ -209,7 +210,7 @@ export default async function SitePage({ params }: { params: Promise<{ id: strin
 
         <section className="section">
           <SectionHead id="location" n={N()} title="Site and surroundings" sub="Satellite view with the tax parcel under the pin, the program footprint to scale, and the hospitals, transit, retail and competing senior communities around it." />
-          <SiteMap id={s.id} name={s.name} lat={Number(s.lat)} lon={Number(s.lon)} state={s.state} county={s.county} acres={Number(s.acres)} pinBasis={(s as any).pin_basis} pinAddress={(s as any).pin_address} verdictColor={VERDICT_COLOR[s.verdict as keyof typeof VERDICT_COLOR]} />
+          <SiteMap id={s.id} name={s.name} lat={Number(s.lat)} lon={Number(s.lon)} state={s.state} county={s.county} acres={Number(s.acres)} pinBasis={(s as any).pin_basis} pinAddress={(s as any).pin_address} hasSnapshot={existsSync(path.join(process.cwd(), "public", "places", `${s.id}.json`))} verdictColor={VERDICT_COLOR[s.verdict as keyof typeof VERDICT_COLOR]} />
         </section>
 
         <section className="section">

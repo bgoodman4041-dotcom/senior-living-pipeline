@@ -1,5 +1,5 @@
 {
- "screened_at": "2026-11-09T16:45:25.840Z",
+ "screened_at": "2026-11-09T21:34:49.775Z",
  "sources": {
   "fema": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28",
   "nwi": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0",
@@ -11,13 +11,13 @@
   "CT-01": {
    "radius_m": 222,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
@@ -44,15 +44,13 @@
   "CT-02": {
    "radius_m": 151,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X (0.2%)",
-    "AE",
-    "X"
-   ],
-   "sfha_site": true,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Riverine",
     "Freshwater Forested/Shrub Wetland"
@@ -85,10 +83,10 @@
    "flood_pin": {
     "err": "fetch failed"
    },
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
@@ -115,13 +113,13 @@
   "CT-04": {
    "radius_m": 190,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Pond",
     "Freshwater Forested/Shrub Wetland"
@@ -149,15 +147,13 @@
   "CT-05": {
    "radius_m": 197,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "AE",
-    "X (0.2%)",
-    "X"
-   ],
-   "sfha_site": true,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
@@ -184,14 +180,13 @@
   "CT-06": {
    "radius_m": 205,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "A",
-    "X"
-   ],
-   "sfha_site": true,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Lake",
     "Freshwater Forested/Shrub Wetland",
@@ -221,13 +216,13 @@
   "CT-07": {
    "radius_m": 246,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Pond"
    ],
@@ -254,13 +249,13 @@
   "CT-08": {
    "radius_m": 143,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -285,13 +280,13 @@
   "CT-09": {
    "radius_m": 161,
    "pin_basis": "Street or landmark level",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -316,13 +311,13 @@
   "CT-10": {
    "radius_m": 190,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland",
     "Freshwater Pond",
@@ -355,9 +350,13 @@
   "CT-12": {
    "radius_m": 255,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [],
-   "flood_site": [],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland",
     "Freshwater Pond",
@@ -386,9 +385,13 @@
   "CT-13": {
    "radius_m": 450,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [],
-   "flood_site": [],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Emergent Wetland",
     "Freshwater Forested/Shrub Wetland",
@@ -420,15 +423,13 @@
   "CT-14": {
    "radius_m": 249,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "AE",
-    "X (0.2%)",
-    "X"
-   ],
-   "sfha_site": true,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland",
     "Riverine"
@@ -456,15 +457,13 @@
   "CT-16": {
    "radius_m": 186,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "AE",
-    "X (0.2%)",
-    "X"
-   ],
-   "sfha_site": true,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland",
     "Freshwater Pond",
@@ -493,9 +492,9 @@
   "NJ-01": {
    "radius_m": 221,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
+   "flood_pin": {
+    "err": "fetch failed"
+   },
    "flood_site": {
     "err": "fetch failed"
    },
@@ -538,14 +537,13 @@
   "NJ-02": {
    "radius_m": 124,
    "pin_basis": "Street or landmark level",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "A",
-    "X"
-   ],
-   "sfha_site": true,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Emergent Wetland",
     "Freshwater Forested/Shrub Wetland",
@@ -587,13 +585,13 @@
   "NJ-03": {
    "radius_m": 197,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Riverine"
    ],
@@ -639,13 +637,13 @@
   "NJ-04": {
    "radius_m": 72,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -687,9 +685,13 @@
   "NJ-05": {
    "radius_m": 108,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": [],
-   "flood_site": [],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -736,9 +738,13 @@
   "NJ-06": {
    "radius_m": 72,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [],
-   "flood_site": [],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
@@ -777,13 +783,13 @@
   "NJ-07": {
    "radius_m": 124,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -820,14 +826,13 @@
   "NJ-08": {
    "radius_m": 161,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "A",
-    "X"
-   ],
-   "sfha_site": true,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Emergent Wetland",
     "Freshwater Forested/Shrub Wetland"
@@ -876,9 +881,13 @@
   "NJ-09": {
    "radius_m": 172,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [],
-   "flood_site": [],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland",
     "Riverine"
@@ -922,9 +931,13 @@
   "NJ-10": {
    "radius_m": 72,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": [],
-   "flood_site": [],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -961,13 +974,13 @@
   "NJ-11": {
    "radius_m": 113,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Emergent Wetland",
     "Freshwater Forested/Shrub Wetland",
@@ -1008,13 +1021,13 @@
   "NJ-12": {
    "radius_m": 146,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 1,
    "epa": {
@@ -1048,9 +1061,9 @@
     "in_sewer_service_area": false,
     "cafra": false,
     "historic": [
-     "White House Designs for Life- Living / IDENTIFIED_INDV / OEM Recon 2025",
-     "Al-Ghazaly Jr/Sr High School / IDENTIFIED_INDV / OEM Recon 2025",
-     "879 Black Oak Ridge Rd / IDENTIFIED_INDV / OEM Recon 2025"
+     "White House Designs for Life- Living / IDENTIFIED_INDV",
+     "Al-Ghazaly Jr/Sr High School-An IEF School / IDENTIFIED_INDV",
+     "879 Black Oak Ridge Rd / IDENTIFIED_INDV"
     ],
     "overburdened_community": false
    }
@@ -1058,13 +1071,13 @@
   "NJ-13": {
    "radius_m": 152,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -1101,13 +1114,13 @@
   "NJ-14": {
    "radius_m": 197,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 1,
    "epa": {
@@ -1156,13 +1169,13 @@
   "NY-01": {
    "radius_m": 149,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -1192,13 +1205,13 @@
   "NY-02": {
    "radius_m": 102,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -1229,13 +1242,13 @@
   "NY-03": {
    "radius_m": 88,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -1265,13 +1278,13 @@
   "NY-04": {
    "radius_m": 112,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
@@ -1303,13 +1316,13 @@
   "NY-05": {
    "radius_m": 251,
    "pin_basis": "Street or landmark level",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Pond"
    ],
@@ -1344,13 +1357,13 @@
   "NY-06": {
    "radius_m": 246,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 1,
    "epa": {
@@ -1378,13 +1391,13 @@
   "NY-07": {
    "radius_m": 72,
    "pin_basis": "Street or landmark level",
-   "flood_pin": [
-    "AE"
-   ],
-   "flood_site": [
-    "AE"
-   ],
-   "sfha_site": true,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -1415,12 +1428,10 @@
    "flood_pin": {
     "err": "fetch failed"
    },
-   "flood_site": [
-    "AE",
-    "X (0.2%)",
-    "X"
-   ],
-   "sfha_site": true,
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Riverine"
    ],
@@ -1453,13 +1464,13 @@
   "NY-09": {
    "radius_m": 179,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
@@ -1489,13 +1500,13 @@
   "NY-10": {
    "radius_m": 72,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -1525,15 +1536,13 @@
   "NY-11": {
    "radius_m": 152,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "AE",
-    "X (0.2%)",
-    "X"
-   ],
-   "sfha_site": true,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Pond",
     "Riverine"
@@ -1564,15 +1573,13 @@
   "NY-12": {
    "radius_m": 338,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "AE",
-    "X (0.2%)",
-    "X"
-   ],
-   "sfha_site": true,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Emergent Wetland",
     "Freshwater Forested/Shrub Wetland",
@@ -1607,13 +1614,13 @@
   "NY-13": {
    "radius_m": 241,
    "pin_basis": "Street or landmark level",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
@@ -1643,13 +1650,13 @@
   "NY-14": {
    "radius_m": 168,
    "pin_basis": "Street or landmark level",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
@@ -1677,14 +1684,13 @@
   "NY-15": {
    "radius_m": 385,
    "pin_basis": "Street or landmark level",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "A",
-    "X"
-   ],
-   "sfha_site": true,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [
     "Freshwater Pond",
     "Riverine"
@@ -1715,13 +1721,13 @@
   "NY-16": {
    "radius_m": 197,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": [
-    "X"
-   ],
-   "flood_site": [
-    "X"
-   ],
-   "sfha_site": false,
+   "flood_pin": {
+    "err": "fetch failed"
+   },
+   "flood_site": {
+    "err": "fetch failed"
+   },
+   "sfha_site": null,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {

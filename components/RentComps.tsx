@@ -24,7 +24,7 @@ export default function RentComps({ id, compact = false }: { id: string; compact
         <p className="small" style={{ margin: "6px 0 0" }}><b>Model ${int(r.model)}/mo private pay.</b> {r.verdict}</p>
       </div>
       <div className="table-wrap"><table className="t">
-        <thead><tr><th>Community</th><th className="hide-sm">Town</th><th className="num">Starting price</th>{!compact && <th className="hide-sm" style={{ width: "34%" }}></th>}<th className="hide-sm">Note</th></tr></thead>
+        <thead><tr><th>Community</th><th className="hide-sm">Town</th><th className="num">Starting price</th>{!compact && <th className="hide-sm" style={{ width: "34%" }}><span className="sr-only">Price against the model rent</span></th>}<th className="hide-sm">Note</th></tr></thead>
         <tbody>
           <tr className="row-base"><td><b>This site (model)</b></td><td className="hide-sm">—</td><td className="num"><b>${int(r.model)}</b></td>{!compact && <td className="hide-sm"><div style={{ height: 10, width: `${(r.model / max) * 100}%`, background: "#403393" }} /></td>}<td className="hide-sm xs">Private-pay AL base rent</td></tr>
           {(b.comps || []).map((c) => (

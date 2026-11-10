@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 from datetime import date
 from pathlib import Path
 
@@ -23,13 +24,22 @@ def rows(p):
         return list(csv.DictReader(f))
 
 
+# A source URL, or a PDF link whose file name has spaces ("uppages/Planning Board Minutes 05_05_2026.pdf"), which
+# would otherwise be cut at the first space. Sources are separated by ";", "|" or spaces.
+SOURCE_URL = re.compile(r"https?://[^\s;|]+(?:\s+[^\s;|:/]+)*?\.pdf\b|https?://[^\s;|]+", re.I)
+
+
+def source_urls(text):
+    return [m.group(0).rstrip(" ,").replace(" ", "%20") for m in SOURCE_URL.finditer(text or "")]
+
+
 def research_sources():
     out = {}
     for st in ("ny", "ct", "nj"):
         p = ROOT / "research" / f"sites-{st}.csv"
         if p.exists():
             for r in rows(p):
-                urls = [u.strip(" ;,") for u in r.get("sources", "").replace(";", " ").split() if u.startswith("http")]
+                urls = source_urls(r.get("sources", ""))
                 out[r["id"]] = {"sources": urls, "zoning": r.get("zoning", ""),
                                 "senior_use_path": r.get("senior_use_path", ""),
                                 "prior_use": r.get("prior_use", ""), "sewer_water": r.get("sewer_water", ""),

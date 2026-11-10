@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ops from "@/data/operators.json";
-import { siteById } from "@/lib/data";
+import { siteById, isShortlist, onHold } from "@/lib/data";
 import { longDate } from "@/lib/format";
 import { allGCs } from "@/lib/contractors";
 import gcData from "@/data/contractors.json";
@@ -8,7 +8,11 @@ import gcData from "@/data/contractors.json";
 export const metadata: Metadata = { title: "Operator partners", description: "Which senior living operators and nonprofit sponsors ATCO should build with, site by site, with the deal structure for each." };
 
 export default function Operators() {
-  const fit = Object.entries(ops.fit) as [string, (typeof ops.fit)[keyof typeof ops.fit]][];
+  // only sites still on the shortlist, in rank order (a site that drops to Watch or Pass leaves this table)
+  const fit = (Object.entries(ops.fit) as [string, (typeof ops.fit)[keyof typeof ops.fit]][])
+    .filter(([id]) => { const s = siteById(id); return !!s && isShortlist(s); })
+    .sort(([a], [b]) => (siteById(a)?.rank ?? 99) - (siteById(b)?.rank ?? 99));
+  const words = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
   return (
     <>
       <section className="hero"><div className="wrap">
@@ -33,7 +37,12 @@ export default function Operators() {
                 <tr><td>Signal</td><td>{p.signal}</td></tr>
               </tbody></table>
               <div className="op-sites">
-                {p.sites.map((id) => { const s = siteById(id); return s ? <a key={id} href={`/sites/${id}#operators`} className="tag">{id} · {s.municipality}</a> : null; })}
+                {p.sites.map((id) => {
+                  const s = siteById(id);
+                  if (!s) return null;
+                  const off = !isShortlist(s);
+                  return <a key={id} href={`/sites/${id}${off ? "" : "#operators"}`} className={`tag${off ? " tag-off" : ""}`} title={off ? `No longer on the shortlist (${s.verdict})` : onHold(s) ? "On hold" : undefined}>{id} · {s.municipality}{off ? ` · ${s.verdict}` : onHold(s) ? " · on hold" : ""}</a>;
+                })}
               </div>
               <div className="xs muted" style={{ marginTop: 10 }}>{p.src.map(([l, u], i) => <span key={u}>{i ? " · " : "Sources: "}<a href={u} target="_blank" rel="noreferrer">{l}</a></span>)}</div>
             </div>
@@ -42,7 +51,7 @@ export default function Operators() {
       </div></section>
 
       <section className="section" style={{ paddingTop: 0 }}><div className="wrap">
-        <div className="section-head"><div><h2 className="rule-title">Fit by shortlist site</h2><p>First and second call for each of the seven, and what could change the deal.</p></div></div>
+        <div className="section-head"><div><h2 className="rule-title">Fit by shortlist site</h2><p>First and second call for each of the {words[fit.length] ?? fit.length} shortlist sites, and what could change the deal.</p></div></div>
         <div className="card"><div className="table-wrap"><table className="t">
           <thead><tr><th>Site</th><th>First call</th><th className="hide-sm">Second call</th><th>Why</th><th>Watch</th></tr></thead>
           <tbody>{fit.map(([id, f]) => { const s = siteById(id); return (

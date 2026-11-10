@@ -107,7 +107,7 @@ export default function Anchor() {
     <section className="section">
       <div className="wrap">
         <div className="section-head"><div>
-          <div className="eyebrow">Anchor deal · {s.id}</div><h2>Florham Park: 114-unit AL/MC pad at the former ASCO HQ</h2>
+          <div className="eyebrow">Anchor deal · {s.id}</div><h1 className="page-h1">Florham Park: 114-unit AL/MC pad at the former ASCO HQ</h1>
           <p>{ctl.owner.split(" (")[0]} owns the 55-acre site. ATCO plans to buy a {s.acres}-acre pad fee simple, subdivided from the site, and own it outright; no contract or LOI yet. This is the only site that clears {pct(HURDLE, 1)} fully taxed, and its redevelopment designation makes a PILOT available on top.</p>
           <p><b>Who it serves.</b> {lines.map((l) => `${l.units} ${l.care === "AL" ? "assisted living" : l.care === "MC" ? "memory care" : l.care} apartments`).join(" and ")}, about {Math.round((lines.find((l) => l.care === "AL")?.units || 0) * 0.1)} of the assisted living apartments held for Medicaid residents under New Jersey&apos;s certificate-of-need condition, next door to Garden Homes&apos; 305 age-restricted homes, so residents there can add care without leaving the community.</p>
         </div></div>
@@ -122,7 +122,7 @@ export default function Anchor() {
 
         <div className="callout" style={{ marginBottom: 24 }}><b>Where an LP will push.</b> (1) Absorption: about {pct(abBase.capture, 0)} capture of unmet demand, {pct(abWood.capture, 0)} if Woodmont builds, against a 10–15% lender norm; a NIC MAP pull decides it. (2) Rents and hard cost are public-comp checks, not a rate shop or a GC number. (3) No site control yet. (4) The thin {usdM(gmp.down.profit, 1)} GMP-only downside cushion widens to {usdM(gp.down.profit, 1)} only once the PILOT ordinance passes. Each has a gate below; nothing past pursuit cost is spent until they clear.</div>
 
-        <h3 className="anchor" id="test-fit">1 · Test fit</h3>
+        <h2 className="anchor as-h3" id="test-fit">1 · Test fit</h2>
         <div className="card" style={{ marginBottom: 18, position: "relative", height: 340, background: "linear-gradient(#dfe9f2, #f4f1ea)", overflow: "hidden" }}>
           <AxonRender lat={Number(s.lat)} lon={Number(s.lon)} acres={Number(s.acres)} title="the Florham Park building" parking={parking} lines={lines}
             gsfPerUnit={Object.fromEntries(Object.entries<any>(a.care_levels).map(([k, v]) => [k, v.gsf_per_unit]))} />
@@ -145,7 +145,7 @@ export default function Anchor() {
             <p className="xs muted card-pad" style={{ margin: 0 }}>The pad sits inside Garden Homes&apos; 305-unit age-restricted community, so AL and MC give its buyers a continuum of care on the same campus. Setbacks, grading and access come with the civil and zoning work.</p></div>
         </div>
 
-        <h3 className="anchor" id="sources-uses">2 · Sources and uses</h3>
+        <h2 className="anchor as-h3" id="sources-uses">2 · Sources and uses</h2>
         <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))", gap: 18, marginBottom: 24 }}>
           <div className="card"><div className="table-wrap"><table className="t">
             <thead><tr><th>Uses</th><th className="num">Total</th><th className="num">$ / unit</th><th className="num">%</th></tr></thead>
@@ -165,7 +165,7 @@ export default function Anchor() {
           </table></div></div>
         </div>
 
-        <h3 className="anchor" id="schedule">3 · Schedule</h3>
+        <h2 className="anchor as-h3" id="schedule">3 · Schedule</h2>
         <div className="card card-pad" tabIndex={0} role="region" aria-label="Project schedule" style={{ marginBottom: 8, overflowX: "auto" }}>
           <div style={{ minWidth: 560 }}>
             <div style={{ display: "grid", gridTemplateColumns: "minmax(170px, 34%) 1fr", fontSize: 11, color: "var(--muted)" }}>
@@ -183,20 +183,20 @@ export default function Anchor() {
         </div>
         <p className="small" style={{ marginBottom: 24 }}>{P} months from LOI to financial close, {B} months to build, {L} months of lease-up at the industry-norm pace, then a sale or HUD 232 take-out at month {N} ({when(N)}). Approvals run in parallel; the only critical-path items are the plan amendment and the CN, which both have to land before the GMP and the loan close. Month 0 is {when(0)}.</p>
 
-        <h3 className="anchor" id="pilot">4 · PILOT path</h3>
+        <h2 className="anchor as-h3" id="pilot">4 · PILOT path</h2>
         <p className="small">{rdv.text}</p>
         <div className="card" style={{ marginBottom: 24 }}><div className="table-wrap"><table className="t">
           <thead><tr><th>#</th><th>Step</th><th>What happens</th></tr></thead>
           <tbody>{pilot.map(([n, t, d]) => <tr key={n}><td>{n}</td><td style={{ minWidth: 150 }}><b>{t}</b>{n === "1" && <> <span className="ic-chip ic-go">Done</span></>}</td><td className="small">{d}</td></tr>)}</tbody>
         </table></div></div>
 
-        <h3 className="anchor" id="risks">5 · Risk register</h3>
+        <h2 className="anchor as-h3" id="risks">5 · Risk register</h2>
         <div className="card" style={{ marginBottom: 24 }}><div className="table-wrap"><table className="t">
           <thead><tr><th>Risk</th><th>Odds</th><th>Impact</th><th>Mitigant and evidence</th><th className="hide-sm">Owner</th></tr></thead>
           <tbody>{risks.map(([r, l, i, m, o]) => <tr key={r}><td style={{ minWidth: 150 }}><b>{r}</b></td><td><span className={`ic-chip ic-${rc[l]}`}>{l}</span></td><td><span className={`ic-chip ic-${rc[i]}`}>{i}</span></td><td className="small">{m}</td><td className="small hide-sm">{o}</td></tr>)}</tbody>
         </table></div></div>
 
-        <h3 className="anchor" id="gates">6 · Gates before ATCO commits more capital</h3>
+        <h2 className="anchor as-h3" id="gates">6 · Gates before ATCO commits more capital</h2>
         <div className="card card-pad"><ol className="small" style={{ margin: 0, paddingLeft: 18 }}>
           <li><b>LOI gate:</b> NIC MAP pull confirms rents and occupancy; operator rate shop; Garden Homes exclusive LOI at a fixed land price at or below {usdM(u.max_land, 1)}.</li>
           <li><b>Approval gate:</b> redevelopment plan adopted with the pad; CN granted; site plan approved. About {usdM(ft.atRiskPreEntitlement, 2)} is spent before this gate.</li>

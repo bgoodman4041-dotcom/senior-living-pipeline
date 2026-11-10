@@ -226,7 +226,7 @@ STUDIES["CT-02"] = dict(
         ("Monarch Spring Meadows (IL)", "Trumbull", 60, "I"),
     ],
     pipeline=[
-        ("Rivers Edge, 48 Monroe Tpke (this site)", "IL/AL/MC + 147 active adult", 193, "Zone change and site plan approved 4-1; validity to confirm", "subject", (41.29026, -73.23345), "https://beta.nerej.com/340-unit-senior-housing-campus-approved-in-trumbull"),
+        ("Rivers Edge, 48 Monroe Tpke (this site)", "IL/AL/MC + 147 active adult", 193, "Zone change and site plan approved 4-1; validity to confirm", "subject", (41.29026, -73.23345), "https://nerej.com/340-unit-senior-housing-campus-approved-in-trumbull"),
     ],
     rent_key="CT-02",
     product="campus",

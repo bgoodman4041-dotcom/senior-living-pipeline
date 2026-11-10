@@ -21,6 +21,8 @@ export async function GET(_req: Request, ctx: { params: Promise<{ id: string }> 
     if (!res) res = await overpassPois(lat, lon, 40000);
     return Response.json(res, { headers: { "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" } });
   } catch (e: any) {
-    return Response.json({ error: String(e?.message || e) }, { status: 502, headers: { "Cache-Control": "no-store" } });
+    // 200 with an empty list (never cached) rather than a 5xx, so a busy upstream doesn't show as a page error;
+    // the browser then queries the public mirrors itself
+    return Response.json({ pois: [], error: String(e?.message || e) }, { headers: { "Cache-Control": "no-store" } });
   }
 }

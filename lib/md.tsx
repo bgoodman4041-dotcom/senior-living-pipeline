@@ -16,10 +16,20 @@ export function section(md: string, start: string): string {
   return lines.slice(i + 1, j).join("\n").trim();
 }
 
-/** Inline markdown: **bold**, [text](url), `code`, [V]/[I] tags. */
+/** A readable label for a bare URL: host and path, shortened. */
+function shortUrl(url: string) {
+  try {
+    const u = new URL(url);
+    const s = u.host.replace(/^www\./, "") + (u.pathname.length > 1 ? decodeURI(u.pathname).replace(/\/$/, "") : "");
+    return s.length > 56 ? s.slice(0, 54) + "…" : s;
+  } catch { return url; }
+}
+const external = (href: string) => /^https?:\/\//.test(href);
+
+/** Inline markdown: **bold**, [text](url), bare URLs, `code`, [V]/[I] tags. */
 export function Inline({ text }: { text: string }) {
   const out: React.ReactNode[] = [];
-  const re = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\)|`[^`]+`|\[(?:V|I|V-2|V\/I)\])/g;
+  const re = /(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\)|`[^`]+`|\[(?:V|I|V-2|V\/I)\]|https?:\/\/[^\s<>()\]]+)/g;
   let last = 0, m: RegExpExecArray | null, k = 0;
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(text.slice(last, m.index));
@@ -28,9 +38,15 @@ export function Inline({ text }: { text: string }) {
     else if (t.startsWith("`")) out.push(<code key={k++}>{t.slice(1, -1)}</code>);
     else if (/^\[(V|V-2)\]$/.test(t)) out.push(<span key={k++} className="tag" title="Verified">V</span>);
     else if (/^\[(I|V\/I)\]$/.test(t)) out.push(<span key={k++} className="badge-i" title="Inferred / calibrated">I</span>);
-    else {
+    else if (external(t)) {
+      // bare URL: keep trailing punctuation out of the link
+      const tail = (t.match(/[.,;:!?'"]+$/) || [""])[0];
+      const url = tail ? t.slice(0, -tail.length) : t;
+      out.push(<a key={k++} href={url} target="_blank" rel="noreferrer" title={url}>{shortUrl(url)}</a>);
+      if (tail) out.push(tail);
+    } else {
       const mm = t.match(/^\[([^\]]+)\]\(([^)]+)\)$/)!;
-      out.push(<a key={k++} href={mm[2]} target="_blank" rel="noreferrer">{mm[1]}</a>);
+      out.push(external(mm[2]) ? <a key={k++} href={mm[2]} target="_blank" rel="noreferrer">{mm[1]}</a> : <a key={k++} href={mm[2]}>{mm[1]}</a>);
     }
     last = m.index + t.length;
   }

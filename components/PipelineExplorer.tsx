@@ -80,9 +80,10 @@ export default function PipelineExplorer({ rows, hurdle, target }: { rows: Row[]
   const clearing = filtered.filter((r) => r.yoc[tax] >= hurdle).length;
 
   const th = (k: SortKey, label: string, num = false, title?: string) => (
-    <th className={`sortable${num ? " num" : ""}`} title={title} aria-sort={sort.k === k ? (sort.dir === 1 ? "ascending" : "descending") : "none"}
-      onClick={() => setSort((s) => ({ k, dir: s.k === k ? (s.dir === 1 ? -1 : 1) : (num ? -1 : 1) }))}>
-      {label}{sort.k === k ? (sort.dir === 1 ? " ▲" : " ▼") : ""}
+    <th className={`sortable${num ? " num" : ""}`} title={title} aria-sort={sort.k === k ? (sort.dir === 1 ? "ascending" : "descending") : "none"}>
+      <button type="button" className="th-sort" onClick={() => setSort((s) => ({ k, dir: s.k === k ? (s.dir === 1 ? -1 : 1) : (num ? -1 : 1) }))}>
+        {label}{sort.k === k ? (sort.dir === 1 ? " ▲" : " ▼") : ""}
+      </button>
     </th>
   );
   const exportCsv = () => {
@@ -91,7 +92,7 @@ export default function PipelineExplorer({ rows, hurdle, target }: { rows: Row[]
     const lines = sorted.map((r) => [r.rank, r.id, r.name, r.municipality, r.county, r.state, r.verdict, r.track, r.units, Math.round(r.capital), Math.round(r.equity), Math.round(r.debt), r.acres, r.drive,
       (r.yoc[tax] * 100).toFixed(2) + "%", (r.yoc.full_tax * 100).toFixed(2) + "%", (r.yoc.pilot * 100).toFixed(2) + "%", (r.yoc.nonprofit_exempt * 100).toFixed(2) + "%",
       Math.round(r.max_land[tax]), Math.round(r.land_cost), r.land_basis, Math.round(r.max_land[tax] - r.land_cost), r.dscr.toFixed(2), r.approval, r.entPath, r.entRisk, r.like, r.rent, r.need, r.total, r.verdict_reason, r.next_step].map(q).join(","));
-    const blob = new Blob([[head.map(q).join(","), ...lines].join("\n")], { type: "text/csv;charset=utf-8" });
+    const blob = new Blob(["\ufeff" + [head.map(q).join(","), ...lines].join("\r\n")], { type: "text/csv;charset=utf-8" }); // BOM so Excel reads UTF-8
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url; a.download = `atco-senior-living-pipeline-${tax}.csv`; document.body.appendChild(a); a.click(); a.remove();
@@ -183,7 +184,7 @@ export default function PipelineExplorer({ rows, hurdle, target }: { rows: Row[]
                     <td className="num" title={`Land basis: ${r.land_basis}`}>{usdM(r.land_cost)}<div className="xs muted">{r.land_basis}</div></td>
                     <td className="num" style={{ color: cushion >= 0 ? "var(--pursue)" : "var(--danger)" }}>{usdM(cushion)}</td>
                     <td className="num">{r.dscr.toFixed(2)}x</td>
-                    <td className="num">{r.approval}</td><td className="num" title={`${r.entPath} · ${r.entBand}`} style={{ color: r.entRisk >= 70 ? "var(--danger)" : r.entRisk >= 55 ? "#c46f0a" : "var(--ink-2)" }}>{r.entRisk}</td><td className="num" title={r.likeBand} style={{ color: r.like >= 65 ? "#33772a" : r.like < 50 ? "#c46f0a" : "var(--ink-2)" }}>{r.like}%</td><td className="num">{r.rent}</td><td className="num">{r.need}</td>
+                    <td className="num">{r.approval}</td><td className="num" title={`${r.entPath} · ${r.entBand}`} style={{ color: r.entRisk >= 70 ? "var(--danger)" : r.entRisk >= 55 ? "#a85a06" : "var(--ink-2)" }}>{r.entRisk}</td><td className="num" title={r.likeBand} style={{ color: r.like >= 65 ? "#33772a" : r.like < 50 ? "#a85a06" : "var(--ink-2)" }}>{r.like}%</td><td className="num">{r.rent}</td><td className="num">{r.need}</td>
                     <td className="small" style={{ minWidth: 220 }}>{r.next_step}</td>
                   </tr>
                 );

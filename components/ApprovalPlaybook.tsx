@@ -2,7 +2,7 @@ import { usdK } from "@/lib/format";
 import { playbook, PLAYBOOK_DATE } from "@/lib/playbook";
 import ContactBook from "./ContactBook";
 
-const BAND_C: Record<string, string> = { "Very likely": "#33772a", Likely: "#33772a", Even: "#3079B3", Uphill: "#F7901E", Unlikely: "#BB2034" };
+const BAND_C: Record<string, string> = { "Very likely": "#33772a", Likely: "#33772a", Even: "#3079B3", Uphill: "#a85a06", Unlikely: "#BB2034" };
 
 function Gauge({ v, c }: { v: number; c: string }) {
   const r = 70, cx = 90, cy = 86;

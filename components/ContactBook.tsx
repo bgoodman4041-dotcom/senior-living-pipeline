@@ -16,7 +16,7 @@ export default function ContactBook({ contacts, site }: { contacts: Contact[]; s
   const download = () => {
     const q = (v: any) => `"${String(v ?? "").replace(/"/g, '""')}"`;
     const rows = [["Site", "Group", "Name", "Role", "Phone", "Email", "Source"], ...contacts.map((c) => [site, c.group, c.name, c.role, c.phone, c.email, c.src])];
-    const blob = new Blob([rows.map((r) => r.map(q).join(",")).join("\n")], { type: "text/csv" });
+    const blob = new Blob(["\ufeff" + rows.map((r) => r.map(q).join(",")).join("\r\n")], { type: "text/csv;charset=utf-8" }); // BOM so Excel reads UTF-8
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `ATCO-contacts-${site.replace(/[^A-Za-z0-9]+/g, "-").slice(0, 40)}.csv`; a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   };
