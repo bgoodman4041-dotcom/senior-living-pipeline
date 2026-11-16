@@ -1,5 +1,5 @@
 {
- "screened_at": "2026-11-09T21:34:49.775Z",
+ "screened_at": "2026-11-16T17:01:57.546Z",
  "sources": {
   "fema": "https://hazards.fema.gov/arcgis/rest/services/public/NFHL/MapServer/28",
   "nwi": "https://fwspublicservices.wim.usgs.gov/wetlandsmapservice/rest/services/Wetlands/MapServer/0",
@@ -11,46 +11,44 @@
   "CT-01": {
    "radius_m": 222,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
    "nwi_100ft": 2,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-02": {
    "radius_m": 151,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X (0.2%)",
+    "X",
+    "AE"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Riverine",
     "Freshwater Forested/Shrub Wetland"
@@ -58,68 +56,58 @@
    "nwi_100ft": 2,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 1,
-     "names": [
-      "NORDEN SYSTEMS RIVERVIEW"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-03": {
    "radius_m": 183,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
    "nwi_100ft": 1,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-04": {
    "radius_m": 190,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Pond",
     "Freshwater Forested/Shrub Wetland"
@@ -127,66 +115,61 @@
    "nwi_100ft": 3,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-05": {
    "radius_m": 197,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "AE",
+    "X (0.2%)",
+    "X"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
    "nwi_100ft": 3,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-06": {
    "radius_m": 205,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "A",
+    "X"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Lake",
     "Freshwater Forested/Shrub Wetland",
@@ -196,128 +179,114 @@
    "nwi_100ft": 7,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-07": {
    "radius_m": 246,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Pond"
    ],
    "nwi_100ft": 1,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-08": {
    "radius_m": 143,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-09": {
    "radius_m": 161,
    "pin_basis": "Street or landmark level",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-10": {
    "radius_m": 190,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "A",
+    "X",
+    "X (0.2%)"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland",
     "Freshwater Pond",
@@ -326,37 +295,25 @@
    "nwi_100ft": 5,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 3,
-     "names": [
-      "ITW SHINEMARK",
-      "SYNTAC COATED PRODUCTS LLC",
-      "COATING SCIENCES INC"
-     ]
+     "err": "Service not found"
     }
    }
   },
   "CT-12": {
    "radius_m": 255,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland",
     "Freshwater Pond",
@@ -365,33 +322,25 @@
    "nwi_100ft": 5,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-13": {
    "radius_m": 450,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Emergent Wetland",
     "Freshwater Forested/Shrub Wetland",
@@ -401,35 +350,31 @@
    "nwi_100ft": 48,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 1,
-     "names": [
-      "CUMBERLAND FARMS 4769 0820"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-14": {
    "radius_m": 249,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "AE",
+    "X (0.2%)",
+    "X"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland",
     "Riverine"
@@ -437,33 +382,31 @@
    "nwi_100ft": 4,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "CT-16": {
    "radius_m": 186,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "AE",
+    "X (0.2%)",
+    "X"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland",
     "Freshwater Pond",
@@ -472,53 +415,45 @@
    "nwi_100ft": 8,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    }
   },
   "NJ-01": {
    "radius_m": 221,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Riverine"
    ],
    "nwi_100ft": 2,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -537,13 +472,14 @@
   "NJ-02": {
    "radius_m": 124,
    "pin_basis": "Street or landmark level",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X",
+    "A"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Freshwater Emergent Wetland",
     "Freshwater Forested/Shrub Wetland",
@@ -552,20 +488,16 @@
    "nwi_100ft": 8,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -585,33 +517,29 @@
   "NJ-03": {
    "radius_m": 197,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Riverine"
    ],
    "nwi_100ft": 2,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -637,36 +565,27 @@
   "NJ-04": {
    "radius_m": 72,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 4,
-     "names": [
-      "OHAUS CORP",
-      "SMITH IND",
-      "AUTOMATIC SWITCH CO",
-      "MIRION TECHNOLOGIES CAPINTEC INC"
-     ]
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -685,36 +604,23 @@
   "NJ-05": {
    "radius_m": 108,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 5,
-     "names": [
-      "HOLLAND MFG CO",
-      "JIM NORRIS SONS TOWING INC",
-      "ROLLINS LEASING CORP 231",
-      "TOOHEY WISHNOW CURTIS TURNER"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -738,33 +644,25 @@
   "NJ-06": {
    "radius_m": 72,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
    "nwi_100ft": 3,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -783,31 +681,27 @@
   "NJ-07": {
    "radius_m": 124,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -826,13 +720,14 @@
   "NJ-08": {
    "radius_m": 161,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "A",
+    "X"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Freshwater Emergent Wetland",
     "Freshwater Forested/Shrub Wetland"
@@ -840,29 +735,16 @@
    "nwi_100ft": 2,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 3,
-     "names": [
-      "PHILIPS CONSUMER COMMUNICATIONS",
-      "TOWNSEND CO",
-      "GENERAL PLUMBING SUPPLY DISTRIBUTION CO"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 7,
-     "names": [
-      "L B RUSSELL CORP",
-      "LOREAL USA PRODUCTS INC",
-      "REXAM BEVERAGE CAN CO PISCATAWAY NJ FACILITY",
-      "COSMAIR INC"
-     ]
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -881,13 +763,9 @@
   "NJ-09": {
    "radius_m": 172,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland",
     "Riverine"
@@ -895,22 +773,16 @@
    "nwi_100ft": 5,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 1,
-     "names": [
-      "SISTERS OF CHRISTIAN CHARITY"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -931,31 +803,23 @@
   "NJ-10": {
    "radius_m": 72,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [],
+   "flood_site": [],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -974,13 +838,13 @@
   "NJ-11": {
    "radius_m": 113,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Emergent Wetland",
     "Freshwater Forested/Shrub Wetland",
@@ -989,20 +853,16 @@
    "nwi_100ft": 8,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -1021,36 +881,27 @@
   "NJ-12": {
    "radius_m": 146,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 1,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 7,
-     "names": [
-      "ELECTRO NUCLEONICS INC",
-      "MBA PRINTED CIRCUITS INC",
-      "S L INDUSTRIES INC WAYNE SITE",
-      "USACE WAYNE INTERIM STORAGE"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -1071,31 +922,27 @@
   "NJ-13": {
    "radius_m": 152,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -1114,36 +961,27 @@
   "NJ-14": {
    "radius_m": 197,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 1,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 4,
-     "names": [
-      "EATONTOWN BOROUGH OF",
-      "EATONTOWN CENTRAL OFFICE NJ BELL",
-      "GETTY SS 56935",
-      "EATONTOWN SEWERAGE AUTH"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "nj": {
@@ -1169,70 +1007,59 @@
   "NY-01": {
    "radius_m": 149,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 1,
-     "names": [
-      "CON EDISON"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
-    "dec_wetlands_within_100ft": 0
+    "dec_wetlands_within_100ft": {
+     "err": "Unable to perform query. Too many requests."
+    }
    }
   },
   "NY-02": {
    "radius_m": 102,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 2,
-     "names": [
-      "WESTCHESTER MEDICAL CENTER",
-      "WESTCHESTER MEDICAL CENTER DO NOT USE USE NYD010966935"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1242,33 +1069,27 @@
   "NY-03": {
    "radius_m": 88,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 1,
-     "names": [
-      "U S ARMY NATIONAL GUARD CAMP SMITH TRAINING SITE RANGES"
-     ]
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1278,35 +1099,29 @@
   "NY-04": {
    "radius_m": 112,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
    "nwi_100ft": 2,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 1,
-     "names": [
-      "NEW YORK PRESBYTERIAN HUDSON VALLEY HOSPITAL"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1316,38 +1131,29 @@
   "NY-05": {
    "radius_m": 251,
    "pin_basis": "Street or landmark level",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Pond"
    ],
    "nwi_100ft": 3,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 7,
-     "names": [
-      "GYRODYNE CO OF AMERICA INC",
-      "CDM DYNAMICS",
-      "BIOTHOTIC INC",
-      "STONY BROOK UNIVERSITY HOSPITAL CABINET SHOP"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1357,31 +1163,27 @@
   "NY-06": {
    "radius_m": 246,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 1,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1391,31 +1193,27 @@
   "NY-07": {
    "radius_m": 72,
    "pin_basis": "Street or landmark level",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "AE"
+   ],
+   "flood_site": [
+    "AE"
+   ],
+   "sfha_site": true,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1425,36 +1223,31 @@
   "NY-08": {
    "radius_m": 190,
    "pin_basis": "Street or landmark level",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "AE",
+    "X (0.2%)",
+    "X"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Riverine"
    ],
    "nwi_100ft": 1,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 2,
-     "names": [
-      "ASTRA CO",
-      "MOBIL OIL CORP SS GAK"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1464,33 +1257,29 @@
   "NY-09": {
    "radius_m": 179,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
    "nwi_100ft": 5,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1500,33 +1289,27 @@
   "NY-10": {
    "radius_m": 72,
    "pin_basis": "Approximate: research coordinate, parcel to confirm",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 1,
-     "names": [
-      "MID HUDSON REGIONAL HOSPITAL AT WESTCHESTER MEDICAL CENTER"
-     ]
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1536,13 +1319,15 @@
   "NY-11": {
    "radius_m": 152,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X (0.2%)",
+    "AE",
+    "X"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Freshwater Pond",
     "Riverine"
@@ -1550,20 +1335,16 @@
    "nwi_100ft": 8,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1573,13 +1354,15 @@
   "NY-12": {
    "radius_m": 338,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "AE",
+    "X (0.2%)",
+    "X"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Freshwater Emergent Wetland",
     "Freshwater Forested/Shrub Wetland",
@@ -1589,22 +1372,16 @@
    "nwi_100ft": 7,
    "epa": {
     "npl_1mi": {
-     "n": 1,
-     "names": [
-      "NEPERA CHEMICAL CO INC"
-     ]
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1614,33 +1391,29 @@
   "NY-13": {
    "radius_m": 241,
    "pin_basis": "Street or landmark level",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [
     "Freshwater Forested/Shrub Wetland"
    ],
    "nwi_100ft": 1,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1650,31 +1423,27 @@
   "NY-14": {
    "radius_m": 168,
    "pin_basis": "Street or landmark level",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1684,13 +1453,14 @@
   "NY-15": {
    "radius_m": 385,
    "pin_basis": "Street or landmark level",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "A",
+    "X"
+   ],
+   "sfha_site": true,
    "nwi_site": [
     "Freshwater Pond",
     "Riverine"
@@ -1698,20 +1468,16 @@
    "nwi_100ft": 3,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
@@ -1721,31 +1487,27 @@
   "NY-16": {
    "radius_m": 197,
    "pin_basis": "Verified address or owner parcel",
-   "flood_pin": {
-    "err": "fetch failed"
-   },
-   "flood_site": {
-    "err": "fetch failed"
-   },
-   "sfha_site": null,
+   "flood_pin": [
+    "X"
+   ],
+   "flood_site": [
+    "X"
+   ],
+   "sfha_site": false,
    "nwi_site": [],
    "nwi_100ft": 0,
    "epa": {
     "npl_1mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "brownfield_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "rcra_adjacent": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     },
     "tri_half_mi": {
-     "n": 0,
-     "names": []
+     "err": "Service not found"
     }
    },
    "ny": {
